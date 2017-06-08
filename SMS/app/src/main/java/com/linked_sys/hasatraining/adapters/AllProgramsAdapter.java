@@ -54,14 +54,14 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Program program = filteredList.get(position);
         holder.courseName.setText(program.getProgramName());
-        holder.courseDesc.setText(program.getProgramDescription());
+        holder.courseDesc.setText(program.getProgramDays());
         holder.rated.setVisibility(View.GONE);
         applyClickEvents(holder, position);
     }
 
     @Override
     public long getItemId(int position) {
-        return filteredList.get(position).getProgramID();
+        return Long.parseLong(filteredList.get(position).getProgramID());
     }
 
     @Override

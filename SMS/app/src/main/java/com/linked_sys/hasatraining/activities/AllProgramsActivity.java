@@ -29,6 +29,9 @@ import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
@@ -101,19 +104,48 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
     }
 
     private void getPrograms() {
-        String programsURL = ApiEndPoints.ALL_PROGRAMS_URL + "?ACODE=" + session.getUserToken() + "&Search_data=" + "";
+        final String programsURL = ApiEndPoints.ALL_PROGRAMS_URL + "?ACODE=" + session.getUserToken() + "&Search_data=";
         ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
-                Log.d(AppController.TAG, response.toString());
+                programs.clear();
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("Programs");
+                    if (programsArray.length() > 0){
+                        for (int i = 0; i<programsArray.length(); i++){
+                            JSONObject programObj = programsArray.optJSONObject(i);
+                            Program program = new Program();
+                            program.setREF(programObj.optString("REF"));
+                            program.setProgramID(programObj.optString("ProgramID"));
+                            program.setProgramName(programObj.optString("ProgramName"));
+                            program.setProgramDays(programObj.optString("ProgramDays"));
+                            program.setProgramTimes(programObj.optString("ProgramTimes"));
+                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
+                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                            programs.add(program);
+                        }
+                        recyclerView.setAdapter(mAdapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                        if (programsArray.length() < 10)
+                            loadMore = false;
+                        else
+                            loadMore = true;
+                    }else {
+                        placeholder.setVisibility(View.VISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
             }
 
             @Override
             public void onFailure(VolleyError error) {
-
+                Log.d("Error", "Failed");
             }
         });
-        programsAPI.executeRequest(true, true);
+        programsAPI.executeRequest(true, false);
     }
 
     private void loadMorePrograms() {

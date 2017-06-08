@@ -1,6 +1,10 @@
 package com.linked_sys.hasatraining.core;
 
 
+import com.linked_sys.hasatraining.models.Program;
+
+import java.util.ArrayList;
+
 public class CacheHelper {
     private static CacheHelper mInstance = null;
 

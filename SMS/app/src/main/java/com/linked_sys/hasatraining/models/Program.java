@@ -1,19 +1,30 @@
 package com.linked_sys.hasatraining.models;
 
 public class Program {
-    private int programID;
+    private String REF;
+    private String programID;
     private String programName;
-    private String programDescription;
+    private String programDays;
+    private String programTimes;
+    private String programDateStrat;
+    private String programTimeStrat;
 
     public Program() {
-
     }
 
-    public int getProgramID() {
+    public String getREF() {
+        return REF;
+    }
+
+    public void setREF(String REF) {
+        this.REF = REF;
+    }
+
+    public String getProgramID() {
         return programID;
     }
 
-    public void setProgramID(int programID) {
+    public void setProgramID(String programID) {
         this.programID = programID;
     }
 
@@ -25,11 +36,35 @@ public class Program {
         this.programName = programName;
     }
 
-    public String getProgramDescription() {
-        return programDescription;
+    public String getProgramDays() {
+        return programDays;
     }
 
-    public void setProgramDescription(String programDescription) {
-        this.programDescription = programDescription;
+    public void setProgramDays(String programDays) {
+        this.programDays = programDays;
+    }
+
+    public String getProgramTimes() {
+        return programTimes;
+    }
+
+    public void setProgramTimes(String programTimes) {
+        this.programTimes = programTimes;
+    }
+
+    public String getProgramDateStrat() {
+        return programDateStrat;
+    }
+
+    public void setProgramDateStrat(String programDateStrat) {
+        this.programDateStrat = programDateStrat;
+    }
+
+    public String getProgramTimeStrat() {
+        return programTimeStrat;
+    }
+
+    public void setProgramTimeStrat(String programTimeStrat) {
+        this.programTimeStrat = programTimeStrat;
     }
 }
