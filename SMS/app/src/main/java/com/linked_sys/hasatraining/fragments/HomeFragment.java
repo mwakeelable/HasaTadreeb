@@ -29,9 +29,11 @@ public class HomeFragment extends Fragment {
         TextView txtFullName = (TextView) view.findViewById(R.id.txt_name);
         TextView txtId = (TextView) view.findViewById(R.id.txt_id);
         TextView txtRef = (TextView) view.findViewById(R.id.txt_ref);
+        TextView txtType = (TextView) view.findViewById(R.id.txt_type);
         userData = activity.session.getUserDetails();
         txtFullName.setText(userData.get(activity.session.KEY_FULL_NAME));
         txtId.setText(userData.get(activity.session.KEY_EMAIL));
         txtRef.setText(userData.get(activity.session.KEY_REF));
+        txtType.setText(userData.get(activity.session.KEY_USER_TYPE));
     }
 }

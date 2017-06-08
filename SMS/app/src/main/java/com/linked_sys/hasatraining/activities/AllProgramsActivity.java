@@ -19,9 +19,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
+import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.models.Program;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
 
 import java.util.ArrayList;
 
@@ -94,11 +100,23 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
         });
     }
 
-    private void getPrograms(){
-        placeholder.setVisibility(View.VISIBLE);
+    private void getPrograms() {
+        String programsURL = ApiEndPoints.ALL_PROGRAMS_URL + "?ACODE=" + session.getUserToken() + "&Search_data=" + "";
+        ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        programsAPI.executeRequest(true, true);
     }
 
-    private void loadMorePrograms(){
+    private void loadMorePrograms() {
         placeholder.setVisibility(View.VISIBLE);
     }
 

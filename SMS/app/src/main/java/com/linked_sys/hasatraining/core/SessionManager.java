@@ -22,8 +22,9 @@ public class SessionManager {
     public final String KEY_EMAIL = "email";
     public final String KEY_TOKEN = "TOKEN";
     public final String KEY_PASSWORD = "password";
-    public final String KEY_REF = "ref";
-    public final String KEY_FULL_NAME = "fullName";
+    public final String KEY_REF = "REF";
+    public final String KEY_FULL_NAME = "FULLNAME";
+    public final String KEY_USER_TYPE = "USERTYPE";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -41,13 +42,14 @@ public class SessionManager {
         return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 
-    public void createLoginSession(String email, String password, String token, String ref, String fullName) {
+    public void createLoginSession(String email, String password, String token, String ref, String fullName, String userType) {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_PASSWORD, password);
         editor.putString(KEY_TOKEN, token);
         editor.putString(KEY_REF, ref);
         editor.putString(KEY_FULL_NAME, fullName);
+        editor.putString(KEY_USER_TYPE, userType);
         editor.commit();
     }
 
@@ -79,7 +81,7 @@ public class SessionManager {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(i);
         setFirstTimeLaunch(false);
-        CacheHelper.getInstance().token = "";
+        CacheHelper.getInstance().ACode = "";
     }
 
     public boolean isLoggedIn() {

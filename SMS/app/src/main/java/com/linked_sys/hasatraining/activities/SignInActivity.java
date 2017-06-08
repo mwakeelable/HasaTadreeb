@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -91,19 +92,24 @@ public class SignInActivity extends BaseActivity {
             public void onSuccess(Object response) {
                 Log.d(AppController.TAG, response.toString());
                 JSONObject res = (JSONObject) response;
-                CacheHelper.getInstance().token = res.optString("ACODE");
+                CacheHelper.getInstance().ACode = res.optString("ACODE");
                 session.createLoginSession(
                         username,
                         password,
-                        CacheHelper.getInstance().token,
+                        CacheHelper.getInstance().ACode,
                         res.optString("REF"),
-                        res.optString("FULLNAME"));
+                        res.optString("FULLNAME"),
+                        res.optString("USERTYPE"));
                 openActivity(MainActivity.class);
             }
 
             @Override
             public void onFailure(VolleyError error) {
-                Log.d(AppController.TAG, "Error");
+                new MaterialDialog.Builder(SignInActivity.this)
+                        .title(getResources().getString(R.string.txt_error))
+                        .content(getResources().getString(R.string.sign_in_failed_msg))
+                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                        .show();
             }
         });
         loginAPI.executeRequest(true, false);

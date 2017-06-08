@@ -12,5 +12,5 @@ public class CacheHelper {
     //APP CODE
     public String appCode = "zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg=";
     //USER
-    public String token = "";
+    public String ACode = "";
 }

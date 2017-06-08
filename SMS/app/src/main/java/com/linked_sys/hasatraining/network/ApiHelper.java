@@ -69,7 +69,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().token);
+                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
         };
@@ -95,7 +95,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().token);
+                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
 
@@ -121,7 +121,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() {
                 Map params = new HashMap();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().token);
+                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
 
