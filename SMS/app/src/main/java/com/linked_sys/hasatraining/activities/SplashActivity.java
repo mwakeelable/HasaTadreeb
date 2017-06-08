@@ -9,7 +9,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int SPLASH_TIME_OUT = 0;
+        int SPLASH_TIME_OUT = 1000;
         if (session.isLoggedIn()) {
             new Handler().postDelayed(new Runnable() {
                 @Override

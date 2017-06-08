@@ -6,16 +6,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.activities.AllProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
+import com.linked_sys.hasatraining.activities.MyCertificatesActivity;
+import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.SettingsActivity;
 
 import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
     MainActivity activity;
-    HashMap<String,String> userData = new HashMap<>();
 
     @Nullable
     @Override
@@ -26,14 +30,29 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        TextView txtFullName = (TextView) view.findViewById(R.id.txt_name);
-        TextView txtId = (TextView) view.findViewById(R.id.txt_id);
-        TextView txtRef = (TextView) view.findViewById(R.id.txt_ref);
-        TextView txtType = (TextView) view.findViewById(R.id.txt_type);
-        userData = activity.session.getUserDetails();
-        txtFullName.setText(userData.get(activity.session.KEY_FULL_NAME));
-        txtId.setText(userData.get(activity.session.KEY_EMAIL));
-        txtRef.setText(userData.get(activity.session.KEY_REF));
-        txtType.setText(userData.get(activity.session.KEY_USER_TYPE));
+        view.findViewById(R.id.btnMyCertificates).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openActivity(MyCertificatesActivity.class);
+            }
+        });
+        view.findViewById(R.id.btnMyCourses).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openActivity(MyCoursesActivity.class);
+            }
+        });
+        view.findViewById(R.id.btnAllPrograms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openActivity(AllProgramsActivity.class);
+            }
+        });
+        view.findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openActivity(SettingsActivity.class);
+            }
+        });
     }
 }

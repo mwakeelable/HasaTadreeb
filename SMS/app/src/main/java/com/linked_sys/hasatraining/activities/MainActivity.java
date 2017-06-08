@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity {
         mDrawer.addProfile(new DrawerProfile()
                 .setId(1)
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
-                .setName("السيد")
+                .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
                 .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
         );
     }
