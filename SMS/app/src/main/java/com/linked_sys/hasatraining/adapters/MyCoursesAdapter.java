@@ -28,10 +28,10 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyVi
 
         MyViewHolder(View view) {
             super(view);
-            courseName = (TextView) view.findViewById(R.id.txt_courseName);
-            courseDesc = (TextView) view.findViewById(R.id.txt_courseDesc);
-            rated = (TextView) view.findViewById(R.id.txt_rated);
-            courseRow = (RelativeLayout) view.findViewById(R.id.course_container);
+            courseName = (TextView) view.findViewById(R.id.txt_programName);
+            courseDesc = (TextView) view.findViewById(R.id.txt_programPeriod);
+            rated = (TextView) view.findViewById(R.id.txt_program_ref);
+            courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
         }
     }
 
@@ -46,7 +46,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_course_item, parent, false);
+                .inflate(R.layout.program_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

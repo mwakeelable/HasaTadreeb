@@ -23,15 +23,17 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     private AllProgramsAdapterListener listener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseName, courseDesc, rated;
+        TextView programREF, programPeriod, programName, programTime, programDate;
         RelativeLayout courseRow;
 
         MyViewHolder(View view) {
             super(view);
-            courseName = (TextView) view.findViewById(R.id.txt_courseName);
-            courseDesc = (TextView) view.findViewById(R.id.txt_courseDesc);
-            rated = (TextView) view.findViewById(R.id.txt_rated);
-            courseRow = (RelativeLayout) view.findViewById(R.id.course_container);
+            programREF = (TextView) view.findViewById(R.id.txt_program_ref);
+            programName = (TextView) view.findViewById(R.id.txt_programName);
+            programPeriod = (TextView) view.findViewById(R.id.txt_programPeriod);
+            programTime = (TextView) view.findViewById(R.id.txt_programTime);
+            programDate = (TextView) view.findViewById(R.id.txt_program_date);
+            courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
         }
     }
 
@@ -46,16 +48,18 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_course_item, parent, false);
+                .inflate(R.layout.program_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Program program = filteredList.get(position);
-        holder.courseName.setText(program.getProgramName());
-        holder.courseDesc.setText(program.getProgramDays());
-        holder.rated.setVisibility(View.GONE);
+        holder.programName.setText(program.getProgramName());
+        holder.programPeriod.setText(program.getProgramDays());
+        holder.programREF.setText(program.getREF());
+        holder.programTime.setText(program.getProgramTimes());
+        holder.programDate.setText(program.getProgramDateStrat());
         applyClickEvents(holder, position);
     }
 
@@ -76,7 +80,7 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
                 listener.onProgramRowClicked(position);
             }
         });
-        holder.rated.setOnClickListener(new View.OnClickListener() {
+        holder.programREF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listener.onProgramRowClicked(position);
