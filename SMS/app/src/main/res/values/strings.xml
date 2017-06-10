@@ -19,5 +19,13 @@
     <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
     <string name="sign_in_failed_msg">خطأ في البريد الالكتروني او كلمة المرور</string>
     <string name="txt_error">خطأ</string>
+    <string name="txt_program_id">رقـم البرنامـج</string>
+    <string name="txt_program_ref">مرجـع البرنامـج</string>
+    <string name="txt_program_name">اسـم البرنامـج</string>
+    <string name="txt_program_days">مدة البرنامـج</string>
+    <string name="txt_program_times">الزمــن</string>
+    <string name="txt_program_timeStart">التوقيت</string>
+    <string name="txt_program_dateStart">التاريخ</string>
+    <string name="action_register_program">التسجيل بالبرنامج</string>
 
 </resources>

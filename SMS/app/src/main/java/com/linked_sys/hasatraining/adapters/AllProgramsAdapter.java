@@ -30,9 +30,9 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
             super(view);
             programREF = (TextView) view.findViewById(R.id.txt_program_ref);
             programName = (TextView) view.findViewById(R.id.txt_programName);
-            programPeriod = (TextView) view.findViewById(R.id.txt_programPeriod);
-            programTime = (TextView) view.findViewById(R.id.txt_programTime);
-            programDate = (TextView) view.findViewById(R.id.txt_program_date);
+//            programPeriod = (TextView) view.findViewById(R.id.txt_programPeriod);
+//            programTime = (TextView) view.findViewById(R.id.txt_programTime);
+//            programDate = (TextView) view.findViewById(R.id.txt_program_date);
             courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
         }
     }
@@ -56,10 +56,10 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Program program = filteredList.get(position);
         holder.programName.setText(program.getProgramName());
-        holder.programPeriod.setText(program.getProgramDays());
+//        holder.programPeriod.setText(program.getProgramDays());
         holder.programREF.setText(program.getREF());
-        holder.programTime.setText(program.getProgramTimes());
-        holder.programDate.setText(program.getProgramDateStrat());
+//        holder.programTime.setText(program.getProgramTimes());
+//        holder.programDate.setText(program.getProgramDateStrat());
         applyClickEvents(holder, position);
     }
 
@@ -80,12 +80,12 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
                 listener.onProgramRowClicked(position);
             }
         });
-        holder.programREF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onProgramRowClicked(position);
-            }
-        });
+//        holder.programREF.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                listener.onProgramRowClicked(position);
+//            }
+//        });
     }
 
     public interface AllProgramsAdapterListener {

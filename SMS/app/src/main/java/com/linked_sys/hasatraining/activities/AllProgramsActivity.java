@@ -2,8 +2,10 @@ package com.linked_sys.hasatraining.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -23,7 +25,6 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
-import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.models.Program;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
@@ -112,8 +113,8 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
                 try {
                     JSONObject res = (JSONObject) response;
                     JSONArray programsArray = res.optJSONArray("Programs");
-                    if (programsArray.length() > 0){
-                        for (int i = 0; i<programsArray.length(); i++){
+                    if (programsArray.length() > 0) {
+                        for (int i = 0; i < programsArray.length(); i++) {
                             JSONObject programObj = programsArray.optJSONObject(i);
                             Program program = new Program();
                             program.setREF(programObj.optString("REF"));
@@ -131,7 +132,7 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
                             loadMore = false;
                         else
                             loadMore = true;
-                    }else {
+                    } else {
                         placeholder.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -208,7 +209,15 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
 
     @Override
     public void onProgramRowClicked(int position) {
-        Toast.makeText(this, "number" + String.valueOf(position) + " clicked", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AllProgramsActivity.this, ProgramDetailsActivity.class);
+        intent.putExtra("id",programs.get(position).getProgramID());
+        intent.putExtra("ref",programs.get(position).getREF());
+        intent.putExtra("name",programs.get(position).getProgramName());
+        intent.putExtra("days",programs.get(position).getProgramDays());
+        intent.putExtra("times",programs.get(position).getProgramTimes());
+        intent.putExtra("timeStart",programs.get(position).getProgramTimeStrat());
+        intent.putExtra("DateStart",programs.get(position).getProgramDateStrat());
+        startActivity(intent);
     }
 
     @Override

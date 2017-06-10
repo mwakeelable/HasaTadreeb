@@ -29,8 +29,8 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyVi
         MyViewHolder(View view) {
             super(view);
             courseName = (TextView) view.findViewById(R.id.txt_programName);
-            courseDesc = (TextView) view.findViewById(R.id.txt_programPeriod);
-            rated = (TextView) view.findViewById(R.id.txt_program_ref);
+//            courseDesc = (TextView) view.findViewById(R.id.txt_programPeriod);
+//            rated = (TextView) view.findViewById(R.id.txt_program_ref);
             courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
         }
     }
@@ -54,8 +54,8 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyVi
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Course course = filteredList.get(position);
         holder.courseName.setText(course.getCourseName());
-        holder.courseDesc.setText(course.getCourseDescription());
-        holder.rated.setText(String.valueOf(course.isRated()));
+//        holder.courseDesc.setText(course.getCourseDescription());
+//        holder.rated.setText(String.valueOf(course.isRated()));
         applyClickEvents(holder, position);
     }
 
@@ -76,12 +76,12 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyVi
                 listener.onCourseRowClicked(position);
             }
         });
-        holder.rated.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onCourseRowClicked(position);
-            }
-        });
+//        holder.rated.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                listener.onCourseRowClicked(position);
+//            }
+//        });
     }
 
     public interface CourseAdapterListener {
