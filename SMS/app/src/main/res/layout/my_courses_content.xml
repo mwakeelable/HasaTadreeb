@@ -1,54 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MyCoursesActivity"
     tools:showIn="@layout/my_courses_activity">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/containerView"
+        android:layout_width="368dp"
+        android:layout_height="493dp"
+        tools:layout_editor_absoluteX="523dp"
+        tools:layout_editor_absoluteY="392dp" />
 
-        <FrameLayout
-            android:id="@+id/tasks_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical" />
-
-            <LinearLayout
-                android:id="@+id/no_data_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/grey_300"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_info_outline_black_48dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/txt_no_data" />
-
-            </LinearLayout>
-        </FrameLayout>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
 
 

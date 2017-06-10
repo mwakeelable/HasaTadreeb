@@ -27,5 +27,9 @@
     <string name="txt_program_timeStart">التوقيت</string>
     <string name="txt_program_dateStart">التاريخ</string>
     <string name="action_register_program">التسجيل بالبرنامج</string>
+    <string name="tab1">New</string>
+    <string name="tab2">Pending</string>
+    <string name="tab3">Achieved</string>
+    <string name="tab4">Approved</string>
 
 </resources>

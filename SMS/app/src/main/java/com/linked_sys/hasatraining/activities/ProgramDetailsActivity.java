@@ -4,14 +4,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.linked_sys.hasatraining.R;
 
 public class ProgramDetailsActivity extends BaseActivity {
     LinearLayout placeholder;
     String id, ref, name, days, times, timeStart, dateStart;
+    Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class ProgramDetailsActivity extends BaseActivity {
         TextView txtTimeStart = (TextView) findViewById(R.id.txt_program_time_start);
         TextView txtDateStart = (TextView) findViewById(R.id.txt_program_dates_start);
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
+        btnRegister = (Button) findViewById(R.id.btn_register_program);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             id = bundle.getString("id");
@@ -49,6 +53,12 @@ public class ProgramDetailsActivity extends BaseActivity {
             txtTimes.setText(times);
             txtTimeStart.setText(timeStart);
             txtDateStart.setText(dateStart);
+            btnRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(ProgramDetailsActivity.this,"You want to register " + name ,Toast.LENGTH_SHORT).show();
+                }
+            });
         } else {
             placeholder.setVisibility(View.VISIBLE);
         }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White"
+        android:gravity="center"
+        android:layoutDirection="ltr"
+        android:orientation="vertical">
+
+        <com.etiya.etiyabadgetablib.EtiyaBadgeTab
+            android:id="@+id/etiyaBadgeTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="locale" />
+
+    </LinearLayout>
+
+</LinearLayout>
