@@ -25,6 +25,7 @@ public class SessionManager {
     public final String KEY_REF = "REF";
     public final String KEY_FULL_NAME = "FULLNAME";
     public final String KEY_USER_TYPE = "USERTYPE";
+    public final String KEY_USER_ID = "VIEW_ID";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -36,6 +37,15 @@ public class SessionManager {
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
+    }
+
+    public void setUserViewID(int userViewID) {
+        editor.putInt(KEY_USER_ID, userViewID);
+        editor.commit();
+    }
+
+    public int getUserViewID() {
+        return pref.getInt(KEY_USER_ID, 1);
     }
 
     public boolean isFirstTimeLaunch() {
@@ -50,6 +60,7 @@ public class SessionManager {
         editor.putString(KEY_REF, ref);
         editor.putString(KEY_FULL_NAME, fullName);
         editor.putString(KEY_USER_TYPE, userType);
+        editor.putInt(KEY_USER_ID, 1);
         editor.commit();
     }
 

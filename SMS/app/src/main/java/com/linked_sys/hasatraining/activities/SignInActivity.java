@@ -34,7 +34,7 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         mProgress = new SpinnerDialog(this);
         txt_email = (EditText) findViewById(R.id.txt_identity);

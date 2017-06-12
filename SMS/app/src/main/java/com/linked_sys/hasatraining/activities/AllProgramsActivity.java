@@ -50,6 +50,7 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.nav_all_programs));
@@ -221,7 +222,8 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 }

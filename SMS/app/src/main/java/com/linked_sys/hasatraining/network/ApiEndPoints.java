@@ -11,5 +11,6 @@ public class ApiEndPoints {
     public static final String PENDING_PROGRAMS_URL = "/Programs/Pending/";
     public static final String ACHIEVED_PROGRAMS_URL = "/Programs/Achieved/";
     public static final String APPROVED_PROGRAMS_URL = "/Programs/Approved/";
-
+    public static final String REGISTER_PROGRAM_URL = "/Programs/RegisterInProgram/";
+    public static final String INSTRUCTIR_PROGRAMS_URL = "/Programs/InstructorList/";
 }

@@ -30,11 +30,11 @@ public class MainActivity extends BaseActivity {
     Toolbar mToolbar;
     public DrawerView mDrawer;
     HomeFragment FRAGMENT_HOME;
+    int userViewID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawer = (DrawerView) findViewById(R.id.drawer);
@@ -62,7 +62,10 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         mDrawerLayout.addDrawerListener(drawerToggle);
         mDrawerLayout.closeDrawer(mDrawer);
-        createNavMenu();
+        if (session.getUserViewID() == 1)
+            createTraineeNavMenu();
+        else if (session.getUserViewID() == 2)
+            createTrainerNavMenu();
         FRAGMENT_HOME = new HomeFragment();
         drawFragment(FRAGMENT_HOME);
     }
@@ -82,7 +85,7 @@ public class MainActivity extends BaseActivity {
             getSupportFragmentManager().popBackStack();
         else {
             super.onBackPressed();
-            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             finishAffinity();
         }
     }
@@ -104,7 +107,8 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void createNavMenu() {
+    private void createTraineeNavMenu() {
+        userViewID = 1;
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
                 .setTextPrimary(getString(R.string.nav_my_courses))
@@ -177,6 +181,74 @@ public class MainActivity extends BaseActivity {
                 .setId(1)
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
                 .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
+                .setDescription("متدرب")
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
+        );
+    }
+
+    public void createTrainerNavMenu() {
+        userViewID = 2;
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
+                .setTextPrimary(getString(R.string.nav_trainer_current_courses))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(TrainerCurrentCoursesActivity.class);
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
+                .setTextPrimary(getString(R.string.nav_trainer_future_courses))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(TrainerFutureCoursesActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
+                .setTextPrimary(getString(R.string.action_settings))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(SettingsActivity.class);
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setTextPrimary(getString(R.string.action_sign_out))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        new MaterialDialog.Builder(MainActivity.this)
+                                .title(getResources().getString(R.string.action_sign_out))
+                                .content(getResources().getString(R.string.txt_confirmation))
+                                .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        session.logoutUser();
+                                    }
+                                })
+                                .show();
+                    }
+                })
+        );
+        mDrawer.addProfile(new DrawerProfile()
+                .setId(1)
+                .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
+                .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
+                .setDescription("مدرب")
                 .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
         );
     }

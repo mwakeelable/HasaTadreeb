@@ -16,6 +16,8 @@
     <string name="nav_my_courses">البرامج الخاصة بي</string>
     <string name="nav_my_certificates">شهـــاداتي</string>
     <string name="nav_all_programs">كـل البرامج</string>
+    <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
+    <string name="nav_trainer_future_courses">الدورات الحالية</string>
     <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
     <string name="sign_in_failed_msg">خطأ في البريد الالكتروني او كلمة المرور</string>
     <string name="txt_error">خطأ</string>
@@ -27,9 +29,11 @@
     <string name="txt_program_timeStart">التوقيت</string>
     <string name="txt_program_dateStart">التاريخ</string>
     <string name="action_register_program">التسجيل بالبرنامج</string>
-    <string name="tab1">New</string>
-    <string name="tab2">Pending</string>
-    <string name="tab3">Achieved</string>
-    <string name="tab4">Approved</string>
+    <string name="tab1">جديد</string>
+    <string name="tab2">قيد الانتظار</string>
+    <string name="tab3">حقق</string>
+    <string name="tab4">تم الموافقة عليه</string>
+    <string name="txt_switch">تغيير إلي</string>
+    <string name="switch_summary">اختار طريقة العرض</string>
 
 </resources>

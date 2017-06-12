@@ -3,13 +3,20 @@ package com.linked_sys.hasatraining.activities;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.core.AppController;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
 
 public class ProgramDetailsActivity extends BaseActivity {
     LinearLayout placeholder;
@@ -56,7 +63,7 @@ public class ProgramDetailsActivity extends BaseActivity {
             btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(ProgramDetailsActivity.this,"You want to register " + name ,Toast.LENGTH_SHORT).show();
+                    doRegisterProgram();
                 }
             });
         } else {
@@ -64,8 +71,33 @@ public class ProgramDetailsActivity extends BaseActivity {
         }
     }
 
+    private void doRegisterProgram() {
+        final String registerURL = ApiEndPoints.REGISTER_PROGRAM_URL
+                + "?ACODE=" + session.getUserToken()
+                + "&ID_Number=" + session.getUserDetails().get(session.KEY_REF)
+                + "&APP_Number=" + id;
+        ApiHelper registerAPI = new ApiHelper(this, registerURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG,response.toString());
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d(AppController.TAG,"Failed");
+            }
+        });
+        registerAPI.executeRequest(true, false);
+    }
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.program_details_activity;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 }
