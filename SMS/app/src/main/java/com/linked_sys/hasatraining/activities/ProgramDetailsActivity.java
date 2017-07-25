@@ -5,23 +5,25 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.core.AppController;
+import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
 
+import org.json.JSONObject;
+
 public class ProgramDetailsActivity extends BaseActivity {
-    LinearLayout placeholder;
-    String id, ref, name, days, times, timeStart, dateStart;
-    Button btnRegister;
+    //    LinearLayout placeholder;
+//    String id, ref, name, days, times, timeStart, dateStart;
+//    Button btnRegister;
+    TextView txtID, txtRef, txtName, txtDays, txtTimes, txtTimeStart, txtDateStart;
+    String regRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,60 +37,72 @@ public class ProgramDetailsActivity extends BaseActivity {
             shadow.setVisibility(View.VISIBLE);
         else
             shadow.setVisibility(View.GONE);
-        TextView txtID = (TextView) findViewById(R.id.txt_program_id);
-        TextView txtRef = (TextView) findViewById(R.id.txt_program_ref);
-        TextView txtName = (TextView) findViewById(R.id.txt_program_name);
-        TextView txtDays = (TextView) findViewById(R.id.txt_program_days);
-        TextView txtTimes = (TextView) findViewById(R.id.txt_program_times);
-        TextView txtTimeStart = (TextView) findViewById(R.id.txt_program_time_start);
-        TextView txtDateStart = (TextView) findViewById(R.id.txt_program_dates_start);
-        placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
-        btnRegister = (Button) findViewById(R.id.btn_register_program);
+         txtID = (TextView) findViewById(R.id.txt_program_id);
+         txtRef = (TextView) findViewById(R.id.txt_program_ref);
+         txtName = (TextView) findViewById(R.id.txt_program_name);
+         txtDays = (TextView) findViewById(R.id.txt_program_days);
+         txtTimes = (TextView) findViewById(R.id.txt_program_times);
+         txtTimeStart = (TextView) findViewById(R.id.txt_program_time_start);
+         txtDateStart = (TextView) findViewById(R.id.txt_program_dates_start);
+//        placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
+//        btnRegister = (Button) findViewById(R.id.btn_register_program);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            id = bundle.getString("id");
-            ref = bundle.getString("ref");
-            name = bundle.getString("name");
-            days = bundle.getString("days");
-            times = bundle.getString("times");
-            timeStart = bundle.getString("timeStart");
-            dateStart = bundle.getString("DateStart");
-            txtID.setText(id);
-            txtRef.setText(ref);
-            txtName.setText(name);
-            txtDays.setText(days);
-            txtTimes.setText(times);
-            txtTimeStart.setText(timeStart);
-            txtDateStart.setText(dateStart);
-            btnRegister.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    doRegisterProgram();
-                }
-            });
-        } else {
-            placeholder.setVisibility(View.VISIBLE);
+            regRef = bundle.getString("REGREF");
+            getProgramData();
         }
+//            id = bundle.getString("id");
+//            ref = bundle.getString("ref");
+//            name = bundle.getString("name");
+//            days = bundle.getString("days");
+//            times = bundle.getString("times");
+//            timeStart = bundle.getString("timeStart");
+//            dateStart = bundle.getString("DateStart");
+//            txtID.setText(id);
+//            txtRef.setText(ref);
+//            txtName.setText(name);
+//            txtDays.setText(days);
+//            txtTimes.setText(times);
+//            txtTimeStart.setText(timeStart);
+//            txtDateStart.setText(dateStart);
+//            btnRegister.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+////                    doRegisterProgram();
+//                }
+//            });
+//        } else {
+//            placeholder.setVisibility(View.VISIBLE);
+//        }
     }
 
-    private void doRegisterProgram() {
-        final String registerURL = ApiEndPoints.REGISTER_PROGRAM_URL
-                + "?ACODE=" + session.getUserToken()
-                + "&ID_Number=" + session.getUserDetails().get(session.KEY_REF)
-                + "&APP_Number=" + id;
-        ApiHelper registerAPI = new ApiHelper(this, registerURL, Request.Method.GET, new ApiCallback() {
+    private void getProgramData() {
+        final String getProgramDataURL = ApiEndPoints.GET_PROGRAM_DATA
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&RegREF=" + regRef;
+        ApiHelper api = new ApiHelper(this, getProgramDataURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
-                Log.d(AppController.TAG,response.toString());
+                JSONObject res = (JSONObject) response;
+                JSONObject dataObj = res.optJSONObject("con");
+                Log.d(AppController.TAG, res.toString());
+                txtID.setText(dataObj.optString("ProgramID"));
+                txtRef.setText(dataObj.optString("ProgramREF"));
+                txtName.setText(dataObj.optString("ProgramName"));
+                txtDays.setText(dataObj.optString("ProgramDate"));
+                txtTimes.setText(dataObj.optString("ProgramTime"));
+                txtTimeStart.setText(dataObj.optString("ProgramLocation"));
+                txtDateStart.setText(dataObj.optString("ProgramStatus"));
             }
 
             @Override
             public void onFailure(VolleyError error) {
-                Log.d(AppController.TAG,"Failed");
+
             }
         });
-        registerAPI.executeRequest(true, false);
+        api.executeRequest(true, false);
     }
+
 
     @Override
     protected int getLayoutResourceId() {

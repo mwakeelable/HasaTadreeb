@@ -17,15 +17,16 @@ public class SessionManager {
     public Context mContext;
     public int PRIVATE_MODE = 0;
     public final String PREF_NAME = AppController.TAG;
-    public final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     public final String IS_LOGIN = "IsLoggedIn";
-    public final String KEY_EMAIL = "email";
-    public final String KEY_TOKEN = "TOKEN";
-    public final String KEY_PASSWORD = "password";
-    public final String KEY_REF = "REF";
+    public final String KEY_NATIONAL_ID = "nationalID";
+    public final String KEY_ID = "ID";
+    public final String KEY_ID_REF = "IDREF";
     public final String KEY_FULL_NAME = "FULLNAME";
     public final String KEY_USER_TYPE = "USERTYPE";
-    public final String KEY_USER_ID = "VIEW_ID";
+    public final String KEY_USER_TYPE_STRING = "USERTYPE_STRING";
+    public final String KEY_USER_IMAGE = "UserImage";
+    public final String KEY_USER_SCHOOL = "UserSchool";
+    public final String KEY_USER_SCHOOL_ID = "UserSchoolID";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -34,43 +35,31 @@ public class SessionManager {
         settings_pref = PreferenceManager.getDefaultSharedPreferences(mContext);
     }
 
-    public void setFirstTimeLaunch(boolean isFirstTime) {
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
-    }
-
-    public void setUserViewID(int userViewID) {
-        editor.putInt(KEY_USER_ID, userViewID);
-        editor.commit();
-    }
-
-    public int getUserViewID() {
-        return pref.getInt(KEY_USER_ID, 1);
-    }
-
-    public boolean isFirstTimeLaunch() {
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
-    }
-
-    public void createLoginSession(String email, String password, String token, String ref, String fullName, String userType) {
+    public void createLoginSession(String nationalID, String userId, String idRef, String fullName, String userTypeString, int userType, String userImage, String userSchool, String schoolID) {
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_EMAIL, email);
-        editor.putString(KEY_PASSWORD, password);
-        editor.putString(KEY_TOKEN, token);
-        editor.putString(KEY_REF, ref);
+        editor.putString(KEY_ID_REF, idRef);
+        editor.putString(KEY_ID, userId);
+        editor.putString(KEY_NATIONAL_ID, nationalID);
         editor.putString(KEY_FULL_NAME, fullName);
-        editor.putString(KEY_USER_TYPE, userType);
-        editor.putInt(KEY_USER_ID, 1);
+        editor.putString(KEY_USER_TYPE_STRING, userTypeString);
+        editor.putInt(KEY_USER_TYPE, userType);
+        editor.putString(KEY_USER_IMAGE, userImage);
+        editor.putString(KEY_USER_SCHOOL, userSchool);
+        editor.putString(KEY_USER_SCHOOL_ID, schoolID);
         editor.commit();
     }
 
     public HashMap<String, String> getUserDetails() {
-        HashMap<String, String> user = new HashMap<String, String>();
-        user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
-        user.put(KEY_TOKEN, pref.getString(KEY_TOKEN, null));
-        user.put(KEY_PASSWORD, pref.getString(KEY_PASSWORD, null));
-        user.put(KEY_REF, pref.getString(KEY_REF, null));
+        HashMap<String, String> user = new HashMap<>();
+        user.put(KEY_ID_REF, pref.getString(KEY_ID_REF, null));
+        user.put(KEY_ID, pref.getString(KEY_ID, null));
+        user.put(KEY_NATIONAL_ID, pref.getString(KEY_NATIONAL_ID, null));
         user.put(KEY_FULL_NAME, pref.getString(KEY_FULL_NAME, null));
+        user.put(KEY_USER_TYPE_STRING, pref.getString(KEY_USER_TYPE_STRING, null));
+        user.put(KEY_USER_TYPE, String.valueOf(pref.getInt(KEY_USER_TYPE, 1)));
+        user.put(KEY_USER_IMAGE, pref.getString(KEY_USER_IMAGE, null));
+        user.put(KEY_USER_SCHOOL, pref.getString(KEY_USER_SCHOOL, null));
+        user.put(KEY_USER_SCHOOL_ID, pref.getString(KEY_USER_SCHOOL_ID, null));
         return user;
     }
 
@@ -91,15 +80,9 @@ public class SessionManager {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(i);
-        setFirstTimeLaunch(false);
-        CacheHelper.getInstance().ACode = "";
     }
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
-    }
-
-    public String getUserToken() {
-        return pref.getString(KEY_TOKEN, null);
     }
 }

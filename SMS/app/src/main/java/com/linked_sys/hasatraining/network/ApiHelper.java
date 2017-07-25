@@ -10,7 +10,6 @@ import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.request.StringRequest;
 import com.linked_sys.hasatraining.core.AppController;
-import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.utils.SpinnerDialog;
 
 import org.json.JSONObject;
@@ -69,7 +68,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
+//                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
         };
@@ -95,7 +94,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
+//                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
 
@@ -121,7 +120,7 @@ public class ApiHelper {
             @Override
             public Map<String, String> getHeaders() {
                 Map params = new HashMap();
-                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
+//                params.put("Authorization", "bearer " + CacheHelper.getInstance().ACode);
                 return params;
             }
 

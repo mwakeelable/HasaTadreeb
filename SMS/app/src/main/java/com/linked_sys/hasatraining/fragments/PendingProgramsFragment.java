@@ -1,6 +1,7 @@
 package com.linked_sys.hasatraining.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,9 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.ProgramDetailsActivity;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
+import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Program;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
@@ -31,11 +33,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class PendingProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
+public class PendingProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener {
     MyCoursesActivity activity;
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
-    AllProgramsAdapter mAdapter;
+    public AllProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     int limit = 10;
     int skip = 0;
@@ -99,27 +101,31 @@ public class PendingProgramsFragment extends Fragment implements SwipeRefreshLay
     }
 
     private void getPrograms() {
-        final String programsURL = ApiEndPoints.PENDING_PROGRAMS_URL
-                + "?ACODE=" + activity.session.getUserToken()
-                + "&ID_Number="+activity.session.getUserDetails().get(activity.session.KEY_REF);
+        final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_ID)
+                + "&ProgStatus=-1";
         ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
                 programs.clear();
                 try {
                     JSONObject res = (JSONObject) response;
-                    JSONArray programsArray = res.optJSONArray("Programs");
+                    JSONArray programsArray = res.optJSONArray("con");
                     if (programsArray.length() > 0) {
                         for (int i = 0; i < programsArray.length(); i++) {
                             JSONObject programObj = programsArray.optJSONObject(i);
                             Program program = new Program();
-                            program.setREF(programObj.optString("REF"));
+                            program.setRegREF(programObj.optString("RegREF"));
+                            program.setProgramREF(programObj.optString("ProgramREF"));
                             program.setProgramID(programObj.optString("ProgramID"));
                             program.setProgramName(programObj.optString("ProgramName"));
-                            program.setProgramDays(programObj.optString("ProgramDays"));
-                            program.setProgramTimes(programObj.optString("ProgramTimes"));
-                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
-                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                            program.setProgramDate(programObj.optString("ProgramDate"));
+                            program.setProgramTime(programObj.optString("ProgramTime"));
+                            program.setProgramLocation(programObj.optString("ProgramLocation"));
+                            program.setProgramStatus(programObj.optString("ProgramStatus"));
+                            program.setMustRate(programObj.optBoolean("MustRate"));
+                            program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
                             programs.add(program);
                         }
                         recyclerView.setAdapter(mAdapter);
@@ -157,17 +163,13 @@ public class PendingProgramsFragment extends Fragment implements SwipeRefreshLay
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
-
-    @Override
     public void onProgramRowClicked(int position) {
+        openProgram(mAdapter.filteredList.get(position).getRegREF());
+    }
 
+    private void openProgram(String regRef) {
+        Intent intent = new Intent(activity, ProgramDetailsActivity.class);
+        intent.putExtra("REGREF",regRef);
+        startActivity(intent);
     }
 }

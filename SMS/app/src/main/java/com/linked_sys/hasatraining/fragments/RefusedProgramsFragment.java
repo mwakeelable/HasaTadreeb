@@ -1,6 +1,5 @@
 package com.linked_sys.hasatraining.fragments;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,7 +31,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
+
+public class RefusedProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
     MyCoursesActivity activity;
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -49,7 +49,7 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = (MyCoursesActivity) getActivity();
-        return inflater.inflate(R.layout.approved_program_fragment, container, false);
+        return inflater.inflate(R.layout.refused_programs_fragment, container, false);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
         final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId="+activity.session.getUserDetails().get(activity.session.KEY_ID)
-                + "&ProgStatus=1";
+                + "&ProgStatus=4";
         ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {

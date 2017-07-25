@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -19,19 +18,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
 import com.linked_sys.hasatraining.models.Program;
-import com.linked_sys.hasatraining.network.ApiCallback;
-import com.linked_sys.hasatraining.network.ApiEndPoints;
-import com.linked_sys.hasatraining.network.ApiHelper;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -74,7 +64,7 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
                 new Runnable() {
                     @Override
                     public void run() {
-                        getPrograms();
+//                        getPrograms();
                     }
                 }
         );
@@ -105,50 +95,50 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
         });
     }
 
-    private void getPrograms() {
-        final String programsURL = ApiEndPoints.ALL_PROGRAMS_URL + "?ACODE=" + session.getUserToken() + "&Search_data=";
-        ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                programs.clear();
-                try {
-                    JSONObject res = (JSONObject) response;
-                    JSONArray programsArray = res.optJSONArray("Programs");
-                    if (programsArray.length() > 0) {
-                        for (int i = 0; i < programsArray.length(); i++) {
-                            JSONObject programObj = programsArray.optJSONObject(i);
-                            Program program = new Program();
-                            program.setREF(programObj.optString("REF"));
-                            program.setProgramID(programObj.optString("ProgramID"));
-                            program.setProgramName(programObj.optString("ProgramName"));
-                            program.setProgramDays(programObj.optString("ProgramDays"));
-                            program.setProgramTimes(programObj.optString("ProgramTimes"));
-                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
-                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
-                            programs.add(program);
-                        }
-                        recyclerView.setAdapter(mAdapter);
-                        swipeRefreshLayout.setRefreshing(false);
-                        if (programsArray.length() < 10)
-                            loadMore = false;
-                        else
-                            loadMore = true;
-                    } else {
-                        placeholder.setVisibility(View.VISIBLE);
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                } catch (Exception e) {
-                    Log.d("Error", e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(VolleyError error) {
-                Log.d("Error", "Failed");
-            }
-        });
-        programsAPI.executeRequest(true, false);
-    }
+//    private void getPrograms() {
+//        final String programsURL = ApiEndPoints.ALL_PROGRAMS_URL + "?ACODE=" + session.getUserToken() + "&Search_data=";
+//        ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+//            @Override
+//            public void onSuccess(Object response) {
+//                programs.clear();
+//                try {
+//                    JSONObject res = (JSONObject) response;
+//                    JSONArray programsArray = res.optJSONArray("Programs");
+//                    if (programsArray.length() > 0) {
+//                        for (int i = 0; i < programsArray.length(); i++) {
+//                            JSONObject programObj = programsArray.optJSONObject(i);
+//                            Program program = new Program();
+//                            program.setREF(programObj.optString("REF"));
+//                            program.setProgramID(programObj.optString("ProgramID"));
+//                            program.setProgramName(programObj.optString("ProgramName"));
+//                            program.setProgramDays(programObj.optString("ProgramDays"));
+//                            program.setProgramTimes(programObj.optString("ProgramTimes"));
+//                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
+//                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+//                            programs.add(program);
+//                        }
+//                        recyclerView.setAdapter(mAdapter);
+//                        swipeRefreshLayout.setRefreshing(false);
+//                        if (programsArray.length() < 10)
+//                            loadMore = false;
+//                        else
+//                            loadMore = true;
+//                    } else {
+//                        placeholder.setVisibility(View.VISIBLE);
+//                        swipeRefreshLayout.setRefreshing(false);
+//                    }
+//                } catch (Exception e) {
+//                    Log.d("Error", e.getMessage());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(VolleyError error) {
+//                Log.d("Error", "Failed");
+//            }
+//        });
+//        programsAPI.executeRequest(true, false);
+//    }
 
     private void loadMorePrograms() {
         placeholder.setVisibility(View.VISIBLE);
@@ -188,7 +178,7 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
         // swipe refresh is performed, fetch the messages again
         limit = 10;
         skip = 0;
-        getPrograms();
+//        getPrograms();
     }
 
     @Override
@@ -212,12 +202,12 @@ public class AllProgramsActivity extends BaseActivity implements SwipeRefreshLay
     public void onProgramRowClicked(int position) {
         Intent intent = new Intent(AllProgramsActivity.this, ProgramDetailsActivity.class);
         intent.putExtra("id",programs.get(position).getProgramID());
-        intent.putExtra("ref",programs.get(position).getREF());
+        intent.putExtra("ref",programs.get(position).getProgramREF());
         intent.putExtra("name",programs.get(position).getProgramName());
-        intent.putExtra("days",programs.get(position).getProgramDays());
-        intent.putExtra("times",programs.get(position).getProgramTimes());
-        intent.putExtra("timeStart",programs.get(position).getProgramTimeStrat());
-        intent.putExtra("DateStart",programs.get(position).getProgramDateStrat());
+//        intent.putExtra("days",programs.get(position).getProgramDays());
+//        intent.putExtra("times",programs.get(position).getProgramTimes());
+//        intent.putExtra("timeStart",programs.get(position).getProgramTimeStrat());
+//        intent.putExtra("DateStart",programs.get(position).getProgramDateStrat());
         startActivity(intent);
     }
 

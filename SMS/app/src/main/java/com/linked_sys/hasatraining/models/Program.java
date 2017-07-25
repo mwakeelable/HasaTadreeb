@@ -1,70 +1,97 @@
 package com.linked_sys.hasatraining.models;
 
 public class Program {
-    private String REF;
-    private String programID;
-    private String programName;
-    private String programDays;
-    private String programTimes;
-    private String programDateStrat;
-    private String programTimeStrat;
+    private String RegREF;
+    private String ProgramREF;
+    private String ProgramID;
+    private String ProgramName;
+    private String ProgramDate;
+    private String ProgramTime;
+    private String ProgramLocation;
+    private String ProgramStatus;
+    private boolean MustRate;
+    private boolean CanPrintCertificate;
 
     public Program() {
     }
 
-    public String getREF() {
-        return REF;
+    public String getRegREF() {
+        return RegREF;
     }
 
-    public void setREF(String REF) {
-        this.REF = REF;
+    public void setRegREF(String regREF) {
+        RegREF = regREF;
+    }
+
+    public String getProgramREF() {
+        return ProgramREF;
+    }
+
+    public void setProgramREF(String programREF) {
+        ProgramREF = programREF;
     }
 
     public String getProgramID() {
-        return programID;
+        return ProgramID;
     }
 
     public void setProgramID(String programID) {
-        this.programID = programID;
+        ProgramID = programID;
     }
 
     public String getProgramName() {
-        return programName;
+        return ProgramName;
     }
 
     public void setProgramName(String programName) {
-        this.programName = programName;
+        ProgramName = programName;
     }
 
-    public String getProgramDays() {
-        return programDays;
+    public String getProgramDate() {
+        return ProgramDate;
     }
 
-    public void setProgramDays(String programDays) {
-        this.programDays = programDays;
+    public void setProgramDate(String programDate) {
+        ProgramDate = programDate;
     }
 
-    public String getProgramTimes() {
-        return programTimes;
+    public String getProgramTime() {
+        return ProgramTime;
     }
 
-    public void setProgramTimes(String programTimes) {
-        this.programTimes = programTimes;
+    public void setProgramTime(String programTime) {
+        ProgramTime = programTime;
     }
 
-    public String getProgramDateStrat() {
-        return programDateStrat;
+    public String getProgramLocation() {
+        return ProgramLocation;
     }
 
-    public void setProgramDateStrat(String programDateStrat) {
-        this.programDateStrat = programDateStrat;
+    public void setProgramLocation(String programLocation) {
+        ProgramLocation = programLocation;
     }
 
-    public String getProgramTimeStrat() {
-        return programTimeStrat;
+    public String getProgramStatus() {
+        return ProgramStatus;
     }
 
-    public void setProgramTimeStrat(String programTimeStrat) {
-        this.programTimeStrat = programTimeStrat;
+    public void setProgramStatus(String programStatus) {
+        ProgramStatus = programStatus;
+    }
+
+    public boolean isMustRate() {
+        return MustRate;
+    }
+
+    public void setMustRate(boolean mustRate) {
+        MustRate = mustRate;
+    }
+
+    public boolean isCanPrintCertificate() {
+        return CanPrintCertificate;
+    }
+
+    public void setCanPrintCertificate(boolean canPrintCertificate) {
+        CanPrintCertificate = canPrintCertificate;
     }
 }

@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.AllProgramsActivity;
@@ -15,8 +13,6 @@ import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.MyCertificatesActivity;
 import com.linked_sys.hasatraining.activities.MyCoursesActivity;
 import com.linked_sys.hasatraining.activities.SettingsActivity;
-
-import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
     MainActivity activity;

@@ -18,17 +18,17 @@ import java.util.ArrayList;
 public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.MyViewHolder> implements Filterable {
     private Context mContext;
     private ArrayList<Program> programs;
-    private ArrayList<Program> filteredList;
+    public ArrayList<Program> filteredList;
     private MyCourseFilter courseFilter;
     private AllProgramsAdapterListener listener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView programREF, programPeriod, programName, programTime, programDate;
+        TextView programName;
         RelativeLayout courseRow;
 
         MyViewHolder(View view) {
             super(view);
-            programREF = (TextView) view.findViewById(R.id.txt_program_ref);
+//            programREF = (TextView) view.findViewById(R.id.txt_program_ref);
             programName = (TextView) view.findViewById(R.id.txt_programName);
 //            programPeriod = (TextView) view.findViewById(R.id.txt_programPeriod);
 //            programTime = (TextView) view.findViewById(R.id.txt_programTime);
@@ -57,7 +57,7 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
         Program program = filteredList.get(position);
         holder.programName.setText(program.getProgramName());
 //        holder.programPeriod.setText(program.getProgramDays());
-        holder.programREF.setText(program.getREF());
+//        holder.programREF.setText(program.getProgramREF());
 //        holder.programTime.setText(program.getProgramTimes());
 //        holder.programDate.setText(program.getProgramDateStrat());
         applyClickEvents(holder, position);

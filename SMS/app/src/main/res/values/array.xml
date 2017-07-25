@@ -9,4 +9,19 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string-array name="user_types">
+        <item>خدمات المدرب</item>
+        <item>خدمات المتدرب</item>
+        <item>منسق التدريب</item>
+    </string-array>
+
+    <string-array name="program_status">
+        <item>معلق</item>
+        <item>مبدئي</item>
+        <item>مقبول</item>
+        <item>معتمد</item>
+        <item>تم الحضور</item>
+        <item>مرفوض</item>
+    </string-array>
 </resources>

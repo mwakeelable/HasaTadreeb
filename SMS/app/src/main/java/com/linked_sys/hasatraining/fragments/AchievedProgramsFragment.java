@@ -21,6 +21,7 @@ import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MyCoursesActivity;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
+import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Program;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
@@ -32,11 +33,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class AchievedProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
-
     MyCoursesActivity activity;
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
-    AllProgramsAdapter mAdapter;
+    public AllProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     int limit = 10;
     int skip = 0;
@@ -100,27 +100,31 @@ public class AchievedProgramsFragment extends Fragment implements SwipeRefreshLa
     }
 
     private void getPrograms() {
-        final String programsURL = ApiEndPoints.ACHIEVED_PROGRAMS_URL
-                + "?ACODE=" + activity.session.getUserToken()
-                + "&ID_Number="+activity.session.getUserDetails().get(activity.session.KEY_REF);
+        final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId="+activity.session.getUserDetails().get(activity.session.KEY_ID)
+                + "&ProgStatus=2";
         ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
                 programs.clear();
                 try {
                     JSONObject res = (JSONObject) response;
-                    JSONArray programsArray = res.optJSONArray("Programs");
+                    JSONArray programsArray = res.optJSONArray("con");
                     if (programsArray.length() > 0) {
                         for (int i = 0; i < programsArray.length(); i++) {
                             JSONObject programObj = programsArray.optJSONObject(i);
                             Program program = new Program();
-                            program.setREF(programObj.optString("REF"));
+                            program.setRegREF(programObj.optString("RegREF"));
+                            program.setProgramREF(programObj.optString("ProgramREF"));
                             program.setProgramID(programObj.optString("ProgramID"));
                             program.setProgramName(programObj.optString("ProgramName"));
-                            program.setProgramDays(programObj.optString("ProgramDays"));
-                            program.setProgramTimes(programObj.optString("ProgramTimes"));
-                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
-                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                            program.setProgramDate(programObj.optString("ProgramDate"));
+                            program.setProgramTime(programObj.optString("ProgramTime"));
+                            program.setProgramLocation(programObj.optString("ProgramLocation"));
+                            program.setProgramStatus(programObj.optString("ProgramStatus"));
+                            program.setMustRate(programObj.optBoolean("MustRate"));
+                            program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
                             programs.add(program);
                         }
                         recyclerView.setAdapter(mAdapter);
