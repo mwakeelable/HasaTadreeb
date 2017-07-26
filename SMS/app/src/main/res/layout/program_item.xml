@@ -25,39 +25,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="program name"
             android:textColor="@color/black"
             android:textSize="17sp"
-            android:textStyle="bold"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_programStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
             android:ellipsize="end"
-            android:maxLines="1"/>
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/progRefConainer"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/txt_programName"-->
-            <!--android:layout_marginTop="4dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:visibility="gone">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="مرجع البرنامج :"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textSize="16sp"-->
-                <!--android:textStyle="bold" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/txt_program_ref"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_marginStart="5dp"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textSize="14sp" />-->
-
-        <!--</LinearLayout>-->
+            android:maxLines="1"
+            android:text="program status"
+            android:textColor="@color/red_400"
+            android:textSize="14sp"
+            android:textStyle="normal" />
 
     </RelativeLayout>
 

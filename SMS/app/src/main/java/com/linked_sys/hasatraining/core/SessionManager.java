@@ -27,6 +27,8 @@ public class SessionManager {
     public final String KEY_USER_IMAGE = "UserImage";
     public final String KEY_USER_SCHOOL = "UserSchool";
     public final String KEY_USER_SCHOOL_ID = "UserSchoolID";
+    public final String KEY_PROGRAMS_COUNT = "AllProgCount";
+    public final String KEY_CERTIFICATES_COUNT = "CertificateProgCount";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -35,7 +37,9 @@ public class SessionManager {
         settings_pref = PreferenceManager.getDefaultSharedPreferences(mContext);
     }
 
-    public void createLoginSession(String nationalID, String userId, String idRef, String fullName, String userTypeString, int userType, String userImage, String userSchool, String schoolID) {
+    public void createLoginSession(String nationalID, String userId, String idRef, String fullName,
+                                   String userTypeString, int userType, String userImage,
+                                   String userSchool, String schoolID, String progCount, String certCount) {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_ID_REF, idRef);
         editor.putString(KEY_ID, userId);
@@ -46,6 +50,8 @@ public class SessionManager {
         editor.putString(KEY_USER_IMAGE, userImage);
         editor.putString(KEY_USER_SCHOOL, userSchool);
         editor.putString(KEY_USER_SCHOOL_ID, schoolID);
+        editor.putString(KEY_PROGRAMS_COUNT, progCount);
+        editor.putString(KEY_CERTIFICATES_COUNT, certCount);
         editor.commit();
     }
 
@@ -60,6 +66,8 @@ public class SessionManager {
         user.put(KEY_USER_IMAGE, pref.getString(KEY_USER_IMAGE, null));
         user.put(KEY_USER_SCHOOL, pref.getString(KEY_USER_SCHOOL, null));
         user.put(KEY_USER_SCHOOL_ID, pref.getString(KEY_USER_SCHOOL_ID, null));
+        user.put(KEY_PROGRAMS_COUNT, pref.getString(KEY_PROGRAMS_COUNT, null));
+        user.put(KEY_CERTIFICATES_COUNT, pref.getString(KEY_CERTIFICATES_COUNT, null));
         return user;
     }
 

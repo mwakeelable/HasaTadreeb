@@ -130,7 +130,9 @@ public class SignInActivity extends BaseActivity {
                         userObj.optInt("UserType"),
                         userObj.optString("Image"),
                         userObj.optString("school"),
-                        userObj.optString("school_ID"));
+                        userObj.optString("school_ID"),
+                        userObj.optString("AllProgCount"),
+                        userObj.optString("CertificateProgCount"));
                 openActivity(MainActivity.class);
             }
 

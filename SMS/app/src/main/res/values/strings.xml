@@ -28,7 +28,8 @@
     <string name="txt_program_days">مدة البرنامـج</string>
     <string name="txt_program_times">الزمــن</string>
     <string name="txt_program_timeStart">التوقيت</string>
-    <string name="txt_program_dateStart">التاريخ</string>
+    <string name="txt_program_dateStart">تاريخ البرنامج</string>
+    <string name="txt_program_location">الجهة</string>
     <string name="action_register_program">التسجيل بالبرنامج</string>
     <string name="tab1">جديد</string>
     <string name="tab2">قيد الانتظار</string>
@@ -37,6 +38,9 @@
     <string name="txt_switch">تغيير إلي</string>
     <string name="switch_summary">اختار طريقة العرض</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_program_details">تفاصيل البرنامج</string>
+    <string name="btnPrint">طباعة</string>
+    <string name="btnRate">تقييم</string>
 
     <!-- Strings related to Settings -->
 

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.AllProgramsActivity;
@@ -16,16 +17,21 @@ import com.linked_sys.hasatraining.activities.SettingsActivity;
 
 public class HomeFragment extends Fragment {
     MainActivity activity;
+    TextView txtProgCount, txtCertificatesCount;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = (MainActivity) getActivity();
-        return inflater.inflate(R.layout.home_fragment,container,false);
+        return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        txtProgCount = (TextView) view.findViewById(R.id.txtProgramsCount);
+        txtCertificatesCount = (TextView) view.findViewById(R.id.txtCertificatesCount);
+        txtProgCount.setText(activity.session.getUserDetails().get(activity.session.KEY_PROGRAMS_COUNT));
+        txtCertificatesCount.setText(activity.session.getUserDetails().get(activity.session.KEY_CERTIFICATES_COUNT));
         view.findViewById(R.id.btnMyCertificates).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

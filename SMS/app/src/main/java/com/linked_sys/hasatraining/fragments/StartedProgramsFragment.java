@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.ProgramDetailsActivity;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Program;
@@ -172,6 +174,14 @@ public class StartedProgramsFragment extends Fragment implements SwipeRefreshLay
 
     @Override
     public void onProgramRowClicked(int position) {
+        openProgram(mAdapter.filteredList.get(position).getRegREF());
+    }
 
+    private void openProgram(String regRef) {
+        Intent intent = new Intent(activity, ProgramDetailsActivity.class);
+        intent.putExtra("REGREF",regRef);
+        intent.putExtra("PRINT",false);
+        intent.putExtra("RATE",false);
+        startActivity(intent);
     }
 }

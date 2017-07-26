@@ -23,16 +23,13 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     private AllProgramsAdapterListener listener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView programName;
+        TextView programName, programStatus;
         RelativeLayout courseRow;
 
         MyViewHolder(View view) {
             super(view);
-//            programREF = (TextView) view.findViewById(R.id.txt_program_ref);
             programName = (TextView) view.findViewById(R.id.txt_programName);
-//            programPeriod = (TextView) view.findViewById(R.id.txt_programPeriod);
-//            programTime = (TextView) view.findViewById(R.id.txt_programTime);
-//            programDate = (TextView) view.findViewById(R.id.txt_program_date);
+            programStatus = (TextView) view.findViewById(R.id.txt_programStatus);
             courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
         }
     }
@@ -56,10 +53,12 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Program program = filteredList.get(position);
         holder.programName.setText(program.getProgramName());
-//        holder.programPeriod.setText(program.getProgramDays());
-//        holder.programREF.setText(program.getProgramREF());
-//        holder.programTime.setText(program.getProgramTimes());
-//        holder.programDate.setText(program.getProgramDateStrat());
+        if (program.isCanPrintCertificate() && !program.isMustRate())
+            holder.programStatus.setText(R.string.btnPrint);
+        else if (program.isMustRate() && !program.isCanPrintCertificate())
+            holder.programStatus.setText(R.string.btnRate);
+        else
+            holder.programStatus.setText("");
         applyClickEvents(holder, position);
     }
 
