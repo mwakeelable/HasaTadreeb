@@ -61,6 +61,13 @@ public class ProgramDetailsActivity extends BaseActivity {
                 btnRate.setVisibility(View.GONE);
             }
         }
+
+        btnPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printCertificate();
+            }
+        });
     }
 
     private void getProgramData() {
@@ -73,6 +80,7 @@ public class ProgramDetailsActivity extends BaseActivity {
                 JSONObject res = (JSONObject) response;
                 JSONObject dataObj = res.optJSONObject("con");
                 Log.d(AppController.TAG, res.toString());
+                regRef = dataObj.optString("RegREF");
                 txtProgramID.setText(dataObj.optString("ProgramID"));
                 txtProgramName.setText(dataObj.optString("ProgramName"));
                 txtProgramDate.setText(dataObj.optString("ProgramDate"));
@@ -88,6 +96,24 @@ public class ProgramDetailsActivity extends BaseActivity {
         api.executeRequest(true, false);
     }
 
+    private void printCertificate() {
+        final String printCertificateURL = ApiEndPoints.PRINT_CERTIFICATE
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&RegREF=" + regRef;
+        ApiHelper api = new ApiHelper(this, printCertificateURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                String url = res.optString("con");
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
 
     @Override
     protected int getLayoutResourceId() {

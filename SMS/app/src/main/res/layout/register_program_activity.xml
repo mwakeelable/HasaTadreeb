@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.AllProgramsActivity">
+    tools:context=".activities.RegisterProgramActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,6 +26,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/all_programs_content" />
+    <include layout="@layout/register_program_content" />
 
 </android.support.design.widget.CoordinatorLayout>

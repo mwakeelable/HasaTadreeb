@@ -92,7 +92,7 @@ public class MyCoursesActivity extends BaseActivity implements SearchView.OnQuer
         FRAGMENT_USER_PROGRAMS.FRAGMENT_PENDING_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_STARTED_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_APPROVED_PROGRAMS.mAdapter.getFilter().filter(newText);
-        FRAGMENT_USER_PROGRAMS.FRAGMENT_ACHIEVED_PROGRAMS.mAdapter.getFilter().filter(newText);
+//        FRAGMENT_USER_PROGRAMS.FRAGMENT_ACHIEVED_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_ATTEND_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_REFUSED_PROGRAMS.mAdapter.getFilter().filter(newText);
         return true;

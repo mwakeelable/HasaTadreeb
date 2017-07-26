@@ -16,7 +16,7 @@
     <string name="drawer_close">Menu closed</string>
     <string name="nav_my_courses">البرامج الخاصة بي</string>
     <string name="nav_my_certificates">شهـــاداتي</string>
-    <string name="nav_all_programs">كـل البرامج</string>
+    <string name="nav_register">التسجيل في البرامج</string>
     <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
     <string name="nav_trainer_future_courses">الدورات الحالية</string>
     <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
@@ -41,6 +41,13 @@
     <string name="title_activity_program_details">تفاصيل البرنامج</string>
     <string name="btnPrint">طباعة</string>
     <string name="btnRate">تقييم</string>
+    <string name="btnRegisterFirstStep">التحقق من البيانات والانتقال للخطوة التالية</string>
+    <string name="btnValidData">الانتقال للتالي</string>
+    <string name="btnInvalidData">مراسلة الادارة</string>
+    <string name="btnSubmitRegister">التســجيل</string>
+    <string name="btnNewRegister">تسـجيل جديد</string>
+    <string name="btnClose">إغــلاق</string>
+    <string name="txtMessageLabel">موضوع الرسالة</string>
 
     <!-- Strings related to Settings -->
 

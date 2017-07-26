@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.activities.AllProgramsActivity;
+import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.MyCertificatesActivity;
 import com.linked_sys.hasatraining.activities.MyCoursesActivity;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.btnAllPrograms).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.openActivity(AllProgramsActivity.class);
+                activity.openActivity(RegisterProgramActivity.class);
             }
         });
         view.findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {

@@ -24,11 +24,11 @@ public class UserProgramsFragment extends Fragment {
     public PendingProgramsFragment FRAGMENT_PENDING_PROGRAMS; //-1
     public StartedProgramsFragment FRAGMENT_STARTED_PROGRAMS; //0
     public ApprovedProgramsFragment FRAGMENT_APPROVED_PROGRAMS; //1
-    public AchievedProgramsFragment FRAGMENT_ACHIEVED_PROGRAMS; //2
+//    public AchievedProgramsFragment FRAGMENT_ACHIEVED_PROGRAMS; //2
     public AttendProgramsFragment FRAGMENT_ATTEND_PROGRAMS; //3
     public RefusedProgramsFragment FRAGMENT_REFUSED_PROGRAMS; //4
     private EtiyaBadgeTab etiyaBadgeTab;
-    private String[] titles = new String[6];
+    private String[] titles = new String[5];
     private MainAdapter adapter;
     String[] programStatus;
 
@@ -58,8 +58,8 @@ public class UserProgramsFragment extends Fragment {
         programStatus = activity.getResources().getStringArray(R.array.program_status);
         etiyaBadgeTab.setSelectedTabIndicatorColor(ContextCompat.getColor(activity, R.color.black));
         etiyaBadgeTab.setSelectedTabIndicatorHeight(5);
-        etiyaBadgeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
-        etiyaBadgeTab.setTabGravity(TabLayout.GRAVITY_CENTER);
+        etiyaBadgeTab.setTabMode(TabLayout.GRAVITY_CENTER);
+        etiyaBadgeTab.setTabGravity(TabLayout.GRAVITY_FILL);
         etiyaBadgeTab.setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimary));
 
         etiyaBadgeTab.selectEtiyaBadgeTab(0)
@@ -98,19 +98,19 @@ public class UserProgramsFragment extends Fragment {
                 .tabBadgeCornerRadius(10)
                 .createEtiyaBadgeTab();
 
-        etiyaBadgeTab.selectEtiyaBadgeTab(3)
-                .tabTitle(programStatus[3])
-                .tabTitleColor(R.color.White)
-                .tabIconColor(R.color.White)
-                .tabBadge(false)
-                .tabBadgeCount(2)
-                .tabBadgeBgColor(R.color.red_400)
-                .tabBadgeTextColor(R.color.White)
-                .tabBadgeStroke(1, R.color.White)
-                .tabBadgeCornerRadius(10)
-                .createEtiyaBadgeTab();
+//        etiyaBadgeTab.selectEtiyaBadgeTab(3)
+//                .tabTitle(programStatus[3])
+//                .tabTitleColor(R.color.White)
+//                .tabIconColor(R.color.White)
+//                .tabBadge(false)
+//                .tabBadgeCount(2)
+//                .tabBadgeBgColor(R.color.red_400)
+//                .tabBadgeTextColor(R.color.White)
+//                .tabBadgeStroke(1, R.color.White)
+//                .tabBadgeCornerRadius(10)
+//                .createEtiyaBadgeTab();
 
-        etiyaBadgeTab.selectEtiyaBadgeTab(4)
+        etiyaBadgeTab.selectEtiyaBadgeTab(3)
                 .tabTitle(programStatus[4])
                 .tabTitleColor(R.color.White)
                 .tabIconColor(R.color.White)
@@ -122,7 +122,7 @@ public class UserProgramsFragment extends Fragment {
                 .tabBadgeCornerRadius(10)
                 .createEtiyaBadgeTab();
 
-        etiyaBadgeTab.selectEtiyaBadgeTab(5)
+        etiyaBadgeTab.selectEtiyaBadgeTab(4)
                 .tabTitle(programStatus[5])
                 .tabTitleColor(R.color.White)
                 .tabIconColor(R.color.White)
@@ -138,7 +138,7 @@ public class UserProgramsFragment extends Fragment {
     private void defineControls(View view) {
         FRAGMENT_PENDING_PROGRAMS = new PendingProgramsFragment();
         FRAGMENT_STARTED_PROGRAMS = new StartedProgramsFragment();
-        FRAGMENT_ACHIEVED_PROGRAMS = new AchievedProgramsFragment();
+//        FRAGMENT_ACHIEVED_PROGRAMS = new AchievedProgramsFragment();
         FRAGMENT_APPROVED_PROGRAMS = new ApprovedProgramsFragment();
         FRAGMENT_ATTEND_PROGRAMS = new AttendProgramsFragment();
         FRAGMENT_REFUSED_PROGRAMS = new RefusedProgramsFragment();
@@ -179,11 +179,15 @@ public class UserProgramsFragment extends Fragment {
                 if (FRAGMENT_APPROVED_PROGRAMS == null)
                     FRAGMENT_APPROVED_PROGRAMS = new ApprovedProgramsFragment();
                 return FRAGMENT_APPROVED_PROGRAMS;
-            } else if (position == 3) {
-                if (FRAGMENT_ACHIEVED_PROGRAMS == null)
-                    FRAGMENT_ACHIEVED_PROGRAMS = new AchievedProgramsFragment();
-                return FRAGMENT_ACHIEVED_PROGRAMS;
-            } else if (position == 4) {
+            }
+
+//            else if (position == 3) {
+//                if (FRAGMENT_ACHIEVED_PROGRAMS == null)
+//                    FRAGMENT_ACHIEVED_PROGRAMS = new AchievedProgramsFragment();
+//                return FRAGMENT_ACHIEVED_PROGRAMS;
+//            }
+
+            else if (position == 3) {
                 if (FRAGMENT_ATTEND_PROGRAMS == null)
                     FRAGMENT_ATTEND_PROGRAMS = new AttendProgramsFragment();
                 return FRAGMENT_ATTEND_PROGRAMS;

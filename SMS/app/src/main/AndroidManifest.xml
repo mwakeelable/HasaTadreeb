@@ -3,6 +3,9 @@
     package="com.linked_sys.hasatraining">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".core.AppController"
@@ -33,21 +36,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activities.ForgetPasswordActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
-
-        <!-- <activity -->
-        <!-- android:name=".activities.SettingsActivity" -->
-        <!-- android:label="@string/app_name" -->
-        <!-- android:parentActivityName=".activities.MainActivity" -->
-        <!-- android:screenOrientation="portrait" -->
-        <!-- android:theme="@style/AppTheme"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.PARENT_ACTIVITY" -->
-        <!-- android:value=".activities.MainActivity" /> -->
-        <!-- </activity> -->
 
         <activity
             android:name=".activities.MyCoursesActivity"
@@ -76,7 +64,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activities.AllProgramsActivity"
+            android:name=".activities.RegisterProgramActivity"
             android:label="@string/app_name"
             android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"
@@ -91,12 +79,12 @@
         <activity
             android:name=".activities.ProgramDetailsActivity"
             android:label="@string/title_activity_program_details"
-            android:parentActivityName=".activities.AllProgramsActivity"
+            android:parentActivityName=".activities.RegisterProgramActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.AllProgramsActivity" />
+                android:value=".activities.RegisterProgramActivity" />
         </activity>
         <activity
             android:name=".activities.TrainerCurrentCoursesActivity"

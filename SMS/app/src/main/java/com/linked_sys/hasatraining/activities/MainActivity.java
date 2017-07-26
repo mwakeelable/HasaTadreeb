@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -131,26 +132,27 @@ public class MainActivity extends BaseActivity {
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
-                .setTextPrimary(getString(R.string.nav_all_programs))
+                .setTextPrimary(getString(R.string.nav_register))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(AllProgramsActivity.class);
+                        openActivity(RegisterProgramActivity.class);
                     }
                 })
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
-                .setTextPrimary(getString(R.string.action_settings))
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(SettingsActivity.class);
-                    }
-                })
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
+                        .setTextPrimary(getString(R.string.action_settings))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+//                        mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        openActivity(SettingsActivity.class);
+                                Toast.makeText(MainActivity.this, "Under Developing", Toast.LENGTH_SHORT).show();
+                            }
+                        })
         );
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
