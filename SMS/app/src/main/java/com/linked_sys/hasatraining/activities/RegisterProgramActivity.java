@@ -2,6 +2,7 @@ package com.linked_sys.hasatraining.activities;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -62,7 +64,7 @@ public class RegisterProgramActivity extends BaseActivity {
         secondStep.setVisibility(View.GONE);
         thirdStep.setVisibility(View.GONE);
         fourthStep.setVisibility(View.GONE);
-        drawFragment(FRAGMENT_STEP_ONE);
+        drawFirstStepFragment(FRAGMENT_STEP_ONE);
         btnAcceptLicence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +133,7 @@ public class RegisterProgramActivity extends BaseActivity {
                 secondStep.setVisibility(View.GONE);
                 thirdStep.setVisibility(View.GONE);
                 fourthStep.setVisibility(View.GONE);
-                drawFragment(FRAGMENT_STEP_ONE);
+                drawFirstStepFragment(FRAGMENT_STEP_ONE);
             }
         });
 
@@ -144,8 +146,37 @@ public class RegisterProgramActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
+            firstStep.setVisibility(View.VISIBLE);
+            secondStep.setVisibility(View.GONE);
+            thirdStep.setVisibility(View.GONE);
+            fourthStep.setVisibility(View.GONE);
+            getSupportFragmentManager().popBackStack();
+        } else if (FRAGMENT_STEP_THREE != null && FRAGMENT_STEP_THREE.isVisible()) {
+            firstStep.setVisibility(View.GONE);
+            secondStep.setVisibility(View.VISIBLE);
+            thirdStep.setVisibility(View.GONE);
+            fourthStep.setVisibility(View.GONE);
+            getSupportFragmentManager().popBackStack();
+        } else if (FRAGMENT_STEP_FOUR != null && FRAGMENT_STEP_FOUR.isVisible()) {
+            finish();
+            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        } else {
+            super.onBackPressed();
+            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        }
+    }
+
+    @Override
     protected int getLayoutResourceId() {
         return R.layout.register_program_activity;
+    }
+
+    private void drawFirstStepFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.registerContainerView, fragment);
+        transaction.commit();
     }
 
     private void drawFragment(Fragment fragment) {
@@ -168,6 +199,12 @@ public class RegisterProgramActivity extends BaseActivity {
                         .title("مراسلة الادارة")
                         .content("تم ارسال الرسالة للادارة بشكل صحيح")
                         .positiveText("تم")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                RegisterProgramActivity.this.finish();
+                            }
+                        })
                         .show();
             }
 

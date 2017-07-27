@@ -215,7 +215,6 @@ public class MainActivity extends BaseActivity {
         refreshProgramsCount();
     }
 
-
     private void refreshCertificateCount() {
         String url = ApiEndPoints.GET_CERTIFICATE_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
@@ -248,6 +247,6 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 }
