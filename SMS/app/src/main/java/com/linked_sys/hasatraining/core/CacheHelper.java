@@ -1,5 +1,9 @@
 package com.linked_sys.hasatraining.core;
 
+import com.linked_sys.hasatraining.adapters.PeriodsAdapter;
+
+import java.util.ArrayList;
+
 public class CacheHelper {
     private static CacheHelper mInstance = null;
 
@@ -10,4 +14,5 @@ public class CacheHelper {
     }
     //APP CODE
     public String appCode = "zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg=";
+    public ArrayList<PeriodsAdapter> periodsList = new ArrayList<>();
 }

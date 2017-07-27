@@ -28,7 +28,7 @@ public class RegisterProgramActivity extends BaseActivity {
     RegisterProgramTwoFragment FRAGMENT_STEP_TWO;
     RegisterProgramThreeFragment FRAGMENT_STEP_THREE;
     RegisterProgramFourFragment FRAGMENT_STEP_FOUR;
-
+    public String periodRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +60,20 @@ public class RegisterProgramActivity extends BaseActivity {
         btnAcceptLicence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FRAGMENT_STEP_TWO = new RegisterProgramTwoFragment();
-                firstStep.setVisibility(View.GONE);
-                secondStep.setVisibility(View.VISIBLE);
-                thirdStep.setVisibility(View.GONE);
-                fourthStep.setVisibility(View.GONE);
-                drawFragment(FRAGMENT_STEP_TWO);
+                if (FRAGMENT_STEP_ONE.chkAcceptLicence.isChecked()){
+                    FRAGMENT_STEP_TWO = new RegisterProgramTwoFragment();
+                    firstStep.setVisibility(View.GONE);
+                    secondStep.setVisibility(View.VISIBLE);
+                    thirdStep.setVisibility(View.GONE);
+                    fourthStep.setVisibility(View.GONE);
+                    drawFragment(FRAGMENT_STEP_TWO);
+                }else {
+                    new MaterialDialog.Builder(RegisterProgramActivity.this)
+                            .title("خطــأ")
+                            .content("لم توافق على الشروط")
+                            .positiveText("تم")
+                            .show();
+                }
             }
         });
 

@@ -11,5 +11,7 @@ public class ApiEndPoints {
     public static final String GET_PROGRAM_DATA = "/API/Motadareb/GetProgramdata/";
     public static final String PRINT_CERTIFICATE = "/API/Motadareb/PrintCertificate/";
     public static final String RATE_PROGRAM = "/API/Motadareb/MotadarebRateProg/";
+    public static final String GET_PROGRAM_PERIODS = "/API/Motadareb/GetProgramOpenPeriods/";
+    public static final String GET_PROGRAM_BY_PERIODS = "/API/Motadareb/ProgramsByPeriod/";
 }
 
