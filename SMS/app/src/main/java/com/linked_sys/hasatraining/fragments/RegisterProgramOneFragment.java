@@ -4,7 +4,6 @@ package com.linked_sys.hasatraining.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,9 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
-import com.linked_sys.hasatraining.adapters.PeriodsAdapter;
-import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.models.Periods;
+import com.linked_sys.hasatraining.models.ProgramByPeriod;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
@@ -33,7 +32,7 @@ public class RegisterProgramOneFragment extends Fragment {
     RegisterProgramActivity activity;
     public CheckBox chkAcceptLicence;
     Spinner periodsSpinner;
-    ArrayAdapter<PeriodsAdapter> periodAdapter;
+    ArrayAdapter<Periods> periodAdapter;
 
     @Nullable
     @Override
@@ -52,7 +51,7 @@ public class RegisterProgramOneFragment extends Fragment {
         periodsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PeriodsAdapter periods = (PeriodsAdapter) parent.getSelectedItem();
+                Periods periods = (Periods) parent.getSelectedItem();
                 activity.periodRef = periods.getPeriodREF();
                 getProgramsByPeriod(activity.periodRef);
             }
@@ -90,11 +89,11 @@ public class RegisterProgramOneFragment extends Fragment {
                     JSONArray periodArr = res.optJSONArray("con");
                     for (int i = 0; i < periodArr.length(); i++) {
                         JSONObject periodObj = periodArr.getJSONObject(i);
-                        PeriodsAdapter periodsAdapter = new PeriodsAdapter(
+                        Periods periods = new Periods(
                                 periodObj.optString("REF"),
                                 periodObj.optString("PeriodName")
                         );
-                        CacheHelper.getInstance().periodsList.add(periodsAdapter);
+                        CacheHelper.getInstance().periodsList.add(periods);
                     }
                     setPeriodsData();
                 } catch (Exception e) {
@@ -115,7 +114,29 @@ public class RegisterProgramOneFragment extends Fragment {
         ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
-                Log.d(AppController.TAG, response.toString());
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArr = res.optJSONArray("con");
+                    for (int i = 0; i < programsArr.length(); i++) {
+                        JSONObject programObj = programsArr.getJSONObject(i);
+                        ProgramByPeriod program = new ProgramByPeriod();
+                        program.setREF(programObj.optString("REF"));
+                        program.setProgramID("ProgramID");
+                        program.setProgramName("ProgramName");
+                        program.setProgramDays("ProgramDays");
+                        program.setProgramTimes("ProgramTimes");
+                        program.setProgramDateStrat("ProgramDateStrat");
+                        program.setProgramDateEnd("ProgramDateEnd");
+                        program.setProgramTimeStrat("ProgramTimeStrat");
+                        program.setProgramLocation("ProgramLocation");
+                        program.setTeacherName("TeacherName");
+                        program.setProgramClass("ProgramClass");
+                        program.setProgramStatus("ProgramStatus");
+                        CacheHelper.getInstance().programByPeriods.add(program);
+                    }
+                } catch (Exception e) {
+
+                }
             }
 
             @Override

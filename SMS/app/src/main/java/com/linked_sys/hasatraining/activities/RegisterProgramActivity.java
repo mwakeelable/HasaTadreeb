@@ -11,14 +11,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.fragments.RegisterProgramFourFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramOneFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramThreeFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramTwoFragment;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterProgramActivity extends BaseActivity {
     CardView firstStep, secondStep, thirdStep, fourthStep;
@@ -28,7 +33,8 @@ public class RegisterProgramActivity extends BaseActivity {
     RegisterProgramTwoFragment FRAGMENT_STEP_TWO;
     RegisterProgramThreeFragment FRAGMENT_STEP_THREE;
     RegisterProgramFourFragment FRAGMENT_STEP_FOUR;
-    public String periodRef;
+    public String periodRef, userID, userMobile, userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +66,14 @@ public class RegisterProgramActivity extends BaseActivity {
         btnAcceptLicence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (FRAGMENT_STEP_ONE.chkAcceptLicence.isChecked()){
+                if (FRAGMENT_STEP_ONE.chkAcceptLicence.isChecked()) {
                     FRAGMENT_STEP_TWO = new RegisterProgramTwoFragment();
                     firstStep.setVisibility(View.GONE);
                     secondStep.setVisibility(View.VISIBLE);
                     thirdStep.setVisibility(View.GONE);
                     fourthStep.setVisibility(View.GONE);
                     drawFragment(FRAGMENT_STEP_TWO);
-                }else {
+                } else {
                     new MaterialDialog.Builder(RegisterProgramActivity.this)
                             .title("خطــأ")
                             .content("لم توافق على الشروط")
@@ -97,12 +103,10 @@ public class RegisterProgramActivity extends BaseActivity {
                         .input(null, "", new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
-                                try {
-                                    String comment = URLEncoder.encode(String.valueOf(input), "utf-8");
-                                    //Send Message
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
-                                }
+                                final StringBuilder sb = new StringBuilder(input.length());
+                                sb.append(input);
+                                String comment = sb.toString();
+                                sendMessage(comment);
                             }
                         }).show();
             }
@@ -149,6 +153,26 @@ public class RegisterProgramActivity extends BaseActivity {
         transaction.replace(R.id.registerContainerView, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private void sendMessage(String message) {
+        Map<String, String> map = new HashMap<>();
+        map.put("UserId", userID);
+        map.put("UserName", userName);
+        map.put("userMobile", userMobile);
+        map.put("MailMessage", message);
+        ApiHelper apiHelper = new ApiHelper(this, ApiEndPoints.SEND_MSG, Request.Method.POST, map, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        apiHelper.executePostRequest(true);
     }
 
 }

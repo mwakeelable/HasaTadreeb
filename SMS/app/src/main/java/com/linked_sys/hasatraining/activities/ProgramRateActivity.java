@@ -322,7 +322,7 @@ public class ProgramRateActivity extends BaseActivity {
     private void submitRating() {
         String rateURL = ApiEndPoints.RATE_PROGRAM
                 + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&UserID=" + userID + "&RegREF=" + regREF
+                + "&userID=" + userID + "&RegREF=" + regREF
                 + "&num1=" + num1 + "&num2=" + num2 + "&num3=" + num3 + "&num4=" + num4 + "&num5=" + num5
                 + "&num6=" + num6 + "&num7=" + num7 + "&num8=" + num8 + "&num9=" + num9 + "&num10=" + num10
                 + "&num11=" + num11 + "&num12=" + num12 + "&num13=" + num13 + "&num14=" + num14;

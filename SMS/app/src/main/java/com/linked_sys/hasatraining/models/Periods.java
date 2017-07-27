@@ -1,7 +1,7 @@
-package com.linked_sys.hasatraining.adapters;
+package com.linked_sys.hasatraining.models;
 
 
-public class PeriodsAdapter {
+public class Periods {
     private String periodREF;
     private String periodName;
 
@@ -13,7 +13,7 @@ public class PeriodsAdapter {
         return periodName;
     }
 
-    public PeriodsAdapter(String periodREF, String periodName) {
+    public Periods(String periodREF, String periodName) {
 
         this.periodREF = periodREF;
         this.periodName = periodName;
@@ -27,8 +27,8 @@ public class PeriodsAdapter {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof PeriodsAdapter) {
-            PeriodsAdapter s = (PeriodsAdapter) obj;
+        if (obj instanceof Periods) {
+            Periods s = (Periods) obj;
             if (s.getPeriodName().equals(periodName) && s.getPeriodREF().equals(periodREF)) return true;
         }
 
