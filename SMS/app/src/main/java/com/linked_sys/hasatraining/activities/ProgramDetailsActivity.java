@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -57,7 +58,8 @@ public class ProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                printCertificate();
+//                printCertificate();
+                Toast.makeText(ProgramDetailsActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
             }
         });
 

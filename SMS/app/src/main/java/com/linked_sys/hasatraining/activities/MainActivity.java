@@ -158,7 +158,7 @@ public class MainActivity extends BaseActivity {
                             public void onClick(DrawerItem drawerItem, long l, int i) {
                                 mDrawerLayout.closeDrawer(GravityCompat.START);
 //                        openActivity(SettingsActivity.class);
-                                Toast.makeText(MainActivity.this, "Under Developing", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
                             }
                         })
         );
