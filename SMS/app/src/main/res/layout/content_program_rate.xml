@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.ProgramRateActivity"
+    tools:showIn="@layout/program_rate_activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!--first category-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="أولاً المحتوى التدريبي"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2.5dp"
+                android:background="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum1Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="1-1 مناسبة المادة التدريبية لاحتياج المتدربين"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum1Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum2Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="1-2 تحقيق المحتوى التدريبي لأهداف البرنامج"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum2Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum3Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="1-3 تنوع الأنشطة التدريبية"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum3Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum4Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="1-4 قابلية المحتوى المهاري للتطبيق العلمي"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum4Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum5Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="1-5 بناء المحتوى التدريبي وتسلسله"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum5Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+
+            </RelativeLayout>
+
+            <!--second category-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ثانياً تقييم المدرب"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2.5dp"
+                android:background="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum6Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"
+                    android:text="2-1 التزام المدرب بموضوعات البرنامج وأهدافه"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioNum6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum6Label"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum7Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-2 كفاءة المدرب في التدريب على مهارات"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum7Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum8Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-3 علاقة المدرب مع المتدربين"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum8Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum9Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-4 تمكن المدرب وخبراته في البرنامج التدريبي"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum9Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum10Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-5 التخطيط والاستعداد المسبق للبرنامج"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum10Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <!--third category-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ثالثاً تقييم القاعة"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2.5dp"
+                android:background="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum11Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3-1 قاعة التدريب وملامتها للمتدربين"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum11Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum12Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3-2 وقت البرنامج والالتزام به"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum12Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum13Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3-3 كفاءة وسائل وتقنيات التدريب"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum13Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNum14Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3-4 توفير التجهيزات المكتبية"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioNum14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtNum14Label">
+
+                    <RadioButton
+                        android:id="@+id/radioExcNum14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ممتاز"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioVeryGoodNum14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد جدا"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioGoodNum14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="جيد"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioPassNum14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مقبول"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/btnSubmitRate"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/grey_300"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="اعتماد التقييم"
+                        android:textColor="@color/dark_green"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

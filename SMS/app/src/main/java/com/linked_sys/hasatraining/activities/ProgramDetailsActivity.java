@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.activities;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -31,7 +32,6 @@ public class ProgramDetailsActivity extends BaseActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
         View shadow = findViewById(R.id.toolbar_shadow);
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
             shadow.setVisibility(View.VISIBLE);
@@ -66,6 +66,15 @@ public class ProgramDetailsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 printCertificate();
+            }
+        });
+
+        btnRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rateIntent = new Intent(ProgramDetailsActivity.this, ProgramRateActivity.class);
+                rateIntent.putExtra("regRef", regRef);
+                startActivity(rateIntent);
             }
         });
     }

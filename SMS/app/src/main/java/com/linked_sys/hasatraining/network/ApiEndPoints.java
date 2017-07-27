@@ -10,14 +10,6 @@ public class ApiEndPoints {
     public static final String STUDENT_PROGRAMS_URL = "/API/Motadareb/AllProgramWithStatus/";
     public static final String GET_PROGRAM_DATA = "/API/Motadareb/GetProgramdata/";
     public static final String PRINT_CERTIFICATE = "/API/Motadareb/PrintCertificate/";
-
-
-    public static final String ALL_PROGRAMS_URL = "/Programs/All/";
-    public static final String NEW_PROGRAMS_URL = "/Programs/New/";
-    public static final String PENDING_PROGRAMS_URL = "/Programs/Pending/";
-    public static final String ACHIEVED_PROGRAMS_URL = "/Programs/Achieved/";
-    public static final String APPROVED_PROGRAMS_URL = "/Programs/Approved/";
-    public static final String REGISTER_PROGRAM_URL = "/Programs/RegisterInProgram/";
-    public static final String INSTRUCTIR_PROGRAMS_URL = "/Programs/InstructorList/";
+    public static final String RATE_PROGRAM = "/API/Motadareb/MotadarebRateProg/";
 }
 
