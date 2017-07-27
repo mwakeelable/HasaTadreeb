@@ -18,11 +18,19 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.heinrichreimersoftware.materialdrawer.DrawerView;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.fragments.HomeFragment;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
+
+import org.json.JSONObject;
 
 public class MainActivity extends BaseActivity {
     DrawerLayout mDrawerLayout;
@@ -148,7 +156,7 @@ public class MainActivity extends BaseActivity {
                         .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                             @Override
                             public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
 //                        openActivity(SettingsActivity.class);
                                 Toast.makeText(MainActivity.this, "Under Developing", Toast.LENGTH_SHORT).show();
                             }
@@ -198,5 +206,48 @@ public class MainActivity extends BaseActivity {
         transaction.replace(R.id.containerView, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshCertificateCount();
+        refreshProgramsCount();
+    }
+
+
+    private void refreshCertificateCount() {
+        String url = ApiEndPoints.GET_CERTIFICATE_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                FRAGMENT_HOME.txtCertificatesCount.setText(res.optString("ret"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+
+    }
+
+    private void refreshProgramsCount() {
+        String url = ApiEndPoints.GET_PROGRAMS_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                FRAGMENT_HOME.txtProgCount.setText(res.optString("ret"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
     }
 }

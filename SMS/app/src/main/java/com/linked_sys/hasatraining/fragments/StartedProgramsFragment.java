@@ -180,8 +180,8 @@ public class StartedProgramsFragment extends Fragment implements SwipeRefreshLay
     private void openProgram(String regRef) {
         Intent intent = new Intent(activity, ProgramDetailsActivity.class);
         intent.putExtra("REGREF",regRef);
-        intent.putExtra("PRINT",false);
-        intent.putExtra("RATE",false);
-        startActivity(intent);
+        intent.putExtra("comeFromRate",false);
+        activity.startActivityForResult(intent, activity.REQUEST_RATE_CODE);
+//        startActivity(intent);
     }
 }

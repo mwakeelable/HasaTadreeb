@@ -470,25 +470,29 @@
                         android:id="@+id/radioExcNum8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ممتاز" />
+                        android:text="ممتاز"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioVeryGoodNum8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="جيد جدا" />
+                        android:text="جيد جدا"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioGoodNum8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="جيد" />
+                        android:text="جيد"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioPassNum8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="مقبول" />
+                        android:text="مقبول"
+                        android:textSize="12sp"/>
 
                 </RadioGroup>
             </RelativeLayout>
@@ -576,25 +580,29 @@
                         android:id="@+id/radioExcNum10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ممتاز" />
+                        android:text="ممتاز"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioVeryGoodNum10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="جيد جدا" />
+                        android:text="جيد جدا"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioGoodNum10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="جيد" />
+                        android:text="جيد"
+                        android:textSize="12sp"/>
 
                     <RadioButton
                         android:id="@+id/radioPassNum10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="مقبول" />
+                        android:text="مقبول"
+                        android:textSize="12sp"/>
 
                 </RadioGroup>
             </RelativeLayout>

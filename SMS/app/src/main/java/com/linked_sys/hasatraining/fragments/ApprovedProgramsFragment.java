@@ -181,8 +181,8 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
     private void openProgram(String regRef) {
         Intent intent = new Intent(activity, ProgramDetailsActivity.class);
         intent.putExtra("REGREF",regRef);
-        intent.putExtra("PRINT",false);
-        intent.putExtra("RATE",false);
-        startActivity(intent);
+        intent.putExtra("comeFromRate",false);
+//        startActivity(intent);
+        activity.startActivityForResult(intent, activity.REQUEST_RATE_CODE);
     }
 }

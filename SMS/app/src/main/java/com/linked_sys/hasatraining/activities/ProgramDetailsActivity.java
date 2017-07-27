@@ -23,8 +23,9 @@ import org.json.JSONObject;
 public class ProgramDetailsActivity extends BaseActivity {
     TextView txtProgramID, txtProgramName, txtProgramDate, txtProgramTime, txtProgramLocation;
     String regRef;
-    boolean print, rate;
+    boolean print, rate, comeFromRate;
     CardView btnPrint, btnRate;
+    static final int REQUEST_RATE_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +45,13 @@ public class ProgramDetailsActivity extends BaseActivity {
         txtProgramLocation = (TextView) findViewById(R.id.txt_program_location);
         btnPrint = (CardView) findViewById(R.id.btnPrint);
         btnRate = (CardView) findViewById(R.id.btnRate);
+        btnPrint.setVisibility(View.GONE);
+        btnRate.setVisibility(View.GONE);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             regRef = bundle.getString("REGREF");
-            print = bundle.getBoolean("PRINT");
-            rate = bundle.getBoolean("RATE");
+            comeFromRate = bundle.getBoolean("comeFromRate");
             getProgramData();
-            if (print && !rate) {
-                btnPrint.setVisibility(View.VISIBLE);
-                btnRate.setVisibility(View.GONE);
-            } else if (rate && !print) {
-                btnPrint.setVisibility(View.GONE);
-                btnRate.setVisibility(View.VISIBLE);
-            } else {
-                btnPrint.setVisibility(View.GONE);
-                btnRate.setVisibility(View.GONE);
-            }
         }
 
         btnPrint.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +66,11 @@ public class ProgramDetailsActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent rateIntent = new Intent(ProgramDetailsActivity.this, ProgramRateActivity.class);
                 rateIntent.putExtra("regRef", regRef);
-                startActivity(rateIntent);
+                startActivityForResult(rateIntent, REQUEST_RATE_CODE);
             }
         });
     }
+
 
     private void getProgramData() {
         final String getProgramDataURL = ApiEndPoints.GET_PROGRAM_DATA
@@ -95,6 +88,18 @@ public class ProgramDetailsActivity extends BaseActivity {
                 txtProgramDate.setText(dataObj.optString("ProgramDate"));
                 txtProgramTime.setText(dataObj.optString("ProgramTime"));
                 txtProgramLocation.setText(dataObj.optString("ProgramLocation"));
+                print = dataObj.optBoolean("CanPrintCertificate");
+                rate = dataObj.optBoolean("MustRate");
+                if (print && !rate) {
+                    btnPrint.setVisibility(View.VISIBLE);
+                    btnRate.setVisibility(View.GONE);
+                } else if (rate && !print) {
+                    btnPrint.setVisibility(View.GONE);
+                    btnRate.setVisibility(View.VISIBLE);
+                } else {
+                    btnPrint.setVisibility(View.GONE);
+                    btnRate.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -133,5 +138,20 @@ public class ProgramDetailsActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        if (comeFromRate){
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_RATE_CODE) {
+            if (resultCode == RESULT_OK) {
+                getProgramData();
+            }
+        }
     }
 }

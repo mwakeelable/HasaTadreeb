@@ -2,6 +2,7 @@ package com.linked_sys.hasatraining.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -16,9 +17,10 @@ import android.widget.FrameLayout;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.fragments.UserProgramsFragment;
 
-public class MyCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener{
+public class MyCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     public FrameLayout mFrameLayout;
     UserProgramsFragment FRAGMENT_USER_PROGRAMS;
+    public static final int REQUEST_RATE_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +94,18 @@ public class MyCoursesActivity extends BaseActivity implements SearchView.OnQuer
         FRAGMENT_USER_PROGRAMS.FRAGMENT_PENDING_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_STARTED_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_APPROVED_PROGRAMS.mAdapter.getFilter().filter(newText);
-//        FRAGMENT_USER_PROGRAMS.FRAGMENT_ACHIEVED_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_ATTEND_PROGRAMS.mAdapter.getFilter().filter(newText);
         FRAGMENT_USER_PROGRAMS.FRAGMENT_REFUSED_PROGRAMS.mAdapter.getFilter().filter(newText);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_RATE_CODE) {
+                //Reload
+                finish();
+                startActivity(getIntent());
+        }
     }
 }

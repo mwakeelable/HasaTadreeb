@@ -158,13 +158,17 @@ public class RegisterProgramActivity extends BaseActivity {
     private void sendMessage(String message) {
         Map<String, String> map = new HashMap<>();
         map.put("UserId", userID);
-        map.put("UserName", userName);
+        map.put("UserFullName", userName);
         map.put("userMobile", userMobile);
         map.put("MailMessage", message);
         ApiHelper apiHelper = new ApiHelper(this, ApiEndPoints.SEND_MSG, Request.Method.POST, map, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
-
+                new MaterialDialog.Builder(RegisterProgramActivity.this)
+                        .title("مراسلة الادارة")
+                        .content("تم ارسال الرسالة للادارة بشكل صحيح")
+                        .positiveText("تم")
+                        .show();
             }
 
             @Override

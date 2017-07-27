@@ -15,5 +15,7 @@ public class ApiEndPoints {
     public static final String GET_PROGRAM_BY_PERIODS = "/API/Motadareb/ProgramsByPeriod/";
     public static final String GET_USER_DATA = "/API/Motadareb/Motadarebdata/";
     public static final String SEND_MSG = "/API/Motadareb/SendMail/"; //POST
+    public static final String GET_CERTIFICATE_COUNT = "/API/Motadareb/CountCertificate/";
+    public static final String GET_PROGRAMS_COUNT = "/API/Motadareb/CountAllProg/";
 }
 

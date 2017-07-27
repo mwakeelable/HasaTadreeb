@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -66,12 +67,6 @@ public class ProgramRateActivity extends BaseActivity {
                             .title("تقييم البرنامج")
                             .content("يلزم تقييم كل النقاط لاعتماد التقييم!")
                             .positiveText("تم")
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    ProgramRateActivity.this.finish();
-                                }
-                            })
                             .show();
             }
         });
@@ -336,7 +331,9 @@ public class ProgramRateActivity extends BaseActivity {
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                ProgramRateActivity.this.finish();
+                                Intent intent = new Intent();
+                                setResult(RESULT_OK, intent);
+                                finish();
                             }
                         })
                         .show();

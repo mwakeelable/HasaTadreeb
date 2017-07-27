@@ -17,7 +17,7 @@ import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 
 public class HomeFragment extends Fragment {
     MainActivity activity;
-    TextView txtProgCount, txtCertificatesCount;
+    public TextView txtProgCount, txtCertificatesCount;
 
     @Nullable
     @Override
@@ -30,8 +30,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         txtProgCount = (TextView) view.findViewById(R.id.txtProgramsCount);
         txtCertificatesCount = (TextView) view.findViewById(R.id.txtCertificatesCount);
-        txtProgCount.setText(activity.session.getUserDetails().get(activity.session.KEY_PROGRAMS_COUNT));
-        txtCertificatesCount.setText(activity.session.getUserDetails().get(activity.session.KEY_CERTIFICATES_COUNT));
+//        txtProgCount.setText(activity.session.getUserDetails().get(activity.session.KEY_PROGRAMS_COUNT));
+//        txtCertificatesCount.setText(activity.session.getUserDetails().get(activity.session.KEY_CERTIFICATES_COUNT));
         view.findViewById(R.id.btnMyCertificates).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

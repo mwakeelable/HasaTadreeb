@@ -180,8 +180,8 @@ public class AttendProgramsFragment extends Fragment implements SwipeRefreshLayo
     private void openProgram(String regRef) {
         Intent intent = new Intent(activity, ProgramDetailsActivity.class);
         intent.putExtra("REGREF",regRef);
-        intent.putExtra("PRINT",false);
-        intent.putExtra("RATE",true);
-        startActivity(intent);
+        intent.putExtra("comeFromRate",true);
+//        startActivity(intent);
+        activity.startActivityForResult(intent, activity.REQUEST_RATE_CODE);
     }
 }
