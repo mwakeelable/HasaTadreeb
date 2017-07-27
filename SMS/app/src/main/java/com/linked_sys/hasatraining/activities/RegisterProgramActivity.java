@@ -7,15 +7,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.core.AppController;
+import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.fragments.RegisterProgramDetailsFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramFourFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramOneFragment;
 import com.linked_sys.hasatraining.fragments.RegisterProgramThreeFragment;
@@ -24,17 +29,20 @@ import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterProgramActivity extends BaseActivity {
-    CardView firstStep, secondStep, thirdStep, fourthStep;
+    CardView firstStep, secondStep, thirdStep, fourthStep, chooseProgram;
     LinearLayout btnAcceptLicence;
-    Button btnValidData, btnInvalidData, btnSubmitRegister, btnNewRegister, btnClose;
+    Button btnValidData, btnInvalidData, btnSubmitRegister, btnNewRegister, btnClose, btnSubmit;
     RegisterProgramOneFragment FRAGMENT_STEP_ONE;
     RegisterProgramTwoFragment FRAGMENT_STEP_TWO;
     RegisterProgramThreeFragment FRAGMENT_STEP_THREE;
     RegisterProgramFourFragment FRAGMENT_STEP_FOUR;
+    RegisterProgramDetailsFragment FRAGMENT_PROGRAM_DETAILS;
     public String periodRef, userID, userMobile, userName;
 
     @Override
@@ -53,17 +61,21 @@ public class RegisterProgramActivity extends BaseActivity {
         secondStep = (CardView) findViewById(R.id.secondStepContainer);
         thirdStep = (CardView) findViewById(R.id.thirdStepContainer);
         fourthStep = (CardView) findViewById(R.id.fourthStepContainer);
+        chooseProgram = (CardView) findViewById(R.id.chooseProgramStepContainer);
+
         btnAcceptLicence = (LinearLayout) findViewById(R.id.btnAcceptLicence);
         btnValidData = (Button) findViewById(R.id.btnValidData);
         btnInvalidData = (Button) findViewById(R.id.btnInvalidData);
         btnSubmitRegister = (Button) findViewById(R.id.btnSubmitRegister);
         btnNewRegister = (Button) findViewById(R.id.btnNewRegister);
+        btnSubmit = (Button) findViewById(R.id.btnSubmitRegisterInProgram);
         btnClose = (Button) findViewById(R.id.btnClose);
         FRAGMENT_STEP_ONE = new RegisterProgramOneFragment();
         firstStep.setVisibility(View.VISIBLE);
         secondStep.setVisibility(View.GONE);
         thirdStep.setVisibility(View.GONE);
         fourthStep.setVisibility(View.GONE);
+        chooseProgram.setVisibility(View.GONE);
         drawFirstStepFragment(FRAGMENT_STEP_ONE);
         btnAcceptLicence.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +86,7 @@ public class RegisterProgramActivity extends BaseActivity {
                     secondStep.setVisibility(View.VISIBLE);
                     thirdStep.setVisibility(View.GONE);
                     fourthStep.setVisibility(View.GONE);
+                    chooseProgram.setVisibility(View.GONE);
                     drawFragment(FRAGMENT_STEP_TWO);
                 } else {
                     new MaterialDialog.Builder(RegisterProgramActivity.this)
@@ -93,6 +106,7 @@ public class RegisterProgramActivity extends BaseActivity {
                 secondStep.setVisibility(View.GONE);
                 thirdStep.setVisibility(View.VISIBLE);
                 fourthStep.setVisibility(View.GONE);
+                chooseProgram.setVisibility(View.GONE);
                 drawFragment(FRAGMENT_STEP_THREE);
             }
         });
@@ -114,26 +128,29 @@ public class RegisterProgramActivity extends BaseActivity {
             }
         });
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkProgram();
+            }
+        });
+
         btnSubmitRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FRAGMENT_STEP_FOUR = new RegisterProgramFourFragment();
-                firstStep.setVisibility(View.GONE);
-                secondStep.setVisibility(View.GONE);
-                thirdStep.setVisibility(View.GONE);
-                fourthStep.setVisibility(View.VISIBLE);
-                drawFragment(FRAGMENT_STEP_FOUR);
+                Toast.makeText(RegisterProgramActivity.this, "الرجاء اختيار البرنامج اولا", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firstStep.setVisibility(View.VISIBLE);
+                firstStep.setVisibility(View.GONE);
                 secondStep.setVisibility(View.GONE);
-                thirdStep.setVisibility(View.GONE);
+                thirdStep.setVisibility(View.VISIBLE);
                 fourthStep.setVisibility(View.GONE);
-                drawFirstStepFragment(FRAGMENT_STEP_ONE);
+                chooseProgram.setVisibility(View.GONE);
+                drawFragment(FRAGMENT_STEP_THREE);
             }
         });
 
@@ -152,12 +169,21 @@ public class RegisterProgramActivity extends BaseActivity {
             secondStep.setVisibility(View.GONE);
             thirdStep.setVisibility(View.GONE);
             fourthStep.setVisibility(View.GONE);
+            chooseProgram.setVisibility(View.GONE);
             getSupportFragmentManager().popBackStack();
         } else if (FRAGMENT_STEP_THREE != null && FRAGMENT_STEP_THREE.isVisible()) {
             firstStep.setVisibility(View.GONE);
             secondStep.setVisibility(View.VISIBLE);
             thirdStep.setVisibility(View.GONE);
             fourthStep.setVisibility(View.GONE);
+            chooseProgram.setVisibility(View.GONE);
+            getSupportFragmentManager().popBackStack();
+        } else if (FRAGMENT_PROGRAM_DETAILS != null && FRAGMENT_PROGRAM_DETAILS.isVisible()) {
+            firstStep.setVisibility(View.GONE);
+            secondStep.setVisibility(View.VISIBLE);
+            thirdStep.setVisibility(View.VISIBLE);
+            fourthStep.setVisibility(View.GONE);
+            chooseProgram.setVisibility(View.GONE);
             getSupportFragmentManager().popBackStack();
         } else if (FRAGMENT_STEP_FOUR != null && FRAGMENT_STEP_FOUR.isVisible()) {
             finish();
@@ -183,6 +209,22 @@ public class RegisterProgramActivity extends BaseActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.registerContainerView, fragment);
         transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void drawProgramDetails(int pos) {
+        firstStep.setVisibility(View.GONE);
+        secondStep.setVisibility(View.GONE);
+        thirdStep.setVisibility(View.GONE);
+        fourthStep.setVisibility(View.GONE);
+        chooseProgram.setVisibility(View.VISIBLE);
+        FRAGMENT_PROGRAM_DETAILS = new RegisterProgramDetailsFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.registerContainerView, FRAGMENT_PROGRAM_DETAILS);
+        transaction.addToBackStack(null);
+        Bundle bundle = new Bundle();
+        bundle.putInt("pos", pos);
+        FRAGMENT_PROGRAM_DETAILS.setArguments(bundle);
         transaction.commit();
     }
 
@@ -214,6 +256,75 @@ public class RegisterProgramActivity extends BaseActivity {
             }
         });
         apiHelper.executePostRequest(true);
+    }
+
+    private void submitRegister() {
+        String url = ApiEndPoints.SUBMIT_REGISTER
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&ProgRef=" + FRAGMENT_PROGRAM_DETAILS.regRef;
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                if (res.optString("retmessage").equals("Success")){
+                    new MaterialDialog.Builder(RegisterProgramActivity.this)
+                            .title("التسجيل")
+                            .content("تم التسجيل بنجاح")
+                            .positiveText("تم")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//                                    FRAGMENT_STEP_FOUR = new RegisterProgramFourFragment();
+//                                    firstStep.setVisibility(View.GONE);
+//                                    secondStep.setVisibility(View.GONE);
+//                                    thirdStep.setVisibility(View.GONE);
+//                                    fourthStep.setVisibility(View.VISIBLE);
+//                                    chooseProgram.setVisibility(View.GONE);
+//                                    drawFragment(FRAGMENT_STEP_FOUR);
+                                    RegisterProgramActivity.this.finish();
+                                }
+                            })
+                            .show();
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+    private void checkProgram() {
+        String url = ApiEndPoints.CHECK_PROGRAM_EXIST
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&ProgRef=" + FRAGMENT_PROGRAM_DETAILS.regRef;
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                if (res.optString("message").equals("true")){
+                    submitRegister();
+                }else {
+                    new MaterialDialog.Builder(RegisterProgramActivity.this)
+                            .title("خطــأ")
+                            .content("لا يمكن التسجيل بهذا البرنامج")
+                            .positiveText("تم")
+                            .show();
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
     }
 
 }

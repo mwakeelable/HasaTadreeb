@@ -42,7 +42,7 @@
     <string name="btnPrint">طباعة</string>
     <string name="btnRate">تقييم</string>
     <string name="btnRegisterFirstStep">التحقق من البيانات والانتقال للخطوة التالية</string>
-    <string name="btnValidData">الانتقال للتالي</string>
+    <string name="btnValidData">البيانات سليمة - الانتقال للتالي</string>
     <string name="btnInvalidData">مراسلة الادارة</string>
     <string name="btnSubmitRegister">التســجيل</string>
     <string name="btnNewRegister">تسـجيل جديد</string>

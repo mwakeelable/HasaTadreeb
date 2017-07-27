@@ -79,12 +79,14 @@ public class RegisterProgramOneFragment extends Fragment {
     }
 
     private void getProgramPeriods() {
+        CacheHelper.getInstance().periodsList.clear();
         String url = ApiEndPoints.GET_PROGRAM_PERIODS
                 + "?APPCode=" + CacheHelper.getInstance().appCode;
         ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
                 try {
+                    CacheHelper.getInstance().periodsList.clear();
                     JSONObject res = (JSONObject) response;
                     JSONArray periodArr = res.optJSONArray("con");
                     for (int i = 0; i < periodArr.length(); i++) {
@@ -115,24 +117,26 @@ public class RegisterProgramOneFragment extends Fragment {
             @Override
             public void onSuccess(Object response) {
                 try {
+                    CacheHelper.getInstance().programByPeriods.clear();
                     JSONObject res = (JSONObject) response;
                     JSONArray programsArr = res.optJSONArray("con");
                     for (int i = 0; i < programsArr.length(); i++) {
                         JSONObject programObj = programsArr.getJSONObject(i);
                         ProgramByPeriod program = new ProgramByPeriod();
                         program.setREF(programObj.optString("REF"));
-                        program.setProgramID("ProgramID");
-                        program.setProgramName("ProgramName");
-                        program.setProgramDays("ProgramDays");
-                        program.setProgramTimes("ProgramTimes");
-                        program.setProgramDateStrat("ProgramDateStrat");
-                        program.setProgramDateEnd("ProgramDateEnd");
-                        program.setProgramTimeStrat("ProgramTimeStrat");
-                        program.setProgramLocation("ProgramLocation");
-                        program.setTeacherName("TeacherName");
-                        program.setProgramClass("ProgramClass");
-                        program.setProgramStatus("ProgramStatus");
+                        program.setProgramID(programObj.optString("ProgramID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramDays(programObj.optString("ProgramDays"));
+                        program.setProgramTimes(programObj.optString("ProgramTimes"));
+                        program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
+                        program.setProgramDateEnd(programObj.optString("ProgramDateEnd"));
+                        program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                        program.setProgramLocation(programObj.optString("ProgramLocation"));
+                        program.setTeacherName(programObj.optString("TeacherName"));
+                        program.setProgramClass(programObj.optString("ProgramClass"));
+                        program.setProgramStatus(programObj.optString("ProgramStatus"));
                         CacheHelper.getInstance().programByPeriods.add(program);
+
                     }
                 } catch (Exception e) {
 
