@@ -123,7 +123,7 @@ public class RegisterProgramOneFragment extends Fragment {
                     for (int i = 0; i < programsArr.length(); i++) {
                         JSONObject programObj = programsArr.getJSONObject(i);
                         ProgramByPeriod program = new ProgramByPeriod();
-                        program.setREF(programObj.optString("REF"));
+                        program.setREF(programObj.optString("ProgramREF"));
                         program.setProgramID(programObj.optString("ProgramID"));
                         program.setProgramName(programObj.optString("ProgramName"));
                         program.setProgramDays(programObj.optString("ProgramDays"));

@@ -85,17 +85,17 @@ public class RefusedProgramsFragment extends Fragment implements SwipeRefreshLay
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) //check for scroll down
                 {
-                    visibleItemCount = mLayoutManager.getChildCount();
-                    totalItemCount = mLayoutManager.getItemCount();
-                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
-                    if (loadMore) {
-                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-                            Log.v("...", "Last Item Wow !");
-                            //Do pagination.. i.e. fetch new data
-                            skip = skip + limit;
-                            loadMorePrograms();
-                        }
-                    }
+//                    visibleItemCount = mLayoutManager.getChildCount();
+//                    totalItemCount = mLayoutManager.getItemCount();
+//                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+//                    if (loadMore) {
+//                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+//                            Log.v("...", "Last Item Wow !");
+//                            //Do pagination.. i.e. fetch new data
+//                            skip = skip + limit;
+//                            loadMorePrograms();
+//                        }
+//                    }
                 }
             }
         });

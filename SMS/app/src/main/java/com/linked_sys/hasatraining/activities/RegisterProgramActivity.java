@@ -223,7 +223,7 @@ public class RegisterProgramActivity extends BaseActivity {
         transaction.replace(R.id.registerContainerView, FRAGMENT_PROGRAM_DETAILS);
         transaction.addToBackStack(null);
         Bundle bundle = new Bundle();
-        bundle.putInt("pos", pos);
+        bundle.putString("REF",CacheHelper.getInstance().programByPeriods.get(pos).getREF());
         FRAGMENT_PROGRAM_DETAILS.setArguments(bundle);
         transaction.commit();
     }
@@ -268,7 +268,7 @@ public class RegisterProgramActivity extends BaseActivity {
             public void onSuccess(Object response) {
                 Log.d(AppController.TAG, response.toString());
                 JSONObject res = (JSONObject) response;
-                if (res.optString("retmessage").equals("Success")){
+                if (res.optString("retmessage").equals("Success")) {
                     new MaterialDialog.Builder(RegisterProgramActivity.this)
                             .title("التسجيل")
                             .content("تم التسجيل بنجاح")
@@ -308,9 +308,9 @@ public class RegisterProgramActivity extends BaseActivity {
             public void onSuccess(Object response) {
                 Log.d(AppController.TAG, response.toString());
                 JSONObject res = (JSONObject) response;
-                if (res.optString("message").equals("true")){
+                if (res.optString("message").equals("false")) {
                     submitRegister();
-                }else {
+                } else {
                     new MaterialDialog.Builder(RegisterProgramActivity.this)
                             .title("خطــأ")
                             .content("لا يمكن التسجيل بهذا البرنامج")

@@ -3,14 +3,23 @@ package com.linked_sys.hasatraining.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
+import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
+
+import org.json.JSONObject;
 
 public class RegisterProgramDetailsFragment extends Fragment {
     RegisterProgramActivity activity;
@@ -39,18 +48,38 @@ public class RegisterProgramDetailsFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            position = bundle.getInt("pos");
-            regRef = CacheHelper.getInstance().programByPeriods.get(position).getREF();
-            txtProgramID.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramID());
-            txtProgramName.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramName());
-            txtProgramDays.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramDays());
-            txtProgramDate.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramDateStrat());
-            txtProgramTime.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramTimes());
-            txtProgramDateFrom.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramDateStrat());
-            txtProgramDateTo.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramDateEnd());
-            txtProgramLocation.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramLocation());
-            txtProgramTimeStart.setText(CacheHelper.getInstance().programByPeriods.get(position).getProgramTimeStrat());
+            regRef = bundle.getString("REF");
+            getProgramDetails();
         }
 
+    }
+
+    private void getProgramDetails() {
+        String url = ApiEndPoints.GET_PROGRAM_DATA_BY_REF_ID
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&ProgramRef=" + regRef;
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                JSONObject progObj = res.optJSONObject("con");
+                txtProgramID.setText(progObj.optString("ProgramID"));
+                txtProgramName.setText(progObj.optString("ProgramName"));
+                txtProgramDays.setText(progObj.optString("ProgranDays"));
+                txtProgramTime.setText(progObj.optString("ProgramTime"));
+                txtProgramDate.setText(progObj.optString("ProgramDate"));
+                txtProgramDateFrom.setText(progObj.optString("ProgramDate"));
+                txtProgramDateTo.setText(progObj.optString("ProgramDateEnd"));
+                txtProgramTimeStart.setText(progObj.optString("ProgramTimeStart"));
+                txtProgramLocation.setText(progObj.optString("ProgramLocation"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
     }
 }
