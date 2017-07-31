@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
 import com.linked_sys.hasatraining.models.Program;
 
 import java.util.ArrayList;
 
 public class NewProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
-    MyCoursesActivity activity;
+    StudentCoursesActivity activity;
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
     AllProgramsAdapter mAdapter;
@@ -38,7 +38,7 @@ public class NewProgramsFragment extends Fragment implements SwipeRefreshLayout.
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = (MyCoursesActivity) getActivity();
+        activity = (StudentCoursesActivity) getActivity();
         return inflater.inflate(R.layout.new_programs_fragment, container, false);
     }
 

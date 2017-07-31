@@ -26,6 +26,7 @@ import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.fragments.HomeFragment;
+import com.linked_sys.hasatraining.fragments.MainTeacherFragment;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
@@ -39,7 +40,7 @@ public class MainActivity extends BaseActivity {
     Toolbar mToolbar;
     public DrawerView mDrawer;
     HomeFragment FRAGMENT_HOME;
-    int userViewID;
+    MainTeacherFragment FRAGMENT_TEACHER_HOME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +72,18 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         mDrawerLayout.addDrawerListener(drawerToggle);
         mDrawerLayout.closeDrawer(mDrawer);
-        createTraineeNavMenu();
-        FRAGMENT_HOME = new HomeFragment();
-        drawFragment(FRAGMENT_HOME);
+
+        if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
+            //Teacher
+            createTeacherNavMenu();
+            FRAGMENT_TEACHER_HOME = new MainTeacherFragment();
+            drawFragment(FRAGMENT_TEACHER_HOME);
+        } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
+            //Student
+            createStudentNavMenu();
+            FRAGMENT_HOME = new HomeFragment();
+            drawFragment(FRAGMENT_HOME);
+        }
     }
 
     @Override
@@ -113,8 +123,7 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void createTraineeNavMenu() {
-        userViewID = 1;
+    private void createStudentNavMenu() {
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
                 .setTextPrimary(getString(R.string.nav_my_courses))
@@ -122,7 +131,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(MyCoursesActivity.class);
+                        openActivity(StudentCoursesActivity.class);
                     }
                 })
         );
@@ -133,7 +142,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(MyCertificatesActivity.class);
+                        openActivity(StudentCertificatesActivity.class);
                     }
                 })
         );
@@ -193,6 +202,75 @@ public class MainActivity extends BaseActivity {
         );
     }
 
+    private void createTeacherNavMenu() {
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
+                .setTextPrimary(getString(R.string.nav_my_courses))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        if (!FRAGMENT_TEACHER_HOME.isVisible()) {
+                            drawFragment(FRAGMENT_TEACHER_HOME);
+                            mDrawerLayout.closeDrawer(GravityCompat.START);
+                        } else
+                            mDrawerLayout.closeDrawer(GravityCompat.START);
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary(getString(R.string.nav_my_certificates))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(TeacherCertificatesActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
+                        .setTextPrimary(getString(R.string.action_settings))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        openActivity(SettingsActivity.class);
+                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setTextPrimary(getString(R.string.action_sign_out))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        new MaterialDialog.Builder(MainActivity.this)
+                                .title(getResources().getString(R.string.action_sign_out))
+                                .content(getResources().getString(R.string.txt_confirmation))
+                                .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        session.logoutUser();
+                                    }
+                                })
+                                .show();
+                    }
+                })
+        );
+        mDrawer.addProfile(new DrawerProfile()
+                .setId(1)
+                .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
+                .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
+        );
+    }
+
     private void closeFragments() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0)
             for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
@@ -211,11 +289,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        refreshCertificateCount();
-        refreshProgramsCount();
+        if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
+
+        } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
+            refreshStudentCertificateCount();
+            refreshStudentProgramsCount();
+        }
     }
 
-    private void refreshCertificateCount() {
+    private void refreshStudentCertificateCount() {
         String url = ApiEndPoints.GET_CERTIFICATE_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override
@@ -233,7 +315,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void refreshProgramsCount() {
+    private void refreshStudentProgramsCount() {
         String url = ApiEndPoints.GET_PROGRAMS_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override

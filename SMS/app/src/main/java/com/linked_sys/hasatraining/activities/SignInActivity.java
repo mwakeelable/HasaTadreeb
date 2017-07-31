@@ -111,12 +111,48 @@ public class SignInActivity extends BaseActivity {
 
     private void doLogin() {
         if (userType == 0) {
-            Toast.makeText(SignInActivity.this, "التسجيل بالمدرب تحت التطوير", Toast.LENGTH_SHORT).show();
+            String signInURL =
+                    ApiEndPoints.TEACHER_SIGNIN_URL
+                            + "?APPCode=" + CacheHelper.getInstance().appCode
+                            + "&UserName=" + nationalID
+                            + "&Password=" + mobileNumber
+                            + "&UserTyp=" + userType;
+            ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
+                @Override
+                public void onSuccess(Object response) {
+                    Log.d(AppController.TAG, response.toString());
+                    JSONObject res = (JSONObject) response;
+                    JSONObject userObj = res.optJSONObject("con");
+                    session.createLoginSession(
+                            nationalID,
+                            userObj.optString("ID"),
+                            userObj.optString("IDREF"),
+                            userObj.optString("FullName"),
+                            userObj.optString("UserType_string"),
+                            userObj.optInt("UserType"),
+                            "",
+                            "",
+                            "",
+                            userObj.optString("AllProgCount"),
+                            userObj.optString("CertificateProgCount"));
+                    openActivity(MainActivity.class);
+                }
+
+                @Override
+                public void onFailure(VolleyError error) {
+                    new MaterialDialog.Builder(SignInActivity.this)
+                            .title(getResources().getString(R.string.txt_error))
+                            .content(getResources().getString(R.string.sign_in_failed_msg))
+                            .positiveText(getResources().getString(R.string.txt_positive_btn))
+                            .show();
+                }
+            });
+            loginAPI.executeRequest(true, false);
         } else if (userType == 2) {
             Toast.makeText(SignInActivity.this, "التسجيل بالمنسق تحت التطوير", Toast.LENGTH_SHORT).show();
         } else {
             String signInURL =
-                    ApiEndPoints.SIGNIN_URL
+                    ApiEndPoints.STUDENT_SIGNIN_URL
                             + "?APPCode=" + CacheHelper.getInstance().appCode
                             + "&UserName=" + nationalID
                             + "&Password=" + mobileNumber

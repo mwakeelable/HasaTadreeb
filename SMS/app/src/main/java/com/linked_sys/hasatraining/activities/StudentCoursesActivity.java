@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.fragments.UserProgramsFragment;
 
-public class MyCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener {
+public class StudentCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     public FrameLayout mFrameLayout;
     UserProgramsFragment FRAGMENT_USER_PROGRAMS;
     public static final int REQUEST_RATE_CODE = 0;
@@ -66,7 +66,7 @@ public class MyCoursesActivity extends BaseActivity implements SearchView.OnQuer
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                MyCoursesActivity.this.finish();
+                StudentCoursesActivity.this.finish();
                 hideSoftKeyboard(this);
                 return true;
         }

@@ -34,7 +34,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MyCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
+public class StudentCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
     public AllProgramsAdapter mAdapter;
@@ -180,7 +180,7 @@ public class MyCertificatesActivity extends BaseActivity implements SwipeRefresh
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                MyCertificatesActivity.this.finish();
+                StudentCertificatesActivity.this.finish();
                 hideSoftKeyboard(this);
                 return true;
         }
@@ -217,7 +217,7 @@ public class MyCertificatesActivity extends BaseActivity implements SwipeRefresh
     }
 
     private void openProgram(String regRef) {
-        Intent intent = new Intent(MyCertificatesActivity.this, ProgramDetailsActivity.class);
+        Intent intent = new Intent(StudentCertificatesActivity.this, ProgramDetailsActivity.class);
         intent.putExtra("REGREF",regRef);
         intent.putExtra("PRINT",true);
         intent.putExtra("RATE",false);

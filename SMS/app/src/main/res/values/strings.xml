@@ -128,5 +128,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_program_rate">تقييم البرنامج</string>
+    <string name="title_activity_teacher_certificates">شهـــاداتي</string>
 
 </resources>

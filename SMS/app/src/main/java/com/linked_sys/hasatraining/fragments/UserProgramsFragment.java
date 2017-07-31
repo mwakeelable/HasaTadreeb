@@ -16,10 +16,10 @@ import android.view.ViewGroup;
 
 import com.etiya.etiyabadgetablib.EtiyaBadgeTab;
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
 
 public class UserProgramsFragment extends Fragment {
-    MyCoursesActivity activity;
+    StudentCoursesActivity activity;
     private ViewPager viewPager;
     public PendingProgramsFragment FRAGMENT_PENDING_PROGRAMS; //-1
     public StartedProgramsFragment FRAGMENT_STARTED_PROGRAMS; //0
@@ -41,7 +41,7 @@ public class UserProgramsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        activity = (MyCoursesActivity) getActivity();
+        activity = (StudentCoursesActivity) getActivity();
         return inflater.inflate(R.layout.user_programs_fragment, container, false);
     }
 

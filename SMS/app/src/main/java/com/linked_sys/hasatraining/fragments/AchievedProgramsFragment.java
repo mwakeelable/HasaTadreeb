@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
 import com.linked_sys.hasatraining.activities.ProgramDetailsActivity;
 import com.linked_sys.hasatraining.adapters.AllProgramsAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
@@ -35,7 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class AchievedProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AllProgramsAdapter.AllProgramsAdapterListener, SearchView.OnQueryTextListener {
-    MyCoursesActivity activity;
+    StudentCoursesActivity activity;
     public ArrayList<Program> programs = new ArrayList<>();
     private RecyclerView recyclerView;
     public AllProgramsAdapter mAdapter;
@@ -50,7 +50,7 @@ public class AchievedProgramsFragment extends Fragment implements SwipeRefreshLa
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = (MyCoursesActivity) getActivity();
+        activity = (StudentCoursesActivity) getActivity();
         return inflater.inflate(R.layout.achieved_programs_fragment, container, false);
     }
 

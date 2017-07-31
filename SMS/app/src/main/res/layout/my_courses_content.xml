@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.MyCoursesActivity"
+    tools:context=".activities.StudentCoursesActivity"
     tools:showIn="@layout/my_courses_activity">
 
     <FrameLayout

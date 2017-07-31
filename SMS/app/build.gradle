@@ -49,6 +49,5 @@ dependencies {
     compile 'com.etiya.etiyabadgetablib:etiyabadgetablib:0.0.3'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
-    compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.1.0'
     testCompile 'junit:junit:4.12'
 }

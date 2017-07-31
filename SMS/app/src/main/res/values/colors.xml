@@ -4,6 +4,13 @@
     <color name="colorPrimaryDark">#286A8F</color>
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="colorAccent">#4CAF50</color>
+
+    <color name="colorPrimaryTeacher">#A23034</color>
+    <color name="colorPrimaryDarkTeacher">#762226</color>
+    <color name="colorPrimaryLightTeacher">#A33035</color>
+    <color name="colorAccentTeacher">#4CAF50</color>
+
+
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorIcons">#FFFFFF</color>

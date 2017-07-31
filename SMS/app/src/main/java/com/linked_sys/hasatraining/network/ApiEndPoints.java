@@ -6,8 +6,12 @@ public class ApiEndPoints {
 
     public static final String BASE_URL = "http://api.hasatadreebm.net";
 
-    public static final String SIGNIN_URL = "/API/Motadareb/Login/";
+    public static final String STUDENT_SIGNIN_URL = "/API/Motadareb/Login/";
+    public static final String TEACHER_SIGNIN_URL = "/API/Modareb/Login/";
+
     public static final String STUDENT_PROGRAMS_URL = "/API/Motadareb/AllProgramWithStatus/";
+    public static final String TEACHER_PROGRAMS_URL = "/API/Modareb/AllPrograms/";
+
     public static final String GET_PROGRAM_DATA = "/API/Motadareb/GetProgramdata/";
     public static final String PRINT_CERTIFICATE = "/API/Motadareb/PrintCertificate/";
     public static final String RATE_PROGRAM = "/API/Motadareb/MotadarebRateProg/";

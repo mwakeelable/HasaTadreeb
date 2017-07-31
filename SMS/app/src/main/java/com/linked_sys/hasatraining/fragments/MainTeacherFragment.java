@@ -11,14 +11,14 @@ import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
 
 
-public class MainTraineeFragment extends Fragment {
+public class MainTeacherFragment extends Fragment {
     MainActivity activity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = (MainActivity) getActivity();
-        return inflater.inflate(R.layout.main_trainee_fragment, container, false);
+        return inflater.inflate(R.layout.main_coach_fragment, container, false);
     }
 
     @Override

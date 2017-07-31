@@ -1,6 +1,7 @@
 package com.linked_sys.hasatraining.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -8,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -58,8 +58,8 @@ public class ProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                printCertificate();
-                Toast.makeText(ProgramDetailsActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
+                printCertificate();
+//                Toast.makeText(ProgramDetailsActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -121,6 +121,14 @@ public class ProgramDetailsActivity extends BaseActivity {
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
                 String url = res.optString("con");
+//                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
+//                } else {
+//                    SimpleChromeCustomTabs
+//                            .getInstance()
+//                            .navigateTo(Uri.parse(url), ProgramDetailsActivity.this);
+//                }
             }
 
             @Override

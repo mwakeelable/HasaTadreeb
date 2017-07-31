@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
-import com.linked_sys.hasatraining.activities.MyCertificatesActivity;
-import com.linked_sys.hasatraining.activities.MyCoursesActivity;
+import com.linked_sys.hasatraining.activities.StudentCertificatesActivity;
+import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
 import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 
 public class HomeFragment extends Fragment {
@@ -35,13 +35,13 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.btnMyCertificates).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.openActivity(MyCertificatesActivity.class);
+                activity.openActivity(StudentCertificatesActivity.class);
             }
         });
         view.findViewById(R.id.btnMyCourses).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.openActivity(MyCoursesActivity.class);
+                activity.openActivity(StudentCoursesActivity.class);
             }
         });
         view.findViewById(R.id.btnAllPrograms).setOnClickListener(new View.OnClickListener() {
