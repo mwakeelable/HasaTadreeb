@@ -1,45 +1,39 @@
 package com.linked_sys.hasatraining.fragments;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.error.VolleyError;
+import com.etiya.etiyabadgetablib.EtiyaBadgeTab;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
-import com.linked_sys.hasatraining.activities.TeacherProgramDetailsActivity;
-import com.linked_sys.hasatraining.adapters.TeacherProgramsAdapter;
-import com.linked_sys.hasatraining.core.CacheHelper;
-import com.linked_sys.hasatraining.models.TeacherProgram;
-import com.linked_sys.hasatraining.network.ApiCallback;
-import com.linked_sys.hasatraining.network.ApiEndPoints;
-import com.linked_sys.hasatraining.network.ApiHelper;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 
-public class MainTeacherFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TeacherProgramsAdapter.TeacherProgramsAdapterListener {
+public class MainTeacherFragment extends Fragment {
     MainActivity activity;
-    private RecyclerView recyclerView;
-    public TeacherProgramsAdapter mAdapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    LinearLayoutManager mLayoutManager;
-    LinearLayout placeholder;
+    private ViewPager viewPager;
+    public TeacherAttendProgramsFragment FRAGMENT_ATTEND_PROGRAMS;
+    public TeacherDoneProgramsFragment FRAGMENT_DONE_PROGRAMS;
+    private EtiyaBadgeTab etiyaBadgeTab;
+    private String[] titles = new String[2];
+    private MainAdapter adapter;
     TextView txtTeacherName;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        adapter = new MainAdapter(getChildFragmentManager());
+    }
 
     @Nullable
     @Override
@@ -50,107 +44,93 @@ public class MainTeacherFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        placeholder = (LinearLayout) view.findViewById(R.id.no_data_placeholder);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        defineControls(view);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setAdapter(adapter);
+        etiyaBadgeTab.setupWithViewPager(viewPager);
+        setupTabs();
+    }
+
+    private void setupTabs() {
+        etiyaBadgeTab.setSelectedTabIndicatorColor(ContextCompat.getColor(activity, R.color.black));
+        etiyaBadgeTab.setSelectedTabIndicatorHeight(5);
+        etiyaBadgeTab.setTabMode(TabLayout.GRAVITY_CENTER);
+        etiyaBadgeTab.setTabGravity(TabLayout.GRAVITY_FILL);
+        etiyaBadgeTab.setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimary));
+
+        etiyaBadgeTab.selectEtiyaBadgeTab(0)
+                .tabTitle("البرامج الحالـية")
+                .tabTitleColor(R.color.White)
+                .tabIconColor(R.color.White)
+                .tabBadge(false)
+                .tabBadgeCount(10)
+                .tabBadgeBgColor(R.color.red_400)
+                .tabBadgeTextColor(R.color.White)
+                .tabBadgeStroke(1, R.color.White)
+                .tabBadgeCornerRadius(10)
+                .createEtiyaBadgeTab();
+
+        etiyaBadgeTab.selectEtiyaBadgeTab(1)
+                .tabTitle("البرامج المنجـزة")
+                .tabTitleColor(R.color.White)
+                .tabIconColor(R.color.White)
+                .tabBadge(false)
+                .tabBadgeCount(20)
+                .tabBadgeBgColor(R.color.red_400)
+                .tabBadgeTextColor(R.color.White)
+                .tabBadgeStroke(1, R.color.White)
+                .tabBadgeCornerRadius(10)
+                .createEtiyaBadgeTab();
+    }
+
+    private void defineControls(View view) {
+        FRAGMENT_ATTEND_PROGRAMS = new TeacherAttendProgramsFragment();
+        FRAGMENT_DONE_PROGRAMS = new TeacherDoneProgramsFragment();
         txtTeacherName = (TextView) view.findViewById(R.id.txtTeacherName);
         txtTeacherName.setText(activity.session.getUserDetails().get(activity.session.KEY_FULL_NAME));
-        swipeRefreshLayout.setOnRefreshListener(this);
-        mAdapter = new TeacherProgramsAdapter(activity, CacheHelper.getInstance().programs, this);
-        mLayoutManager = new LinearLayoutManager(activity);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL));
-        // show loader and fetch messages
-        swipeRefreshLayout.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        getTeacherPrograms();
-                    }
-                }
-        );
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        etiyaBadgeTab = (EtiyaBadgeTab) view.findViewById(R.id.etiyaBadgeTabs);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+            public void onPageScrolled(int position, float v, int i1) {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
+            public void onPageSelected(int position) {
+            }
 
-                }
+            @Override
+            public void onPageScrollStateChanged(int state) {
             }
         });
     }
 
-    private void getTeacherPrograms() {
-        final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
-                + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_ID);
-        ApiHelper api = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                CacheHelper.getInstance().programs.clear();
-                try {
-                    JSONObject res = (JSONObject) response;
-                    JSONArray programsArray = res.optJSONArray("con");
-                    if (programsArray.length() > 0) {
-                        for (int i = 0; i < programsArray.length(); i++) {
-                            JSONObject programObj = programsArray.optJSONObject(i);
-                            TeacherProgram program = new TeacherProgram();
-                            program.setREF(programObj.optString("REF"));
-                            program.setProgramID(programObj.optString("ProgramID"));
-                            program.setProgramName(programObj.optString("ProgramName"));
-                            program.setProgramDays(programObj.optString("ProgramDays"));
-                            program.setProgramTimes(programObj.optString("ProgramTimes"));
-                            program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
-                            program.setProgramDateEnd(programObj.optString("ProgramDateEnd"));
-                            program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
-                            program.setProgramLocation(programObj.optString("ProgramLocation"));
-                            program.setRemainDays(programObj.optString("RemainDays"));
-                            program.setAttendPeriodID(programObj.optString("AttendPeriodID"));
-                            program.setAttendPeriodName(programObj.optString("AttendPeriodName"));
-                            program.setCaseDays(programObj.optBoolean("CaseDays"));
-                            program.setMustAttend(programObj.optBoolean("MustAttend"));
-                            program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
-                            CacheHelper.getInstance().programs.add(program);
-                        }
-                        recyclerView.setAdapter(mAdapter);
-                        swipeRefreshLayout.setRefreshing(false);
-                    } else {
-                        placeholder.setVisibility(View.VISIBLE);
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                } catch (Exception e) {
-                    Log.d("Error", e.getMessage());
-                }
+    private class MainAdapter extends FragmentStatePagerAdapter {
+        MainAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                if (FRAGMENT_ATTEND_PROGRAMS == null)
+                    FRAGMENT_ATTEND_PROGRAMS = new TeacherAttendProgramsFragment();
+                return FRAGMENT_ATTEND_PROGRAMS;
+            } else {
+                if (FRAGMENT_DONE_PROGRAMS == null)
+                    FRAGMENT_DONE_PROGRAMS = new TeacherDoneProgramsFragment();
+                return FRAGMENT_DONE_PROGRAMS;
             }
+        }
 
-            @Override
-            public void onFailure(VolleyError error) {
-                Log.d("Error", "Failed");
-            }
-        });
-        api.executeRequest(true, false);
-    }
+        @Override
+        public int getCount() {
+            return titles.length;
+        }
 
-    @Override
-    public void onRefresh() {
-        getTeacherPrograms();
-    }
-
-    @Override
-    public void onProgramRowClicked(int position) {
-        openProgram(position);
-    }
-
-    private void openProgram(int pos) {
-        Intent intent = new Intent(activity, TeacherProgramDetailsActivity.class);
-        intent.putExtra("pos",pos);
-        activity.startActivityForResult(intent, activity.REQUEST_TEACHER_CODE);
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles[position];
+        }
     }
 }

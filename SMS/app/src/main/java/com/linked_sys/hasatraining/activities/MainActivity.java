@@ -325,8 +325,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     protected void onResume() {
         super.onResume();
         if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
-            refreshTeacherCertificateCount();
-            refreshTeacherProgramsCount();
+
         } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
             refreshStudentCertificateCount();
             refreshStudentProgramsCount();
@@ -368,40 +367,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         api.executeRequest(true, false);
     }
 
-    private void refreshTeacherCertificateCount() {
-        String url = ApiEndPoints.GET_TEACHER_CERTIFICATE_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_ID);
-        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                JSONObject res = (JSONObject) response;
-            }
-
-            @Override
-            public void onFailure(VolleyError error) {
-
-            }
-        });
-        api.executeRequest(false, false);
-
-    }
-
-    private void refreshTeacherProgramsCount() {
-        String url = ApiEndPoints.GET_TEACHER_PROGRAMS_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_ID);
-        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                JSONObject res = (JSONObject) response;
-            }
-
-            @Override
-            public void onFailure(VolleyError error) {
-
-            }
-        });
-        api.executeRequest(true, false);
-    }
-
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
@@ -409,7 +374,8 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        FRAGMENT_TEACHER_MAIN.mAdapter.getFilter().filter(newText);
+        FRAGMENT_TEACHER_MAIN.FRAGMENT_ATTEND_PROGRAMS.mAdapter.getFilter().filter(newText);
+        FRAGMENT_TEACHER_MAIN.FRAGMENT_DONE_PROGRAMS.mAdapter.getFilter().filter(newText);
         return true;
     }
 

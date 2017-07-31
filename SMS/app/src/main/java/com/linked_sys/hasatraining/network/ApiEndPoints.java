@@ -30,5 +30,7 @@ public class ApiEndPoints {
     public static final String CHECK_PROGRAM_EXIST = "/API/Motadareb/CheckProgExists/";
     public static final String SUBMIT_REGISTER = "/API/Motadareb/Register/";
     public static final String GET_PROGRAM_DATA_BY_REF_ID = "/API/Motadareb/GetProgramdataByRefId/";
+
+    public static final String GET_STUDENT_OF_PROGRAM = "/API/Modareb/GetAllMotadarebInProg/";
 }
 

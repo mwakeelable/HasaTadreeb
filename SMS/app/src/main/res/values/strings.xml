@@ -130,5 +130,6 @@
     <string name="title_activity_program_rate">تقييم البرنامج</string>
     <string name="title_activity_teacher_certificates">شهـــاداتي</string>
     <string name="title_activity_teacher_program_details">تفاصيل البرنامج</string>
+    <string name="title_activity_absence">التحضيــر</string>
 
 </resources>

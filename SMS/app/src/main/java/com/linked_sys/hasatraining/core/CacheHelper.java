@@ -18,5 +18,6 @@ public class CacheHelper {
     public String appCode = "zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg=";
     public ArrayList<Periods> periodsList = new ArrayList<>();
     public ArrayList<ProgramByPeriod> programByPeriods = new ArrayList<>();
-    public ArrayList<TeacherProgram> programs = new ArrayList<>();
+    public ArrayList<TeacherProgram> teacherDonePrograms = new ArrayList<>();
+    public ArrayList<TeacherProgram> teacherAttendPrograms = new ArrayList<>();
 }

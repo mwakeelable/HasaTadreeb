@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,7 +18,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -52,40 +46,32 @@
                     android:layout_height="1dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
-                    android:background="@color/coffe_brown" />
+                    android:background="@color/coffe_brown"
+                    android:visibility="gone"/>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler_view"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:scrollbars="vertical" />
-            </LinearLayout>
+                    android:background="@color/White"
+                    android:gravity="center"
+                    android:layoutDirection="ltr"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/no_data_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/grey_300"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
+                    <com.etiya.etiyabadgetablib.EtiyaBadgeTab
+                        android:id="@+id/etiyaBadgeTabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="4dp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_info_outline_black_48dp" />
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layoutDirection="locale" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/txt_no_data" />
-
+                </LinearLayout>
             </LinearLayout>
 
         </FrameLayout>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
