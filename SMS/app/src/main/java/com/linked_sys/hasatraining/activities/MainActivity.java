@@ -1,5 +1,8 @@
 package com.linked_sys.hasatraining.activities;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -10,8 +13,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -25,7 +30,8 @@ import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.core.CacheHelper;
-import com.linked_sys.hasatraining.fragments.HomeFragment;
+import com.linked_sys.hasatraining.fragments.MainAdminFragment;
+import com.linked_sys.hasatraining.fragments.MainStudentFragment;
 import com.linked_sys.hasatraining.fragments.MainTeacherFragment;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
@@ -33,14 +39,16 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 
 import org.json.JSONObject;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     DrawerLayout mDrawerLayout;
     CoordinatorLayout mCoordinatorLayout;
     ActionBar mActionBar;
     Toolbar mToolbar;
     public DrawerView mDrawer;
-    HomeFragment FRAGMENT_HOME;
-    MainTeacherFragment FRAGMENT_TEACHER_HOME;
+    MainStudentFragment FRAGMENT_STUDENT_MAIN;
+    MainTeacherFragment FRAGMENT_TEACHER_MAIN;
+    MainAdminFragment FRAGMENT_ADMIN_MAIN;
+    public static final int REQUEST_TEACHER_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +81,22 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.addDrawerListener(drawerToggle);
         mDrawerLayout.closeDrawer(mDrawer);
 
+        //Handle interface based on user type
         if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
             //Teacher
             createTeacherNavMenu();
-            FRAGMENT_TEACHER_HOME = new MainTeacherFragment();
-            drawFragment(FRAGMENT_TEACHER_HOME);
+            FRAGMENT_TEACHER_MAIN = new MainTeacherFragment();
+            drawFragment(FRAGMENT_TEACHER_MAIN);
         } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
             //Student
             createStudentNavMenu();
-            FRAGMENT_HOME = new HomeFragment();
-            drawFragment(FRAGMENT_HOME);
+            FRAGMENT_STUDENT_MAIN = new MainStudentFragment();
+            drawFragment(FRAGMENT_STUDENT_MAIN);
+        } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("2")) {
+            //Admin
+            createAdminNavMenu();
+            FRAGMENT_ADMIN_MAIN = new MainAdminFragment();
+            drawFragment(FRAGMENT_ADMIN_MAIN);
         }
     }
 
@@ -95,7 +109,9 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START))
             this.mDrawerLayout.closeDrawer(GravityCompat.START);
-        else if (FRAGMENT_HOME.isVisible())
+        else if (FRAGMENT_STUDENT_MAIN != null && FRAGMENT_STUDENT_MAIN.isVisible())
+            finishAffinity();
+        else if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible())
             finishAffinity();
         else if (getSupportFragmentManager().getBackStackEntryCount() > 0)
             getSupportFragmentManager().popBackStack();
@@ -108,8 +124,23 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible()) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.search_menu, menu);
+            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+            MenuItem searchMenuItem = menu.findItem(R.id.search);
+            SearchView searchView = (SearchView) searchMenuItem.getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setSubmitButtonEnabled(true);
+            searchView.setOnQueryTextListener(this);
+            return true;
+        } else if (FRAGMENT_STUDENT_MAIN != null && FRAGMENT_STUDENT_MAIN.isVisible()) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        } else {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
     }
 
     @Override
@@ -209,8 +240,8 @@ public class MainActivity extends BaseActivity {
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
-                        if (!FRAGMENT_TEACHER_HOME.isVisible()) {
-                            drawFragment(FRAGMENT_TEACHER_HOME);
+                        if (!FRAGMENT_TEACHER_MAIN.isVisible()) {
+                            drawFragment(FRAGMENT_TEACHER_MAIN);
                             mDrawerLayout.closeDrawer(GravityCompat.START);
                         } else
                             mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -271,6 +302,10 @@ public class MainActivity extends BaseActivity {
         );
     }
 
+    private void createAdminNavMenu() {
+
+    }
+
     private void closeFragments() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0)
             for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
@@ -290,7 +325,8 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
-
+            refreshTeacherCertificateCount();
+            refreshTeacherProgramsCount();
         } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
             refreshStudentCertificateCount();
             refreshStudentProgramsCount();
@@ -303,7 +339,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
-                FRAGMENT_HOME.txtCertificatesCount.setText(res.optString("ret"));
+                FRAGMENT_STUDENT_MAIN.txtCertificatesCount.setText(res.optString("ret"));
             }
 
             @Override
@@ -321,7 +357,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
-                FRAGMENT_HOME.txtProgCount.setText(res.optString("ret"));
+                FRAGMENT_STUDENT_MAIN.txtProgCount.setText(res.optString("ret"));
             }
 
             @Override
@@ -330,5 +366,58 @@ public class MainActivity extends BaseActivity {
             }
         });
         api.executeRequest(true, false);
+    }
+
+    private void refreshTeacherCertificateCount() {
+        String url = ApiEndPoints.GET_TEACHER_CERTIFICATE_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_ID);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+
+    }
+
+    private void refreshTeacherProgramsCount() {
+        String url = ApiEndPoints.GET_TEACHER_PROGRAMS_COUNT + "?APPCode=" + CacheHelper.getInstance().appCode + "&UserID=" + session.getUserDetails().get(session.KEY_ID);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        FRAGMENT_TEACHER_MAIN.mAdapter.getFilter().filter(newText);
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_TEACHER_CODE) {
+
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.linked_sys.hasatraining.core;
 
 import com.linked_sys.hasatraining.models.Periods;
 import com.linked_sys.hasatraining.models.ProgramByPeriod;
+import com.linked_sys.hasatraining.models.TeacherProgram;
 
 import java.util.ArrayList;
 
@@ -17,4 +18,5 @@ public class CacheHelper {
     public String appCode = "zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg=";
     public ArrayList<Periods> periodsList = new ArrayList<>();
     public ArrayList<ProgramByPeriod> programByPeriods = new ArrayList<>();
+    public ArrayList<TeacherProgram> programs = new ArrayList<>();
 }

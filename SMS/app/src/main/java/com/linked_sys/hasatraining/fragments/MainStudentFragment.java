@@ -15,7 +15,7 @@ import com.linked_sys.hasatraining.activities.StudentCertificatesActivity;
 import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
 import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 
-public class HomeFragment extends Fragment {
+public class MainStudentFragment extends Fragment {
     MainActivity activity;
     public TextView txtProgCount, txtCertificatesCount;
 
@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = (MainActivity) getActivity();
-        return inflater.inflate(R.layout.home_fragment, container, false);
+        return inflater.inflate(R.layout.main_student_fragment, container, false);
     }
 
     @Override
