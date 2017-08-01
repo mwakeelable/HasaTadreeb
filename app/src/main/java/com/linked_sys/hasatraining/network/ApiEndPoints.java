@@ -32,5 +32,7 @@ public class ApiEndPoints {
     public static final String GET_PROGRAM_DATA_BY_REF_ID = "/API/Motadareb/GetProgramdataByRefId/";
 
     public static final String GET_STUDENT_OF_PROGRAM = "/API/Modareb/GetAllMotadarebInProg/";
+
+    public static final String GET_PROGRAM_STATUS = "/API/Modareb/ProgramStatus/";
 }
 
