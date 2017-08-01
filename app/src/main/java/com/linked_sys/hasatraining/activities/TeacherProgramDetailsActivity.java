@@ -49,7 +49,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
         if (bundle != null) {
             pos = bundle.getInt("pos");
             comeFrom = bundle.getString("comeFrom");
-            if (comeFrom.equals("done")){
+            if (comeFrom.equals("done")) {
                 txtProgramRef.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF());
                 txtProgramDays.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDays());
                 txtProgramID.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramID());
@@ -70,7 +70,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                     btnPrint.setVisibility(View.GONE);
                     btnAbsence.setVisibility(View.GONE);
                 }
-            }else if (comeFrom.equals("attend")){
+            } else if (comeFrom.equals("attend")) {
                 txtProgramRef.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getREF());
                 txtProgramDays.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDays());
                 txtProgramID.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramID());
@@ -102,10 +102,51 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                 startActivityForResult(absenceIntent, REQUEST_ABSENCE_CODE);
             }
         });
+
+//        btnPrint.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ApiHelper api = new ApiHelper(TeacherProgramDetailsActivity.this, "http://api.hasatadreebm.net/API/Modareb/PrintCertificate", Request.Method.GET, new ApiCallback() {
+//                    @Override
+//                    public void onSuccess(Object response) {
+//                        try {
+//                            JSONObject res = (JSONObject) response;
+//                            JSONObject obj = res.optJSONObject("con");
+//                            JSONObject file = obj.optJSONObject("FileStream");
+//                            File f = new File(Environment.getExternalStorageDirectory(), "download");
+//                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+//                            bos.write(file.optInt("_buffer"));
+//                            bos.flush();
+//                            bos.close();
+//                        } catch (FileNotFoundException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(VolleyError error) {
+//
+//                    }
+//                });
+//                api.executeRequest(true, false);
+//            }
+//        });
     }
 
     @Override
     protected int getLayoutResourceId() {
         return R.layout.teacher_program_details_activity;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_ABSENCE_CODE) {
+            if (resultCode == RESULT_OK) {
+                finish();
+            }
+        }
     }
 }

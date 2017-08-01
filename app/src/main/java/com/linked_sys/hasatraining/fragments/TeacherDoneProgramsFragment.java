@@ -149,4 +149,10 @@ public class TeacherDoneProgramsFragment extends Fragment implements SwipeRefres
         intent.putExtra("comeFrom", "done");
         activity.startActivityForResult(intent, activity.REQUEST_TEACHER_CODE);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getTeacherPrograms();
+    }
 }

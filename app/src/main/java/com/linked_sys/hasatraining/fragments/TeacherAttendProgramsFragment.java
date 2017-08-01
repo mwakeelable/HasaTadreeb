@@ -150,4 +150,10 @@ public class TeacherAttendProgramsFragment extends Fragment implements SwipeRefr
         intent.putExtra("comeFrom", "attend");
         activity.startActivityForResult(intent, activity.REQUEST_TEACHER_CODE);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getTeacherPrograms();
+    }
 }

@@ -12,6 +12,7 @@ import com.android.volley.request.StringRequest;
 import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.utils.SpinnerDialog;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class ApiHelper {
     String url;
     JSONObject params;
     Map<String, String> mapParams;
+    JSONArray arrParam;
     ApiCallback callback;
     String tag = "json_req";
 
@@ -44,6 +46,15 @@ public class ApiHelper {
 
     public ApiHelper(Context context, String url, int requestMethod, Map<String, String> mapParams, ApiCallback callback) {
         this.mapParams = mapParams;
+        this.context = context;
+        this.url = ApiEndPoints.BASE_URL + url;
+        this.requestMethod = requestMethod;
+        this.callback = callback;
+        mProgress = new SpinnerDialog(context);
+    }
+
+    public ApiHelper(Context context, String url, int requestMethod, JSONArray arrParam, ApiCallback callback) {
+        this.arrParam = arrParam;
         this.context = context;
         this.url = ApiEndPoints.BASE_URL + url;
         this.requestMethod = requestMethod;
