@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,13 @@ public class AbsenceActivity extends BaseActivity {
     LayoutInflater inflater;
     LinearLayout studentsLayout;
     String ref, periodID;
-    TextView txtAbsenceDay, txtAbsencePeriod;
+    TextView txtAbsenceDay, txtAbsencePeriod,txtProgramName;
     CardView btnSubmitAbsence;
     StudentAbsence studentAbsence;
     RadioButton btnExist, btnNotExist;
     String finished;
+    LinearLayout placeholder;
+    RelativeLayout dataContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,9 @@ public class AbsenceActivity extends BaseActivity {
         txtAbsenceDay = (TextView) findViewById(R.id.txtAbsenceDay);
         txtAbsencePeriod = (TextView) findViewById(R.id.txtAbsencePeriod);
         btnSubmitAbsence = (CardView) findViewById(R.id.btnSubmitAbsence);
+        placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
+        dataContainer = (RelativeLayout) findViewById(R.id.data_container);
+        txtProgramName = (TextView) findViewById(R.id.txtProgramName);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             ref = bundle.getString("ref");
@@ -68,7 +74,6 @@ public class AbsenceActivity extends BaseActivity {
         }
         isAttend.clear();
         checkIsFinished();
-//        btnSubmitAbsence.setEnabled(false);
     }
 
     private void fillAbsenceObj(int pos) {
@@ -128,20 +133,27 @@ public class AbsenceActivity extends BaseActivity {
                 studentsList.clear();
                 JSONObject res = (JSONObject) response;
                 JSONArray studentsArr = res.optJSONArray("con");
-                for (int i = 0; i < studentsArr.length(); i++) {
-                    try {
-                        JSONObject jsonObject = studentsArr.getJSONObject(i);
-                        ProgramStudents students = new ProgramStudents();
-                        students.setRegREF(jsonObject.optString("RegREF"));
-                        students.setStudentID(jsonObject.optString("MotadarebID"));
-                        students.setStudentName(jsonObject.optString("MotadarebFullName"));
-                        students.setStudentSchool(jsonObject.optString("MotadarebSchool"));
-                        studentsList.add(students);
-                        View v = getProgramStudentView(inflater, students, i);
-                        studentsLayout.addView(v);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                if (studentsArr.length() > 0) {
+                    placeholder.setVisibility(View.GONE);
+                    dataContainer.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < studentsArr.length(); i++) {
+                        try {
+                            JSONObject jsonObject = studentsArr.getJSONObject(i);
+                            ProgramStudents students = new ProgramStudents();
+                            students.setRegREF(jsonObject.optString("RegREF"));
+                            students.setStudentID(jsonObject.optString("MotadarebID"));
+                            students.setStudentName(jsonObject.optString("MotadarebFullName"));
+                            students.setStudentSchool(jsonObject.optString("MotadarebSchool"));
+                            studentsList.add(students);
+                            View v = getProgramStudentView(inflater, students, i);
+                            studentsLayout.addView(v);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
+                } else {
+                    placeholder.setVisibility(View.VISIBLE);
+                    dataContainer.setVisibility(View.GONE);
                 }
             }
 
@@ -165,6 +177,7 @@ public class AbsenceActivity extends BaseActivity {
                 txtAbsenceDay.setText(statusObj.optString("RemainDays"));
                 txtAbsencePeriod.setText(statusObj.optString("AttendPeriodName"));
                 periodID = statusObj.optString("AttendPeriodID");
+                txtProgramName.setText(statusObj.optString("ProgramName"));
             }
 
             @Override
@@ -294,7 +307,8 @@ public class AbsenceActivity extends BaseActivity {
                     });
                 } else if (res.optString("message").equals("true")) {
                     finished = "true";
-                    btnSubmitAbsence.setVisibility(View.GONE);
+                    finish();
+//                    btnSubmitAbsence.setVisibility(View.GONE);
                 }
 
             }

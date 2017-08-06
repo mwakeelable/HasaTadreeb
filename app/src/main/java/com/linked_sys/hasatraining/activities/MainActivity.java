@@ -113,6 +113,8 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             finishAffinity();
         else if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible())
             finishAffinity();
+        else if (FRAGMENT_ADMIN_MAIN != null && FRAGMENT_ADMIN_MAIN.isVisible())
+            finishAffinity();
         else if (getSupportFragmentManager().getBackStackEntryCount() > 0)
             getSupportFragmentManager().popBackStack();
         else {
@@ -236,7 +238,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     private void createTeacherNavMenu() {
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
-                .setTextPrimary(getString(R.string.nav_my_courses))
+                .setTextPrimary("البرامج الحـالية")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
@@ -250,7 +252,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
-                .setTextPrimary(getString(R.string.nav_my_certificates))
+                .setTextPrimary("البرامج المنجزة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
@@ -303,7 +305,115 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     }
 
     private void createAdminNavMenu() {
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("قائمة الطلبات")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
 
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("قائمة طلبات المعلمين المعلقة")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("بيانات المعلمين")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("إضافة معلم جديد")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("طلب ضم معلم")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    }
+                })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setTextPrimary("تذكرة الدعم الفني")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
+                        .setTextPrimary(getString(R.string.action_settings))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        openActivity(SettingsActivity.class);
+                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+        );
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setTextPrimary(getString(R.string.action_sign_out))
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        new MaterialDialog.Builder(MainActivity.this)
+                                .title(getResources().getString(R.string.action_sign_out))
+                                .content(getResources().getString(R.string.txt_confirmation))
+                                .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        session.logoutUser();
+                                    }
+                                })
+                                .show();
+                    }
+                })
+        );
+        mDrawer.addProfile(new DrawerProfile()
+                .setId(1)
+                .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
+                .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.school_placeholder))
+        );
     }
 
     private void closeFragments() {

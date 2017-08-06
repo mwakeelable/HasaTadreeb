@@ -7,11 +7,14 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.linked_sys.hasatraining.R;
 import com.novoda.simplechromecustomtabs.SimpleChromeCustomTabs;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppController extends Application {
     public static final String TAG = AppController.class.getSimpleName();
@@ -26,6 +29,12 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        // Load fonts
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/hacen.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
         CookieHandler.setDefault(new CookieManager());
         SharedManager prefs = new SharedManager();
         String appLanguage = prefs.getLanguage(this);

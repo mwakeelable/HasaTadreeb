@@ -1,4 +1,4 @@
-package com.linked_sys.hasatraining.utils;
+package com.linked_sys.hasatraining.components;
 
 
 import android.app.Dialog;

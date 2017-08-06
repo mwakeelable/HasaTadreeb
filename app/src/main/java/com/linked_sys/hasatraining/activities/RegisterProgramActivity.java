@@ -44,13 +44,14 @@ public class RegisterProgramActivity extends BaseActivity {
     RegisterProgramFourFragment FRAGMENT_STEP_FOUR;
     RegisterProgramDetailsFragment FRAGMENT_PROGRAM_DETAILS;
     public String periodRef, userID, userMobile, userName;
+    boolean finish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         View shadow = findViewById(R.id.toolbar_shadow);
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
             shadow.setVisibility(View.VISIBLE);
@@ -164,7 +165,10 @@ public class RegisterProgramActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
+        if (finish){
+            finish();
+            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        }else if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
             firstStep.setVisibility(View.VISIBLE);
             secondStep.setVisibility(View.GONE);
             thirdStep.setVisibility(View.GONE);
@@ -223,7 +227,7 @@ public class RegisterProgramActivity extends BaseActivity {
         transaction.replace(R.id.registerContainerView, FRAGMENT_PROGRAM_DETAILS);
         transaction.addToBackStack(null);
         Bundle bundle = new Bundle();
-        bundle.putString("REF",CacheHelper.getInstance().programByPeriods.get(pos).getREF());
+        bundle.putString("REF", CacheHelper.getInstance().programByPeriods.get(pos).getREF());
         FRAGMENT_PROGRAM_DETAILS.setArguments(bundle);
         transaction.commit();
     }
@@ -272,18 +276,25 @@ public class RegisterProgramActivity extends BaseActivity {
                     new MaterialDialog.Builder(RegisterProgramActivity.this)
                             .title("التسجيل")
                             .content("تم التسجيل بنجاح")
-                            .positiveText("تم")
+                            .positiveText("إنهـاء")
                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                                    FRAGMENT_STEP_FOUR = new RegisterProgramFourFragment();
-//                                    firstStep.setVisibility(View.GONE);
-//                                    secondStep.setVisibility(View.GONE);
-//                                    thirdStep.setVisibility(View.GONE);
-//                                    fourthStep.setVisibility(View.VISIBLE);
-//                                    chooseProgram.setVisibility(View.GONE);
-//                                    drawFragment(FRAGMENT_STEP_FOUR);
                                     RegisterProgramActivity.this.finish();
+                                }
+                            })
+                            .negativeText("تسجيل جديد")
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    FRAGMENT_STEP_THREE = new RegisterProgramThreeFragment();
+                                    firstStep.setVisibility(View.GONE);
+                                    secondStep.setVisibility(View.GONE);
+                                    thirdStep.setVisibility(View.VISIBLE);
+                                    fourthStep.setVisibility(View.GONE);
+                                    chooseProgram.setVisibility(View.GONE);
+                                    drawFragment(FRAGMENT_STEP_THREE);
+                                    finish = true;
                                 }
                             })
                             .show();

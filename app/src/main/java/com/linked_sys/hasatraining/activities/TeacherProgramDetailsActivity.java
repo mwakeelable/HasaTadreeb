@@ -1,15 +1,35 @@
 package com.linked_sys.hasatraining.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.models.FileStream;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.DownloadTeacherCertificate;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TeacherProgramDetailsActivity extends BaseActivity {
     TextView txtProgramRef, txtProgramDays, txtProgramID, txtProgramName, txtProgramDateFrom, txtProgramDateTo, txtProgramTime, txtProgramLocation;
@@ -18,6 +38,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
     CardView btnAbsence, btnPrint;
     static final int REQUEST_ABSENCE_CODE = 0;
     String comeFrom;
+    String backAs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,49 +70,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
         if (bundle != null) {
             pos = bundle.getInt("pos");
             comeFrom = bundle.getString("comeFrom");
-            if (comeFrom.equals("done")) {
-                txtProgramRef.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF());
-                txtProgramDays.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDays());
-                txtProgramID.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramID());
-                txtProgramName.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramName());
-                txtProgramDateFrom.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateStrat());
-                txtProgramDateTo.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateEnd());
-                txtProgramTime.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramTimes());
-                txtProgramLocation.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramLocation());
-                canPrint = CacheHelper.getInstance().teacherDonePrograms.get(pos).isCanPrintCertificate();
-                mustAttend = CacheHelper.getInstance().teacherDonePrograms.get(pos).isMustAttend();
-                if (canPrint && !mustAttend) {
-                    btnPrint.setVisibility(View.VISIBLE);
-                    btnAbsence.setVisibility(View.GONE);
-                } else if (mustAttend && !canPrint) {
-                    btnPrint.setVisibility(View.GONE);
-                    btnAbsence.setVisibility(View.VISIBLE);
-                } else {
-                    btnPrint.setVisibility(View.GONE);
-                    btnAbsence.setVisibility(View.GONE);
-                }
-            } else if (comeFrom.equals("attend")) {
-                txtProgramRef.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getREF());
-                txtProgramDays.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDays());
-                txtProgramID.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramID());
-                txtProgramName.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramName());
-                txtProgramDateFrom.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateStrat());
-                txtProgramDateTo.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateEnd());
-                txtProgramTime.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramTimes());
-                txtProgramLocation.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramLocation());
-                canPrint = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isCanPrintCertificate();
-                mustAttend = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isMustAttend();
-                if (canPrint && !mustAttend) {
-                    btnPrint.setVisibility(View.VISIBLE);
-                    btnAbsence.setVisibility(View.GONE);
-                } else if (mustAttend && !canPrint) {
-                    btnPrint.setVisibility(View.GONE);
-                    btnAbsence.setVisibility(View.VISIBLE);
-                } else {
-                    btnPrint.setVisibility(View.GONE);
-                    btnAbsence.setVisibility(View.GONE);
-                }
-            }
+            getProgramDetails();
         }
 
         btnAbsence.setOnClickListener(new View.OnClickListener() {
@@ -103,23 +82,24 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
             }
         });
 
-//        btnPrint.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ApiHelper api = new ApiHelper(TeacherProgramDetailsActivity.this, "http://api.hasatadreebm.net/API/Modareb/PrintCertificate", Request.Method.GET, new ApiCallback() {
+        btnPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = ApiEndPoints.BASE_URL + ApiEndPoints.TEACHER_CERTIFICATE_URL + "?ProgREF=" + txtProgramRef.getText().toString();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+
+//                String url = ApiEndPoints.PRINT_TEACHER_CERTIFICATE + "?ProgREF=" + txtProgramRef.getText().toString() ;
+//                ApiHelper api = new ApiHelper(TeacherProgramDetailsActivity.this, url, Request.Method.GET, new ApiCallback() {
 //                    @Override
 //                    public void onSuccess(Object response) {
+//                        JSONObject res = (JSONObject) response;
+//                        JSONObject obj = res.optJSONObject("con");
+//                        JSONObject file = obj.optJSONObject("FileStream");
 //                        try {
-//                            JSONObject res = (JSONObject) response;
-//                            JSONObject obj = res.optJSONObject("con");
-//                            JSONObject file = obj.optJSONObject("FileStream");
-//                            File f = new File(Environment.getExternalStorageDirectory(), "download");
-//                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
-//                            bos.write(file.optInt("_buffer"));
-//                            bos.flush();
-//                            bos.close();
-//                        } catch (FileNotFoundException e) {
-//                            e.printStackTrace();
+//                            InputStream in = IOUtils.toInputStream(file.optString("_buffer"), "UTF-8");
+//                            boolean success = writeResponseBodyToDisk(in, obj.optString("FileDownloadName"));
+//                            Toast.makeText(TeacherProgramDetailsActivity.this, "Download was Successful: " + success, Toast.LENGTH_SHORT).show();
 //                        } catch (IOException e) {
 //                            e.printStackTrace();
 //                        }
@@ -127,12 +107,156 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
 //
 //                    @Override
 //                    public void onFailure(VolleyError error) {
-//
+//                        Toast.makeText(TeacherProgramDetailsActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
 //                api.executeRequest(true, false);
+            }
+        });
+    }
+
+    private void getProgramDetails() {
+        if (comeFrom.equals("done")) {
+            txtProgramRef.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF());
+            txtProgramDays.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDays());
+            txtProgramID.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramID());
+            txtProgramName.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramName());
+            txtProgramDateFrom.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateStrat());
+            txtProgramDateTo.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateEnd());
+            txtProgramTime.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramTimes());
+            txtProgramLocation.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramLocation());
+            canPrint = CacheHelper.getInstance().teacherDonePrograms.get(pos).isCanPrintCertificate();
+            mustAttend = CacheHelper.getInstance().teacherDonePrograms.get(pos).isMustAttend();
+            if (canPrint && !mustAttend) {
+                btnPrint.setVisibility(View.VISIBLE);
+                btnAbsence.setVisibility(View.GONE);
+            } else if (mustAttend && !canPrint) {
+                btnPrint.setVisibility(View.GONE);
+                btnAbsence.setVisibility(View.VISIBLE);
+            } else {
+                btnPrint.setVisibility(View.GONE);
+                btnAbsence.setVisibility(View.GONE);
+            }
+        } else if (comeFrom.equals("attend")) {
+            txtProgramRef.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getREF());
+            txtProgramDays.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDays());
+            txtProgramID.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramID());
+            txtProgramName.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramName());
+            txtProgramDateFrom.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateStrat());
+            txtProgramDateTo.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateEnd());
+            txtProgramTime.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramTimes());
+            txtProgramLocation.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramLocation());
+            canPrint = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isCanPrintCertificate();
+            mustAttend = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isMustAttend();
+            if (canPrint && !mustAttend) {
+                btnPrint.setVisibility(View.VISIBLE);
+                btnAbsence.setVisibility(View.GONE);
+            } else if (mustAttend && !canPrint) {
+                btnPrint.setVisibility(View.GONE);
+                btnAbsence.setVisibility(View.VISIBLE);
+            } else {
+                btnPrint.setVisibility(View.GONE);
+                btnAbsence.setVisibility(View.GONE);
+            }
+        }
+
+//        String url = ApiEndPoints.GET_PROGRAM_DATA_BY_REF_ID
+//                + "?APPCode=" + CacheHelper.getInstance().appCode
+//                + "&ProgramRef=" + CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF();
+//        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+//            @Override
+//            public void onSuccess(Object response) {
+//                Log.d(AppController.TAG, response.toString());
+//                JSONObject res = (JSONObject) response;
+//                JSONObject progObj = res.optJSONObject("con");
+//                txtProgramRef.setText(progObj.optString("ProgramREF"));
+//                txtProgramDays.setText(progObj.optString("ProgranDays"));
+//                txtProgramID.setText(progObj.optString("ProgramID"));
+//                txtProgramName.setText(progObj.optString("ProgramName"));
+//                txtProgramDateFrom.setText(progObj.optString("ProgramDate"));
+//                txtProgramDateTo.setText(progObj.optString("ProgramDateEnd"));
+//                txtProgramTime.setText(progObj.optString("ProgramTime"));
+//                txtProgramLocation.setText(progObj.optString("ProgramLocation"));
+//                canPrint = progObj.optBoolean("");
+//                mustAttend = progObj.optBoolean("");
+//
+//                if (canPrint && !mustAttend) {
+//                    btnPrint.setVisibility(View.VISIBLE);
+//                    btnAbsence.setVisibility(View.GONE);
+//                } else if (mustAttend && !canPrint) {
+//                    btnPrint.setVisibility(View.GONE);
+//                    btnAbsence.setVisibility(View.VISIBLE);
+//                } else {
+//                    btnPrint.setVisibility(View.GONE);
+//                    btnAbsence.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(VolleyError error) {
+//
 //            }
 //        });
+//        api.executeRequest(true, false);
+    }
+
+    private void downloadCertificate(final String name, final InputStream inputStream) {
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(ApiEndPoints.BASE_URL);
+        builder.addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+        DownloadTeacherCertificate downloadTeacherCertificate = retrofit.create(DownloadTeacherCertificate.class);
+        Call<FileStream> call = downloadTeacherCertificate.getTeacherCertificate(txtProgramRef.getText().toString());
+        call.enqueue(new Callback<FileStream>() {
+            @Override
+            public void onResponse(Call<FileStream> call, Response<FileStream> response) {
+                InputStream stream = null;
+                stream = inputStream;
+                boolean success = writeResponseBodyToDisk(stream, name);
+                Toast.makeText(TeacherProgramDetailsActivity.this, "Download was Successful:" + success, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<FileStream> call, Throwable t) {
+                Toast.makeText(TeacherProgramDetailsActivity.this, "No :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean writeResponseBodyToDisk(InputStream stream, String name) {
+        try {
+            // todo change the file location/name according to your needs
+            File certificateFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), name);
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            try {
+                byte[] fileReader = new byte[4096];
+                long fileSizeDownloaded = 0;
+                inputStream = stream;
+                outputStream = new FileOutputStream(certificateFile);
+                while (true) {
+                    int read = inputStream.read(fileReader);
+                    if (read == -1) {
+                        break;
+                    }
+                    outputStream.write(fileReader, 0, read);
+                    fileSizeDownloaded += read;
+                }
+                Log.d(AppController.TAG, "file download: " + fileSizeDownloaded);
+                outputStream.flush();
+                return true;
+            } catch (IOException e) {
+                return false;
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+            }
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     @Override
@@ -144,9 +268,18 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_ABSENCE_CODE) {
-            if (resultCode == RESULT_OK) {
-                finish();
-            }
+            finish();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            pos = bundle.getInt("pos");
+            comeFrom = bundle.getString("comeFrom");
+            getProgramDetails();
         }
     }
 }

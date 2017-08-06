@@ -49,5 +49,14 @@ dependencies {
     compile 'com.etiya.etiyabadgetablib:etiyabadgetablib:0.0.3'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    // JSON Parsing
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.okhttp3:okhttp:3.0.0'
+    compile 'com.jakewharton.retrofit:retrofit1-okhttp3-client:1.0.2'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     testCompile 'junit:junit:4.12'
 }

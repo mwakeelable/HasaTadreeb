@@ -58,7 +58,10 @@ public class ProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                printCertificate();
+                String url =  ApiEndPoints.BASE_URL + ApiEndPoints.STUDENT_CERTIFICATE_URL + "?RegREF=" + regRef;
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+//                printCertificate();
 //                Toast.makeText(ProgramDetailsActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
             }
         });
@@ -121,14 +124,8 @@ public class ProgramDetailsActivity extends BaseActivity {
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
                 String url = res.optString("con");
-//                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(browserIntent);
-//                } else {
-//                    SimpleChromeCustomTabs
-//                            .getInstance()
-//                            .navigateTo(Uri.parse(url), ProgramDetailsActivity.this);
-//                }
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
             }
 
             @Override
@@ -148,7 +145,7 @@ public class ProgramDetailsActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-        if (comeFromRate){
+        if (comeFromRate) {
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();

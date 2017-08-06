@@ -105,7 +105,7 @@ public class RefusedProgramsFragment extends Fragment implements SwipeRefreshLay
         final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId="+activity.session.getUserDetails().get(activity.session.KEY_ID)
-                + "&ProgStatus=4";
+                + "&ProgStatus=5";
         ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {

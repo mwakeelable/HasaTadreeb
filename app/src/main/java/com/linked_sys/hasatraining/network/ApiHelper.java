@@ -10,7 +10,7 @@ import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.request.StringRequest;
 import com.linked_sys.hasatraining.core.AppController;
-import com.linked_sys.hasatraining.utils.SpinnerDialog;
+import com.linked_sys.hasatraining.components.SpinnerDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -62,7 +62,7 @@ public class ApiHelper {
         mProgress = new SpinnerDialog(context);
     }
 
-    public void executePostRequest(boolean showDialog){
+    public void executePostRequest(boolean showDialog) {
         if (showDialog)
             mProgress.show();
         StringRequest request = new StringRequest(requestMethod, url, mListener, mErrorListener) {
@@ -126,8 +126,7 @@ public class ApiHelper {
 
 
     private Request executeJsonArrayRequest() {
-        JsonArrayRequest jsonArrReq = new JsonArrayRequest(requestMethod,
-                url, null, mListener, mErrorListener) {
+        JsonArrayRequest jsonArrReq = new JsonArrayRequest(requestMethod, url, null, mListener, mErrorListener) {
             @Override
             public Map<String, String> getHeaders() {
                 Map params = new HashMap();
@@ -149,7 +148,6 @@ public class ApiHelper {
         };
         return jsonArrReq;
     }
-
 
     Response.Listener mListener = new Response.Listener() {
         @Override
