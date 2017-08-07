@@ -6,12 +6,30 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
+import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.models.Periods;
+import com.linked_sys.hasatraining.network.ApiCallback;
+import com.linked_sys.hasatraining.network.ApiEndPoints;
+import com.linked_sys.hasatraining.network.ApiHelper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainAdminFragment extends Fragment {
     MainActivity activity;
+    Spinner periodsSpinner;
+    ArrayAdapter<Periods> periodAdapter;
+    TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount;
 
     @Nullable
     @Override
@@ -22,6 +40,138 @@ public class MainAdminFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        periodsSpinner = (Spinner) view.findViewById(R.id.periodsSpinner);
+        txtPendingProgramsCount = (TextView) view.findViewById(R.id.txtPendingProgramsCount);
+        txtAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtAcceptedProgramsCount);
+        txtNotAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtNotAcceptedProgramsCount);
+        ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
+        imgSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                periodsSpinner.performClick();
+            }
+        });
+        getPeriods();
+        periodsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Periods periods = (Periods) parent.getSelectedItem();
+                getPendingProgramsCount(periods.getPeriodREF());
+                getAcceptedProgramsCount(periods.getPeriodREF());
+                getNotAcceptedProgramsCount(periods.getPeriodREF());
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void setPeriodsData() {
+        periodAdapter = new ArrayAdapter<>(
+                activity,
+                android.R.layout.simple_spinner_dropdown_item,
+                CacheHelper.getInstance().periodsList);
+        periodsSpinner.setAdapter(periodAdapter);
+    }
+
+    private void getPeriods() {
+        CacheHelper.getInstance().periodsList.clear();
+        String url = ApiEndPoints.GET_PROGRAM_PERIODS
+                + "?APPCode=" + CacheHelper.getInstance().appCode;
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    CacheHelper.getInstance().periodsList.clear();
+                    JSONObject res = (JSONObject) response;
+                    JSONArray periodArr = res.optJSONArray("con");
+                    for (int i = 0; i < periodArr.length(); i++) {
+                        JSONObject periodObj = periodArr.getJSONObject(i);
+                        Periods periods = new Periods(
+                                periodObj.optString("REF"),
+                                periodObj.optString("PeriodName")
+                        );
+                        CacheHelper.getInstance().periodsList.add(periods);
+                    }
+                    setPeriodsData();
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+    private void getPendingPrograms(){
+
+    }
+
+    private void getPendingProgramsCount(String periodID){
+        String url = ApiEndPoints.ADMIN_PENDING_PROGRAMS_COUNT_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
+                + "&PeriodId=" + periodID;
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                txtPendingProgramsCount.setText(res.optString("con"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+    }
+
+    private void getAcceptedProgramsCount(String periodID){
+        String url = ApiEndPoints.ADMIN_PROGRAMS_COUNT_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
+                + "&PeriodId=" + periodID
+                +"&ProgStatus=1";
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                txtAcceptedProgramsCount.setText(res.optString("con"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+    }
+
+    private void getNotAcceptedProgramsCount(String periodID){
+        String url = ApiEndPoints.ADMIN_PROGRAMS_COUNT_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
+                + "&PeriodId=" + periodID
+                +"&ProgStatus=2";
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                txtNotAcceptedProgramsCount.setText(res.optString("con"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
     }
 }

@@ -20,4 +20,5 @@ public class CacheHelper {
     public ArrayList<ProgramByPeriod> programByPeriods = new ArrayList<>();
     public ArrayList<TeacherProgram> teacherDonePrograms = new ArrayList<>();
     public ArrayList<TeacherProgram> teacherAttendPrograms = new ArrayList<>();
+
 }
