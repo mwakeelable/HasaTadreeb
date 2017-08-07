@@ -3,6 +3,7 @@ package com.linked_sys.hasatraining.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Periods;
@@ -30,6 +32,7 @@ public class MainAdminFragment extends Fragment {
     Spinner periodsSpinner;
     ArrayAdapter<Periods> periodAdapter;
     TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount;
+    CardView btnPendingPrograms;
 
     @Nullable
     @Override
@@ -45,6 +48,7 @@ public class MainAdminFragment extends Fragment {
         txtAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtAcceptedProgramsCount);
         txtNotAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtNotAcceptedProgramsCount);
         ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
+        btnPendingPrograms = (CardView) view.findViewById(R.id.btnPendingPrograms);
         imgSpinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +68,12 @@ public class MainAdminFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        btnPendingPrograms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.openActivity(AdminPendingProgramsActivity.class);
             }
         });
     }
@@ -109,11 +119,30 @@ public class MainAdminFragment extends Fragment {
         api.executeRequest(true, false);
     }
 
-    private void getPendingPrograms(){
+    private void getPendingPrograms(String periodID) {
+        String url = ApiEndPoints.ADMIN_PENDING_PROGRAMS_URL
+                +"?APPCode=" + CacheHelper.getInstance().appCode
+                +"&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
+                +"&PeriodId=" + periodID;
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                JSONArray programsArray = res.optJSONArray("con");
+                for (int i = 0; i < programsArray.length(); i++){
+                    JSONObject programObj = programsArray.optJSONObject(i);
+                }
+            }
 
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true,false);
     }
 
-    private void getPendingProgramsCount(String periodID){
+    private void getPendingProgramsCount(String periodID) {
         String url = ApiEndPoints.ADMIN_PENDING_PROGRAMS_COUNT_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
@@ -133,12 +162,12 @@ public class MainAdminFragment extends Fragment {
         api.executeRequest(false, false);
     }
 
-    private void getAcceptedProgramsCount(String periodID){
+    private void getAcceptedProgramsCount(String periodID) {
         String url = ApiEndPoints.ADMIN_PROGRAMS_COUNT_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
                 + "&PeriodId=" + periodID
-                +"&ProgStatus=1";
+                + "&ProgStatus=1";
         ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -154,12 +183,12 @@ public class MainAdminFragment extends Fragment {
         api.executeRequest(false, false);
     }
 
-    private void getNotAcceptedProgramsCount(String periodID){
+    private void getNotAcceptedProgramsCount(String periodID) {
         String url = ApiEndPoints.ADMIN_PROGRAMS_COUNT_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
                 + "&PeriodId=" + periodID
-                +"&ProgStatus=2";
+                + "&ProgStatus=2";
         ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {

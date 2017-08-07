@@ -1,7 +1,7 @@
 package com.linked_sys.hasatraining.core;
 
-import android.app.Application;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -16,7 +16,7 @@ import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class AppController extends Application {
+public class AppController extends MultiDexApplication {
     public static final String TAG = AppController.class.getSimpleName();
     private RequestQueue mRequestQueue;
     private static AppController mInstance;

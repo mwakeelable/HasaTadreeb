@@ -131,5 +131,7 @@
     <string name="title_activity_teacher_certificates">شهـــاداتي</string>
     <string name="title_activity_teacher_program_details">تفاصيل البرنامج</string>
     <string name="title_activity_absence">التحضيــر</string>
+    <string name="title_activity_admin_pending_programs">البرامج المعلقة</string>
+    <string name="title_activity_pending_program_details">تفاصيل البرنامج</string>
 
 </resources>

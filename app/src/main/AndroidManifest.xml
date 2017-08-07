@@ -125,6 +125,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.TeacherProgramDetailsActivity" />
         </activity>
+        <activity
+            android:name=".activities.AdminPendingProgramsActivity"
+            android:label="@string/title_activity_admin_pending_programs"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.PendingProgramDetailsActivity"
+            android:label="@string/title_activity_pending_program_details"
+            android:parentActivityName=".activities.AdminPendingProgramsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity" />
+        </activity>
     </application>
 
 </manifest>

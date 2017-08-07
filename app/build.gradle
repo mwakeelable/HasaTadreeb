@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -30,6 +31,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:multidex:1.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
     compile 'com.afollestad.material-dialogs:core:0.8.6.1'
@@ -58,5 +60,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.0.0'
     compile 'com.jakewharton.retrofit:retrofit1-okhttp3-client:1.0.2'
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    compile 'com.github.clans:fab:1.6.4'
     testCompile 'junit:junit:4.12'
 }

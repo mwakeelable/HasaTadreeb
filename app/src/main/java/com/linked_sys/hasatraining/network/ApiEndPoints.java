@@ -37,6 +37,6 @@ public class ApiEndPoints {
     public static final String ADMIN_UPDATE_PROGRAM_STATUS_URL = "/API/Admin/UpdateProgStatus/";
     public static final String ADMIN_PENDING_PROGRAMS_COUNT_URL = "/API/Admin/PendingProgramsCount/";
     public static final String ADMIN_PROGRAMS_COUNT_URL = "/API/Admin/ProgramsWithStatusCount/"; //ProgStatus = 0 --> all , ProgStatus = 1 --> accepted, ProgStatus = 2 --> not accepted
-    public static final String ADMIN_PENDING_PROGRAMS_WITH_STATUS_URL = "/API/Admin/ProgramsWithStatus/"; //ProgStatus = 0 --> all , ProgStatus = 1 --> accepted, ProgStatus = 2 --> not accepted
+    public static final String ADMIN_PROGRAMS_WITH_STATUS_URL = "/API/Admin/ProgramsWithStatus/"; //ProgStatus = 0 --> all , ProgStatus = 1 --> accepted, ProgStatus = 2 --> not accepted
 }
 
