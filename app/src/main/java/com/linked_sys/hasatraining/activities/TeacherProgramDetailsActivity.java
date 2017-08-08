@@ -89,7 +89,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(browserIntent);
 
-//                String url = ApiEndPoints.PRINT_TEACHER_CERTIFICATE + "?ProgREF=" + txtProgramRef.getText().toString() ;
+//                String url = ApiEndPoints.PRINT_TEACHER_CERTIFICATE + "?ProgREF=" + txtProgramID.getText().toString() ;
 //                ApiHelper api = new ApiHelper(TeacherProgramDetailsActivity.this, url, Request.Method.GET, new ApiCallback() {
 //                    @Override
 //                    public void onSuccess(Object response) {
@@ -169,7 +169,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
 //                Log.d(AppController.TAG, response.toString());
 //                JSONObject res = (JSONObject) response;
 //                JSONObject progObj = res.optJSONObject("con");
-//                txtProgramRef.setText(progObj.optString("ProgramREF"));
+//                txtProgramID.setText(progObj.optString("ProgramREF"));
 //                txtProgramDays.setText(progObj.optString("ProgranDays"));
 //                txtProgramID.setText(progObj.optString("ProgramID"));
 //                txtProgramName.setText(progObj.optString("ProgramName"));

@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
@@ -32,7 +34,7 @@ public class MainAdminFragment extends Fragment {
     Spinner periodsSpinner;
     ArrayAdapter<Periods> periodAdapter;
     TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount;
-    CardView btnPendingPrograms;
+    CardView btnPendingPrograms, btnAcceptedPrograms, btnNotAcceptedPrograms;
 
     @Nullable
     @Override
@@ -49,6 +51,8 @@ public class MainAdminFragment extends Fragment {
         txtNotAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtNotAcceptedProgramsCount);
         ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
         btnPendingPrograms = (CardView) view.findViewById(R.id.btnPendingPrograms);
+        btnAcceptedPrograms = (CardView) view.findViewById(R.id.btnAcceptedPrograms);
+        btnNotAcceptedPrograms = (CardView) view.findViewById(R.id.btnNotAcceptedPrograms);
         imgSpinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +79,22 @@ public class MainAdminFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 activity.openActivity(AdminPendingProgramsActivity.class);
+            }
+        });
+        btnAcceptedPrograms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
+                acceptedIntent.putExtra("status","1");
+                startActivity(acceptedIntent);
+            }
+        });
+        btnNotAcceptedPrograms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
+                acceptedIntent.putExtra("status","2");
+                startActivity(acceptedIntent);
             }
         });
     }

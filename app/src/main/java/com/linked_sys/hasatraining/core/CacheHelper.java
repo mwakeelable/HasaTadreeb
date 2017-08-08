@@ -21,7 +21,7 @@ public class CacheHelper {
     public ArrayList<ProgramByPeriod> programByPeriods = new ArrayList<>();
     public ArrayList<TeacherProgram> teacherDonePrograms = new ArrayList<>();
     public ArrayList<TeacherProgram> teacherAttendPrograms = new ArrayList<>();
-    public ArrayList<Program> adminPendingPrograms = new ArrayList<>();
+    public ArrayList<Program> adminPrograms = new ArrayList<>();
     public String adminPeriodSelectedID = "";
 
 }

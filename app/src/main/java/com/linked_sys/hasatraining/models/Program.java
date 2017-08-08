@@ -11,15 +11,15 @@ public class Program {
     private String ProgramStatus;
     private boolean MustRate;
     private boolean CanPrintCertificate;
-    private Object programDateEnd;
-    private Object progranDays;
-    private Object programTimeStart;
+    private String programDateEnd;
+    private String progranDays;
+    private String programTimeStart;
     private String programStatus;
-    private Object motadarebID;
+    private String motadarebID;
     private String motadarebFullName;
-    private Object motadarebSchool;
-    private Object motadarebMobile;
-    private Object registrationDate;
+    private String motadarebSchool;
+    private String motadarebMobile;
+    private String registrationDate;
 
 
 
@@ -107,35 +107,35 @@ public class Program {
         CanPrintCertificate = canPrintCertificate;
     }
 
-    public Object getProgramDateEnd() {
+    public String getProgramDateEnd() {
         return programDateEnd;
     }
 
-    public void setProgramDateEnd(Object programDateEnd) {
+    public void setProgramDateEnd(String programDateEnd) {
         this.programDateEnd = programDateEnd;
     }
 
-    public Object getProgranDays() {
+    public String getProgranDays() {
         return progranDays;
     }
 
-    public void setProgranDays(Object progranDays) {
+    public void setProgranDays(String progranDays) {
         this.progranDays = progranDays;
     }
 
-    public Object getProgramTimeStart() {
+    public String getProgramTimeStart() {
         return programTimeStart;
     }
 
-    public void setProgramTimeStart(Object programTimeStart) {
+    public void setProgramTimeStart(String programTimeStart) {
         this.programTimeStart = programTimeStart;
     }
 
-    public Object getMotadarebID() {
+    public String getMotadarebID() {
         return motadarebID;
     }
 
-    public void setMotadarebID(Object motadarebID) {
+    public void setMotadarebID(String motadarebID) {
         this.motadarebID = motadarebID;
     }
 
@@ -147,27 +147,27 @@ public class Program {
         this.motadarebFullName = motadarebFullName;
     }
 
-    public Object getMotadarebSchool() {
+    public String getMotadarebSchool() {
         return motadarebSchool;
     }
 
-    public void setMotadarebSchool(Object motadarebSchool) {
+    public void setMotadarebSchool(String motadarebSchool) {
         this.motadarebSchool = motadarebSchool;
     }
 
-    public Object getMotadarebMobile() {
+    public String getMotadarebMobile() {
         return motadarebMobile;
     }
 
-    public void setMotadarebMobile(Object motadarebMobile) {
+    public void setMotadarebMobile(String motadarebMobile) {
         this.motadarebMobile = motadarebMobile;
     }
 
-    public Object getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Object registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 }

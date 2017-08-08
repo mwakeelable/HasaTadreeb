@@ -135,13 +135,21 @@
                 android:value="com.linked_sys.hasatraining.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.PendingProgramDetailsActivity"
-            android:label="@string/title_activity_pending_program_details"
-            android:parentActivityName=".activities.AdminPendingProgramsActivity"
+            android:name=".activities.AdminProgramsActivity"
+            android:label="@string/title_activity_accepted_programs"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity" />
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AdminProgramDetailsActivity"
+            android:label="@string/title_activity_admin_program_details"
+            android:parentActivityName=".activities.AdminProgramsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.AdminProgramsActivity" />
         </activity>
     </application>
 
