@@ -63,6 +63,7 @@ public class MainAdminFragment extends Fragment {
                 getPendingProgramsCount(periods.getPeriodREF());
                 getAcceptedProgramsCount(periods.getPeriodREF());
                 getNotAcceptedProgramsCount(periods.getPeriodREF());
+                CacheHelper.getInstance().adminPeriodSelectedID = periods.getPeriodREF();
             }
 
             @Override
@@ -117,29 +118,6 @@ public class MainAdminFragment extends Fragment {
             }
         });
         api.executeRequest(true, false);
-    }
-
-    private void getPendingPrograms(String periodID) {
-        String url = ApiEndPoints.ADMIN_PENDING_PROGRAMS_URL
-                +"?APPCode=" + CacheHelper.getInstance().appCode
-                +"&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID)
-                +"&PeriodId=" + periodID;
-        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                JSONObject res = (JSONObject) response;
-                JSONArray programsArray = res.optJSONArray("con");
-                for (int i = 0; i < programsArray.length(); i++){
-                    JSONObject programObj = programsArray.optJSONObject(i);
-                }
-            }
-
-            @Override
-            public void onFailure(VolleyError error) {
-
-            }
-        });
-        api.executeRequest(true,false);
     }
 
     private void getPendingProgramsCount(String periodID) {

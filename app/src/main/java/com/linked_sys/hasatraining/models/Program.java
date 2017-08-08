@@ -11,8 +11,20 @@ public class Program {
     private String ProgramStatus;
     private boolean MustRate;
     private boolean CanPrintCertificate;
+    private Object programDateEnd;
+    private Object progranDays;
+    private Object programTimeStart;
+    private String programStatus;
+    private Object motadarebID;
+    private String motadarebFullName;
+    private Object motadarebSchool;
+    private Object motadarebMobile;
+    private Object registrationDate;
+
+
 
     public Program() {
+
     }
 
     public String getRegREF() {
@@ -93,5 +105,69 @@ public class Program {
 
     public void setCanPrintCertificate(boolean canPrintCertificate) {
         CanPrintCertificate = canPrintCertificate;
+    }
+
+    public Object getProgramDateEnd() {
+        return programDateEnd;
+    }
+
+    public void setProgramDateEnd(Object programDateEnd) {
+        this.programDateEnd = programDateEnd;
+    }
+
+    public Object getProgranDays() {
+        return progranDays;
+    }
+
+    public void setProgranDays(Object progranDays) {
+        this.progranDays = progranDays;
+    }
+
+    public Object getProgramTimeStart() {
+        return programTimeStart;
+    }
+
+    public void setProgramTimeStart(Object programTimeStart) {
+        this.programTimeStart = programTimeStart;
+    }
+
+    public Object getMotadarebID() {
+        return motadarebID;
+    }
+
+    public void setMotadarebID(Object motadarebID) {
+        this.motadarebID = motadarebID;
+    }
+
+    public String getMotadarebFullName() {
+        return motadarebFullName;
+    }
+
+    public void setMotadarebFullName(String motadarebFullName) {
+        this.motadarebFullName = motadarebFullName;
+    }
+
+    public Object getMotadarebSchool() {
+        return motadarebSchool;
+    }
+
+    public void setMotadarebSchool(Object motadarebSchool) {
+        this.motadarebSchool = motadarebSchool;
+    }
+
+    public Object getMotadarebMobile() {
+        return motadarebMobile;
+    }
+
+    public void setMotadarebMobile(Object motadarebMobile) {
+        this.motadarebMobile = motadarebMobile;
+    }
+
+    public Object getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Object registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

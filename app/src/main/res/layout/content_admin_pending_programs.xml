@@ -10,15 +10,33 @@
     tools:showIn="@layout/admin_pending_programs_activity">
 
     <FrameLayout
-        android:id="@+id/tasks_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <RelativeLayout
+            android:id="@+id/data_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:visibility="visible">
+
+            <!--main-->
+            <com.linked_sys.hasatraining.components.ScrollViewExt
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/btnSubmitAbsence"
+                android:layout_below="@id/statusDivider"
+                android:layout_marginTop="4dp">
+
+                <LinearLayout
+                    android:id="@+id/students_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </com.linked_sys.hasatraining.components.ScrollViewExt>
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/no_data_placeholder"
