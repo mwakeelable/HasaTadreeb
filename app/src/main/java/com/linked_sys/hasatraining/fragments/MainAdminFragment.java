@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
+import com.linked_sys.hasatraining.activities.TeachersActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Periods;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -33,8 +35,10 @@ public class MainAdminFragment extends Fragment {
     MainActivity activity;
     Spinner periodsSpinner;
     ArrayAdapter<Periods> periodAdapter;
-    TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount;
+    TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount,
+            txtTeachersCount;
     CardView btnPendingPrograms, btnAcceptedPrograms, btnNotAcceptedPrograms;
+    RelativeLayout btnTeachers;
 
     @Nullable
     @Override
@@ -49,10 +53,12 @@ public class MainAdminFragment extends Fragment {
         txtPendingProgramsCount = (TextView) view.findViewById(R.id.txtPendingProgramsCount);
         txtAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtAcceptedProgramsCount);
         txtNotAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtNotAcceptedProgramsCount);
+        txtTeachersCount = (TextView) view.findViewById(R.id.txtTeachersCount);
         ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
         btnPendingPrograms = (CardView) view.findViewById(R.id.btnPendingPrograms);
         btnAcceptedPrograms = (CardView) view.findViewById(R.id.btnAcceptedPrograms);
         btnNotAcceptedPrograms = (CardView) view.findViewById(R.id.btnNotAcceptedPrograms);
+        btnTeachers = (RelativeLayout) view.findViewById(R.id.btnTeachers);
         imgSpinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +66,7 @@ public class MainAdminFragment extends Fragment {
             }
         });
         getPeriods();
+        getTeachersCount();
         periodsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -85,7 +92,7 @@ public class MainAdminFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
-                acceptedIntent.putExtra("status","1");
+                acceptedIntent.putExtra("status", "1");
                 startActivity(acceptedIntent);
             }
         });
@@ -93,8 +100,15 @@ public class MainAdminFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
-                acceptedIntent.putExtra("status","2");
+                acceptedIntent.putExtra("status", "2");
                 startActivity(acceptedIntent);
+            }
+        });
+
+        btnTeachers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.openActivity(TeachersActivity.class);
             }
         });
     }
@@ -192,6 +206,25 @@ public class MainAdminFragment extends Fragment {
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
                 txtNotAcceptedProgramsCount.setText(res.optString("con"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+    }
+
+    private void getTeachersCount() {
+        String url = ApiEndPoints.TEACHERS_COUNT
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_NATIONAL_ID);
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                txtTeachersCount.setText(res.optString("con"));
             }
 
             @Override

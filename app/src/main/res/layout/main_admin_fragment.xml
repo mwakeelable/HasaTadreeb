@@ -228,9 +228,9 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/darker_gray" />
 
-                <!--add new teacher-->
+                <!--teachers data-->
                 <RelativeLayout
-                    android:id="@+id/btnMyCertificates"
+                    android:id="@+id/btnTeachers"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -245,10 +245,10 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circle_bg"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <TextView
-                            android:id="@+id/txtCertificatesCount"
+                            android:id="@+id/txtTeachersCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -256,7 +256,7 @@
                     </RelativeLayout>
 
                     <ImageView
-                        android:id="@+id/img_certificates"
+                        android:id="@+id/img_teachers"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerInParent="true"
@@ -265,7 +265,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/img_certificates"
+                        android:layout_below="@id/img_teachers"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="10dp"
                         android:text="بيانات المعلمين"
@@ -279,7 +279,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/darker_gray" />
 
-                <!--teachers data-->
+                <!--add new teacher-->
                 <RelativeLayout
                     android:id="@+id/btnMyCourses"
                     android:layout_width="match_parent"

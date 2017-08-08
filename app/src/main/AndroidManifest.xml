@@ -151,6 +151,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.AdminProgramsActivity" />
         </activity>
+        <activity
+            android:name=".activities.TeachersActivity"
+            android:label="@string/title_activity_teachers"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

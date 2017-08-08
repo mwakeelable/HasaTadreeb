@@ -135,5 +135,6 @@
     <string name="title_activity_pending_program_details">تفاصيل البرنامج</string>
     <string name="title_activity_accepted_programs">الطلبات المعتمدة</string>
     <string name="title_activity_admin_program_details">تفاصيل البرنامج</string>
+    <string name="title_activity_teachers">بيانات المعلمين</string>
 
 </resources>
