@@ -169,6 +169,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.TeachersActivity" />
         </activity>
+        <activity
+            android:name=".activities.TechnicalTicketActivity"
+            android:label="@string/title_activity_technical_ticket"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

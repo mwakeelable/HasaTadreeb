@@ -18,10 +18,11 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity;
+import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.TeachersActivity;
+import com.linked_sys.hasatraining.activities.TechnicalTicketActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Periods;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -36,9 +37,9 @@ public class MainAdminFragment extends Fragment {
     Spinner periodsSpinner;
     ArrayAdapter<Periods> periodAdapter;
     TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount,
-            txtTeachersCount;
+            txtTeachersCount, txtTechTicketCount;
     CardView btnPendingPrograms, btnAcceptedPrograms, btnNotAcceptedPrograms;
-    RelativeLayout btnTeachers;
+    RelativeLayout btnTeachers, btnTechTicket;
 
     @Nullable
     @Override
@@ -59,6 +60,8 @@ public class MainAdminFragment extends Fragment {
         btnAcceptedPrograms = (CardView) view.findViewById(R.id.btnAcceptedPrograms);
         btnNotAcceptedPrograms = (CardView) view.findViewById(R.id.btnNotAcceptedPrograms);
         btnTeachers = (RelativeLayout) view.findViewById(R.id.btnTeachers);
+        btnTechTicket = (RelativeLayout) view.findViewById(R.id.btnTechTicket);
+        txtTechTicketCount = (TextView) view.findViewById(R.id.txtTechTicketCount);
         imgSpinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +70,7 @@ public class MainAdminFragment extends Fragment {
         });
         getPeriods();
         getTeachersCount();
+        getTechTicketsCount();
         periodsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -109,6 +113,12 @@ public class MainAdminFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 activity.openActivity(TeachersActivity.class);
+            }
+        });
+        btnTechTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openActivity(TechnicalTicketActivity.class);
             }
         });
     }
@@ -233,5 +243,32 @@ public class MainAdminFragment extends Fragment {
             }
         });
         api.executeRequest(false, false);
+    }
+
+    private void getTechTicketsCount() {
+        String url = ApiEndPoints.ADMIN_TECH_TICKET_COUNT
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&SchoolId=" + activity.session.getUserDetails().get(activity.session.KEY_ID);
+        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                txtTechTicketCount.setText(res.optString("con"));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(false, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPeriods();
+        getTeachersCount();
+        getTechTicketsCount();
     }
 }

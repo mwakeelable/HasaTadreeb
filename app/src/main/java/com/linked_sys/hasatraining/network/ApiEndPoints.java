@@ -40,5 +40,7 @@ public class ApiEndPoints {
     public static final String ADMIN_PROGRAMS_WITH_STATUS_URL = "/API/Admin/ProgramsWithStatus/"; //ProgStatus = 0 --> all , ProgStatus = 1 --> accepted, ProgStatus = 2 --> not accepted
     public static final String TEACHERS_COUNT = "/API/Admin/SchoolTeacherCount/";
     public static final String TEACHERS_DATA = "/API/Admin/SchoolTeacher/";
+    public static final String SEND_TECH_TICKET = "/API/Admin/SendSupportMessage"; //POST
+    public static final String ADMIN_TECH_TICKET_COUNT = "/API/Admin/SupportMessageCount/";
 }
 
