@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.models.Teachers;
 
 import java.util.ArrayList;
 
-public class TeachersAdapter  extends RecyclerView.Adapter<TeachersAdapter.MyViewHolder> implements Filterable {
+public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyViewHolder> implements Filterable {
     private Context mContext;
     private ArrayList<Teachers> teachersList;
     public ArrayList<Teachers> filteredList;
@@ -21,11 +23,14 @@ public class TeachersAdapter  extends RecyclerView.Adapter<TeachersAdapter.MyVie
     private TeachersAdapterListener listener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-
+        TextView teacherName, teacherSpecalize;
+        LinearLayout teacherRow;
 
         MyViewHolder(View view) {
             super(view);
-
+            teacherName = (TextView) view.findViewById(R.id.txtTeacherName);
+            teacherSpecalize = (TextView) view.findViewById(R.id.txtTeacherSpecalize);
+            teacherRow = (LinearLayout) view.findViewById(R.id.teacher_container);
         }
     }
 
@@ -46,7 +51,9 @@ public class TeachersAdapter  extends RecyclerView.Adapter<TeachersAdapter.MyVie
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-
+        Teachers teacher = filteredList.get(position);
+        holder.teacherName.setText(teacher.getName());
+        holder.teacherSpecalize.setText(teacher.getSpecialize());
         applyClickEvents(holder, position);
     }
 
@@ -61,23 +68,16 @@ public class TeachersAdapter  extends RecyclerView.Adapter<TeachersAdapter.MyVie
     }
 
     private void applyClickEvents(MyViewHolder holder, final int position) {
-//        holder.courseRow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onProgramRowClicked(position);
-//            }
-//        });
-
-//        holder.programREF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onProgramRowClicked(position);
-//            }
-//        });
+        holder.teacherRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onTeacherRowClicked(position);
+            }
+        });
     }
 
     public interface TeachersAdapterListener {
-        void onProgramRowClicked(int position);
+        void onTeacherRowClicked(int position);
     }
 
     private class MyCourseFilter extends Filter {

@@ -160,6 +160,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.TeacherDetailsActivity"
+            android:label="@string/title_activity_teacher_details"
+            android:parentActivityName=".activities.TeachersActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.TeachersActivity" />
+        </activity>
     </application>
 
 </manifest>

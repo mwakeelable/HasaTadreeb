@@ -2,19 +2,27 @@ package com.linked_sys.hasatraining.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.adapters.TeachersAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
+import com.linked_sys.hasatraining.models.Teachers;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
@@ -26,6 +34,11 @@ public class TeachersActivity extends BaseActivity implements
         SwipeRefreshLayout.OnRefreshListener,
         TeachersAdapter.TeachersAdapterListener,
         SearchView.OnQueryTextListener {
+    private RecyclerView recyclerView;
+    public TeachersAdapter mAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayoutManager mLayoutManager;
+    LinearLayout placeholder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,39 @@ public class TeachersActivity extends BaseActivity implements
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        mAdapter = new TeachersAdapter(this, CacheHelper.getInstance().teachersList, this);
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        // show loader and fetch messages
+        swipeRefreshLayout.post(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        getTeachersData();
+                    }
+                }
+        );
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) //check for scroll down
+                {
+
+                }
+            }
+        });
     }
 
     @Override
@@ -74,6 +120,25 @@ public class TeachersActivity extends BaseActivity implements
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
                 JSONArray teachersArray = res.optJSONArray("con");
+                if (teachersArray.length() > 0) {
+                    for (int i = 0; i < teachersArray.length(); i++) {
+                        JSONObject teacherObj = teachersArray.optJSONObject(i);
+                        Teachers teacher = new Teachers();
+                        teacher.setName(teacherObj.optString("Name"));
+                        teacher.setMobile(teacherObj.optString("Mobile"));
+                        teacher.setId(teacherObj.optString("Id"));
+                        teacher.setSpecialize(teacherObj.optString("Specialize"));
+                        teacher.setCurrentWork(teacherObj.optString("CurrentWork"));
+                        teacher.setCase(teacherObj.optString("Case"));
+                        teacher.setIDREF(teacherObj.optString("IDREF"));
+                        CacheHelper.getInstance().teachersList.add(teacher);
+                    }
+                    recyclerView.setAdapter(mAdapter);
+                    swipeRefreshLayout.setRefreshing(false);
+                } else {
+                    placeholder.setVisibility(View.VISIBLE);
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
 
             @Override
@@ -86,7 +151,7 @@ public class TeachersActivity extends BaseActivity implements
 
     @Override
     public void onRefresh() {
-
+        getTeachersData();
     }
 
     @Override
@@ -96,11 +161,15 @@ public class TeachersActivity extends BaseActivity implements
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        return false;
+        mAdapter.getFilter().filter(newText);
+        return true;
     }
 
-    @Override
-    public void onProgramRowClicked(int position) {
 
+    @Override
+    public void onTeacherRowClicked(int position) {
+        Intent intent = new Intent(this, TeacherDetailsActivity.class);
+        intent.putExtra("pos", position);
+        startActivity(intent);
     }
 }

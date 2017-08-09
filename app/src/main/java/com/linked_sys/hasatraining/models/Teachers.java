@@ -1,22 +1,24 @@
 package com.linked_sys.hasatraining.models;
 
 public class Teachers {
-    private String iDREF;
-    private String id;
     private String name;
     private String mobile;
+    private String id;
+    private String specialize;
+    private String currentWork;
+    private String specializeID;
+    private String currentWorkID;
+    private String teacherCase;
+    private String iDREF;
+
     private String phone;
     private String email;
     private String address;
-    private String specialize;
-    private String specializeID;
-    private String currentWork;
-    private String currentWorkID;
     private String school;
     private String schoolID;
     private String type;
     private String typeID;
-    private String teacherCase;
+
 
     public Teachers() {
 

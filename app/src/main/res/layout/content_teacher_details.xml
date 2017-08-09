@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.AdminProgramDetailsActivity"
-    tools:showIn="@layout/admin_program_details_activity">
+    tools:context=".activities.TeacherDetailsActivity"
+    tools:showIn="@layout/teacher_details_activity">
 
     <FrameLayout
         android:id="@+id/tasks_container"
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--Student Name-->
+            <!--Teacher Name-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,14 +26,14 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:id="@+id/studentNameContainer"
+                    android:id="@+id/teacherNameContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/txtStudentNameLabel"
+                        android:id="@+id/txtTeacherNameLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="اسم المتقدم"
@@ -42,7 +42,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtStudentName"
+                        android:id="@+id/txtTeacherName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/grey_700"
@@ -51,7 +51,7 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Student Mobile-->
+            <!--Teacher Mobile-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,14 +59,14 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:id="@+id/studentMobileNumber"
+                    android:id="@+id/teacherMobileNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/txtStudentMobileLabel"
+                        android:id="@+id/txtTeacherMobileLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="الجــوال"
@@ -75,7 +75,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtStudentMobile"
+                        android:id="@+id/txtTeacherMobile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/grey_700"
@@ -84,7 +84,7 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Student ID-->
+            <!--Teacher ID-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 app:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:id="@+id/studentIDContainer"
+                    android:id="@+id/TeacherIDContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -104,7 +104,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtStudentIDLabel"
+                            android:id="@+id/txtTeacherIDLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="رقم السـجل"
@@ -113,7 +113,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/txtStudentID"
+                            android:id="@+id/txtTeacherID"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey_700"
@@ -123,7 +123,7 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
-            <!--Program Name-->
+            <!--Teacher Specialize-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                 app:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:id="@+id/ProgramNameContainer"
+                    android:id="@+id/teacherSpecializeContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -143,16 +143,16 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtProgramNameLabel"
+                            android:id="@+id/txtTeacherSpecializeLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="البرنامج"
+                            android:text="التخصص"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/txtProgramName"
+                            android:id="@+id/txtTeacherSpecialize"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey_700"
@@ -162,7 +162,7 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
-            <!--Program ID-->
+            <!--Teacher Current Work-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                 app:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:id="@+id/ProgramIDContainer"
+                    android:id="@+id/teacherCurrentWorkContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -182,16 +182,16 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtProgramIDLabel"
+                            android:id="@+id/txtTeacherCurrentWorkLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="مرجع البرنامج"
+                            android:text="العمل"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/txtProgramID"
+                            android:id="@+id/txtTeacherCurrentWork"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey_700"
@@ -201,7 +201,7 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
-            <!--Program Time-->
+            <!--Teacher Case-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                 app:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:id="@+id/ProgramTimeContainer"
+                    android:id="@+id/teacherCaseContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -221,124 +221,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtProgramTimeLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="الزمن"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtProgramTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <!--Program Date-->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
-
-                <RelativeLayout
-                    android:id="@+id/ProgramDateContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtProgramDateLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="تاريخــه"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtProgramDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <!--Reg Date-->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
-
-                <RelativeLayout
-                    android:id="@+id/ProgramRegDateContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtProgramRegDateLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="تفاصيل التسجيل"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtProgramRegDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <!--Program status-->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
-
-                <RelativeLayout
-                    android:id="@+id/ProgramStatusContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtProgramStatusLabel"
+                            android:id="@+id/txtTeacherCaseLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="الحالة"
@@ -347,7 +230,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/txtProgramStatus"
+                            android:id="@+id/txtTeacherCase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey_700"
@@ -357,6 +240,44 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
+            <!--Teacher REF-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:id="@+id/TeacherRefContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtTeacherRefLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="المرجع"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtTeacherRef"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey_700"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </FrameLayout>
 </ScrollView>

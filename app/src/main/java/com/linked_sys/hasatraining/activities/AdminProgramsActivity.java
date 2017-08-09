@@ -117,7 +117,7 @@ public class AdminProgramsActivity extends BaseActivity
                             program.setMotadarebMobile(programObj.optString("MotadarebMobile"));
                             program.setMotadarebID(programObj.optString("MotadarebID"));
                             program.setProgramName(programObj.optString("ProgramName"));
-                            program.setProgramREF(programObj.optString("ProgramREF"));
+                            program.setProgramID(programObj.optString("ProgramREF"));
                             program.setProgramTime(programObj.optString("ProgramTime"));
                             program.setProgramDate(programObj.optString("ProgramDate"));
                             program.setRegistrationDate(programObj.optString("RegistrationDate"));
