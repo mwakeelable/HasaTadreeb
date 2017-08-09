@@ -2,6 +2,8 @@ package com.linked_sys.hasatraining.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
@@ -12,22 +14,32 @@ public class AdminProgramDetailsActivity extends BaseActivity {
     TextView txtStudentName, txtStudentMobile, txtStudentID;
     TextView txtProgramName, txtProgramID, txtProgramTime, txtProgramDate,
             txtRegDate, txtProgramStatus;
+    String status;
+    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             position = bundle.getInt("pos");
+            status = bundle.getString("status");
         }
         initalizeUI();
         setData();
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
-    private void initalizeUI(){
+    private void initalizeUI() {
         txtStudentName = (TextView) findViewById(R.id.txtStudentName);
         txtStudentMobile = (TextView) findViewById(R.id.txtStudentMobile);
         txtStudentID = (TextView) findViewById(R.id.txtStudentID);
@@ -37,6 +49,7 @@ public class AdminProgramDetailsActivity extends BaseActivity {
         txtProgramDate = (TextView) findViewById(R.id.txtProgramDate);
         txtRegDate = (TextView) findViewById(R.id.txtProgramRegDate);
         txtProgramStatus = (TextView) findViewById(R.id.txtProgramStatus);
+        btnBack = (ImageView) findViewById(R.id.btn_back);
     }
 
     private void setData() {
@@ -49,11 +62,11 @@ public class AdminProgramDetailsActivity extends BaseActivity {
         txtProgramDate.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramDate());
         txtRegDate.setText(CacheHelper.getInstance().adminPrograms.get(position).getRegistrationDate());
         txtProgramStatus.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramStatus());
+
     }
 
     @Override
     protected int getLayoutResourceId() {
         return R.layout.admin_program_details_activity;
     }
-
 }

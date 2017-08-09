@@ -31,6 +31,8 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.linked_sys.hasatraining.R.id.toolbar;
+
 public class AdminProgramsActivity extends BaseActivity
         implements SwipeRefreshLayout.OnRefreshListener,
         AcceptedProgramsAdapter.AcceptedProgramsAdapterListener,
@@ -41,11 +43,12 @@ public class AdminProgramsActivity extends BaseActivity
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
     String status;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
@@ -192,6 +195,7 @@ public class AdminProgramsActivity extends BaseActivity
     private void openProgram(int pos) {
         Intent intent = new Intent(this, AdminProgramDetailsActivity.class);
         intent.putExtra("pos", pos);
+        intent.putExtra("status",status);
         startActivity(intent);
     }
 }

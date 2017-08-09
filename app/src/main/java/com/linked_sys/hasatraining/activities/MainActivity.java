@@ -306,42 +306,33 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createAdminNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
-                .setTextPrimary("قائمة الطلبات")
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-
-                    }
-                })
-        );
-        mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
                 .setTextPrimary("قائمة طلبات المعلمين المعلقة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(AdminPendingProgramsActivity.class);
 
                     }
                 })
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
                 .setTextPrimary("بيانات المعلمين")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(TeachersActivity.class);
 
                     }
                 })
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_playlist_add_black_24dp))
                 .setTextPrimary("إضافة معلم جديد")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -352,7 +343,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 })
         );
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_person_add_black_24dp))
                 .setTextPrimary("طلب ضم معلم")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -363,13 +354,13 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 })
         );
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_build_black_24dp))
                 .setTextPrimary("تذكرة الدعم الفني")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-
+                        openActivity(TechnicalTicketActivity.class);
                     }
                 })
         );

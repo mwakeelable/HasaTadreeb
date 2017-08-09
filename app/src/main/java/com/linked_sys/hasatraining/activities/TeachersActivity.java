@@ -118,6 +118,7 @@ public class TeachersActivity extends BaseActivity implements
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
+                CacheHelper.getInstance().teachersList.clear();
                 JSONObject res = (JSONObject) response;
                 JSONArray teachersArray = res.optJSONArray("con");
                 if (teachersArray.length() > 0) {
