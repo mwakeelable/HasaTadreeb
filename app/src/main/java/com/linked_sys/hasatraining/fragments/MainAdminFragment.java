@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -38,8 +39,8 @@ public class MainAdminFragment extends Fragment {
     ArrayAdapter<Periods> periodAdapter;
     TextView txtPendingProgramsCount, txtAcceptedProgramsCount, txtNotAcceptedProgramsCount,
             txtTeachersCount, txtTechTicketCount;
-    CardView btnPendingPrograms, btnAcceptedPrograms, btnNotAcceptedPrograms;
-    RelativeLayout btnTeachers, btnTechTicket;
+    CardView btnPendingPrograms, btnSearch;
+    RelativeLayout btnTeachers, btnTechTicket, btnAcceptedPrograms, btnNotAcceptedPrograms;
 
     @Nullable
     @Override
@@ -57,8 +58,9 @@ public class MainAdminFragment extends Fragment {
         txtTeachersCount = (TextView) view.findViewById(R.id.txtTeachersCount);
         ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
         btnPendingPrograms = (CardView) view.findViewById(R.id.btnPendingPrograms);
-        btnAcceptedPrograms = (CardView) view.findViewById(R.id.btnAcceptedPrograms);
-        btnNotAcceptedPrograms = (CardView) view.findViewById(R.id.btnNotAcceptedPrograms);
+        btnAcceptedPrograms = (RelativeLayout) view.findViewById(R.id.btnAcceptedPrograms);
+        btnNotAcceptedPrograms = (RelativeLayout) view.findViewById(R.id.btnNotAcceptedPrograms);
+        btnSearch = (CardView) view.findViewById(R.id.btnSearch);
         btnTeachers = (RelativeLayout) view.findViewById(R.id.btnTeachers);
         btnTechTicket = (RelativeLayout) view.findViewById(R.id.btnTechTicket);
         txtTechTicketCount = (TextView) view.findViewById(R.id.txtTechTicketCount);
@@ -121,6 +123,13 @@ public class MainAdminFragment extends Fragment {
                 activity.openActivity(TechnicalTicketActivity.class);
             }
         });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, "تحت التطوير", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setPeriodsData() {
@@ -181,7 +190,7 @@ public class MainAdminFragment extends Fragment {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 
     private void getAcceptedProgramsCount(String periodID) {
@@ -202,7 +211,7 @@ public class MainAdminFragment extends Fragment {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 
     private void getNotAcceptedProgramsCount(String periodID) {
@@ -223,7 +232,7 @@ public class MainAdminFragment extends Fragment {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 
     private void getTeachersCount() {
@@ -242,7 +251,7 @@ public class MainAdminFragment extends Fragment {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 
     private void getTechTicketsCount() {
@@ -261,7 +270,7 @@ public class MainAdminFragment extends Fragment {
 
             }
         });
-        api.executeRequest(false, false);
+        api.executeRequest(true, false);
     }
 
     @Override
