@@ -366,6 +366,18 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_search_black_24dp))
+                .setTextPrimary("بحث")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(SearchActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
                         .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
                         .setTextPrimary(getString(R.string.action_settings))
                         .setOnItemClickListener(new DrawerItem.OnItemClickListener() {

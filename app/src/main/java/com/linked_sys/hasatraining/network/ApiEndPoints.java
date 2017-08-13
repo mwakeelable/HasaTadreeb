@@ -42,5 +42,6 @@ public class ApiEndPoints {
     public static final String TEACHERS_DATA = "/API/Admin/SchoolTeacher/";
     public static final String SEND_TECH_TICKET = "/API/Admin/SendSupportMessage"; //POST
     public static final String ADMIN_TECH_TICKET_COUNT = "/API/Admin/SupportMessageCount/";
+    public static final String SEARCH_TEACHERS = "/API/Admin/SearchTeacherPrograms/";
 }
 

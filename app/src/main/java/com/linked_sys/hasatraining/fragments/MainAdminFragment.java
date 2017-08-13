@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -22,6 +21,7 @@ import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.AdminPendingProgramsActivity;
 import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
+import com.linked_sys.hasatraining.activities.SearchActivity;
 import com.linked_sys.hasatraining.activities.TeachersActivity;
 import com.linked_sys.hasatraining.activities.TechnicalTicketActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
@@ -41,6 +41,7 @@ public class MainAdminFragment extends Fragment {
             txtTeachersCount, txtTechTicketCount;
     CardView btnPendingPrograms, btnSearch;
     RelativeLayout btnTeachers, btnTechTicket, btnAcceptedPrograms, btnNotAcceptedPrograms;
+    String period;
 
     @Nullable
     @Override
@@ -81,6 +82,7 @@ public class MainAdminFragment extends Fragment {
                 getAcceptedProgramsCount(periods.getPeriodREF());
                 getNotAcceptedProgramsCount(periods.getPeriodREF());
                 CacheHelper.getInstance().adminPeriodSelectedID = periods.getPeriodREF();
+                period = periods.getPeriodName();
             }
 
             @Override
@@ -127,7 +129,9 @@ public class MainAdminFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "تحت التطوير", Toast.LENGTH_SHORT).show();
+                Intent acceptedIntent = new Intent(activity, SearchActivity.class);
+                acceptedIntent.putExtra("period", period);
+                startActivity(acceptedIntent);
             }
         });
     }
