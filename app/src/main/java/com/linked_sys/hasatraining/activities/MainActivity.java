@@ -332,42 +332,20 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_playlist_add_black_24dp))
-                .setTextPrimary("إضافة معلم جديد")
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-
-                    }
-                })
-        );
-        mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_person_add_black_24dp))
-                .setTextPrimary("طلب ضم معلم")
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-
-                    }
-                })
-        );
-        mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_build_black_24dp))
                 .setTextPrimary("تذكرة الدعم الفني")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(TechnicalTicketActivity.class);
+                        openActivity(SendTechnicalTicketActivity.class);
                     }
                 })
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_search_black_24dp))
-                .setTextPrimary("بحث")
+                .setTextPrimary("عرض برامج معلم / موظف")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {

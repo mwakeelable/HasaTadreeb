@@ -20,7 +20,7 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TechnicalTicketActivity extends BaseActivity {
+public class SendTechnicalTicketActivity extends BaseActivity {
     TextView txtSchoolName;
     EditText txtMessageBody;
     CardView btnSendMessage;
@@ -55,14 +55,14 @@ public class TechnicalTicketActivity extends BaseActivity {
         ApiHelper apiHelper = new ApiHelper(this, ApiEndPoints.SEND_TECH_TICKET, Request.Method.POST, map, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
-                new MaterialDialog.Builder(TechnicalTicketActivity.this)
+                new MaterialDialog.Builder(SendTechnicalTicketActivity.this)
                         .title("تذكرة الدعم الفني")
                         .content("تم ارسال الرسالة بشكل صحيح")
                         .positiveText("تم")
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                TechnicalTicketActivity.this.finish();
+                                SendTechnicalTicketActivity.this.finish();
                             }
                         })
                         .show();

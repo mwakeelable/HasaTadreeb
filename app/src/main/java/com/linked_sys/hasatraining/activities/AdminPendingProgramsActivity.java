@@ -113,6 +113,8 @@ public class AdminPendingProgramsActivity extends BaseActivity {
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
+                studentsList.clear();
+                studentsLayout.removeAllViews();
                 JSONObject res = (JSONObject) response;
                 JSONArray programsArray = res.optJSONArray("con");
                 if (programsArray.length() > 0) {

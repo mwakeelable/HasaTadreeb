@@ -26,12 +26,6 @@ public class SplashActivity extends BaseActivity {
                 }
             }, 1000);
         }
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                openActivity(MainActivity.class);
-//            }
-//        }, SPLASH_TIME_OUT);
     }
 
     @Override

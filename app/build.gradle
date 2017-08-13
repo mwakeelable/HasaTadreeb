@@ -63,5 +63,6 @@ dependencies {
         compile 'uk.co.chrisjenx:calligraphy:2.3.0'
         compile 'com.github.clans:fab:1.6.4'
         testCompile 'junit:junit:4.12'
+        compile 'com.jrummyapps:html-builder:1.0.0'
     }
 }

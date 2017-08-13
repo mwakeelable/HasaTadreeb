@@ -170,16 +170,16 @@
                 android:value="com.linked_sys.hasatraining.activities.TeachersActivity" />
         </activity>
         <activity
-            android:name=".activities.TechnicalTicketActivity"
+            android:name=".activities.SendTechnicalTicketActivity"
             android:label="@string/title_activity_technical_ticket"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activities.TechnicalTicketsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.hasatraining.activities.TechnicalTicketsActivity" />
         </activity>
-
-        <activity android:name=".activities.SearchActivity"
+        <activity
+            android:name=".activities.SearchActivity"
             android:label="@string/title_activity_search"
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme">
@@ -187,7 +187,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.TechnicalTicketsActivity"
+            android:label="@string/title_activity_technical_tickets"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
 
+        <activity android:name=".activities.MessageDetailsActivity"
+            android:label="@string/title_activity_technical_tickets"
+            android:parentActivityName=".activities.TechnicalTicketsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.TechnicalTicketsActivity" />
+            </activity>
     </application>
 
 </manifest>

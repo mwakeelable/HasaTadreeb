@@ -139,5 +139,6 @@
     <string name="title_activity_teacher_details">بيانات المعلم</string>
     <string name="title_activity_technical_ticket">تذكرة الدعم الفني</string>
     <string name="title_activity_search">عرض برامج معلم / موظف</string>
+    <string name="title_activity_technical_tickets">تذكرة الدعم الفني</string>
 
 </resources>

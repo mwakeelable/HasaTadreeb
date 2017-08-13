@@ -23,7 +23,7 @@ import com.linked_sys.hasatraining.activities.AdminProgramsActivity;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.SearchActivity;
 import com.linked_sys.hasatraining.activities.TeachersActivity;
-import com.linked_sys.hasatraining.activities.TechnicalTicketActivity;
+import com.linked_sys.hasatraining.activities.TechnicalTicketsActivity;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.Periods;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -122,7 +122,7 @@ public class MainAdminFragment extends Fragment {
         btnTechTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.openActivity(TechnicalTicketActivity.class);
+                activity.openActivity(TechnicalTicketsActivity.class);
             }
         });
 

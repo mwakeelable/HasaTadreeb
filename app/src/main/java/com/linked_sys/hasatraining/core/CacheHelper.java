@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.core;
 
+import com.linked_sys.hasatraining.models.Message;
 import com.linked_sys.hasatraining.models.Periods;
 import com.linked_sys.hasatraining.models.Program;
 import com.linked_sys.hasatraining.models.ProgramByPeriod;
@@ -25,5 +26,5 @@ public class CacheHelper {
     public ArrayList<Program> adminPrograms = new ArrayList<>();
     public ArrayList<Teachers> teachersList = new ArrayList<>();
     public String adminPeriodSelectedID = "";
-
+    public ArrayList<Message> messages = new ArrayList<>();
 }

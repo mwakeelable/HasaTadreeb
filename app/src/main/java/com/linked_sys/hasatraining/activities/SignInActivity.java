@@ -30,7 +30,7 @@ public class SignInActivity extends BaseActivity {
     SpinnerDialog mProgress;
     AwesomeValidation awesomeValidation;
     String nationalID, mobileNumber;
-    int userType = -1;
+    int userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,121 +109,163 @@ public class SignInActivity extends BaseActivity {
     }
 
     private void doLogin() {
-        if (userType == 0) {
-            String signInURL =
-                    ApiEndPoints.TEACHER_SIGNIN_URL
-                            + "?APPCode=" + CacheHelper.getInstance().appCode
-                            + "&UserName=" + nationalID
-                            + "&Password=" + mobileNumber
-                            + "&UserTyp=" + userType;
-            ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
-                @Override
-                public void onSuccess(Object response) {
-                    Log.d(AppController.TAG, response.toString());
-                    JSONObject res = (JSONObject) response;
-                    JSONObject userObj = res.optJSONObject("con");
-                    session.createLoginSession(
-                            nationalID,
-                            userObj.optString("ID"),
-                            userObj.optString("IDREF"),
-                            userObj.optString("FullName"),
-                            userObj.optString("UserType_string"),
-                            userObj.optInt("UserType"),
-                            "",
-                            "",
-                            "",
-                            userObj.optString("AllProgCount"),
-                            userObj.optString("CertificateProgCount"));
-                    openActivity(MainActivity.class);
-                }
-
-                @Override
-                public void onFailure(VolleyError error) {
-                    new MaterialDialog.Builder(SignInActivity.this)
-                            .title(getResources().getString(R.string.txt_error))
-                            .content(getResources().getString(R.string.sign_in_failed_msg))
-                            .positiveText(getResources().getString(R.string.txt_positive_btn))
-                            .show();
-                }
-            });
-            loginAPI.executeRequest(true, false);
-        } else if (userType == 2) {
-            String signInURL =
-                    ApiEndPoints.ADMIN_SIGNIN_URL
-                            + "?APPCode=" + CacheHelper.getInstance().appCode
-                            + "&UserName=" + nationalID
-                            + "&Password=" + mobileNumber
-                            + "&UserTyp=" + userType;
-            ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
-                @Override
-                public void onSuccess(Object response) {
-                    Log.d(AppController.TAG, response.toString());
-                    JSONObject res = (JSONObject) response;
-                    JSONObject userObj = res.optJSONObject("con");
-                    session.createLoginSession(
-                            nationalID,
-                            userObj.optString("ID"),
-                            userObj.optString("IDREF"),
-                            userObj.optString("FullName"),
-                            userObj.optString("UserType_string"),
-                            userObj.optInt("UserType"),
-                            userObj.optString("Image"),
-                            userObj.optString("school"),
-                            userObj.optString("school_ID"),
-                            userObj.optString("AllProgCount"),
-                            userObj.optString("CertificateProgCount"));
-                    openActivity(MainActivity.class);
-                }
-
-                @Override
-                public void onFailure(VolleyError error) {
-                    new MaterialDialog.Builder(SignInActivity.this)
-                            .title(getResources().getString(R.string.txt_error))
-                            .content(getResources().getString(R.string.sign_in_failed_msg))
-                            .positiveText(getResources().getString(R.string.txt_positive_btn))
-                            .show();
-                }
-            });
-            loginAPI.executeRequest(true, false);
-        } else {
-            String signInURL =
-                    ApiEndPoints.STUDENT_SIGNIN_URL
-                            + "?APPCode=" + CacheHelper.getInstance().appCode
-                            + "&UserName=" + nationalID
-                            + "&Password=" + mobileNumber
-                            + "&UserTyp=" + userType;
-            ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
-                @Override
-                public void onSuccess(Object response) {
-                    Log.d(AppController.TAG, response.toString());
-                    JSONObject res = (JSONObject) response;
-                    JSONObject userObj = res.optJSONObject("con");
-                    session.createLoginSession(
-                            nationalID,
-                            userObj.optString("ID"),
-                            userObj.optString("IDREF"),
-                            userObj.optString("FullName"),
-                            userObj.optString("UserType_string"),
-                            userObj.optInt("UserType"),
-                            userObj.optString("Image"),
-                            userObj.optString("school"),
-                            userObj.optString("school_ID"),
-                            userObj.optString("AllProgCount"),
-                            userObj.optString("CertificateProgCount"));
-                    openActivity(MainActivity.class);
-                }
-
-                @Override
-                public void onFailure(VolleyError error) {
-                    new MaterialDialog.Builder(SignInActivity.this)
-                            .title(getResources().getString(R.string.txt_error))
-                            .content(getResources().getString(R.string.sign_in_failed_msg))
-                            .positiveText(getResources().getString(R.string.txt_positive_btn))
-                            .show();
-                }
-            });
-            loginAPI.executeRequest(true, false);
+        if (userType == 0)
+            loginTeacher();
+        else if (userType == 1)
+            loginStudent();
+        else if (userType == 2)
+            loginAdmin();
+        else {
+            new MaterialDialog.Builder(SignInActivity.this)
+                    .title(getResources().getString(R.string.txt_error))
+                    .content(getResources().getString(R.string.sign_in_failed_msg))
+                    .positiveText(getResources().getString(R.string.txt_positive_btn))
+                    .show();
         }
 
+    }
+
+    private void loginTeacher() {
+        String signInURL =
+                ApiEndPoints.TEACHER_SIGNIN_URL
+                        + "?APPCode=" + CacheHelper.getInstance().appCode
+                        + "&UserName=" + nationalID
+                        + "&Password=" + mobileNumber
+                        + "&UserTyp=" + userType;
+        ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                JSONObject userObj = res.optJSONObject("con");
+                if (userObj.optString("ID").equals("null")) {
+                    new MaterialDialog.Builder(SignInActivity.this)
+                            .title(getResources().getString(R.string.txt_error))
+                            .content(getResources().getString(R.string.sign_in_failed_msg))
+                            .positiveText(getResources().getString(R.string.txt_positive_btn))
+                            .show();
+                } else {
+                    session.createLoginSession(
+                            nationalID,
+                            userObj.optString("ID"),
+                            userObj.optString("IDREF"),
+                            userObj.optString("FullName"),
+                            userObj.optString("UserType_string"),
+                            userObj.optInt("UserType"),
+                            "",
+                            "",
+                            "",
+                            userObj.optString("AllProgCount"),
+                            userObj.optString("CertificateProgCount"));
+                    openActivity(MainActivity.class);
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                new MaterialDialog.Builder(SignInActivity.this)
+                        .title(getResources().getString(R.string.txt_error))
+                        .content(getResources().getString(R.string.sign_in_failed_msg))
+                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                        .show();
+            }
+        });
+        loginAPI.executeRequest(true, false);
+    }
+
+    private void loginStudent() {
+        String signInURL =
+                ApiEndPoints.STUDENT_SIGNIN_URL
+                        + "?APPCode=" + CacheHelper.getInstance().appCode
+                        + "&UserName=" + nationalID
+                        + "&Password=" + mobileNumber
+                        + "&UserTyp=" + userType;
+        ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                JSONObject userObj = res.optJSONObject("con");
+                if (userObj.optString("ID").equals("null")) {
+                    new MaterialDialog.Builder(SignInActivity.this)
+                            .title(getResources().getString(R.string.txt_error))
+                            .content(getResources().getString(R.string.sign_in_failed_msg))
+                            .positiveText(getResources().getString(R.string.txt_positive_btn))
+                            .show();
+                } else {
+                    session.createLoginSession(
+                            nationalID,
+                            userObj.optString("ID"),
+                            userObj.optString("IDREF"),
+                            userObj.optString("FullName"),
+                            userObj.optString("UserType_string"),
+                            userObj.optInt("UserType"),
+                            userObj.optString("Image"),
+                            userObj.optString("school"),
+                            userObj.optString("school_ID"),
+                            userObj.optString("AllProgCount"),
+                            userObj.optString("CertificateProgCount"));
+                    openActivity(MainActivity.class);
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                new MaterialDialog.Builder(SignInActivity.this)
+                        .title(getResources().getString(R.string.txt_error))
+                        .content(getResources().getString(R.string.sign_in_failed_msg))
+                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                        .show();
+            }
+        });
+        loginAPI.executeRequest(true, false);
+    }
+
+    private void loginAdmin() {
+        String signInURL =
+                ApiEndPoints.ADMIN_SIGNIN_URL
+                        + "?APPCode=" + CacheHelper.getInstance().appCode
+                        + "&UserName=" + nationalID
+                        + "&Password=" + mobileNumber
+                        + "&UserTyp=" + userType;
+        ApiHelper loginAPI = new ApiHelper(this, signInURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                Log.d(AppController.TAG, response.toString());
+                JSONObject res = (JSONObject) response;
+                JSONObject userObj = res.optJSONObject("con");
+                if (userObj.optString("ID").equals("null")) {
+                    new MaterialDialog.Builder(SignInActivity.this)
+                            .title(getResources().getString(R.string.txt_error))
+                            .content(getResources().getString(R.string.sign_in_failed_msg))
+                            .positiveText(getResources().getString(R.string.txt_positive_btn))
+                            .show();
+                } else {
+                    session.createLoginSession(
+                            nationalID,
+                            userObj.optString("ID"),
+                            userObj.optString("IDREF"),
+                            userObj.optString("FullName"),
+                            userObj.optString("UserType_string"),
+                            userObj.optInt("UserType"),
+                            userObj.optString("Image"),
+                            userObj.optString("school"),
+                            userObj.optString("school_ID"),
+                            userObj.optString("AllProgCount"),
+                            userObj.optString("CertificateProgCount"));
+                    openActivity(MainActivity.class);
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                new MaterialDialog.Builder(SignInActivity.this)
+                        .title(getResources().getString(R.string.txt_error))
+                        .content(getResources().getString(R.string.sign_in_failed_msg))
+                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                        .show();
+            }
+        });
+        loginAPI.executeRequest(true, false);
     }
 }
