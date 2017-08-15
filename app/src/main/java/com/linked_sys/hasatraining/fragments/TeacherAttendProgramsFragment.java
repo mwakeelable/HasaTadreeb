@@ -20,7 +20,7 @@ import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.TeacherProgramDetailsActivity;
-import com.linked_sys.hasatraining.adapters.TeacherProgramsAdapter;
+import com.linked_sys.hasatraining.adapters.TeacherAttendProgramsAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.TeacherProgram;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -30,10 +30,10 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TeacherAttendProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TeacherProgramsAdapter.TeacherProgramsAdapterListener {
+public class TeacherAttendProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TeacherAttendProgramsAdapter.TeacherProgramsAdapterListener {
     MainActivity activity;
     private RecyclerView recyclerView;
-    public TeacherProgramsAdapter mAdapter;
+    public TeacherAttendProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
@@ -51,7 +51,7 @@ public class TeacherAttendProgramsFragment extends Fragment implements SwipeRefr
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        mAdapter = new TeacherProgramsAdapter(activity, CacheHelper.getInstance().teacherAttendPrograms, this);
+        mAdapter = new TeacherAttendProgramsAdapter(activity, CacheHelper.getInstance().teacherAttendPrograms, this);
         mLayoutManager = new LinearLayoutManager(activity);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -141,12 +141,8 @@ public class TeacherAttendProgramsFragment extends Fragment implements SwipeRefr
 
     @Override
     public void onProgramRowClicked(int position) {
-        openProgram(position);
-    }
-
-    private void openProgram(int pos) {
         Intent intent = new Intent(activity, TeacherProgramDetailsActivity.class);
-        intent.putExtra("pos", pos);
+        intent.putExtra("pos", position);
         intent.putExtra("comeFrom", "attend");
         activity.startActivityForResult(intent, activity.REQUEST_TEACHER_CODE);
     }

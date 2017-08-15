@@ -5,10 +5,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.core.CacheHelper;
 
 public class TeacherDetailsActivity extends BaseActivity {
-    int position;
     TextView txtTeacherName, txtTeacherMobile, txtTeacherID,
             txtSpecalize, txtCurrentWork, txtCase, txtRef;
 
@@ -19,19 +17,6 @@ public class TeacherDetailsActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            position = bundle.getInt("pos");
-        }
-        initalizeUI();
-        setData();
-    }
-
-    @Override
-    protected int getLayoutResourceId() {
-        return R.layout.teacher_details_activity;
-    }
-
-    private void initalizeUI() {
         txtTeacherName = (TextView) findViewById(R.id.txtTeacherName);
         txtTeacherMobile = (TextView) findViewById(R.id.txtTeacherMobile);
         txtTeacherID = (TextView) findViewById(R.id.txtTeacherID);
@@ -39,16 +24,19 @@ public class TeacherDetailsActivity extends BaseActivity {
         txtCurrentWork = (TextView) findViewById(R.id.txtTeacherCurrentWork);
         txtCase = (TextView) findViewById(R.id.txtTeacherCase);
         txtRef = (TextView) findViewById(R.id.txtTeacherRef);
+        if (bundle != null) {
+            txtTeacherName.setText(bundle.getString("name"));
+            txtTeacherMobile.setText(bundle.getString("mobile"));
+            txtTeacherID.setText(bundle.getString("ID"));
+            txtSpecalize.setText(bundle.getString("specialize"));
+            txtCurrentWork.setText(bundle.getString("work"));
+            txtCase.setText(bundle.getString("case"));
+            txtRef.setText(bundle.getString("idRef"));
+        }
     }
 
-    private void setData() {
-        txtTeacherName.setText(CacheHelper.getInstance().teachersList.get(position).getName());
-        txtTeacherMobile.setText(CacheHelper.getInstance().teachersList.get(position).getMobile());
-        txtTeacherID.setText(CacheHelper.getInstance().teachersList.get(position).getId());
-        txtSpecalize.setText(CacheHelper.getInstance().teachersList.get(position).getSpecialize());
-        txtCurrentWork.setText(CacheHelper.getInstance().teachersList.get(position).getCurrentWork());
-        txtCase.setText(CacheHelper.getInstance().teachersList.get(position).getCase());
-        txtRef.setText(CacheHelper.getInstance().teachersList.get(position).getIDREF());
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.teacher_details_activity;
     }
-
 }

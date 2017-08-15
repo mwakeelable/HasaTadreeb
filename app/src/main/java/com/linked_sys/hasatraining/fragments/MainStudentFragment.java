@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
+import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 import com.linked_sys.hasatraining.activities.StudentCertificatesActivity;
 import com.linked_sys.hasatraining.activities.StudentCoursesActivity;
-import com.linked_sys.hasatraining.activities.RegisterProgramActivity;
 
 public class MainStudentFragment extends Fragment {
     MainActivity activity;
@@ -30,8 +29,6 @@ public class MainStudentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         txtProgCount = (TextView) view.findViewById(R.id.txtProgramsCount);
         txtCertificatesCount = (TextView) view.findViewById(R.id.txtCertificatesCount);
-//        txtProgCount.setText(activity.session.getUserDetails().get(activity.session.KEY_PROGRAMS_COUNT));
-//        txtCertificatesCount.setText(activity.session.getUserDetails().get(activity.session.KEY_CERTIFICATES_COUNT));
         view.findViewById(R.id.btnMyCertificates).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,13 +45,6 @@ public class MainStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 activity.openActivity(RegisterProgramActivity.class);
-            }
-        });
-        view.findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                activity.openActivity(SettingsActivity.class);
-                Toast.makeText(activity, "Under Developing", Toast.LENGTH_SHORT).show();
             }
         });
     }

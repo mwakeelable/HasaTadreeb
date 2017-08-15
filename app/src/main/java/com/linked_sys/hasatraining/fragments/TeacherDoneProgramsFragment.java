@@ -20,7 +20,7 @@ import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.activities.MainActivity;
 import com.linked_sys.hasatraining.activities.TeacherProgramDetailsActivity;
-import com.linked_sys.hasatraining.adapters.TeacherProgramsAdapter;
+import com.linked_sys.hasatraining.adapters.TeachersDoneProgramsAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.TeacherProgram;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -30,10 +30,10 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TeacherDoneProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TeacherProgramsAdapter.TeacherProgramsAdapterListener {
+public class TeacherDoneProgramsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TeachersDoneProgramsAdapter.TeachersDoneProgramsAdapterListener {
     MainActivity activity;
     private RecyclerView recyclerView;
-    public TeacherProgramsAdapter mAdapter;
+    public TeachersDoneProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
@@ -50,7 +50,7 @@ public class TeacherDoneProgramsFragment extends Fragment implements SwipeRefres
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        mAdapter = new TeacherProgramsAdapter(activity, CacheHelper.getInstance().teacherDonePrograms, this);
+        mAdapter = new TeachersDoneProgramsAdapter(activity, CacheHelper.getInstance().teacherDonePrograms, this);
         mLayoutManager = new LinearLayoutManager(activity);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

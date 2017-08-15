@@ -19,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -147,13 +146,23 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible()) {
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    MainActivity.this.finish();
+                    hideSoftKeyboard(this);
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
+        } else {
+            int id = item.getItemId();
+            switch (id) {
+                case android.R.id.home:
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private void createStudentNavMenu() {
@@ -192,18 +201,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 })
         );
         mDrawer.addDivider();
-        mDrawer.addItem(new DrawerItem()
-                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
-                        .setTextPrimary(getString(R.string.action_settings))
-                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                            @Override
-                            public void onClick(DrawerItem drawerItem, long l, int i) {
-                                mDrawerLayout.closeDrawer(GravityCompat.START);
-//                        openActivity(SettingsActivity.class);
-                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-        );
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
                 .setTextPrimary(getString(R.string.action_sign_out))
@@ -262,18 +259,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 })
         );
         mDrawer.addDivider();
-        mDrawer.addItem(new DrawerItem()
-                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
-                        .setTextPrimary(getString(R.string.action_settings))
-                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                            @Override
-                            public void onClick(DrawerItem drawerItem, long l, int i) {
-                                mDrawerLayout.closeDrawer(GravityCompat.START);
-//                        openActivity(SettingsActivity.class);
-                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-        );
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
                 .setTextPrimary(getString(R.string.action_sign_out))
@@ -356,18 +341,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                        .setImage(ContextCompat.getDrawable(this, R.drawable.ic_settings_black_24dp))
-                        .setTextPrimary(getString(R.string.action_settings))
-                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                            @Override
-                            public void onClick(DrawerItem drawerItem, long l, int i) {
-                                mDrawerLayout.closeDrawer(GravityCompat.START);
-//                        openActivity(SettingsActivity.class);
-                                Toast.makeText(MainActivity.this, "تحت التطوير", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-        );
-        mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
@@ -415,9 +388,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @Override
     protected void onResume() {
         super.onResume();
-        if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("0")) {
-
-        } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
+        if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
             refreshStudentCertificateCount();
             refreshStudentProgramsCount();
         }

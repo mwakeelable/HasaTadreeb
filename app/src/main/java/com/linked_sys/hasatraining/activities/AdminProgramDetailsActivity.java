@@ -53,15 +53,15 @@ public class AdminProgramDetailsActivity extends BaseActivity {
     }
 
     private void setData() {
-        txtStudentName.setText(CacheHelper.getInstance().adminPrograms.get(position).getMotadarebFullName());
-        txtStudentMobile.setText(CacheHelper.getInstance().adminPrograms.get(position).getMotadarebMobile());
-        txtStudentID.setText(CacheHelper.getInstance().adminPrograms.get(position).getMotadarebID());
-        txtProgramName.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramName());
-        txtProgramID.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramID());
-        txtProgramTime.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramTime());
-        txtProgramDate.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramDate());
-        txtRegDate.setText(CacheHelper.getInstance().adminPrograms.get(position).getRegistrationDate());
-        txtProgramStatus.setText(CacheHelper.getInstance().adminPrograms.get(position).getProgramStatus());
+        txtStudentName.setText(CacheHelper.getInstance().filteredList.get(position).getMotadarebFullName());
+        txtStudentMobile.setText(CacheHelper.getInstance().filteredList.get(position).getMotadarebMobile());
+        txtStudentID.setText(CacheHelper.getInstance().filteredList.get(position).getMotadarebID());
+        txtProgramName.setText(CacheHelper.getInstance().filteredList.get(position).getProgramName());
+        txtProgramID.setText(CacheHelper.getInstance().filteredList.get(position).getProgramID());
+        txtProgramTime.setText(CacheHelper.getInstance().filteredList.get(position).getProgramTime());
+        txtProgramDate.setText(CacheHelper.getInstance().filteredList.get(position).getProgramDate());
+        txtRegDate.setText(CacheHelper.getInstance().filteredList.get(position).getRegistrationDate());
+        txtProgramStatus.setText(CacheHelper.getInstance().filteredList.get(position).getProgramStatus());
 
     }
 

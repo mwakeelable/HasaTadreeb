@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.hasatraining.R;
-import com.linked_sys.hasatraining.adapters.TeacherProgramsAdapter;
+import com.linked_sys.hasatraining.adapters.TeacherAttendProgramsAdapter;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.TeacherProgram;
 import com.linked_sys.hasatraining.network.ApiCallback;
@@ -31,9 +31,9 @@ import com.linked_sys.hasatraining.network.ApiHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TeacherCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, TeacherProgramsAdapter.TeacherProgramsAdapterListener, SearchView.OnQueryTextListener{
+public class TeacherCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, TeacherAttendProgramsAdapter.TeacherProgramsAdapterListener, SearchView.OnQueryTextListener{
     private RecyclerView recyclerView;
-    public TeacherProgramsAdapter mAdapter;
+    public TeacherAttendProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
@@ -49,7 +49,7 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        mAdapter = new TeacherProgramsAdapter(this, CacheHelper.getInstance().teacherDonePrograms, this);
+        mAdapter = new TeacherAttendProgramsAdapter(this, CacheHelper.getInstance().teacherDonePrograms, this);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

@@ -1,5 +1,6 @@
 package com.linked_sys.hasatraining.adapters;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,37 +8,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.core.CacheHelper;
-import com.linked_sys.hasatraining.models.Program;
+import com.linked_sys.hasatraining.models.TeacherProgram;
 
 import java.util.ArrayList;
 
-public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgramsAdapter.MyViewHolder> implements Filterable {
+public class TeachersDoneProgramsAdapter extends RecyclerView.Adapter<TeachersDoneProgramsAdapter.MyViewHolder> implements Filterable {
     private Context mContext;
-    private ArrayList<Program> programs;
-    private MyCourseFilter courseFilter;
-    private AcceptedProgramsAdapterListener listener;
+    private ArrayList<TeacherProgram> programs;
+    private TeacherProgramsFilter courseFilter;
+    private TeachersDoneProgramsAdapterListener listener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView programName, studentName;
-        LinearLayout courseRow;
+        TextView programName;
+        RelativeLayout courseRow;
 
         MyViewHolder(View view) {
             super(view);
-            programName = (TextView) view.findViewById(R.id.txtProgramName);
-            studentName = (TextView) view.findViewById(R.id.txtStudentName);
-            courseRow = (LinearLayout) view.findViewById(R.id.program_container);
+            programName = (TextView) view.findViewById(R.id.txt_teacherProgramName);
+            courseRow = (RelativeLayout) view.findViewById(R.id.teacher_program_row);
         }
     }
 
-    public AcceptedProgramsAdapter(Context mContext, ArrayList<Program> programs, AcceptedProgramsAdapterListener listener) {
+    public TeachersDoneProgramsAdapter(Context mContext, ArrayList<TeacherProgram> programs, TeachersDoneProgramsAdapterListener listener) {
         this.mContext = mContext;
         this.programs = programs;
-        CacheHelper.getInstance().filteredList = programs;
+        CacheHelper.getInstance().doneFilteredList = programs;
         this.listener = listener;
         getFilter();
     }
@@ -45,26 +45,31 @@ public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgra
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.accepted_programs_item, parent, false);
+                .inflate(R.layout.teacher_program_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        Program program = CacheHelper.getInstance().filteredList.get(position);
+        TeacherProgram program = CacheHelper.getInstance().doneFilteredList.get(position);
         holder.programName.setText(program.getProgramName());
-        holder.studentName.setText(program.getMotadarebFullName());
+//        if (program.isCanPrintCertificate() && !program.isMustRate())
+//            holder.programStatus.setText(R.string.btnPrint);
+//        else if (program.isMustRate() && !program.isCanPrintCertificate())
+//            holder.programStatus.setText(R.string.btnRate);
+//        else
+//            holder.programStatus.setText("");
         applyClickEvents(holder, position);
     }
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(CacheHelper.getInstance().filteredList.get(position).getProgramID());
+        return Long.parseLong(CacheHelper.getInstance().doneFilteredList.get(position).getProgramID());
     }
 
     @Override
     public int getItemCount() {
-        return CacheHelper.getInstance().filteredList.size();
+        return CacheHelper.getInstance().doneFilteredList.size();
     }
 
     private void applyClickEvents(MyViewHolder holder, final int position) {
@@ -82,18 +87,18 @@ public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgra
 //        });
     }
 
-    public interface AcceptedProgramsAdapterListener {
+    public interface TeachersDoneProgramsAdapterListener {
         void onProgramRowClicked(int position);
     }
 
-    private class MyCourseFilter extends Filter {
+    private class TeacherProgramsFilter extends Filter {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults filterResults = new FilterResults();
             if (constraint != null && constraint.length() > 0) {
-                ArrayList<Program> tempList = new ArrayList<>();
+                ArrayList<TeacherProgram> tempList = new ArrayList<>();
                 // search content in tasks list
-                for (Program program : programs) {
+                for (TeacherProgram program : programs) {
                     if (program.getProgramName().toLowerCase().contains(constraint.toString().toLowerCase())) {
                         tempList.add(program);
                     }
@@ -116,7 +121,7 @@ public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgra
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            CacheHelper.getInstance().filteredList = (ArrayList<Program>) results.values;
+            CacheHelper.getInstance().doneFilteredList = (ArrayList<TeacherProgram>) results.values;
             notifyDataSetChanged();
         }
     }
@@ -124,7 +129,7 @@ public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgra
     @Override
     public Filter getFilter() {
         if (courseFilter == null) {
-            courseFilter = new MyCourseFilter();
+            courseFilter = new TeacherProgramsFilter();
         }
         return courseFilter;
     }

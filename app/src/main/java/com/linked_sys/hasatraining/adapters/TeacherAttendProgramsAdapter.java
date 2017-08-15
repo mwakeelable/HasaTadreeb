@@ -11,14 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.models.TeacherProgram;
 
 import java.util.ArrayList;
 
-public class TeacherProgramsAdapter extends RecyclerView.Adapter<TeacherProgramsAdapter.MyViewHolder> implements Filterable {
+public class TeacherAttendProgramsAdapter extends RecyclerView.Adapter<TeacherAttendProgramsAdapter.MyViewHolder> implements Filterable {
     private Context mContext;
     private ArrayList<TeacherProgram> programs;
-    public ArrayList<TeacherProgram> filteredList;
     private TeacherProgramsFilter courseFilter;
     private TeacherProgramsAdapterListener listener;
 
@@ -33,10 +33,10 @@ public class TeacherProgramsAdapter extends RecyclerView.Adapter<TeacherPrograms
         }
     }
 
-    public TeacherProgramsAdapter(Context mContext, ArrayList<TeacherProgram> programs, TeacherProgramsAdapterListener listener) {
+    public TeacherAttendProgramsAdapter(Context mContext, ArrayList<TeacherProgram> programs, TeacherProgramsAdapterListener listener) {
         this.mContext = mContext;
         this.programs = programs;
-        this.filteredList = programs;
+        CacheHelper.getInstance().attendFilteredList = programs;
         this.listener = listener;
         getFilter();
     }
@@ -50,7 +50,7 @@ public class TeacherProgramsAdapter extends RecyclerView.Adapter<TeacherPrograms
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        TeacherProgram program = filteredList.get(position);
+        TeacherProgram program = CacheHelper.getInstance().attendFilteredList.get(position);
         holder.programName.setText(program.getProgramName());
 //        if (program.isCanPrintCertificate() && !program.isMustRate())
 //            holder.programStatus.setText(R.string.btnPrint);
@@ -63,12 +63,12 @@ public class TeacherProgramsAdapter extends RecyclerView.Adapter<TeacherPrograms
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(filteredList.get(position).getProgramID());
+        return Long.parseLong(CacheHelper.getInstance().attendFilteredList.get(position).getProgramID());
     }
 
     @Override
     public int getItemCount() {
-        return filteredList.size();
+        return CacheHelper.getInstance().attendFilteredList.size();
     }
 
     private void applyClickEvents(MyViewHolder holder, final int position) {
@@ -120,7 +120,7 @@ public class TeacherProgramsAdapter extends RecyclerView.Adapter<TeacherPrograms
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredList = (ArrayList<TeacherProgram>) results.values;
+            CacheHelper.getInstance().attendFilteredList = (ArrayList<TeacherProgram>) results.values;
             notifyDataSetChanged();
         }
     }

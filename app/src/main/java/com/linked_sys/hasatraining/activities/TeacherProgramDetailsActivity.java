@@ -117,16 +117,16 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
 
     private void getProgramDetails() {
         if (comeFrom.equals("done")) {
-            txtProgramRef.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF());
-            txtProgramDays.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDays());
-            txtProgramID.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramID());
-            txtProgramName.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramName());
-            txtProgramDateFrom.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateStrat());
-            txtProgramDateTo.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramDateEnd());
-            txtProgramTime.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramTimes());
-            txtProgramLocation.setText(CacheHelper.getInstance().teacherDonePrograms.get(pos).getProgramLocation());
-            canPrint = CacheHelper.getInstance().teacherDonePrograms.get(pos).isCanPrintCertificate();
-            mustAttend = CacheHelper.getInstance().teacherDonePrograms.get(pos).isMustAttend();
+            txtProgramRef.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getREF());
+            txtProgramDays.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramDays());
+            txtProgramID.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramID());
+            txtProgramName.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramName());
+            txtProgramDateFrom.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramDateStrat());
+            txtProgramDateTo.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramDateEnd());
+            txtProgramTime.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramTimes());
+            txtProgramLocation.setText(CacheHelper.getInstance().doneFilteredList.get(pos).getProgramLocation());
+            canPrint = CacheHelper.getInstance().doneFilteredList.get(pos).isCanPrintCertificate();
+            mustAttend = CacheHelper.getInstance().doneFilteredList.get(pos).isMustAttend();
             if (canPrint && !mustAttend) {
                 btnPrint.setVisibility(View.VISIBLE);
                 btnAbsence.setVisibility(View.GONE);
@@ -138,16 +138,16 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                 btnAbsence.setVisibility(View.GONE);
             }
         } else if (comeFrom.equals("attend")) {
-            txtProgramRef.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getREF());
-            txtProgramDays.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDays());
-            txtProgramID.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramID());
-            txtProgramName.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramName());
-            txtProgramDateFrom.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateStrat());
-            txtProgramDateTo.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramDateEnd());
-            txtProgramTime.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramTimes());
-            txtProgramLocation.setText(CacheHelper.getInstance().teacherAttendPrograms.get(pos).getProgramLocation());
-            canPrint = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isCanPrintCertificate();
-            mustAttend = CacheHelper.getInstance().teacherAttendPrograms.get(pos).isMustAttend();
+            txtProgramRef.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getREF());
+            txtProgramDays.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramDays());
+            txtProgramID.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramID());
+            txtProgramName.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramName());
+            txtProgramDateFrom.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramDateStrat());
+            txtProgramDateTo.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramDateEnd());
+            txtProgramTime.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramTimes());
+            txtProgramLocation.setText(CacheHelper.getInstance().attendFilteredList.get(pos).getProgramLocation());
+            canPrint = CacheHelper.getInstance().attendFilteredList.get(pos).isCanPrintCertificate();
+            mustAttend = CacheHelper.getInstance().attendFilteredList.get(pos).isMustAttend();
             if (canPrint && !mustAttend) {
                 btnPrint.setVisibility(View.VISIBLE);
                 btnAbsence.setVisibility(View.GONE);
@@ -159,45 +159,6 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                 btnAbsence.setVisibility(View.GONE);
             }
         }
-
-//        String url = ApiEndPoints.GET_PROGRAM_DATA_BY_REF_ID
-//                + "?APPCode=" + CacheHelper.getInstance().appCode
-//                + "&ProgramRef=" + CacheHelper.getInstance().teacherDonePrograms.get(pos).getREF();
-//        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
-//            @Override
-//            public void onSuccess(Object response) {
-//                Log.d(AppController.TAG, response.toString());
-//                JSONObject res = (JSONObject) response;
-//                JSONObject progObj = res.optJSONObject("con");
-//                txtProgramID.setText(progObj.optString("ProgramREF"));
-//                txtProgramDays.setText(progObj.optString("ProgranDays"));
-//                txtProgramID.setText(progObj.optString("ProgramID"));
-//                txtProgramName.setText(progObj.optString("ProgramName"));
-//                txtProgramDateFrom.setText(progObj.optString("ProgramDate"));
-//                txtProgramDateTo.setText(progObj.optString("ProgramDateEnd"));
-//                txtProgramTime.setText(progObj.optString("ProgramTime"));
-//                txtProgramLocation.setText(progObj.optString("ProgramLocation"));
-//                canPrint = progObj.optBoolean("");
-//                mustAttend = progObj.optBoolean("");
-//
-//                if (canPrint && !mustAttend) {
-//                    btnPrint.setVisibility(View.VISIBLE);
-//                    btnAbsence.setVisibility(View.GONE);
-//                } else if (mustAttend && !canPrint) {
-//                    btnPrint.setVisibility(View.GONE);
-//                    btnAbsence.setVisibility(View.VISIBLE);
-//                } else {
-//                    btnPrint.setVisibility(View.GONE);
-//                    btnAbsence.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(VolleyError error) {
-//
-//            }
-//        });
-//        api.executeRequest(true, false);
     }
 
     private void downloadCertificate(final String name, final InputStream inputStream) {

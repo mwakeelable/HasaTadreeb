@@ -170,7 +170,13 @@ public class TeachersActivity extends BaseActivity implements
     @Override
     public void onTeacherRowClicked(int position) {
         Intent intent = new Intent(this, TeacherDetailsActivity.class);
-        intent.putExtra("pos", position);
+        intent.putExtra("name", mAdapter.filteredList.get(position).getName());
+        intent.putExtra("mobile", mAdapter.filteredList.get(position).getMobile());
+        intent.putExtra("ID", mAdapter.filteredList.get(position).getId());
+        intent.putExtra("specialize", mAdapter.filteredList.get(position).getSpecialize());
+        intent.putExtra("work", mAdapter.filteredList.get(position).getCurrentWork());
+        intent.putExtra("case", mAdapter.filteredList.get(position).getCase());
+        intent.putExtra("idRef", mAdapter.filteredList.get(position).getIDREF());
         startActivity(intent);
     }
 }
