@@ -196,15 +196,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.MainActivity" />
         </activity>
-
-        <activity android:name=".activities.MessageDetailsActivity"
+        <activity
+            android:name=".activities.MessageDetailsActivity"
             android:label="@string/title_activity_technical_tickets"
             android:parentActivityName=".activities.TechnicalTicketsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.hasatraining.activities.TechnicalTicketsActivity" />
-            </activity>
+        </activity>
+        <activity
+            android:name=".activities.PreLoginActivity"
+            android:label="@string/title_activity_pre_login"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

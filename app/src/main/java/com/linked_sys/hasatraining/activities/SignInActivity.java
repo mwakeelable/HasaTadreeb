@@ -35,7 +35,6 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         mProgress = new SpinnerDialog(this);
         txt_email = (EditText) findViewById(R.id.txt_identity);
@@ -43,6 +42,9 @@ public class SignInActivity extends BaseActivity {
         txt_userType = (EditText) findViewById(R.id.txt_user_type);
         txt_password.clearFocus();
         txt_email.clearFocus();
+        Bundle extra = getIntent().getExtras();
+        if (extra != null)
+            userType = extra.getInt("userType");
         final Button btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +101,6 @@ public class SignInActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
-        finishAffinity();
     }
 
     @Override

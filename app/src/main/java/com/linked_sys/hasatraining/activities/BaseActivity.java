@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.linked_sys.hasatraining.R;
 import com.linked_sys.hasatraining.core.SessionManager;
 import com.linked_sys.hasatraining.core.SharedManager;
 
@@ -22,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         setContentView(getLayoutResourceId());
         session = new SessionManager(this);
         manager = new SharedManager();

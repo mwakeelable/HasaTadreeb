@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.linked_sys.hasatraining.activities.SignInActivity;
+import com.linked_sys.hasatraining.activities.PreLoginActivity;
 
 import java.util.HashMap;
 
@@ -74,7 +74,7 @@ public class SessionManager {
     public void checkLogin() {
         // Check login status
         if (!this.isLoggedIn()) {
-            Intent i = new Intent(mContext, SignInActivity.class);
+            Intent i = new Intent(mContext, PreLoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
@@ -84,7 +84,7 @@ public class SessionManager {
     public void logoutUser() {
         editor.clear();
         editor.commit();
-        Intent i = new Intent(mContext, SignInActivity.class);
+        Intent i = new Intent(mContext, PreLoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(i);

@@ -25,6 +25,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+
 dependencies {
     dependencies {
         compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -65,4 +66,5 @@ dependencies {
         testCompile 'junit:junit:4.12'
         compile 'com.jrummyapps:html-builder:1.0.0'
     }
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
