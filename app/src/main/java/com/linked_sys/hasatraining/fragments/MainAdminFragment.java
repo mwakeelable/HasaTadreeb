@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class MainAdminFragment extends Fragment {
             txtTeachersCount, txtTechTicketCount;
     CardView btnPendingPrograms, btnSearch;
     RelativeLayout btnTeachers, btnTechTicket, btnAcceptedPrograms, btnNotAcceptedPrograms;
+    LinearLayout btnApprovedPrograms, btnNotApprovedPrograms, btnSupportTicket, btnTeachersData;
     String period;
 
     @Nullable
@@ -65,6 +67,35 @@ public class MainAdminFragment extends Fragment {
         btnTeachers = (RelativeLayout) view.findViewById(R.id.btnTeachers);
         btnTechTicket = (RelativeLayout) view.findViewById(R.id.btnTechTicket);
         txtTechTicketCount = (TextView) view.findViewById(R.id.txtTechTicketCount);
+
+        view.findViewById(R.id.btnApprovedPrograms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
+                acceptedIntent.putExtra("status", "1");
+                startActivity(acceptedIntent);
+            }
+        });
+        view.findViewById(R.id.btnNotApprovedPrograms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent acceptedIntent = new Intent(activity, AdminProgramsActivity.class);
+                acceptedIntent.putExtra("status", "2");
+                startActivity(acceptedIntent);
+            }
+        });
+        view.findViewById(R.id.btnTeachersData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.openActivity(TeachersActivity.class);
+            }
+        });
+        view.findViewById(R.id.btnSupportTicket).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.openActivity(TechnicalTicketsActivity.class);
+            }
+        });
         imgSpinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
