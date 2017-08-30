@@ -39,8 +39,8 @@
                     android:layout_gravity="end"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/app_logo"
-                    android:visibility="gone"/>
+                    android:src="@drawable/logo_blue"
+                    android:visibility="visible"/>
 
             </android.support.v7.widget.Toolbar>
 

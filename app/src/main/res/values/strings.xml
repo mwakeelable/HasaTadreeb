@@ -141,5 +141,6 @@
     <string name="title_activity_search">عرض برامج معلم / موظف</string>
     <string name="title_activity_technical_tickets">تذكرة الدعم الفني</string>
     <string name="title_activity_pre_login">PreLoginActivity</string>
+    <string name="title_activity_teacher_attend_programs">البرامج الحالية</string>
 
 </resources>

@@ -1,7 +1,5 @@
 package com.linked_sys.hasatraining.activities;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -59,7 +56,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_36dp);
+        mActionBar.setHomeAsUpIndicator(R.drawable.menu);
         mActionBar.setDisplayHomeAsUpEnabled(true);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -125,23 +122,23 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible()) {
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.search_menu, menu);
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            MenuItem searchMenuItem = menu.findItem(R.id.search);
-            SearchView searchView = (SearchView) searchMenuItem.getActionView();
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setSubmitButtonEnabled(true);
-            searchView.setOnQueryTextListener(this);
-            return true;
-        } else if (FRAGMENT_STUDENT_MAIN != null && FRAGMENT_STUDENT_MAIN.isVisible()) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-            return true;
-        } else {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-            return true;
-        }
+//        if (FRAGMENT_TEACHER_MAIN != null && FRAGMENT_TEACHER_MAIN.isVisible()) {
+//            MenuInflater inflater = getMenuInflater();
+//            inflater.inflate(R.menu.search_menu, menu);
+//            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//            MenuItem searchMenuItem = menu.findItem(R.id.search);
+//            SearchView searchView = (SearchView) searchMenuItem.getActionView();
+//            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//            searchView.setSubmitButtonEnabled(true);
+//            searchView.setOnQueryTextListener(this);
+//            return true;
+//        } else if (FRAGMENT_STUDENT_MAIN != null && FRAGMENT_STUDENT_MAIN.isVisible()) {
+//            getMenuInflater().inflate(R.menu.menu_main, menu);
+//            return true;
+//        } else {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+//        }
     }
 
     @Override
@@ -234,21 +231,24 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createTeacherNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
                 .setTextPrimary("البرامج الحـالية")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
-                        if (!FRAGMENT_TEACHER_MAIN.isVisible()) {
-                            drawFragment(FRAGMENT_TEACHER_MAIN);
-                            mDrawerLayout.closeDrawer(GravityCompat.START);
-                        } else
-                            mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        if (!FRAGMENT_TEACHER_MAIN.isVisible()) {
+//                            drawFragment(FRAGMENT_TEACHER_MAIN);
+//                            mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        } else
+//                            mDrawerLayout.closeDrawer(GravityCompat.START);
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(TeacherAttendProgramsActivity.class);
                     }
                 })
         );
+        mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.certificate_icon))
                 .setTextPrimary("البرامج المنجزة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -260,7 +260,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -285,7 +285,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 .setId(1)
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
                 .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
-                .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_icon))
         );
     }
 
@@ -436,8 +436,8 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        FRAGMENT_TEACHER_MAIN.FRAGMENT_ATTEND_PROGRAMS.mAdapter.getFilter().filter(newText);
-        FRAGMENT_TEACHER_MAIN.FRAGMENT_DONE_PROGRAMS.mAdapter.getFilter().filter(newText);
+//        FRAGMENT_TEACHER_MAIN.FRAGMENT_ATTEND_PROGRAMS.mAdapter.getFilter().filter(newText);
+//        FRAGMENT_TEACHER_MAIN.FRAGMENT_DONE_PROGRAMS.mAdapter.getFilter().filter(newText);
         return true;
     }
 

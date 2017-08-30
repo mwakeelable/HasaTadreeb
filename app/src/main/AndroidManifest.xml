@@ -208,7 +208,16 @@
         <activity
             android:name=".activities.PreLoginActivity"
             android:label="@string/title_activity_pre_login"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.TeacherAttendProgramsActivity"
+            android:label="@string/title_activity_teacher_attend_programs"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
