@@ -14,8 +14,8 @@
     <string name="txt_home_welcome">مرحبــا</string>
     <string name="drawer_open">Menu open</string>
     <string name="drawer_close">Menu closed</string>
-    <string name="nav_my_courses">البرامج الخاصة بي</string>
-    <string name="nav_my_certificates">شهـــاداتي</string>
+    <string name="nav_my_courses">البرامج الحالية</string>
+    <string name="nav_my_certificates">البرامج المنجزة</string>
     <string name="nav_register">التسجيل في البرامج</string>
     <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
     <string name="nav_trainer_future_courses">الدورات الحالية</string>

@@ -164,8 +164,8 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createStudentNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_assignment_black_24dp))
-                .setTextPrimary(getString(R.string.nav_my_courses))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
+                .setTextPrimary("البرامج الحالية")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
@@ -174,9 +174,10 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                     }
                 })
         );
+        mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_school_black_24dp))
-                .setTextPrimary(getString(R.string.nav_my_certificates))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.certificate_icon))
+                .setTextPrimary("البرامج المنجزة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
                     public void onClick(DrawerItem drawerItem, long l, int i) {
@@ -187,7 +188,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.program_register_icon))
                 .setTextPrimary(getString(R.string.nav_register))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -199,7 +200,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -225,7 +226,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
                 .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
                 .setDescription(session.getUserDetails().get(session.KEY_USER_SCHOOL))
-                .setAvatar(ContextCompat.getDrawable(this, R.drawable.avatar_placeholder))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_icon))
         );
     }
 
