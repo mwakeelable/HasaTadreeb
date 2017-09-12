@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -31,6 +32,8 @@ public class SignInActivity extends BaseActivity {
     AwesomeValidation awesomeValidation;
     String nationalID, mobileNumber;
     int userType;
+    ImageView userTypeImg;
+    TextView userTypeTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +43,24 @@ public class SignInActivity extends BaseActivity {
         txt_email = (EditText) findViewById(R.id.txt_identity);
         txt_password = (EditText) findViewById(R.id.txt_password);
         txt_userType = (EditText) findViewById(R.id.txt_user_type);
+        userTypeImg = (ImageView) findViewById(R.id.user_type_image);
+        userTypeTxt = (TextView) findViewById(R.id.user_type_txt);
         txt_password.clearFocus();
         txt_email.clearFocus();
         Bundle extra = getIntent().getExtras();
-        if (extra != null)
+        if (extra != null){
             userType = extra.getInt("userType");
+            if (userType == 0){
+                userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.trainer_icon));
+                userTypeTxt.setText("المدرب");
+            }else if (userType == 1){
+                userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.trainee_icon));
+                userTypeTxt.setText("المتدرب");
+            }else if (userType == 2){
+                userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.admin_icon));
+                userTypeTxt.setText("المنسق التعليمي");
+            }
+        }
         final Button btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
