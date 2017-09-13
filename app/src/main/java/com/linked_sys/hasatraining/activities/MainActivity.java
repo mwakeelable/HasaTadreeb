@@ -241,7 +241,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createTeacherNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                        .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                         .setTextPrimary("البرامج الحـالية")
                         .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                             @Override
@@ -258,7 +258,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.certificate_icon))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.done_programs_icon))
                 .setTextPrimary("البرامج المنجزة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -270,7 +270,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -295,7 +295,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 .setId(1)
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
                 .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
-                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_icon))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_with_frame_icon))
         );
     }
 
