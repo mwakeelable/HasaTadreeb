@@ -53,9 +53,10 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Program program = filteredList.get(position);
         holder.programName.setText(program.getProgramName());
-        if (program.isCanPrintCertificate() && !program.isMustRate())
-            holder.programStatus.setText(R.string.btnPrint);
-        else if (program.isMustRate() && !program.isCanPrintCertificate())
+//        if (program.isCanPrintCertificate() && !program.isMustRate())
+//            holder.programStatus.setText(R.string.btnPrint);
+//        else
+            if (program.isMustRate() && !program.isCanPrintCertificate())
             holder.programStatus.setText(R.string.btnRate);
         else
             holder.programStatus.setText("");

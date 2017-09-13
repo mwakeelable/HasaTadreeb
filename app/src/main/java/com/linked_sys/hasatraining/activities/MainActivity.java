@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     MainTeacherFragment FRAGMENT_TEACHER_MAIN;
     MainAdminFragment FRAGMENT_ADMIN_MAIN;
     public static final int REQUEST_TEACHER_CODE = 0;
+    ImageView btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,14 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mActionBar.setHomeAsUpIndicator(R.drawable.menu);
+        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_36dp);
+//        btnMenu = (ImageView) findViewById(R.id.btn_menu);
+//        btnMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mDrawerLayout.openDrawer(GravityCompat.END);
+//            }
+//        });
         mActionBar.setDisplayHomeAsUpEnabled(true);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -164,7 +173,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createStudentNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                 .setTextPrimary("البرامج الحالية")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -188,7 +197,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.program_register_icon))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.register_icon))
                 .setTextPrimary(getString(R.string.nav_register))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -200,7 +209,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -226,26 +235,26 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
                 .setBackground(ContextCompat.getDrawable(MainActivity.this, R.color.colorPrimary))
                 .setName(session.getUserDetails().get(session.KEY_FULL_NAME))
                 .setDescription(session.getUserDetails().get(session.KEY_USER_SCHOOL))
-                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_icon))
+                .setAvatar(ContextCompat.getDrawable(this, R.drawable.profile_with_frame_icon))
         );
     }
 
     private void createTeacherNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
-                .setTextPrimary("البرامج الحـالية")
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.teacher_current_programs))
+                        .setTextPrimary("البرامج الحـالية")
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
 //                        if (!FRAGMENT_TEACHER_MAIN.isVisible()) {
 //                            drawFragment(FRAGMENT_TEACHER_MAIN);
 //                            mDrawerLayout.closeDrawer(GravityCompat.START);
 //                        } else
 //                            mDrawerLayout.closeDrawer(GravityCompat.START);
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        openActivity(TeacherAttendProgramsActivity.class);
-                    }
-                })
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+                                openActivity(TeacherAttendProgramsActivity.class);
+                            }
+                        })
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()

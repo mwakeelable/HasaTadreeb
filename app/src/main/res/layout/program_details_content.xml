@@ -10,7 +10,7 @@
     <FrameLayout
         android:id="@+id/tasks_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,188 +18,151 @@
             android:orientation="vertical">
 
             <!--ID-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                android:id="@+id/idContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:id="@+id/idContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_program_id_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="رقم البرنامج:"
+                    android:textColor="#B9B9B9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txt_program_id_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_program_id"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txt_program_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey_700"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/txt_program_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6A6A6A"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <!--Name-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                android:id="@+id/programNameontainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:id="@+id/programNameontainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_program_name_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="اسم البرنامج:"
+                    android:textColor="#B9B9B9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txt_program_name_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_program_name"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txt_program_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey_700"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/txt_program_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6A6A6A"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <!--Date-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/programDateContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_program_date_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="تاريخ البرنامج:"
+                    android:textColor="#B9B9B9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_program_date_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_program_dateStart"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txt_program_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
+                <TextView
+                    android:id="@+id/txt_program_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6A6A6A"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <!--Times-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/programTimesContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_program_times_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="الزمن:"
+                    android:textColor="#B9B9B9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_program_times_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_program_times"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txt_program_times"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/txt_program_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6A6A6A"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <!--Program Location-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/programLocationContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_program_location_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="الجهة:"
+                    android:textColor="#B9B9B9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_program_location_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_program_location"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txt_program_location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/txt_program_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6A6A6A"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -210,21 +173,24 @@
                     android:id="@+id/btnRate"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    app:cardCornerRadius="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/grey_300"
+                        android:background="@drawable/submit_button_bg"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/btnRate"
-                            android:textColor="@color/dark_green"
+                            android:textColor="@color/White"
                             android:textSize="25sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -234,13 +200,16 @@
                     android:id="@+id/btnPrint"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    app:cardCornerRadius="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/grey_300"
+                        android:background="@drawable/submit_button_bg"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -248,7 +217,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/btnPrint"
-                            android:textColor="@color/black"
+                            android:textColor="@color/White"
                             android:textSize="25sp"
                             android:textStyle="bold" />
 
@@ -257,13 +226,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
                             android:layout_marginStart="8dp"
-                            android:src="@drawable/ic_picture_as_pdf_black_24dp" />
+                            android:src="@drawable/ic_picture_as_pdf_black_24dp"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
             </FrameLayout>
-
-
         </LinearLayout>
     </FrameLayout>
 </ScrollView>

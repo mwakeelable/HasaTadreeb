@@ -309,7 +309,7 @@
                     android:id="@+id/btnPrint"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    app:cardCornerRadius="4dp"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
