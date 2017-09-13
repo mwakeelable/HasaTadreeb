@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.linked_sys.hasatraining.activities.MessageDetailsActivity"
-    tools:showIn="@layout/message_details_activity">
+    tools:showIn="@layout/message_details_activity"
+    android:background="@drawable/layout_bg">
 
     <LinearLayout
         android:layout_width="match_parent"

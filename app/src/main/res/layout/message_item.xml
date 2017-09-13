@@ -13,18 +13,18 @@
     <LinearLayout
         android:id="@+id/message_container"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center|start"
+        android:background="@drawable/white_button">
 
         <LinearLayout
             android:id="@+id/idContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,8 +32,8 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="تذكرة رقم: "
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textColor="#6A6A6A"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,20 +45,18 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/dateContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,8 +64,8 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="بتاريخ: "
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textColor="#6A6A6A"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -79,7 +77,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
