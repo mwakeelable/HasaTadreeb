@@ -8,7 +8,9 @@
     android:paddingBottom="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:background="@color/White"
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:id="@+id/teacher_container"
@@ -18,70 +20,98 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <!--teacher name-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtTeacherNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="اسم المعلم: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/profile_icon"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="3dp"/>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtTeacherName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@id/txtTeacherNameLabel"
-                android:layout_toRightOf="@id/txtTeacherNameLabel"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-        </RelativeLayout>
 
-        <!--Teacher Specialize-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center">
 
-            <TextView
-                android:id="@+id/txtTeacherSpecializeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="التخصص: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <!--teacher name-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txtTeacherSpecalize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@id/txtTeacherSpecializeLabel"
-                android:layout_toRightOf="@id/txtTeacherSpecializeLabel"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txtTeacherNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="اسم المعلم: "
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtTeacherName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_toEndOf="@id/txtTeacherNameLabel"
+                    android:layout_toRightOf="@id/txtTeacherNameLabel"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <!--Teacher Specialize-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtTeacherSpecializeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="التخصص: "
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtTeacherSpecalize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_toEndOf="@id/txtTeacherSpecializeLabel"
+                    android:layout_toRightOf="@id/txtTeacherSpecializeLabel"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
