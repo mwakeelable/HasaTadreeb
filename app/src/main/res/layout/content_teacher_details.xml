@@ -17,268 +17,219 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:orientation="vertical">
 
             <!--Teacher Name-->
-            <android.support.v7.widget.CardView
+
+            <LinearLayout
+                android:id="@+id/teacherNameContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:id="@+id/teacherNameContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherNameLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="اسم المتقدم:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtTeacherNameLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="اسم المتقدم"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtTeacherName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txtTeacherName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey_700"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
 
             <!--Teacher Mobile-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
+                android:id="@+id/teacherMobileNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:id="@+id/teacherMobileNumber"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherMobileLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="الجــوال:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtTeacherMobileLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الجــوال"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtTeacherMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txtTeacherMobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey_700"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
 
             <!--Teacher ID-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/TeacherIDContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherIDLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="رقم السـجل:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtTeacherID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTeacherIDLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="رقم السـجل"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtTeacherID"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
 
             <!--Teacher Specialize-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/teacherSpecializeContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherSpecializeLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="التخصص:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtTeacherSpecialize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTeacherSpecializeLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="التخصص"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtTeacherSpecialize"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
 
             <!--Teacher Current Work-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/teacherCurrentWorkContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherCurrentWorkLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="العمل:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtTeacherCurrentWork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTeacherCurrentWorkLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="العمل"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtTeacherCurrentWork"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
 
             <!--Teacher Case-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/teacherCaseContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherCaseLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="الحالة:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtTeacherCase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTeacherCaseLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="الحالة"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtTeacherCase"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
 
             <!--Teacher REF-->
-            <android.support.v7.widget.CardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_button"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/TeacherRefContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtTeacherRefLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:text="المرجع:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtTeacherRef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/grey_700"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTeacherRefLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="المرجع"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtTeacherRef"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_700"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </FrameLayout>
