@@ -228,8 +228,8 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_ABSENCE_CODE) {
-            finish();
+        if (requestCode == REQUEST_ABSENCE_CODE && resultCode == RESULT_OK && data != null) {
+            comeFrom = data.getStringExtra("comeFrom");
         }
     }
 

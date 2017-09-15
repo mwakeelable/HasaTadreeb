@@ -24,12 +24,13 @@ public class TeacherAttendProgramsAdapter extends RecyclerView.Adapter<TeacherAt
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView programName;
-        RelativeLayout courseRow;
+        RelativeLayout courseRow, container;
 
         MyViewHolder(View view) {
             super(view);
             programName = (TextView) view.findViewById(R.id.txt_teacherProgramName);
             courseRow = (RelativeLayout) view.findViewById(R.id.teacher_program_row);
+            container = (RelativeLayout) view.findViewById(R.id.teacher_program_container);
         }
     }
 
@@ -78,12 +79,12 @@ public class TeacherAttendProgramsAdapter extends RecyclerView.Adapter<TeacherAt
                 listener.onProgramRowClicked(position);
             }
         });
-//        holder.programREF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onProgramRowClicked(position);
-//            }
-//        });
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onProgramRowClicked(position);
+            }
+        });
     }
 
     public interface TeacherProgramsAdapterListener {

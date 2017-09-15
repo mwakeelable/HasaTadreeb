@@ -3,10 +3,12 @@ package com.linked_sys.hasatraining.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -51,13 +53,13 @@ public class AbsenceActivity extends BaseActivity {
     String finished;
     LinearLayout placeholder;
     RelativeLayout dataContainer;
+    ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         studentsLayout = (LinearLayout) findViewById(R.id.students_container);
         txtAbsenceDay = (TextView) findViewById(R.id.txtAbsenceDay);
@@ -66,6 +68,8 @@ public class AbsenceActivity extends BaseActivity {
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         dataContainer = (RelativeLayout) findViewById(R.id.data_container);
         txtProgramName = (TextView) findViewById(R.id.txtProgramName);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             ref = bundle.getString("ref");
@@ -74,6 +78,15 @@ public class AbsenceActivity extends BaseActivity {
         }
         isAttend.clear();
         checkIsFinished();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();  return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void fillAbsenceObj(int pos) {
@@ -270,6 +283,7 @@ public class AbsenceActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
+        intent.putExtra("comeFrom","attend");
         setResult(RESULT_OK, intent);
         finish();
     }

@@ -115,16 +115,16 @@
         <activity
             android:name=".activities.TeacherProgramDetailsActivity"
             android:label="@string/title_activity_teacher_program_details"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activities.TeacherAttendProgramsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.hasatraining.activities.TeacherAttendProgramsActivity" />
         </activity>
         <activity
             android:name=".activities.AbsenceActivity"
             android:label="@string/title_activity_absence"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activities.TeacherProgramDetailsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
