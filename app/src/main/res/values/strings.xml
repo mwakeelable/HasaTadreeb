@@ -20,7 +20,7 @@
     <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
     <string name="nav_trainer_future_courses">الدورات الحالية</string>
     <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
-    <string name="sign_in_failed_msg">خطأ في البريد الالكتروني او كلمة المرور</string>
+    <string name="sign_in_failed_msg">خطأ في تسجيل الدخول .. الرجاء مراجعة رقم الهوية او رقم الجوال!</string>
     <string name="txt_error">خطأ</string>
     <string name="txt_program_id">رقـم البرنامـج</string>
     <string name="txt_program_ref">مرجـع البرنامـج</string>

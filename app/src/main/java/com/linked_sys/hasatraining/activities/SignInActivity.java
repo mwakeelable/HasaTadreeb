@@ -1,6 +1,7 @@
 package com.linked_sys.hasatraining.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -17,12 +19,12 @@ import com.android.volley.error.VolleyError;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.linked_sys.hasatraining.R;
+import com.linked_sys.hasatraining.components.SpinnerDialog;
 import com.linked_sys.hasatraining.core.AppController;
 import com.linked_sys.hasatraining.core.CacheHelper;
 import com.linked_sys.hasatraining.network.ApiCallback;
 import com.linked_sys.hasatraining.network.ApiEndPoints;
 import com.linked_sys.hasatraining.network.ApiHelper;
-import com.linked_sys.hasatraining.components.SpinnerDialog;
 
 import org.json.JSONObject;
 
@@ -34,11 +36,15 @@ public class SignInActivity extends BaseActivity {
     int userType;
     ImageView userTypeImg;
     TextView userTypeTxt;
+    RelativeLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mProgress = new SpinnerDialog(this);
         txt_email = (EditText) findViewById(R.id.txt_identity);
         txt_password = (EditText) findViewById(R.id.txt_password);
@@ -48,15 +54,16 @@ public class SignInActivity extends BaseActivity {
         txt_password.clearFocus();
         txt_email.clearFocus();
         Bundle extra = getIntent().getExtras();
-        if (extra != null){
+        container = (RelativeLayout) findViewById(R.id.login_container);
+        if (extra != null) {
             userType = extra.getInt("userType");
-            if (userType == 0){
+            if (userType == 0) {
                 userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.trainer_icon));
                 userTypeTxt.setText("المدرب");
-            }else if (userType == 1){
+            } else if (userType == 1) {
                 userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.trainee_icon));
                 userTypeTxt.setText("المتدرب");
-            }else if (userType == 2){
+            } else if (userType == 2) {
                 userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.admin_icon));
                 userTypeTxt.setText("المنسق التعليمي");
             }
@@ -112,6 +119,7 @@ public class SignInActivity extends BaseActivity {
                 return handled;
             }
         });
+        setupUI(container);
     }
 
     @Override
