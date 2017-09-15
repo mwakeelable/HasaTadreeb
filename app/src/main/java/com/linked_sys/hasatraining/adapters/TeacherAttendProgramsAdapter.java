@@ -73,12 +73,12 @@ public class TeacherAttendProgramsAdapter extends RecyclerView.Adapter<TeacherAt
     }
 
     private void applyClickEvents(MyViewHolder holder, final int position) {
-        holder.courseRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onProgramRowClicked(position);
-            }
-        });
+//        holder.courseRow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                listener.onProgramRowClicked(position);
+//            }
+//        });
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
