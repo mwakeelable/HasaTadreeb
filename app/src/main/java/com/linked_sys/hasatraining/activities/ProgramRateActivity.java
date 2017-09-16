@@ -3,9 +3,11 @@ package com.linked_sys.hasatraining.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 
@@ -38,15 +40,17 @@ public class ProgramRateActivity extends BaseActivity {
     RadioButton num13Exc, num13VGood, num13Good, num13Pass;
     RadioButton num14Exc, num14VGood, num14Good, num14Pass;
     CardView btnSubmitRate;
+    ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnSubmitRate = (CardView) findViewById(R.id.btnSubmitRate);
         defineRadioButtons();
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             regREF = bundle.getString("regRef");
@@ -71,7 +75,14 @@ public class ProgramRateActivity extends BaseActivity {
             }
         });
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();  return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void defineRadioButtons() {
         num1Exc = (RadioButton) findViewById(R.id.radioExcNum1);
         num1VGood = (RadioButton) findViewById(R.id.radioVeryGoodNum1);
@@ -352,4 +363,12 @@ public class ProgramRateActivity extends BaseActivity {
         return R.layout.program_rate_activity;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("REGREF",regREF);
+        intent.putExtra("comeFromRate", true);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 }

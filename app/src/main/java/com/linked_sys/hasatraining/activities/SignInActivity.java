@@ -65,7 +65,7 @@ public class SignInActivity extends BaseActivity {
                 userTypeTxt.setText("المتدرب");
             } else if (userType == 2) {
                 userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.admin_icon));
-                userTypeTxt.setText("المنسق التعليمي");
+                userTypeTxt.setText("منسق التدريب");
             }
         }
         final Button btn_login = (Button) findViewById(R.id.btn_login);

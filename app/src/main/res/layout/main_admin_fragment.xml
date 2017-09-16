@@ -492,29 +492,34 @@
                     android:layout_height="170dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/button_bg2"
+                    android:background="@drawable/button_bg"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/btnTeachersData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:src="@drawable/trainee_icon" />
-
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/btnTeachersData"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="بيانات المعلمين" />
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="85dp"
+                            android:layout_height="85dp"
+                            android:src="@drawable/trainee_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="بيانات" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="المعلمين" />
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -622,7 +627,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="طلبات غير معتمدة" />
+                            android:text="طلبات" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="غير معتمدة" />
                     </LinearLayout>
 
 

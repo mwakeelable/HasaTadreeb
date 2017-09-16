@@ -27,6 +27,7 @@ public class ProgramDetailsActivity extends BaseActivity {
     boolean print, rate, comeFromRate;
     CardView btnPrint, btnRate;
     static final int REQUEST_RATE_CODE = 0;
+    String rateString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class ProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url =  ApiEndPoints.BASE_URL + ApiEndPoints.STUDENT_CERTIFICATE_URL + "?RegREF=" + regRef;
+                String url = ApiEndPoints.BASE_URL + ApiEndPoints.STUDENT_CERTIFICATE_URL + "?RegREF=" + regRef;
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(browserIntent);
 //                printCertificate();
@@ -75,7 +76,6 @@ public class ProgramDetailsActivity extends BaseActivity {
             }
         });
     }
-
 
     private void getProgramData() {
         final String getProgramDataURL = ApiEndPoints.GET_PROGRAM_DATA
@@ -155,10 +155,20 @@ public class ProgramDetailsActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_RATE_CODE) {
-            if (resultCode == RESULT_OK) {
-                getProgramData();
-            }
+        if (requestCode == REQUEST_RATE_CODE && resultCode == RESULT_OK && data != null) {
+            regRef = data.getStringExtra("REGREF");
+            comeFromRate = data.getBooleanExtra("comeFromRate", true);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            comeFromRate = bundle.getBoolean("comeFromRate");
+            regRef = bundle.getString("REGREF");
+            getProgramData();
         }
     }
 }

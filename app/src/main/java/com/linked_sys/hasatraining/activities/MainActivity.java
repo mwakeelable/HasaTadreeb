@@ -301,7 +301,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createAdminNavMenu() {
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                 .setTextPrimary("قائمة طلبات المعلمين المعلقة")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -314,7 +314,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_list_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.profile_with_frame_icon))
                 .setTextPrimary("بيانات المعلمين")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -327,7 +327,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_build_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.support_icon))
                 .setTextPrimary("تذكرة الدعم الفني")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -339,7 +339,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_search_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                 .setTextPrimary("عرض برامج معلم / موظف")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
@@ -351,7 +351,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.ic_power_settings_new_black_24dp))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
                 .setTextPrimary(getString(R.string.action_sign_out))
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
                     @Override
