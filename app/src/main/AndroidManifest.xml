@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.linked_sys.hasatraining">
+    package="com.linked_sys.tadreeb_ihssa">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".core.AppController"
+        android:name="com.linked_sys.tadreeb_ihssa.core.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -33,195 +33,195 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.SignInActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.SignInActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PreLoginActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.PreLoginActivity" />
         </activity>
         <activity
-            android:name=".activities.StudentCoursesActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.StudentCoursesActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activities.StudentCertificatesActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.StudentCertificatesActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activities.RegisterProgramActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.RegisterProgramActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activities.ProgramDetailsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.ProgramDetailsActivity"
             android:label="@string/title_activity_program_details"
-            android:parentActivityName=".activities.RegisterProgramActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.RegisterProgramActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.RegisterProgramActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.RegisterProgramActivity" />
         </activity>
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".activities.ProgramRateActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.ProgramRateActivity"
             android:label="@string/title_activity_program_rate"
-            android:parentActivityName=".activities.ProgramDetailsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.ProgramDetailsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.ProgramDetailsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.ProgramDetailsActivity" />
         </activity>
         <activity
-            android:name=".activities.TeacherCertificatesActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TeacherCertificatesActivity"
             android:label="@string/title_activity_teacher_certificates"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.TeacherProgramDetailsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TeacherProgramDetailsActivity"
             android:label="@string/title_activity_teacher_program_details"
-            android:parentActivityName=".activities.TeacherAttendProgramsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.TeacherAttendProgramsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.TeacherAttendProgramsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.TeacherAttendProgramsActivity" />
         </activity>
         <activity
-            android:name=".activities.AbsenceActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.AbsenceActivity"
             android:label="@string/title_activity_absence"
-            android:parentActivityName=".activities.TeacherProgramDetailsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.TeacherProgramDetailsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.TeacherProgramDetailsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.TeacherProgramDetailsActivity" />
         </activity>
         <activity
-            android:name=".activities.AdminPendingProgramsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.AdminPendingProgramsActivity"
             android:label="@string/title_activity_admin_pending_programs"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.AdminProgramsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.AdminProgramsActivity"
             android:label="@string/title_activity_accepted_programs"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.AdminProgramDetailsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.AdminProgramDetailsActivity"
             android:label="@string/title_activity_admin_program_details"
-            android:parentActivityName=".activities.AdminProgramsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.AdminProgramsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.AdminProgramsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.AdminProgramsActivity" />
         </activity>
         <activity
-            android:name=".activities.TeachersActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TeachersActivity"
             android:label="@string/title_activity_teachers"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.TeacherDetailsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TeacherDetailsActivity"
             android:label="@string/title_activity_teacher_details"
-            android:parentActivityName=".activities.TeachersActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.TeachersActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.TeachersActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.TeachersActivity" />
         </activity>
         <activity
-            android:name=".activities.SendTechnicalTicketActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.SendTechnicalTicketActivity"
             android:label="@string/title_activity_technical_ticket"
-            android:parentActivityName=".activities.TechnicalTicketsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.TechnicalTicketsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.TechnicalTicketsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.TechnicalTicketsActivity" />
         </activity>
         <activity
-            android:name=".activities.SearchActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.SearchActivity"
             android:label="@string/title_activity_search"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.TechnicalTicketsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TechnicalTicketsActivity"
             android:label="@string/title_activity_technical_tickets"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.MessageDetailsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.MessageDetailsActivity"
             android:label="@string/title_activity_technical_tickets"
-            android:parentActivityName=".activities.TechnicalTicketsActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.TechnicalTicketsActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.TechnicalTicketsActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.TechnicalTicketsActivity" />
         </activity>
         <activity
-            android:name=".activities.PreLoginActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.PreLoginActivity"
             android:label="@string/title_activity_pre_login"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.TeacherAttendProgramsActivity"
+            android:name="com.linked_sys.tadreeb_ihssa.activities.TeacherAttendProgramsActivity"
             android:label="@string/title_activity_teacher_attend_programs"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.linked_sys.tadreeb_ihssa.activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.linked_sys.hasatraining.activities.MainActivity" />
+                android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
     </application>
 
