@@ -3,6 +3,8 @@ package com.linked_sys.tadreeb_ihssa.network;
 public class ApiEndPoints {
     //BaseURL
     public static final String BASE_URL = "http://api.hasatadreebm.net";
+    public static final String SEND_FB_TOKEN = "/API/DeviceToken/SetDeviceToken";
+    public static final String REMOVE_FB_TOKEN = "/API/DeviceToken/RemoveToken";
     //Motdareb --> 1
     public static final String STUDENT_SIGNIN_URL = "/API/Motadareb/Login/";
     public static final String STUDENT_PROGRAMS_URL = "/API/Motadareb/AllProgramWithStatus/";

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,10 +23,12 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.heinrichreimersoftware.materialdrawer.DrawerView;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
 import com.linked_sys.tadreeb_ihssa.R;
+import com.linked_sys.tadreeb_ihssa.core.AppController;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.fragments.MainAdminFragment;
 import com.linked_sys.tadreeb_ihssa.fragments.MainStudentFragment;
@@ -35,6 +38,9 @@ import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
 import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 
 import org.json.JSONObject;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     DrawerLayout mDrawerLayout;
@@ -209,26 +215,27 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
-                .setTextPrimary(getString(R.string.action_sign_out))
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        new MaterialDialog.Builder(MainActivity.this)
-                                .title(getResources().getString(R.string.action_sign_out))
-                                .content(getResources().getString(R.string.txt_confirmation))
-                                .positiveText(getResources().getString(R.string.txt_positive_btn))
-                                .negativeText(getResources().getString(R.string.txt_negative_btn))
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        session.logoutUser();
-                                    }
-                                })
-                                .show();
-                    }
-                })
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
+                        .setTextPrimary(getString(R.string.action_sign_out))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+                                new MaterialDialog.Builder(MainActivity.this)
+                                        .title(getResources().getString(R.string.action_sign_out))
+                                        .content(getResources().getString(R.string.txt_confirmation))
+                                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                        .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                            @Override
+                                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                removeFBToken();
+//                                        session.logoutUser();
+                                            }
+                                        })
+                                        .show();
+                            }
+                        })
         );
         mDrawer.addProfile(new DrawerProfile()
                 .setId(1)
@@ -270,26 +277,27 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
-                .setTextPrimary(getString(R.string.action_sign_out))
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        new MaterialDialog.Builder(MainActivity.this)
-                                .title(getResources().getString(R.string.action_sign_out))
-                                .content(getResources().getString(R.string.txt_confirmation))
-                                .positiveText(getResources().getString(R.string.txt_positive_btn))
-                                .negativeText(getResources().getString(R.string.txt_negative_btn))
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        session.logoutUser();
-                                    }
-                                })
-                                .show();
-                    }
-                })
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
+                        .setTextPrimary(getString(R.string.action_sign_out))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+                                new MaterialDialog.Builder(MainActivity.this)
+                                        .title(getResources().getString(R.string.action_sign_out))
+                                        .content(getResources().getString(R.string.txt_confirmation))
+                                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                        .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                            @Override
+                                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                removeFBToken();
+//                                        session.logoutUser();
+                                            }
+                                        })
+                                        .show();
+                            }
+                        })
         );
         mDrawer.addProfile(new DrawerProfile()
                 .setId(1)
@@ -351,26 +359,27 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         );
         mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
-                .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
-                .setTextPrimary(getString(R.string.action_sign_out))
-                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
-                    @Override
-                    public void onClick(DrawerItem drawerItem, long l, int i) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        new MaterialDialog.Builder(MainActivity.this)
-                                .title(getResources().getString(R.string.action_sign_out))
-                                .content(getResources().getString(R.string.txt_confirmation))
-                                .positiveText(getResources().getString(R.string.txt_positive_btn))
-                                .negativeText(getResources().getString(R.string.txt_negative_btn))
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        session.logoutUser();
-                                    }
-                                })
-                                .show();
-                    }
-                })
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.sign_out_icon))
+                        .setTextPrimary(getString(R.string.action_sign_out))
+                        .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                            @Override
+                            public void onClick(DrawerItem drawerItem, long l, int i) {
+                                mDrawerLayout.closeDrawer(GravityCompat.START);
+                                new MaterialDialog.Builder(MainActivity.this)
+                                        .title(getResources().getString(R.string.action_sign_out))
+                                        .content(getResources().getString(R.string.txt_confirmation))
+                                        .positiveText(getResources().getString(R.string.txt_positive_btn))
+                                        .negativeText(getResources().getString(R.string.txt_negative_btn))
+                                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                            @Override
+                                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                removeFBToken();
+//                                        session.logoutUser();
+                                            }
+                                        })
+                                        .show();
+                            }
+                        })
         );
         mDrawer.addProfile(new DrawerProfile()
                 .setId(1)
@@ -456,6 +465,29 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TEACHER_CODE) {
 
+        }
+    }
+
+    private void removeFBToken() {
+        try {
+            Map<String, String> map = new LinkedHashMap<>();
+            map.put("UserID", session.getUserDetails().get(session.KEY_NATIONAL_ID));
+            map.put("Token", FirebaseInstanceId.getInstance().getToken());
+            ApiHelper api = new ApiHelper(this, ApiEndPoints.REMOVE_FB_TOKEN, Request.Method.POST, map, new ApiCallback() {
+                @Override
+                public void onSuccess(Object response) {
+                    session.logoutUser();
+                }
+
+                @Override
+                public void onFailure(VolleyError error) {
+//                    Log.d(AppController.TAG, error.getMessage());
+                    session.logoutUser();
+                }
+            });
+            api.executePostRequest(true);
+        } catch (Exception e) {
+            session.logoutUser();
         }
     }
 }

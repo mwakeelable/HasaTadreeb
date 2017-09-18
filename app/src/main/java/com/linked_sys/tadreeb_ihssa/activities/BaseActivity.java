@@ -6,14 +6,25 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.linked_sys.tadreeb_ihssa.core.AppController;
 import com.linked_sys.tadreeb_ihssa.core.SessionManager;
 import com.linked_sys.tadreeb_ihssa.core.SharedManager;
+import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
+import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
+import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public SessionManager session;
@@ -67,6 +78,30 @@ public abstract class BaseActivity extends AppCompatActivity {
                 View innerView = ((ViewGroup) view).getChildAt(i);
                 setupUI(innerView);
             }
+        }
+    }
+
+    public void sendFBToken(String userID) {
+        try{
+            final String token = FirebaseInstanceId.getInstance().getToken();
+            Map<String, String> map = new LinkedHashMap<>();
+            map.put("UserID", userID);
+            map.put("Token", token);
+
+            ApiHelper api = new ApiHelper(this, ApiEndPoints.SEND_FB_TOKEN, Request.Method.POST, map, new ApiCallback() {
+                @Override
+                public void onSuccess(Object response) {
+                    Log.d(AppController.TAG, (String) response);
+                }
+
+                @Override
+                public void onFailure(VolleyError error) {
+//                    Log.d(AppController.TAG, error.getMessage());
+                }
+            });
+            api.executePostRequest(false);
+        }catch (Exception e){
+            Log.e("Error",e.getMessage());
         }
     }
 }

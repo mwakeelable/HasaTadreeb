@@ -181,6 +181,7 @@ public class SignInActivity extends BaseActivity {
                             "",
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
+                    sendFBToken(userObj.optString(nationalID));
                     openActivity(MainActivity.class);
                 }
             }
@@ -229,6 +230,7 @@ public class SignInActivity extends BaseActivity {
                             userObj.optString("school_ID"),
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
+                    sendFBToken(userObj.optString(nationalID));
                     openActivity(MainActivity.class);
                 }
             }
@@ -277,6 +279,7 @@ public class SignInActivity extends BaseActivity {
                             userObj.optString("school_ID"),
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
+                    sendFBToken(userObj.optString(nationalID));
                     openActivity(MainActivity.class);
                 }
             }
