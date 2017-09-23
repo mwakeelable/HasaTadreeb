@@ -21,6 +21,7 @@ public class ApiEndPoints {
     public static final String SUBMIT_REGISTER = "/API/Motadareb/Register/";
     public static final String GET_PROGRAM_DATA_BY_REF_ID = "/API/Motadareb/GetProgramdataByRefId/";
     public static final String STUDENT_CERTIFICATE_URL = "//API/Motadareb/URLCertificate";
+    public static final String DOWNLOAD_STUDENT_CERTIFICATE = "/API/Motadareb/DownloadCertificate";
     //Modareb --> 1
     public static final String TEACHER_SIGNIN_URL = "/API/Modareb/Login/";
     public static final String TEACHER_PROGRAMS_URL = "/API/Modareb/AllPrograms/";
@@ -33,6 +34,7 @@ public class ApiEndPoints {
     public static final String CHECK_ATTENDANCE = "/API/Modareb/RecordAttendanceFinish/";
     public static final String PRINT_TEACHER_CERTIFICATE = "/API/Modareb/PrintCertificate/";
     public static final String TEACHER_CERTIFICATE_URL = "/API/Modareb/URLCertificate";
+    public static final String DOWNLOAD_TEACHER_CERTIFICATE = "/API/Modareb/DownloadCertificate";
     //Monaseq --> 2
     public static final String ADMIN_SIGNIN_URL = "/API/Admin/Login/";
     public static final String ADMIN_PENDING_PROGRAMS_URL = "/API/Admin/PendingPrograms/";
@@ -46,5 +48,8 @@ public class ApiEndPoints {
     public static final String ADMIN_TECH_TICKET_COUNT = "/API/Admin/SupportMessageCount/";
     public static final String SEARCH_TEACHERS = "/API/Admin/SearchTeacherPrograms/";
     public static final String GET_USER_MESSAGES = "/API/Admin/SupportMessageList/";
+
+    public static final String downloadDirectory = "Certificates";
+    public static final String mainUrl = "http://api.hasatadreebm.net/Downloads/";
 }
 
