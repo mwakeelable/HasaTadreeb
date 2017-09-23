@@ -1,18 +1,16 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
@@ -23,6 +21,7 @@ import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
 import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
 import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 import com.linked_sys.tadreeb_ihssa.network.DownloadTask;
+import com.novoda.simplechromecustomtabs.SimpleChromeCustomTabs;
 
 import org.json.JSONObject;
 
@@ -32,6 +31,7 @@ public class ProgramDetailsActivity extends BaseActivity {
     boolean print, rate, comeFromRate;
     CardView btnPrint, btnRate;
     static final int REQUEST_RATE_CODE = 0;
+    public static String CHROME_PACKAGE_NAME = "com.android.chrome";
     String rateString;
 
     @Override
@@ -64,7 +64,7 @@ public class ProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    printCertificate();
+                printCertificate();
             }
         });
 
@@ -162,11 +162,18 @@ public class ProgramDetailsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        SimpleChromeCustomTabs.getInstance().connectTo(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             comeFromRate = bundle.getBoolean("comeFromRate");
             regRef = bundle.getString("REGREF");
             getProgramData();
         }
+    }
+
+    @Override
+    public void onPause() {
+        SimpleChromeCustomTabs.getInstance().disconnectFrom(this);
+        super.onPause();
     }
 }

@@ -1,14 +1,19 @@
 package com.linked_sys.tadreeb_ihssa.network;
 
-import android.content.ActivityNotFoundException;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.linked_sys.tadreeb_ihssa.R;
+import com.linked_sys.tadreeb_ihssa.activities.ProgramDetailsActivity;
 import com.linked_sys.tadreeb_ihssa.components.SpinnerDialog;
 
 import java.io.File;
@@ -23,6 +28,8 @@ public class DownloadTask {
     private String downloadUrl = "", downloadFileName = "";
     SpinnerDialog spinnerDialog;
     File apkStorage = null;
+    File outputFile = null;
+    public static final int UPDATE_PROGRESS = 8344;
 
     public DownloadTask(Context context, String downloadUrl) {
         this.context = context;
@@ -35,8 +42,6 @@ public class DownloadTask {
     }
 
     private class DownloadingTask extends AsyncTask<Void, Void, Void> {
-        File outputFile = null;
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -48,19 +53,14 @@ public class DownloadTask {
             try {
                 if (outputFile != null) {
                     spinnerDialog.hide();
-                    Uri path = Uri.fromFile(outputFile);
-                    Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                    pdfIntent.setDataAndType(path, "application/pdf");
-                    pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    try{
-                        context.startActivity(pdfIntent);
-                    }catch(ActivityNotFoundException e){
-                        Toast.makeText(context, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    spinnerDialog.hide();
-                    Log.e(TAG, "Download Failed");
-
+                    Uri uri = Uri.parse(downloadUrl);
+                    CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+                    intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                    intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                    intentBuilder.setStartAnimations(context, R.anim.fab_slide_out_to_right, R.anim.fab_slide_out_to_left);
+                    intentBuilder.setExitAnimations(context, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                    CustomTabsIntent customTabsIntent = intentBuilder.build();
+                    customTabsIntent.launchUrl(context, uri);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

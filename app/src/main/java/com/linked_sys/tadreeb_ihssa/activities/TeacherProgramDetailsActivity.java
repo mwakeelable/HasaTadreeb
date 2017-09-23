@@ -12,12 +12,19 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.linked_sys.tadreeb_ihssa.R;
 import com.linked_sys.tadreeb_ihssa.core.AppController;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.models.FileStream;
+import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
 import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
+import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
+import com.linked_sys.tadreeb_ihssa.network.DownloadTask;
 import com.linked_sys.tadreeb_ihssa.network.DownloadTeacherCertificate;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -85,34 +92,30 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = ApiEndPoints.BASE_URL + ApiEndPoints.TEACHER_CERTIFICATE_URL + "?ProgREF=" + txtProgramRef.getText().toString();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
-
-//                String url = ApiEndPoints.PRINT_TEACHER_CERTIFICATE + "?ProgREF=" + txtProgramID.getText().toString() ;
-//                ApiHelper api = new ApiHelper(TeacherProgramDetailsActivity.this, url, Request.Method.GET, new ApiCallback() {
-//                    @Override
-//                    public void onSuccess(Object response) {
-//                        JSONObject res = (JSONObject) response;
-//                        JSONObject obj = res.optJSONObject("con");
-//                        JSONObject file = obj.optJSONObject("FileStream");
-//                        try {
-//                            InputStream in = IOUtils.toInputStream(file.optString("_buffer"), "UTF-8");
-//                            boolean success = writeResponseBodyToDisk(in, obj.optString("FileDownloadName"));
-//                            Toast.makeText(TeacherProgramDetailsActivity.this, "Download was Successful: " + success, Toast.LENGTH_SHORT).show();
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(VolleyError error) {
-//                        Toast.makeText(TeacherProgramDetailsActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                api.executeRequest(true, false);
+//                String url = ApiEndPoints.BASE_URL + ApiEndPoints.TEACHER_CERTIFICATE_URL + "?ProgREF=" + txtProgramRef.getText().toString();
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//                startActivity(browserIntent);
+                printCertificate();
             }
         });
+    }
+
+    private void printCertificate() {
+        final String printCertificateURL = ApiEndPoints.DOWNLOAD_TEACHER_CERTIFICATE + "?RegREF=" + txtProgramRef.getText().toString();
+        ApiHelper api = new ApiHelper(this, printCertificateURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                String url = res.optString("con");
+                new DownloadTask(TeacherProgramDetailsActivity.this, url);
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d(AppController.TAG, "Something went wrong!");
+            }
+        });
+        api.executeRequest(false, false);
     }
 
     private void getProgramDetails() {
@@ -158,65 +161,6 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
                 btnPrint.setVisibility(View.GONE);
                 btnAbsence.setVisibility(View.GONE);
             }
-        }
-    }
-
-    private void downloadCertificate(final String name, final InputStream inputStream) {
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(ApiEndPoints.BASE_URL);
-        builder.addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
-        DownloadTeacherCertificate downloadTeacherCertificate = retrofit.create(DownloadTeacherCertificate.class);
-        Call<FileStream> call = downloadTeacherCertificate.getTeacherCertificate(txtProgramRef.getText().toString());
-        call.enqueue(new Callback<FileStream>() {
-            @Override
-            public void onResponse(Call<FileStream> call, Response<FileStream> response) {
-                InputStream stream = null;
-                stream = inputStream;
-                boolean success = writeResponseBodyToDisk(stream, name);
-                Toast.makeText(TeacherProgramDetailsActivity.this, "Download was Successful:" + success, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<FileStream> call, Throwable t) {
-                Toast.makeText(TeacherProgramDetailsActivity.this, "No :(", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private boolean writeResponseBodyToDisk(InputStream stream, String name) {
-        try {
-            // todo change the file location/name according to your needs
-            File certificateFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), name);
-            InputStream inputStream = null;
-            OutputStream outputStream = null;
-            try {
-                byte[] fileReader = new byte[4096];
-                long fileSizeDownloaded = 0;
-                inputStream = stream;
-                outputStream = new FileOutputStream(certificateFile);
-                while (true) {
-                    int read = inputStream.read(fileReader);
-                    if (read == -1) {
-                        break;
-                    }
-                    outputStream.write(fileReader, 0, read);
-                    fileSizeDownloaded += read;
-                }
-                Log.d(AppController.TAG, "file download: " + fileSizeDownloaded);
-                outputStream.flush();
-                return true;
-            } catch (IOException e) {
-                return false;
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (outputStream != null) {
-                    outputStream.close();
-                }
-            }
-        } catch (IOException e) {
-            return false;
         }
     }
 
