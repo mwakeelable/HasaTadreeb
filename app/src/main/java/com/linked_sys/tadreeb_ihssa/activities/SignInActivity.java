@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.linked_sys.tadreeb_ihssa.R;
 import com.linked_sys.tadreeb_ihssa.components.SpinnerDialog;
 import com.linked_sys.tadreeb_ihssa.core.AppController;
@@ -182,6 +183,8 @@ public class SignInActivity extends BaseActivity {
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
                     sendFBToken(userObj.optString(nationalID));
+                    FirebaseMessaging.getInstance().subscribeToTopic("All");
+                    FirebaseMessaging.getInstance().subscribeToTopic("Modareb");
                     openActivity(MainActivity.class);
                 }
             }
@@ -231,6 +234,8 @@ public class SignInActivity extends BaseActivity {
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
                     sendFBToken(userObj.optString(nationalID));
+                    FirebaseMessaging.getInstance().subscribeToTopic("All");
+                    FirebaseMessaging.getInstance().subscribeToTopic("Motdareb");
                     openActivity(MainActivity.class);
                 }
             }
@@ -280,6 +285,8 @@ public class SignInActivity extends BaseActivity {
                             userObj.optString("AllProgCount"),
                             userObj.optString("CertificateProgCount"));
                     sendFBToken(userObj.optString(nationalID));
+                    FirebaseMessaging.getInstance().subscribeToTopic("All");
+                    FirebaseMessaging.getInstance().subscribeToTopic("Monaseq");
                     openActivity(MainActivity.class);
                 }
             }
