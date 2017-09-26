@@ -179,6 +179,18 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createStudentNavMenu() {
         mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.program_register_icon))
+                .setTextPrimary("الرسـائل")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(MailActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                 .setTextPrimary("البرامج الحالية")
                 .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
@@ -248,6 +260,18 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     private void createTeacherNavMenu() {
         mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.program_register_icon))
+                .setTextPrimary("الرسـائل")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(MailActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
+        mDrawer.addItem(new DrawerItem()
                         .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                         .setTextPrimary("البرامج الحـالية")
                         .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
@@ -308,6 +332,18 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     }
 
     private void createAdminNavMenu() {
+        mDrawer.addItem(new DrawerItem()
+                .setImage(ContextCompat.getDrawable(this, R.drawable.program_register_icon))
+                .setTextPrimary("الرسـائل")
+                .setOnItemClickListener(new DrawerItem.OnItemClickListener() {
+                    @Override
+                    public void onClick(DrawerItem drawerItem, long l, int i) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        openActivity(MailActivity.class);
+                    }
+                })
+        );
+        mDrawer.addDivider();
         mDrawer.addItem(new DrawerItem()
                 .setImage(ContextCompat.getDrawable(this, R.drawable.current_programs_icon))
                 .setTextPrimary("قائمة طلبات المعلمين المعلقة")

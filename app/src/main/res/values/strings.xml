@@ -142,5 +142,7 @@
     <string name="title_activity_technical_tickets">تذكرة الدعم الفني</string>
     <string name="title_activity_pre_login">PreLoginActivity</string>
     <string name="title_activity_teacher_attend_programs">البرامج الحالية</string>
+    <string name="title_activity_messages">الرسـائل</string>
+    <string name="title_activity_message_body">تفاصيل الرسالة</string>
 
 </resources>

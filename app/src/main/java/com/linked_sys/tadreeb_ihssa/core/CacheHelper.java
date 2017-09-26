@@ -1,5 +1,6 @@
 package com.linked_sys.tadreeb_ihssa.core;
 
+import com.linked_sys.tadreeb_ihssa.models.Mail;
 import com.linked_sys.tadreeb_ihssa.models.Message;
 import com.linked_sys.tadreeb_ihssa.models.Periods;
 import com.linked_sys.tadreeb_ihssa.models.Program;
@@ -47,4 +48,5 @@ public class CacheHelper {
     public ArrayList<Program> filteredList;
     public ArrayList<TeacherProgram> doneFilteredList;
     public ArrayList<TeacherProgram> attendFilteredList;
+    public Mail body;
 }
