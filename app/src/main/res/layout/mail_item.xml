@@ -22,16 +22,16 @@
             android:layout_width="@dimen/icon_width_height"
             android:layout_height="@dimen/icon_width_height">
 
-            <ImageView
-                android:layout_width="@dimen/icon_width_height"
-                android:layout_height="@dimen/icon_width_height"
-                android:src="@drawable/bg_circle" />
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/icon_width_height"-->
+                <!--android:layout_height="@dimen/icon_width_height"-->
+                <!--android:src="@drawable/bg_circle" />-->
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_done_white_24dp" />
+                android:src="@drawable/avatar_placeholder" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -124,7 +124,8 @@
             android:lines="1"
             android:text="Message Body"
             android:textColor="@color/message"
-            android:textSize="@dimen/msg_text_secondary" />
+            android:textSize="@dimen/msg_text_secondary"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 </RelativeLayout>

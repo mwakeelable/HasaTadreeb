@@ -111,7 +111,7 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                         for (int i = 0; i < mailArray.length(); i++) {
                             JSONObject mailData = mailArray.optJSONObject(i);
                             Mail message = new Mail();
-                            message.setBody(mailData.optString( "Id"));
+                            message.setId(mailData.optString( "Id"));
                             message.setTitle(mailData.optString("Title"));
                             message.setBody(mailData.optString("Body"));
                             message.setIsRead(mailData.optString("Read"));

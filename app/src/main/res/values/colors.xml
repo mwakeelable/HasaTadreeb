@@ -49,4 +49,5 @@
     <color name="icon_tint_selected">#fed776</color>
     <color name="row_activated">#e0e0e0</color>
     <color name="bg_circle_default">#666666</color>
+    <color name="grey_800">#424242</color>
 </resources>
