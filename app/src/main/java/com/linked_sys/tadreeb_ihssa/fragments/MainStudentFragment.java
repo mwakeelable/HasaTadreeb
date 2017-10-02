@@ -16,7 +16,6 @@ import com.linked_sys.tadreeb_ihssa.activities.StudentCoursesActivity;
 
 public class MainStudentFragment extends Fragment {
     MainActivity activity;
-    public TextView txtProgCount, txtCertificatesCount;
 
     @Nullable
     @Override
@@ -27,21 +26,19 @@ public class MainStudentFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        txtProgCount = (TextView) view.findViewById(R.id.txtProgramsCount);
-        txtCertificatesCount = (TextView) view.findViewById(R.id.txtCertificatesCount);
-        view.findViewById(R.id.btnDonePrograms).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnFinished).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.openActivity(StudentCertificatesActivity.class);
             }
         });
-        view.findViewById(R.id.btnCurrentPrograms).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnRecent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.openActivity(StudentCoursesActivity.class);
             }
         });
-        view.findViewById(R.id.btnRegisterInProgram).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.openActivity(RegisterProgramActivity.class);

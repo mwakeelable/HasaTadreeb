@@ -455,7 +455,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             @Override
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
-                FRAGMENT_STUDENT_MAIN.txtCertificatesCount.setText(res.optString("ret"));
+//                FRAGMENT_STUDENT_MAIN.txtCertificatesCount.setText(res.optString("ret"));
             }
 
             @Override
@@ -473,7 +473,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             @Override
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
-                FRAGMENT_STUDENT_MAIN.txtProgCount.setText(res.optString("ret"));
+//                FRAGMENT_STUDENT_MAIN.txtProgCount.setText(res.optString("ret"));
             }
 
             @Override
