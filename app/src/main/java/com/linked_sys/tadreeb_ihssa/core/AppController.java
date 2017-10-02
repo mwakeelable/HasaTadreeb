@@ -14,6 +14,7 @@ import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.util.Locale;
 
+import in.myinnos.customfontlibrary.TypefaceUtil;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppController extends MultiDexApplication {
@@ -30,11 +31,13 @@ public class AppController extends MultiDexApplication {
         super.onCreate();
         mInstance = this;
         // Load fonts
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/hacen.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
+        String customFont = "DINNextLTArabic-Light.ttf";
+        CalligraphyConfig.initDefault(
+                new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/" + customFont)
+                        .build()
         );
+//        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/DINNextLTArabic-Light.ttf");
         CookieHandler.setDefault(new CookieManager());
         SharedManager prefs = new SharedManager();
         String appLanguage = prefs.getLanguage(this);

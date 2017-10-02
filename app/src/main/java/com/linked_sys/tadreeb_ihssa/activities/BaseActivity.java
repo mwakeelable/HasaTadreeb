@@ -2,6 +2,7 @@ package com.linked_sys.tadreeb_ihssa.activities;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,9 +27,16 @@ import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public abstract class BaseActivity extends AppCompatActivity {
     public SessionManager session;
     SharedManager manager;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

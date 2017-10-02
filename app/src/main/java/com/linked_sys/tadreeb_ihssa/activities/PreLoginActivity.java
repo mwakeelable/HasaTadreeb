@@ -8,15 +8,16 @@ import android.widget.LinearLayout;
 import com.linked_sys.tadreeb_ihssa.R;
 
 public class PreLoginActivity extends BaseActivity {
-    LinearLayout btnAdminLogin, btnStudentLogin, btnTeacherLogin;
+    LinearLayout btnAdminLogin, btnStudentLogin, btnTeacherLogin,preLoginLogo;
     Intent loginIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        btnAdminLogin = (LinearLayout) findViewById(R.id.btnAdminLogin);
-        btnStudentLogin = (LinearLayout) findViewById(R.id.btnStudentLogin);
-        btnTeacherLogin = (LinearLayout) findViewById(R.id.btnTeacherLogin);
+        btnAdminLogin = (LinearLayout) findViewById(R.id.btnAdminLoginContainer);
+        btnStudentLogin = (LinearLayout) findViewById(R.id.btnStudentLoginContainer);
+        btnTeacherLogin = (LinearLayout) findViewById(R.id.btnTeacherLoginContainer);
+        preLoginLogo = (LinearLayout) findViewById(R.id.preLoginLogo);
 
         btnAdminLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,13 @@ public class PreLoginActivity extends BaseActivity {
                 loginIntent = new Intent(PreLoginActivity.this, SignInActivity.class);
                 loginIntent.putExtra("userType", 0);
                 startActivity(loginIntent);
+            }
+        });
+
+        preLoginLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
