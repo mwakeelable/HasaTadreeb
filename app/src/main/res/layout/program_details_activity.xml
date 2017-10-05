@@ -5,30 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.ProgramDetailsActivity"
-    >
+    tools:context=".activities.ProgramDetailsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-        <View
-            android:id="@+id/toolbar_shadow"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/toolbar_dropshadow" />
+        <include layout="@layout/design_toolbar_general" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/program_details_content"/>
+    <include layout="@layout/program_details_content" />
 
 
 </android.support.design.widget.CoordinatorLayout>

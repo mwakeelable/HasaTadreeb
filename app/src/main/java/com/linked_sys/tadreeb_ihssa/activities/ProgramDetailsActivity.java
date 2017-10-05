@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -33,18 +34,30 @@ public class ProgramDetailsActivity extends BaseActivity {
     static final int REQUEST_RATE_CODE = 0;
     public static String CHROME_PACKAGE_NAME = "com.android.chrome";
     String rateString;
+    ImageView backBTN;
+    TextView titleTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        View shadow = findViewById(R.id.toolbar_shadow);
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            shadow.setVisibility(View.VISIBLE);
-        else
-            shadow.setVisibility(View.GONE);
+//        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(mToolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        View shadow = findViewById(R.id.toolbar_shadow);
+//        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+//            shadow.setVisibility(View.VISIBLE);
+//        else
+//            shadow.setVisibility(View.GONE);
+        backBTN = (ImageView) findViewById(R.id.backImgView);
+        titleTXT = (TextView) findViewById(R.id.titleTxt);
+        backBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        titleTXT.setText("تفاصيل البرنامج");
         txtProgramID = (TextView) findViewById(R.id.txt_program_id);
         txtProgramName = (TextView) findViewById(R.id.txt_program_name);
         txtProgramDate = (TextView) findViewById(R.id.txt_program_date);
@@ -142,7 +155,7 @@ public class ProgramDetailsActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         if (comeFromRate) {
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);

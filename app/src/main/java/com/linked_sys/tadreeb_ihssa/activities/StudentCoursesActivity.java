@@ -95,7 +95,7 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     @Override

@@ -167,7 +167,7 @@ public class RegisterProgramActivity extends BaseActivity {
     public void onBackPressed() {
         if (finish){
             finish();
-            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }else if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
             firstStep.setVisibility(View.VISIBLE);
             secondStep.setVisibility(View.GONE);
@@ -191,10 +191,10 @@ public class RegisterProgramActivity extends BaseActivity {
             getSupportFragmentManager().popBackStack();
         } else if (FRAGMENT_STEP_FOUR != null && FRAGMENT_STEP_FOUR.isVisible()) {
             finish();
-            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         } else {
             super.onBackPressed();
-            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+//            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }
     }
 
