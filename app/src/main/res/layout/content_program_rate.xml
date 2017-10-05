@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.ProgramRateActivity"
@@ -17,31 +18,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#F8F8F8"
             android:orientation="vertical"
             android:padding="10dp">
 
+            <!--first category-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/White"
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <!--first category-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="أولاً المحتوى التدريبي"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <View
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2.5dp"
-                    android:background="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_button">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="20dp"
+                        android:text="اولا المحتوي التدريبي"
+                        android:textColor="#ff8e8e8e"
+                        android:textSize="15.95sp" />
+
+                </RelativeLayout>
+
+                <!--1.1-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -54,8 +59,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="1-1 مناسبة المادة التدريبية لاحتياج المتدربين"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum1"
@@ -71,32 +76,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--1.2-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -109,8 +119,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="1-2 تحقيق المحتوى التدريبي لأهداف البرنامج"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum2"
@@ -126,34 +136,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
 
-
                 </RelativeLayout>
 
+                <!--1.3-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -166,8 +180,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="1-3 تنوع الأنشطة التدريبية"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum3"
@@ -183,33 +197,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
 
                 </RelativeLayout>
 
+                <!--1.4-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -222,8 +241,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="1-4 قابلية المحتوى المهاري للتطبيق العلمي"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum4"
@@ -239,33 +258,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
 
                 </RelativeLayout>
 
+                <!--1.5-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -278,8 +302,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="1-5 بناء المحتوى التدريبي وتسلسله"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum5"
@@ -295,28 +319,32 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
 
@@ -325,29 +353,32 @@
 
             </LinearLayout>
 
+            <!--second category-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@color/White"
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <!--second category-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ثانياً تقييم المدرب"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <View
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2.5dp"
-                    android:background="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_button">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="20dp"
+                        android:text="ثانيا تقييم المدرب"
+                        android:textColor="#ff8e8e8e"
+                        android:textSize="15.95sp" />
+
+                </RelativeLayout>
+
+                <!--2.1-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -360,8 +391,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="2-1 التزام المدرب بموضوعات البرنامج وأهدافه"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum6"
@@ -377,33 +408,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
 
                 </RelativeLayout>
 
+                <!--2.2-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -416,8 +452,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="2-2 كفاءة المدرب في التدريب على مهارات"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum7"
@@ -433,32 +469,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--2.3-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -471,8 +512,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="2-3 علاقة المدرب مع المتدربين"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum8"
@@ -488,32 +529,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--2.4-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -526,8 +572,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="2-4 تمكن المدرب وخبراته في البرنامج التدريبي"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum9"
@@ -543,32 +589,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--2.5-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -581,8 +632,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="2-5 التخطيط والاستعداد المسبق للبرنامج"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum10"
@@ -598,57 +649,64 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
             </LinearLayout>
 
+            <!--third category-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@color/White"
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <!--third category-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ثالثاً تقييم القاعة"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <View
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2.5dp"
-                    android:background="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_button">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="20dp"
+                        android:text="ثالثاً تقييم القاعة"
+                        android:textColor="#ff8e8e8e"
+                        android:textSize="15.95sp" />
+
+                </RelativeLayout>
+
+                <!--3.1-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -661,8 +719,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="3-1 قاعة التدريب وملامتها للمتدربين"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum11"
@@ -678,32 +736,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--3.2-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -716,8 +779,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="3-2 وقت البرنامج والالتزام به"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum12"
@@ -733,32 +796,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--3.3-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -771,8 +839,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="3-3 كفاءة وسائل وتقنيات التدريب"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum13"
@@ -788,32 +856,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
 
+                <!--3.4-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -826,8 +899,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="6dp"
                         android:text="3-4 توفير التجهيزات المكتبية"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textColor="#ffa4a6b5"
+                        android:textSize="14.5sp" />
 
                     <RadioGroup
                         android:id="@+id/radioNum14"
@@ -843,28 +916,32 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ممتاز"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioVeryGoodNum14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد جدا"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioGoodNum14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="جيد"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                         <RadioButton
                             android:id="@+id/radioPassNum14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مقبول"
-                            android:textSize="12sp" />
+                            android:textColor="#ff4eb4d0"
+                            android:textSize="14.5sp" />
 
                     </RadioGroup>
                 </RelativeLayout>
@@ -876,11 +953,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -894,8 +971,8 @@
                         android:layout_height="wrap_content"
                         android:text="اعتماد التقييم"
                         android:textColor="@color/White"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
+                        android:textSize="18.85sp"
+                        android:layout_marginBottom="10dp"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

@@ -74,7 +74,6 @@
                 android:inputType="numberPassword"
                 android:maxLines="1"
                 android:padding="10dp"
-                android:textAlignment="textEnd"
                 android:textColorHint="#A4A6B5"
                 android:textSize="18.85sp" />
 

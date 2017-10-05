@@ -9,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -41,16 +43,27 @@ public class ProgramRateActivity extends BaseActivity {
     RadioButton num14Exc, num14VGood, num14Good, num14Pass;
     CardView btnSubmitRate;
     ActionBar mActionBar;
+    ImageView backBTN;
+    TextView titleTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
+//        mActionBar = getSupportActionBar();
+//        mActionBar.setDisplayHomeAsUpEnabled(true);
         btnSubmitRate = (CardView) findViewById(R.id.btnSubmitRate);
+        backBTN = (ImageView) findViewById(R.id.backImgView);
+        titleTXT = (TextView) findViewById(R.id.titleTxt);
+        backBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        titleTXT.setText("تقييم البرنامج");
         defineRadioButtons();
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             regREF = bundle.getString("regRef");
@@ -83,6 +96,7 @@ public class ProgramRateActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void defineRadioButtons() {
         num1Exc = (RadioButton) findViewById(R.id.radioExcNum1);
         num1VGood = (RadioButton) findViewById(R.id.radioVeryGoodNum1);

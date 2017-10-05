@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.linked_sys.tadreeb_ihssa.R;
 import com.linked_sys.tadreeb_ihssa.fragments.UserProgramsFragment;
@@ -21,6 +23,8 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     public FrameLayout mFrameLayout;
     UserProgramsFragment FRAGMENT_USER_PROGRAMS;
     public static final int REQUEST_RATE_CODE = 0;
+    ImageView backIMG;
+    TextView titleTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +32,22 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.nav_my_courses));
+//        backIMG = (ImageView) findViewById(R.id.backImgView);
+//        titleTXT = (TextView) findViewById(R.id.titleTxt);
+//        backIMG.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onBackPressed();
+//            }
+//        });
+//
+//        titleTXT.setText(getResources().getString(R.string.nav_my_courses));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        View shadow = findViewById(R.id.toolbar_shadow);
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            shadow.setVisibility(View.VISIBLE);
-        else
-            shadow.setVisibility(View.GONE);
+//        View shadow = findViewById(R.id.toolbar_shadow);
+//        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+//            shadow.setVisibility(View.VISIBLE);
+//        else
+//            shadow.setVisibility(View.GONE);
         mFrameLayout = (FrameLayout) findViewById(R.id.containerView);
         FRAGMENT_USER_PROGRAMS = new UserProgramsFragment();
         drawUsersProgramsFragment();

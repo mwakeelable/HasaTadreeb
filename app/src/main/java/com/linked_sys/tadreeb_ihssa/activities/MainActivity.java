@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     MainAdminFragment FRAGMENT_ADMIN_MAIN;
     public static final int REQUEST_TEACHER_CODE = 0;
     ImageView btnMenu;
+    TextView headerTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +63,19 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawer = (DrawerView) findViewById(R.id.drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        setSupportActionBar(mToolbar);
-        mActionBar = getSupportActionBar();
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_36dp);
+        btnMenu = (ImageView) findViewById(R.id.menuImgView);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        headerTXT = (TextView) findViewById(R.id.mainHeaderTxt);
+
+//        setSupportActionBar(mToolbar);
+//        mActionBar = getSupportActionBar();
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_36dp);
 //        btnMenu = (ImageView) findViewById(R.id.btn_menu);
 //        btnMenu.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -72,7 +83,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 //                mDrawerLayout.openDrawer(GravityCompat.END);
 //            }
 //        });
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+//        mActionBar.setDisplayHomeAsUpEnabled(true);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -98,16 +109,19 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             createTeacherNavMenu();
             FRAGMENT_TEACHER_MAIN = new MainTeacherFragment();
             drawFragment(FRAGMENT_TEACHER_MAIN);
+            headerTXT.setText("المدرب");
         } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
             //Student
             createStudentNavMenu();
             FRAGMENT_STUDENT_MAIN = new MainStudentFragment();
             drawFragment(FRAGMENT_STUDENT_MAIN);
+            headerTXT.setText("المتدرب");
         } else if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("2")) {
             //Admin
             createAdminNavMenu();
             FRAGMENT_ADMIN_MAIN = new MainAdminFragment();
             drawFragment(FRAGMENT_ADMIN_MAIN);
+            headerTXT.setText("منسق التدريب");
         }
     }
 
