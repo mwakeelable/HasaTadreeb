@@ -7,6 +7,7 @@ public class ApiEndPoints {
     public static final String REMOVE_FB_TOKEN = "/API/DeviceToken/RemoveToken";
     public static final String GET_INBOX = "/API/Message/GetAllMessages";
     public static final String GET_MESSAGE = "/API/Message/ViewMessage";
+    public static final String GET_MESSAGE_COUNT = "/API/Message/CountUnreadMessage";
 
     //Motdareb --> 1
     public static final String STUDENT_SIGNIN_URL = "/API/Motadareb/Login/";

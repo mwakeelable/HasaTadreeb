@@ -112,4 +112,27 @@ public abstract class BaseActivity extends AppCompatActivity {
             Log.e("Error",e.getMessage());
         }
     }
+
+    public void removeFBToken() {
+        try {
+            Map<String, String> map = new LinkedHashMap<>();
+            map.put("UserID", session.getUserDetails().get(session.KEY_NATIONAL_ID));
+            map.put("Token", FirebaseInstanceId.getInstance().getToken());
+            ApiHelper api = new ApiHelper(this, ApiEndPoints.REMOVE_FB_TOKEN, Request.Method.POST, map, new ApiCallback() {
+                @Override
+                public void onSuccess(Object response) {
+                    session.logoutUser();
+                }
+
+                @Override
+                public void onFailure(VolleyError error) {
+//                    Log.d(AppController.TAG, error.getMessage());
+                    session.logoutUser();
+                }
+            });
+            api.executePostRequest(true);
+        } catch (Exception e) {
+            session.logoutUser();
+        }
+    }
 }

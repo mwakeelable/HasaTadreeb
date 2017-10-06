@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F8F8F8"
+        android:background="#fff8f8f8"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
         app:layout_scrollFlags="scroll|enterAlways"
@@ -19,29 +19,39 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/menuImgView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
                 android:layout_margin="5dp"
-                android:padding="5dp"
-                android:src="@drawable/menu_img" />
+                android:background="@drawable/menu_img"
+                android:gravity="center">
 
-            <TextView
-                android:id="@+id/mainHeaderTxt"
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/user" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:textColor="#ff3596b1"
-                android:textSize="18.85sp"
-                android:visibility="visible"
-                android:layout_marginBottom="10dp"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mainHeaderTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/steelblue"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
         </RelativeLayout>
-
 
     </android.support.v7.widget.Toolbar>
 </android.support.design.widget.AppBarLayout>

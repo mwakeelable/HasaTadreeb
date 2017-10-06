@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff8f8f8"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.linked_sys.tadreeb_ihssa.activities.ProfileActivity"
+    tools:showIn="@layout/activity_profile">
+
+    <LinearLayout
+        android:layout_width="89.28dp"
+        android:layout_height="89.28dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_img"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/userImg"
+            android:layout_width="34.33dp"
+            android:layout_height="33.0dp"
+            android:src="@drawable/user" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/userNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="10.43dp"
+        android:textAlignment="center"
+        android:textColor="#FF8E8E8E"
+        android:textSize="15.94sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/white_button"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/messagesBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:text="الرسائل"
+                android:textColor="#4EB4D0"
+                android:textSize="15.94sp" />
+
+            <LinearLayout
+                android:layout_width="29.86dp"
+                android:layout_height="20.87dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/login_btn"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/messagesCountTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-3dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/line_vd" />
+
+        <RelativeLayout
+            android:id="@+id/signOutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:text="تسجيل الخروج"
+                android:textColor="#4EB4D0"
+                android:textSize="15.94sp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
