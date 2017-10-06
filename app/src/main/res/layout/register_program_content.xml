@@ -13,34 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/White">
+        android:background="#fff8f8f8">
 
         <!--First Step-->
         <android.support.v7.widget.CardView
             android:id="@+id/firstStepContainer"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:visibility="gone"
-            app:cardCornerRadius="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
             app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:id="@+id/btnAcceptLicence"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btnRegisterFirstStep"
+                    android:layout_marginBottom="5dp"
+                    android:text="التحقق من البيانات"
                     android:textColor="@color/White"
-                    android:textSize="18sp" />
+                    android:textSize="18.85sp" />
 
             </LinearLayout>
 
@@ -50,49 +51,48 @@
         <android.support.v7.widget.CardView
             android:id="@+id/secondStepContainer"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:visibility="gone"
             app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true"
-            android:background="@drawable/custom_button_view"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            app:cardUseCompatPadding="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/custom_button_view">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnValidData"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="43.86dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="@android:color/transparent"
-                    android:text="@string/btnValidData"
+                    android:background="@drawable/rectangle_2_vd"
+                    android:text="البيانات سليمة"
                     android:textColor="@color/White"
-                    android:textSize="13sp" />
+                    android:textSize="15.95sp" />
 
                 <Button
                     android:id="@+id/btnInvalidData"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="43.86dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/rectangle_1_vd"
                     android:text="@string/btnInvalidData"
                     android:textColor="@color/White"
-                    android:textSize="13sp" />
+                    android:textSize="15.95sp" />
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -101,29 +101,39 @@
         <android.support.v7.widget.CardView
             android:id="@+id/thirdStepContainer"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:visibility="gone"
-            app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true"
+            android:layout_height="52dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
+            android:visibility="visible"
             app:cardBackgroundColor="@color/grey_700"
-            android:layout_marginEnd="10dp">
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
+                android:id="@+id/btnSubmitRegister"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnSubmitRegister"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@android:color/transparent"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/btnSubmitRegister"
                     android:textColor="@color/White"
-                    android:textSize="18sp" />
+                    android:textSize="18.85sp" />
+
+                <!--<Button-->
+                <!--android:id="@+id/btnSubmitRegister"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:text="@string/btnSubmitRegister"-->
+                <!--android:textColor="@color/White"-->
+                <!--android:textSize="18sp" />-->
 
 
             </LinearLayout>
@@ -134,11 +144,11 @@
             android:id="@+id/chooseProgramStepContainer"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:visibility="gone"
-            app:cardCornerRadius="10dp"
-            android:layout_marginStart="10dp"
-            app:cardBackgroundColor="@color/colorPrimary"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -216,7 +226,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_above="@id/bottomContainer"
-        android:background="@color/background_blue_darker" />
+        android:background="@color/background_blue_darker"
+        android:visibility="gone" />
 </RelativeLayout>
 
 

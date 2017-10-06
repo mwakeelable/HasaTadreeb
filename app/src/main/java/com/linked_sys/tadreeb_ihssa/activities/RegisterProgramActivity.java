@@ -1,6 +1,6 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
-import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,7 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -36,8 +38,8 @@ import java.util.Map;
 
 public class RegisterProgramActivity extends BaseActivity {
     CardView firstStep, secondStep, thirdStep, fourthStep, chooseProgram;
-    LinearLayout btnAcceptLicence;
-    Button btnValidData, btnInvalidData, btnSubmitRegister, btnNewRegister, btnClose, btnSubmit;
+    LinearLayout btnAcceptLicence, btnSubmitRegister;
+    Button btnValidData, btnInvalidData, btnNewRegister, btnClose, btnSubmit;
     RegisterProgramOneFragment FRAGMENT_STEP_ONE;
     RegisterProgramTwoFragment FRAGMENT_STEP_TWO;
     RegisterProgramThreeFragment FRAGMENT_STEP_THREE;
@@ -50,16 +52,28 @@ public class RegisterProgramActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        View shadow = findViewById(R.id.toolbar_shadow);
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            shadow.setVisibility(View.VISIBLE);
-        else
-            shadow.setVisibility(View.GONE);
-        getSupportActionBar().setTitle(getResources().getString(R.string.nav_register));
+//        setSupportActionBar(mToolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        View shadow = findViewById(R.id.toolbar_shadow);
+//        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+//            shadow.setVisibility(View.VISIBLE);
+//        else
+//            shadow.setVisibility(View.GONE);
+//        getSupportActionBar().setTitle(getResources().getString(R.string.nav_register));
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText(getResources().getString(R.string.nav_register));
         firstStep = (CardView) findViewById(R.id.firstStepContainer);
         secondStep = (CardView) findViewById(R.id.secondStepContainer);
+        secondStep.setCardBackgroundColor(Color.TRANSPARENT);
+        secondStep.setCardElevation(0);
         thirdStep = (CardView) findViewById(R.id.thirdStepContainer);
         fourthStep = (CardView) findViewById(R.id.fourthStepContainer);
         chooseProgram = (CardView) findViewById(R.id.chooseProgramStepContainer);
@@ -67,7 +81,7 @@ public class RegisterProgramActivity extends BaseActivity {
         btnAcceptLicence = (LinearLayout) findViewById(R.id.btnAcceptLicence);
         btnValidData = (Button) findViewById(R.id.btnValidData);
         btnInvalidData = (Button) findViewById(R.id.btnInvalidData);
-        btnSubmitRegister = (Button) findViewById(R.id.btnSubmitRegister);
+        btnSubmitRegister = (LinearLayout) findViewById(R.id.btnSubmitRegister);
         btnNewRegister = (Button) findViewById(R.id.btnNewRegister);
         btnSubmit = (Button) findViewById(R.id.btnSubmitRegisterInProgram);
         btnClose = (Button) findViewById(R.id.btnClose);
@@ -165,10 +179,10 @@ public class RegisterProgramActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (finish){
+        if (finish) {
             finish();
 //            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-        }else if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
+        } else if (FRAGMENT_STEP_TWO != null && FRAGMENT_STEP_TWO.isVisible()) {
             firstStep.setVisibility(View.VISIBLE);
             secondStep.setVisibility(View.GONE);
             thirdStep.setVisibility(View.GONE);

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_grey"
+    android:background="@color/new_background"
     android:orientation="vertical">
 
     <ScrollView
@@ -15,604 +15,508 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+            <TextView
+                android:layout_width="306.29dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="البيانات الشخصية و التعليمية للمتقدم"
+                android:textAlignment="viewStart"
+                android:textColor="#8E8E8E"
+                android:textSize="15.95sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/White"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="vertical">
 
-                <!--User data part 1-->
                 <TextView
+                    android:id="@+id/txtUserFullName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="البيانات الشخصية والتعليمية للمتقدم"
-                    android:textColor="@color/coffe_brown"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#6A6B74"
+                    android:textSize="15.95sp" />
 
+                <!--Mobile-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
 
-                    <!--Mobile-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="112.23dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:layout_marginStart="5dp"
+                        android:text="الجوال"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/mobile_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="الجوال"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserMobile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--National ID-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/txtUserMobile"
+                        android:layout_width="133.99dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/current_programs_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="رقم السجل"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserNationalID"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Full Name-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/profile_with_frame_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="الاســـم رباعــياً"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserFullName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Category-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/school_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="الفئة"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserCategory"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Specialize-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/jobs_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="التخصص"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserSpecialize"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Email-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/email_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="البريد الالكتروني "
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Title-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/jobs_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="العمل الحالي"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Extra-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/touch_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="اعمال اضافية"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserExtra"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
                 </LinearLayout>
 
+                <!--National ID-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="رقم السجل"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserNationalID"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Specialize-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="التخصص"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserSpecialize"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Category-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="الفئة"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserCategory"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Email-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="البريد الالكتروني "
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Title-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="العمل الحالي"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserTitle"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Extra-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="اعمال اضافية"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserExtra"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/black"
-                android:visibility="gone" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/White"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="vertical">
 
-                <!--User data part 2-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="306.29dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="البيانات الوظيفية للمتقدم"
-                    android:textColor="@color/coffe_brown"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textAlignment="viewStart"
+                    android:textColor="#6A6B74"
+                    android:textSize="15.95sp" />
 
+                <!--Study Level-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
 
-                    <!--Study Level-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="112.23dp"
+
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:layout_marginStart="5dp"
+                        android:text="المرحلة الدراسية"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/school_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="المرحلة الدراسية"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserStudyLevel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Sector-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/txtUserStudyLevel"
+                        android:layout_width="133.99dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/school_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="قطاع المدرسة الحالة"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserSector"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Work Email-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/email_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="البريد الالكتروني لجهة العمل"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtWorkEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Wezary Number-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/jobs_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="الرقم الوزاري"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserWezaryNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--School-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/school_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="المدرسة الحالية"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtUserSchool"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Admin Mobile-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/mobile_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="جوال المنسقً"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtAdminMobile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Admin Name-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/profile_with_frame_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="اسم المنسق "
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtAdminName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Manager Phone-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/mobile_icon" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="جوال المدير"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtManagerPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!--Manager Name-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|start"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="اسم المدير"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/txtManagerName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
                 </LinearLayout>
 
+                <!--Sector-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
 
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="قطاع المدرسة"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserSector"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Work Email-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="بريد الكتروني"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtWorkEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Wezary Number-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="الرقم الوزاري"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserWezaryNumber"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--School-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="المدرسة الحالية"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtUserSchool"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Admin Mobile-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="جوال المنسقً"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtAdminMobile"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Admin Name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+
+                    <TextView
+
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="اسم المنسق "
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtAdminName"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Manager Phone-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="جوال المدير"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtManagerPhone"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Manager Name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:layout_width="112.23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="اسم المدير"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txtManagerName"
+                        android:layout_width="133.99dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

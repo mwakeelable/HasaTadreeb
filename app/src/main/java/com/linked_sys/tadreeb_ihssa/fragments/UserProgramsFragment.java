@@ -24,7 +24,7 @@ public class UserProgramsFragment extends Fragment {
     public PendingProgramsFragment FRAGMENT_PENDING_PROGRAMS; //-1
     public StartedProgramsFragment FRAGMENT_STARTED_PROGRAMS; //0
     public ApprovedProgramsFragment FRAGMENT_APPROVED_PROGRAMS; //1
-//    public AchievedProgramsFragment FRAGMENT_ACHIEVED_PROGRAMS; //2
+    //    public AchievedProgramsFragment FRAGMENT_ACHIEVED_PROGRAMS; //2
     public AttendProgramsFragment FRAGMENT_ATTEND_PROGRAMS; //3
     public RefusedProgramsFragment FRAGMENT_REFUSED_PROGRAMS; //4
     private EtiyaBadgeTab etiyaBadgeTab;
@@ -56,15 +56,15 @@ public class UserProgramsFragment extends Fragment {
 
     private void setupTabs() {
         programStatus = activity.getResources().getStringArray(R.array.program_status);
-        etiyaBadgeTab.setSelectedTabIndicatorColor(ContextCompat.getColor(activity, R.color.black));
+        etiyaBadgeTab.setSelectedTabIndicatorColor(ContextCompat.getColor(activity, R.color.new_text_indicator));
         etiyaBadgeTab.setSelectedTabIndicatorHeight(5);
         etiyaBadgeTab.setTabMode(TabLayout.GRAVITY_CENTER);
         etiyaBadgeTab.setTabGravity(TabLayout.GRAVITY_FILL);
-        etiyaBadgeTab.setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimary));
+        etiyaBadgeTab.setBackgroundColor(ContextCompat.getColor(activity, R.color.new_background));
 
         etiyaBadgeTab.selectEtiyaBadgeTab(0)
                 .tabTitle(programStatus[0])
-                .tabTitleColor(R.color.White)
+                .tabTitleColor(R.color.new_text_color)
                 .tabIconColor(R.color.White)
                 .tabBadge(false)
                 .tabBadgeCount(10)
@@ -76,7 +76,7 @@ public class UserProgramsFragment extends Fragment {
 
         etiyaBadgeTab.selectEtiyaBadgeTab(1)
                 .tabTitle(programStatus[1])
-                .tabTitleColor(R.color.White)
+                .tabTitleColor(R.color.new_text_color)
                 .tabIconColor(R.color.White)
                 .tabBadge(false)
                 .tabBadgeCount(20)
@@ -88,7 +88,7 @@ public class UserProgramsFragment extends Fragment {
 
         etiyaBadgeTab.selectEtiyaBadgeTab(2)
                 .tabTitle(programStatus[2])
-                .tabTitleColor(R.color.White)
+                .tabTitleColor(R.color.new_text_color)
                 .tabIconColor(R.color.White)
                 .tabBadge(false)
                 .tabBadgeCount(15)
@@ -112,7 +112,7 @@ public class UserProgramsFragment extends Fragment {
 
         etiyaBadgeTab.selectEtiyaBadgeTab(3)
                 .tabTitle(programStatus[4])
-                .tabTitleColor(R.color.White)
+                .tabTitleColor(R.color.new_text_color)
                 .tabIconColor(R.color.White)
                 .tabBadge(false)
                 .tabBadgeCount(2)
@@ -124,7 +124,7 @@ public class UserProgramsFragment extends Fragment {
 
         etiyaBadgeTab.selectEtiyaBadgeTab(4)
                 .tabTitle(programStatus[5])
-                .tabTitleColor(R.color.White)
+                .tabTitleColor(R.color.new_text_color)
                 .tabIconColor(R.color.White)
                 .tabBadge(false)
                 .tabBadgeCount(2)

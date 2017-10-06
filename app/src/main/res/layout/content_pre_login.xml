@@ -97,9 +97,7 @@
                 android:layout_marginRight="18dp"
                 android:background="@drawable/main_teacher"
                 android:gravity="center"
-                android:orientation="vertical">
-
-            </LinearLayout>
+                android:orientation="vertical"/>
 
         </RelativeLayout>
 

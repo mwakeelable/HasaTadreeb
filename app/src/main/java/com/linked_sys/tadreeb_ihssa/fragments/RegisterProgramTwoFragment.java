@@ -67,7 +67,7 @@ public class RegisterProgramTwoFragment extends Fragment {
                 txtSpe.setText(userObj.optString("Specialized"));
                 txtEmail.setText(userObj.optString("Email"));
                 txtTitle.setText(userObj.optString("Current_work"));
-                txtExtra.setText("");
+                txtExtra.setText("لا توجد");
                 txtLevel.setText(userObj.optString("School_Level"));
                 txtSector.setText(userObj.optString("School_Sector"));
                 txtWorkEmail.setText(userObj.optString("School_Email_work"));

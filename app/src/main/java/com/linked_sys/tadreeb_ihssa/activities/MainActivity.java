@@ -434,8 +434,8 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     protected void onResume() {
         super.onResume();
         if (session.getUserDetails().get(session.KEY_USER_TYPE).equals("1")) {
-            refreshStudentCertificateCount();
-            refreshStudentProgramsCount();
+//            refreshStudentCertificateCount();
+//            refreshStudentProgramsCount();
         }
     }
 

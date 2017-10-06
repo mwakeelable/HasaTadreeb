@@ -3,7 +3,6 @@ package com.linked_sys.tadreeb_ihssa.activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
@@ -11,12 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linked_sys.tadreeb_ihssa.R;
+import com.linked_sys.tadreeb_ihssa.fragments.RecentTraineeProgramsFragment;
 import com.linked_sys.tadreeb_ihssa.fragments.UserProgramsFragment;
 
 public class StudentCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener {
@@ -117,9 +116,9 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_RATE_CODE) {
-                //Reload
-                finish();
-                startActivity(getIntent());
+            //Reload
+            finish();
+            startActivity(getIntent());
         }
     }
 }

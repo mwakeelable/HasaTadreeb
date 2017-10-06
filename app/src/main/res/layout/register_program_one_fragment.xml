@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff8f8f8"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/layout_bg">
+    android:padding="10dp">
 
     <ScrollView
+        android:id="@+id/parent_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#fff8f8f8">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#fff8f8f8">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -21,13 +24,13 @@
                 android:text="شروط وضوابط التسجيل في برامج التدريب"
                 android:textColor="@color/coffe_brown"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <ScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="308.82dp"
                 android:background="@drawable/bg_item"
                 android:fillViewport="true"
                 android:scrollbars="vertical">
@@ -43,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart1"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -51,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart2"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -59,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart3"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -67,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart4"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -75,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart5"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -83,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart6"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
 
                     <TextView
@@ -91,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/txtLicencePart7"
-                        android:textColor="@color/black"
+                        android:textColor="#8E8E8E"
                         android:textSize="15sp" />
                 </LinearLayout>
             </ScrollView>
@@ -100,57 +103,55 @@
                 android:id="@+id/chkAcceptLicence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="أقر بأني قرأت الشروط وموافق عليها"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textColor="#535568"
+                android:textSize="14.5sp" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_height="47.27dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:gravity="center|start"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtUserIDLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="113.46dp"
                     android:layout_height="wrap_content"
-                    android:text="رقم السجل المدني للمتدرب:"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:layout_marginStart="10dp"
+                    android:text="رقم السجل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtUserID"
-                    android:layout_width="wrap_content"
+                    android:layout_width="198.71dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_toEndOf="@id/txtUserIDLabel"
-                    android:layout_toRightOf="@id/txtUserIDLabel"
-                    android:textColor="@color/background_blue_darker"
-                    android:textSize="13sp" />
-            </RelativeLayout>
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="فترة التسجيل"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/spinner_background"
+                    android:background="@drawable/bg_item"
                     android:orientation="horizontal">
 
                     <Spinner
@@ -165,14 +166,23 @@
                         android:gravity="center"
                         android:spinnerMode="dropdown" />
 
-                    <ImageView
-                        android:id="@+id/imgSpinner"
+                    <RelativeLayout
+                        android:id="@+id/spinnerBtn"
                         android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
-                        android:src="@drawable/drop" />
+                        android:layout_marginEnd="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgSpinner"
+                            android:layout_width="40dp"
+                            android:layout_height="10dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/arrow_down" />
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
             </LinearLayout>

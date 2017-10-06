@@ -60,6 +60,7 @@ public class MainAdminFragment extends Fragment {
         txtNotAcceptedProgramsCount = (TextView) view.findViewById(R.id.txtNotAcceptedProgramsCount);
         txtTeachersCount = (TextView) view.findViewById(R.id.txtTeachersCount);
         ImageView imgSpinner = (ImageView) view.findViewById(R.id.imgSpinner);
+        RelativeLayout spinnerBtn = (RelativeLayout) view.findViewById(R.id.spinnerBtn);
         btnPendingPrograms = (CardView) view.findViewById(R.id.btnPendingPrograms);
         btnAcceptedPrograms = (RelativeLayout) view.findViewById(R.id.btnAcceptedPrograms);
         btnNotAcceptedPrograms = (RelativeLayout) view.findViewById(R.id.btnNotAcceptedPrograms);
@@ -97,6 +98,12 @@ public class MainAdminFragment extends Fragment {
             }
         });
         imgSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                periodsSpinner.performClick();
+            }
+        });
+        spinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 periodsSpinner.performClick();

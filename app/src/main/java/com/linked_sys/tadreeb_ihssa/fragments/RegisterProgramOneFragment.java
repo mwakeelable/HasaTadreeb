@@ -1,10 +1,12 @@
 package com.linked_sys.tadreeb_ihssa.fragments;
 
 
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,7 +44,7 @@ public class RegisterProgramOneFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         TextView txtUserID = (TextView) view.findViewById(R.id.txtUserID);
         chkAcceptLicence = (CheckBox) view.findViewById(R.id.chkAcceptLicence);
         periodsSpinner = (Spinner) view.findViewById(R.id.periodsSpinner);
@@ -66,6 +68,19 @@ public class RegisterProgramOneFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 periodsSpinner.performClick();
+            }
+        });
+
+        view.findViewById(R.id.parent_view).setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                view.findViewById(R.id.scrollView).getParent().requestDisallowInterceptTouchEvent(false);
+                return false;
+            }
+        });
+        view.findViewById(R.id.scrollView).setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
     }

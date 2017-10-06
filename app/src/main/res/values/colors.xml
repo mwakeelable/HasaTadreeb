@@ -47,6 +47,7 @@
   <color name="row_activated">#e0e0e0</color>
   <color name="bg_circle_default">#666666</color>
   <color name="grey_800">#424242</color>
+
   <color name="lavendergray">#c9cad5</color>
   <color name="steelblue">#3596b1</color>
   <color name="ashgrey">#b4b4bf</color>
@@ -65,5 +66,10 @@
   <color name="platinum">#e5e5e5</color>
   <color name="platinum_1">#e3e3e9</color>
   <color name="taupegray_2">#8e8f9e</color>
+  <color name="transparent">#00000000</color>
+  <color name="black_20">#33000000</color>
+  <color name="new_background">#fff8f8f8</color>
+  <color name="new_text_color">#ff8e8e8e</color>
+  <color name="new_text_indicator">#ff4eb4d0</color>
 </resources>
 

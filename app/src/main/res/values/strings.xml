@@ -1,136 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">تدريب الإحساء بنين</string>
-    <string name="txt_identity">رقم الهوية</string>
-    <string name="txt_phone">رقم الجوال</string>
-    <string name="txt_userType">نوع المستخدم</string>
-    <string name="action_sign_in">تسجيل الدخــول</string>
-    <string name="txt_validation">مطلوب</string>
-    <string name="action_settings">الإعدادات</string>
-    <string name="action_search">بحث</string>
-    <string name="action_sign_out">تسجيل الخروج</string>
-    <string name="txt_confirmation">هل انت متأكد؟</string>
-    <string name="txt_positive_btn">نعم</string>
-    <string name="txt_negative_btn">إلغاء</string>
-    <string name="txt_home_welcome">مرحبــا</string>
-    <string name="drawer_open">Menu open</string>
-    <string name="drawer_close">Menu closed</string>
-    <string name="nav_my_courses">البرامج الحالية</string>
-    <string name="nav_my_certificates">البرامج المنجزة</string>
-    <string name="nav_register">التسجيل في البرامج</string>
-    <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
-    <string name="nav_trainer_future_courses">الدورات الحالية</string>
-    <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
-    <string name="sign_in_failed_msg">خطأ في تسجيل الدخول .. الرجاء مراجعة رقم الهوية او رقم الجوال!</string>
-    <string name="txt_error">خطأ</string>
-    <string name="txt_program_id">رقـم البرنامـج</string>
-    <string name="txt_program_ref">مرجـع البرنامـج</string>
-    <string name="txt_program_name">اسـم البرنامـج</string>
-    <string name="txt_program_days">مدة البرنامـج</string>
-    <string name="txt_program_times">الزمــن</string>
-    <string name="txt_program_timeStart">التوقيت</string>
-    <string name="txt_program_dateStart">تاريخ البرنامج</string>
-    <string name="txt_program_location">الجهة</string>
-    <string name="action_register_program">التسجيل بالبرنامج</string>
-    <string name="tab1">جديد</string>
-    <string name="tab2">قيد الانتظار</string>
-    <string name="tab3">حقق</string>
-    <string name="tab4">تم الموافقة عليه</string>
-    <string name="txt_switch">تغيير إلي</string>
-    <string name="switch_summary">اختار طريقة العرض</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_program_details">تفاصيل البرنامج</string>
-    <string name="btnPrint">تحميل</string>
-    <string name="btnRate">تقييم</string>
-    <string name="btnRegisterFirstStep">التحقق من البيانات والانتقال للخطوة التالية</string>
-    <string name="btnValidData">البيانات سليمة - الانتقال للتالي</string>
-    <string name="btnInvalidData">مراسلة الادارة</string>
-    <string name="btnSubmitRegister">التســجيل</string>
-    <string name="btnNewRegister">تسـجيل جديد</string>
-    <string name="btnClose">إغــلاق</string>
-    <string name="txtMessageLabel">موضوع الرسالة</string>
-    <string name="txtLicencePart1">مدير المدرسة هو المسؤول المباشر عن اسم المستخدم وكلمة المرور وعن البيانات الخاطئة المدخلة في برنامج التسجيل للبرامج التدريبية</string>
-    <string name="txtLicencePart2">يلزم تعبئة جميع الحقول ببيانات صحيحة ولن يقبل برنامج التسجيل نقص أي بيانات</string>
-    <string name="txtLicencePart3">يتم القبول حسب الأسبقية في التسجيل وانطباق شروط البرنامج على المتقدم كما يجب التأكد من تطابق العمل الحالي للمعلم مع الفئة المستفيدة للبرنامج</string>
-    <string name="txtLicencePart4">يحق للمتدرب التسجيل في برنامج تدريبي صباحي واحد وثلاث برامج مسائية خلال الفصل الدراسي الواحد</string>
-    <string name="txtLicencePart5">عدد استيعاب كل برنامج 25 متدرب عدا الحاسب الآلي وبعد اكتمال عدد المسجلين في البرنامج سيختفي من القائمةويمكن التسجيل في البرامج احتياطيابأستمارة القبول المبدئي مختومة من مدير المدرسة</string>
-    <string name="txtLicencePart6">في البرامج الصباحية لا يسجل أكثر من معلم واحد من كل مدرسة في الأسبوع الواحد</string>
-    <string name="txtLicencePart7">جميع البرامج الصباحية تبدأ يوم الأحد الساعة 900صباحاً والبرامج المسائية تبدأ يوم السبت الساعة 500مساءً 8في البرامج المسائية يسجل الغياب في اليوم الأول بعد بدء البرنامج بربع ساعة ويحسب بعدها المتأخر غائباً ويدخل الاحتياط بدلاً منه 9لا تمنح شهادة حضور البرنامج لمن تبلغ نسبة غيابه 15 من ساعات البرنامج ما يعادل فترتين تدريبيتين متصلة أو منفصلة 10جميع تواريخ البرامج تنفذ حسب تقويم أم القرى 11جميع المعايير و الضوابط السابقة مبرمجة آلياً في برنامج التسجيل و في حال مخالفتها لن يتم اعتماد أي برنامج للمتدرب 12أنا متنازل عن البدل وأي التزام مالي ولا يحق لي المطالبة به أمام الجهات الحكومية والقضائية</string>
-    <!-- Strings related to Settings -->
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+  <string name="app_name">تدريب الإحساء بنين</string>
+  <string name="txt_identity">رقم الهوية</string>
+  <string name="txt_phone">رقم الجوال</string>
+  <string name="txt_userType">نوع المستخدم</string>
+  <string name="action_sign_in">تسجيل الدخــول</string>
+  <string name="txt_validation">مطلوب</string>
+  <string name="action_settings">الإعدادات</string>
+  <string name="action_search">بحث</string>
+  <string name="action_sign_out">تسجيل الخروج</string>
+  <string name="txt_confirmation">هل انت متأكد؟</string>
+  <string name="txt_positive_btn">نعم</string>
+  <string name="txt_negative_btn">إلغاء</string>
+  <string name="txt_home_welcome">مرحبــا</string>
+  <string name="drawer_open">Menu open</string>
+  <string name="drawer_close">Menu closed</string>
+  <string name="nav_my_courses">البرامج الحالية</string>
+  <string name="nav_my_certificates">البرامج المنجزة</string>
+  <string name="nav_register">التسجيل في البرامج</string>
+  <string name="nav_trainer_current_courses">دورات لم تبدأ</string>
+  <string name="nav_trainer_future_courses">الدورات الحالية</string>
+  <string name="txt_no_data">لا يوجد بيانات في هذه الصفحة!!</string>
+  <string name="sign_in_failed_msg">خطأ في تسجيل الدخول .. الرجاء مراجعة رقم الهوية او رقم الجوال!</string>
+  <string name="txt_error">خطأ</string>
+  <string name="txt_program_id">رقـم البرنامـج</string>
+  <string name="txt_program_ref">مرجـع البرنامـج</string>
+  <string name="txt_program_name">اسـم البرنامـج</string>
+  <string name="txt_program_days">مدة البرنامـج</string>
+  <string name="txt_program_times">الزمــن</string>
+  <string name="txt_program_timeStart">التوقيت</string>
+  <string name="txt_program_dateStart">تاريخ البرنامج</string>
+  <string name="txt_program_location">الجهة</string>
+  <string name="action_register_program">التسجيل بالبرنامج</string>
+  <string name="tab1">جديد</string>
+  <string name="tab2">قيد الانتظار</string>
+  <string name="tab3">حقق</string>
+  <string name="tab4">تم الموافقة عليه</string>
+  <string name="txt_switch">تغيير إلي</string>
+  <string name="switch_summary">اختار طريقة العرض</string>
+  <string name="title_activity_settings">Settings</string>
+  <string name="title_activity_program_details">تفاصيل البرنامج</string>
+  <string name="btnPrint">تحميل</string>
+  <string name="btnRate">تقييم</string>
+  <string name="btnRegisterFirstStep">التحقق من البيانات والانتقال للخطوة التالية</string>
+  <string name="btnValidData">البيانات سليمة - الانتقال للتالي</string>
+  <string name="btnInvalidData">مراسلة الادارة</string>
+  <string name="btnSubmitRegister">التســجيل</string>
+  <string name="btnNewRegister">تسـجيل جديد</string>
+  <string name="btnClose">إغــلاق</string>
+  <string name="txtMessageLabel">موضوع الرسالة</string>
+  <string name="txtLicencePart1">مدير المدرسة هو المسؤول المباشر عن اسم المستخدم وكلمة المرور وعن البيانات الخاطئة المدخلة في برنامج التسجيل للبرامج التدريبية</string>
+  <string name="txtLicencePart2">يلزم تعبئة جميع الحقول ببيانات صحيحة ولن يقبل برنامج التسجيل نقص أي بيانات</string>
+  <string name="txtLicencePart3">يتم القبول حسب الأسبقية في التسجيل وانطباق شروط البرنامج على المتقدم كما يجب التأكد من تطابق العمل الحالي للمعلم مع الفئة المستفيدة للبرنامج</string>
+  <string name="txtLicencePart4">يحق للمتدرب التسجيل في برنامج تدريبي صباحي واحد وثلاث برامج مسائية خلال الفصل الدراسي الواحد</string>
+  <string name="txtLicencePart5">عدد استيعاب كل برنامج 25 متدرب عدا الحاسب الآلي وبعد اكتمال عدد المسجلين في البرنامج سيختفي من القائمةويمكن التسجيل في البرامج احتياطيابأستمارة القبول المبدئي مختومة من مدير المدرسة</string>
+  <string name="txtLicencePart6">في البرامج الصباحية لا يسجل أكثر من معلم واحد من كل مدرسة في الأسبوع الواحد</string>
+  <string name="txtLicencePart7">جميع البرامج الصباحية تبدأ يوم الأحد الساعة 900صباحاً والبرامج المسائية تبدأ يوم السبت الساعة 500مساءً 8في البرامج المسائية يسجل الغياب في اليوم الأول بعد بدء البرنامج بربع ساعة ويحسب بعدها المتأخر غائباً ويدخل الاحتياط بدلاً منه 9لا تمنح شهادة حضور البرنامج لمن تبلغ نسبة غيابه 15 من ساعات البرنامج ما يعادل فترتين تدريبيتين متصلة أو منفصلة 10جميع تواريخ البرامج تنفذ حسب تقويم أم القرى 11جميع المعايير و الضوابط السابقة مبرمجة آلياً في برنامج التسجيل و في حال مخالفتها لن يتم اعتماد أي برنامج للمتدرب 12أنا متنازل عن البدل وأي التزام مالي ولا يحق لي المطالبة به أمام الجهات الحكومية والقضائية</string>
+  <!-- Strings related to Settings -->
+  <!-- Example General settings -->
+  <string name="pref_header_general">General</string>
+  <string name="pref_title_social_recommendations">Enable social recommendations</string>
+  <string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history</string>
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-    <string-array name="multi_select_list_preference_default_value" />
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_program_rate">تقييم البرنامج</string>
-    <string name="title_activity_teacher_certificates">البرامج المنجزة</string>
-    <string name="title_activity_teacher_program_details">تفاصيل البرنامج</string>
-    <string name="title_activity_absence">التحضيــر</string>
-    <string name="title_activity_admin_pending_programs">البرامج المعلقة</string>
-    <string name="title_activity_pending_program_details">تفاصيل البرنامج</string>
-    <string name="title_activity_accepted_programs">الطلبات المعتمدة</string>
-    <string name="title_activity_admin_program_details">تفاصيل البرنامج</string>
-    <string name="title_activity_teachers">بيانات المعلمين</string>
-    <string name="title_activity_teacher_details">بيانات المعلم</string>
-    <string name="title_activity_technical_ticket">تذكرة الدعم الفني</string>
-    <string name="title_activity_search">عرض برامج معلم / موظف</string>
-    <string name="title_activity_technical_tickets">تذكرة الدعم الفني</string>
-    <string name="title_activity_pre_login">PreLoginActivity</string>
-    <string name="title_activity_teacher_attend_programs">البرامج الحالية</string>
-    <string name="title_activity_messages">الرسـائل</string>
-    <string name="title_activity_message_body">تفاصيل الرسالة</string>
-    <string name="resource">تسجيل المدرب</string>
-    <string name="defaultFont">fonts/hacen.ttf</string>
-    <string name="title_activity_profile">ProfileActivity</string>
+  <string name="pref_title_display_name">Display name</string>
+  <string name="pref_default_display_name">John Smith</string>
+  <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+  <string-array name="pref_example_list_titles">
+    <item>Always</item>
+    <item>When possible</item>
+    <item>Never</item>
+  </string-array>
+  <string-array name="pref_example_list_values">
+    <item>1</item>
+    <item>0</item>
+    <item>-1</item>
+  </string-array>
+  <!-- Example settings for Data & Sync -->
+  <string name="pref_header_data_sync">Data &amp; sync</string>
+  <string name="pref_title_sync_frequency">Sync frequency</string>
+  <string-array name="pref_sync_frequency_titles">
+    <item>15 minutes</item>
+    <item>30 minutes</item>
+    <item>1 hour</item>
+    <item>3 hours</item>
+    <item>6 hours</item>
+    <item>Never</item>
+  </string-array>
+  <string-array name="pref_sync_frequency_values">
+    <item>15</item>
+    <item>30</item>
+    <item>60</item>
+    <item>180</item>
+    <item>360</item>
+    <item>-1</item>
+  </string-array>
+  <string-array name="list_preference_entries">
+    <item>Entry 1</item>
+    <item>Entry 2</item>
+    <item>Entry 3</item>
+  </string-array>
+  <string-array name="list_preference_entry_values">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+  <string-array name="multi_select_list_preference_default_value" />
+  <string name="pref_title_system_sync_settings">System sync settings</string>
+  <!-- Example settings for Notifications -->
+  <string name="pref_header_notifications">Notifications</string>
+  <string name="pref_title_new_message_notifications">New message notifications</string>
+  <string name="pref_title_ringtone">Ringtone</string>
+  <string name="pref_ringtone_silent">Silent</string>
+  <string name="pref_title_vibrate">Vibrate</string>
+  <string name="title_activity_program_rate">تقييم البرنامج</string>
+  <string name="title_activity_teacher_certificates">البرامج المنجزة</string>
+  <string name="title_activity_teacher_program_details">تفاصيل البرنامج</string>
+  <string name="title_activity_absence">التحضيــر</string>
+  <string name="title_activity_admin_pending_programs">البرامج المعلقة</string>
+  <string name="title_activity_pending_program_details">تفاصيل البرنامج</string>
+  <string name="title_activity_accepted_programs">الطلبات المعتمدة</string>
+  <string name="title_activity_admin_program_details">تفاصيل البرنامج</string>
+  <string name="title_activity_teachers">بيانات المعلمين</string>
+  <string name="title_activity_teacher_details">بيانات المعلم</string>
+  <string name="title_activity_technical_ticket">تذكرة الدعم الفني</string>
+  <string name="title_activity_search">عرض برامج معلم / موظف</string>
+  <string name="title_activity_technical_tickets">تذكرة الدعم الفني</string>
+  <string name="title_activity_pre_login">PreLoginActivity</string>
+  <string name="title_activity_teacher_attend_programs">البرامج الحالية</string>
+  <string name="title_activity_messages">الرسـائل</string>
+  <string name="title_activity_message_body">تفاصيل الرسالة</string>
+  <string name="resource">تسجيل المدرب</string>
+  <string name="defaultFont">fonts/hacen.ttf</string>
+  <string name="title_activity_profile">ProfileActivity</string>
+  <string name="tab_1">معلق</string>
+  <string name="tab_2">مبدئي</string>
+  <string name="tab_3">مقبول</string>
+  <string name="tab_4">تم الحضور</string>
+  <string name="tab_5">مرفوض</string>
 </resources>
 

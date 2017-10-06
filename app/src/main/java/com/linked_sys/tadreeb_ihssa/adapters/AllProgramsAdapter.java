@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,13 +25,15 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView programName, programStatus;
-        RelativeLayout courseRow;
+        LinearLayout courseRow;
+        RelativeLayout programRow;
 
         MyViewHolder(View view) {
             super(view);
             programName = (TextView) view.findViewById(R.id.txt_programName);
             programStatus = (TextView) view.findViewById(R.id.txt_programStatus);
-            courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
+            courseRow = (LinearLayout) view.findViewById(R.id.program_container);
+            programRow = (RelativeLayout) view.findViewById(R.id.program_row);
         }
     }
 
@@ -56,7 +59,7 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
 //        if (program.isCanPrintCertificate() && !program.isMustRate())
 //            holder.programStatus.setText(R.string.btnPrint);
 //        else
-            if (program.isMustRate() && !program.isCanPrintCertificate())
+        if (program.isMustRate() && !program.isCanPrintCertificate())
             holder.programStatus.setText(R.string.btnRate);
         else
             holder.programStatus.setText("");
@@ -80,12 +83,12 @@ public class AllProgramsAdapter extends RecyclerView.Adapter<AllProgramsAdapter.
                 listener.onProgramRowClicked(position);
             }
         });
-//        holder.programREF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onProgramRowClicked(position);
-//            }
-//        });
+        holder.programRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onProgramRowClicked(position);
+            }
+        });
     }
 
     public interface AllProgramsAdapterListener {

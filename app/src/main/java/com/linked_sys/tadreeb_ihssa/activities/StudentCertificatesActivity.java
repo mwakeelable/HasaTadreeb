@@ -3,8 +3,12 @@ package com.linked_sys.tadreeb_ihssa.activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,11 +16,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.volley.Request;
@@ -66,7 +75,13 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL) {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                // Do not draw the divider
+            }
+        });
         // show loader and fetch messages
         swipeRefreshLayout.post(
                 new Runnable() {
@@ -106,7 +121,7 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
     private void getPrograms() {
         final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&UserId="+session.getUserDetails().get(session.KEY_ID)
+                + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
                 + "&ProgStatus=2";
         ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
@@ -218,9 +233,9 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
 
     private void openProgram(String regRef) {
         Intent intent = new Intent(StudentCertificatesActivity.this, ProgramDetailsActivity.class);
-        intent.putExtra("REGREF",regRef);
-        intent.putExtra("PRINT",true);
-        intent.putExtra("RATE",false);
+        intent.putExtra("REGREF", regRef);
+        intent.putExtra("PRINT", true);
+        intent.putExtra("RATE", false);
         startActivity(intent);
     }
 }
