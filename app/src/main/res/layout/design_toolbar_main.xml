@@ -23,13 +23,17 @@
                 android:id="@+id/menuImgView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentStart="true"
                 android:background="@drawable/menu_img"
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:src="@drawable/user" />
 
             </LinearLayout>
