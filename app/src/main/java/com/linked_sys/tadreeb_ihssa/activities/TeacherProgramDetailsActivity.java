@@ -9,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
     TextView txtProgramRef, txtProgramDays, txtProgramID, txtProgramName, txtProgramDateFrom, txtProgramDateTo, txtProgramTime, txtProgramLocation;
     int pos;
     boolean canPrint, mustAttend;
-    CardView btnAbsence, btnPrint;
+    LinearLayout btnAbsence, btnPrint;
     static final int REQUEST_ABSENCE_CODE = 0;
     String comeFrom;
     String backAs;
@@ -69,8 +70,8 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
         txtProgramDateTo = (TextView) findViewById(R.id.txt_program_date_to);
         txtProgramTime = (TextView) findViewById(R.id.txt_program_time);
         txtProgramLocation = (TextView) findViewById(R.id.txt_program_location);
-        btnAbsence = (CardView) findViewById(R.id.btnAbsence);
-        btnPrint = (CardView) findViewById(R.id.btnPrint);
+        btnAbsence = (LinearLayout) findViewById(R.id.btnAbsence);
+        btnPrint = (LinearLayout) findViewById(R.id.btnPrint);
         btnAbsence.setVisibility(View.GONE);
         btnPrint.setVisibility(View.GONE);
         Bundle bundle = getIntent().getExtras();

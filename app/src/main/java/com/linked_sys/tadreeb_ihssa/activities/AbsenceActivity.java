@@ -47,7 +47,7 @@ public class AbsenceActivity extends BaseActivity {
     LinearLayout studentsLayout;
     String ref, periodID;
     TextView txtAbsenceDay, txtAbsencePeriod,txtProgramName;
-    CardView btnSubmitAbsence;
+    LinearLayout btnSubmitAbsence;
     StudentAbsence studentAbsence;
     RadioButton btnExist, btnNotExist;
     String finished;
@@ -64,7 +64,7 @@ public class AbsenceActivity extends BaseActivity {
         studentsLayout = (LinearLayout) findViewById(R.id.students_container);
         txtAbsenceDay = (TextView) findViewById(R.id.txtAbsenceDay);
         txtAbsencePeriod = (TextView) findViewById(R.id.txtAbsencePeriod);
-        btnSubmitAbsence = (CardView) findViewById(R.id.btnSubmitAbsence);
+        btnSubmitAbsence = (LinearLayout) findViewById(R.id.btnSubmitAbsence);
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         dataContainer = (RelativeLayout) findViewById(R.id.data_container);
         txtProgramName = (TextView) findViewById(R.id.txtProgramName);

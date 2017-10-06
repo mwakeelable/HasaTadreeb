@@ -14,265 +14,213 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/new_background"
             android:orientation="vertical"
-            android:background="@drawable/layout_bg">
+            android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/refContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/white_button"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txt_program_ref_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="مرجع البرنامج:"
-                    android:textColor="#B9B9B9"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="مرجع البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txt_program_ref"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="#6A6A6A"
-                    android:textSize="17sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/daysContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/txt_program_days_label"
+                    android:layout_width="112.23dp"
+                    android:layout_height="wrap_content"
+                    android:text="الأيــام"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
+
+                <TextView
+                    android:id="@+id/txt_program_days"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/txt_program_days_label"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txt_program_id_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="الأيــام:"
-                    android:textColor="#B9B9B9"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="رقم البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
-                    android:id="@+id/txt_program_days"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txt_program_id"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="#6A6A6A"
-                    android:textSize="17sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/idContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_program_name_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="اسـم البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txt_program_id_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="رقم البرنامج:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_program_name"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_program_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/programNameContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_program_date_from_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="من تــاريخ"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txt_program_name_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="اسـم البرنامج:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_program_date_from"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_program_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/programDateFromContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_program_date_to_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="إلى تـاريخ"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txt_program_date_from_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="من تــاريخ:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_program_date_to"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_program_date_from"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/programDateToContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+
+                <TextView
+                    android:id="@+id/txt_program_time_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="الزمـن"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txt_program_date_to_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="إلى تـاريخ:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_program_time"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_program_date_to"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/programTimeContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+
+                <TextView
+                    android:id="@+id/txt_program_location_label"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="الجـهة"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txt_program_time_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الزمـن:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txt_program_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/programLocationContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_program_location"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_program_location_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الجـهة:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txt_program_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="17sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -282,61 +230,40 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp">
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:id="@+id/btnAbsence"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    app:cardCornerRadius="4dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_height="46.98dp"
+                    android:background="@drawable/item_blue_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/submit_button_bg"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="تحـضير"
+                        android:textColor="@color/White"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="تحـضير"
-                            android:textColor="@color/White"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:id="@+id/btnPrint"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_height="46.98dp"
+                    android:background="@drawable/item_blue_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/submit_button_bg"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/btnPrint"
-                            android:textColor="@color/White"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:src="@drawable/ic_picture_as_pdf_black_24dp"
-                            android:visibility="gone"/>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/btnPrint"
+                        android:textColor="@color/White"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
             </FrameLayout>
 

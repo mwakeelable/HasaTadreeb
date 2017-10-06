@@ -4,45 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:focusable="true">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/teacher_program_container"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:background="@drawable/white_button"
-        android:padding="10dp">
+        android:layout_height="75.1dp"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imgBullet"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/circle_bg"/>
+        <LinearLayout
+            android:layout_width="42.05dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_button"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/txt_teacherProgramName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="program name"
-            android:textColor="#6A6A6A"
-            android:textSize="22sp"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/imgBullet"/>
+            <ImageView
+                android:layout_width="16.67dp"
+                android:layout_height="21.33dp"
+                android:src="@drawable/ic_program03" />
 
-    </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_button"
+            android:gravity="center|start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_teacherProgramName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="#A4A6B5"
+                android:textSize="15.95sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/teacher_program_container"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:clickable="true"-->
+    <!--android:background="@drawable/white_button"-->
+    <!--android:padding="10dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/imgBullet"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:background="@drawable/circle_bg"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txt_teacherProgramName"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:ellipsize="end"-->
+    <!--android:maxLines="1"-->
+    <!--android:text="program name"-->
+    <!--android:textColor="#6A6A6A"-->
+    <!--android:textSize="22sp"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:layout_toEndOf="@id/imgBullet"/>-->
+
+    <!--</RelativeLayout>-->
 
 </RelativeLayout>

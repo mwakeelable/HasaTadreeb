@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,13 +25,14 @@ public class TeacherAttendProgramsAdapter extends RecyclerView.Adapter<TeacherAt
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView programName;
-        RelativeLayout courseRow, container;
+        RelativeLayout courseRow;
+        LinearLayout container;
 
         MyViewHolder(View view) {
             super(view);
             programName = (TextView) view.findViewById(R.id.txt_teacherProgramName);
             courseRow = (RelativeLayout) view.findViewById(R.id.teacher_program_row);
-            container = (RelativeLayout) view.findViewById(R.id.teacher_program_container);
+            container = (LinearLayout) view.findViewById(R.id.teacher_program_container);
         }
     }
 

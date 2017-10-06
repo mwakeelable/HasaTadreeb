@@ -40,7 +40,7 @@
   <string name="switch_summary">اختار طريقة العرض</string>
   <string name="title_activity_settings">Settings</string>
   <string name="title_activity_program_details">تفاصيل البرنامج</string>
-  <string name="btnPrint">تحميل</string>
+  <string name="btnPrint">تحـميل</string>
   <string name="btnRate">تقييم</string>
   <string name="btnRegisterFirstStep">التحقق من البيانات والانتقال للخطوة التالية</string>
   <string name="btnValidData">البيانات سليمة - الانتقال للتالي</string>

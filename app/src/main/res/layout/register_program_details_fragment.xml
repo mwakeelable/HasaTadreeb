@@ -18,7 +18,6 @@
 
             <!--ID-->
             <LinearLayout
-                android:id="@+id/idContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_item"
@@ -43,7 +42,6 @@
             </LinearLayout>
             <!--Name-->
             <LinearLayout
-                android:id="@+id/programNameontainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -69,7 +67,6 @@
             </LinearLayout>
             <!--Days-->
             <LinearLayout
-                android:id="@+id/programDaysontainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -95,7 +92,6 @@
             </LinearLayout>
             <!--Time Start-->
             <LinearLayout
-                android:id="@+id/programTimeStartontainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -214,9 +210,9 @@
                 <TextView
                     android:id="@+id/txt_program_time_start"
                     android:layout_width="match_parent"
-                    android:textAlignment="viewStart"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:textAlignment="viewStart"
                     android:textColor="#A4A6B5"
                     android:textSize="15.95sp" />
             </LinearLayout>
