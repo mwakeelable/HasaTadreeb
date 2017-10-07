@@ -20,15 +20,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView messageDate,messageRef;
-        LinearLayout messageRow,idContainer, dateContainer;
+        LinearLayout messageRow;
 
         MyViewHolder(View view) {
             super(view);
             messageDate = (TextView) view.findViewById(R.id.txtMessageDate);
             messageRef = (TextView) view.findViewById(R.id.messageRef);
             messageRow = (LinearLayout) view.findViewById(R.id.message_container);
-            idContainer = (LinearLayout) view.findViewById(R.id.idContainer);
-            dateContainer = (LinearLayout) view.findViewById(R.id.dateContainer);
         }
     }
 
@@ -67,18 +65,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         holder.messageRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onMessageRowClick(position);
-            }
-        });
-        holder.idContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onMessageRowClick(position);
-            }
-        });
-        holder.dateContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 listener.onMessageRowClick(position);
             }
         });

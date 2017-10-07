@@ -4,81 +4,90 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/message_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center|start"
-        android:background="@drawable/white_button">
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
 
         <LinearLayout
-            android:id="@+id/idContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_width="52dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_item"
+            android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="تذكرة رقم: "
-                android:textColor="#6A6A6A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/messageRef"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+            <ImageView
+                android:layout_width="16.67dp"
+                android:layout_height="21.33dp"
+                android:src="@drawable/ic_under_review" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/dateContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_item">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="بتاريخ: "
-                android:textColor="#6A6A6A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtMessageDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:gravity="center|start">
+
+                <TextView
+                    android:id="@+id/txt_programName"
+                    android:layout_width="113.46dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#4EB4D0"
+                    android:text="تذكرة رقم"
+                    android:textSize="15.95sp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:id="@+id/messageRef"
+                    android:layout_width="136.66dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="113.46dp"
+                    android:layout_height="wrap_content"
+                    android:text="بتاريخ"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:id="@+id/txtMessageDate"
+                    android:layout_width="136.66dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

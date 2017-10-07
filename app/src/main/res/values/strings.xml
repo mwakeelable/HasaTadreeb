@@ -129,7 +129,6 @@
   <string name="title_activity_teacher_attend_programs">البرامج الحالية</string>
   <string name="title_activity_messages">الرسـائل</string>
   <string name="title_activity_message_body">تفاصيل الرسالة</string>
-  <string name="resource">تسجيل المدرب</string>
   <string name="defaultFont">fonts/hacen.ttf</string>
   <string name="title_activity_profile">ProfileActivity</string>
   <string name="tab_1">معلق</string>
