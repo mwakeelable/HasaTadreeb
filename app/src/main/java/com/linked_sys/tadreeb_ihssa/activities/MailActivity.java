@@ -1,6 +1,9 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,9 +13,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -33,7 +41,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, MailAdapter.MailAdapterListener {
+public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, MailAdapter.MailAdapterListener, SearchView.OnQueryTextListener {
     public static ArrayList<Mail> mailList = new ArrayList<>();
     private RecyclerView recyclerView;
     public static MailAdapter mAdapter;
@@ -51,6 +59,7 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
@@ -59,7 +68,13 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL) {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                // Do not draw the divider
+            }
+        });
         swipeRefreshLayout.post(
                 new Runnable() {
                     @Override
@@ -148,6 +163,30 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchMenuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                MailActivity.this.finish();
+                hideSoftKeyboard(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onRefresh() {
         limit = 10;
         skip = 0;
@@ -196,5 +235,15 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     public void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 }

@@ -104,7 +104,7 @@
             android:layout_height="52dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardBackgroundColor="@color/grey_700"
             app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">

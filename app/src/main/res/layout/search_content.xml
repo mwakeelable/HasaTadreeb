@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_bg"
+    android:background="#F8F8F8"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.SearchActivity"
@@ -225,20 +225,21 @@
                 android:id="@+id/no_data_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey_300"
+                android:background="#F8F8F8"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone">
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/oops_icon" />
+                    android:layout_width="71.91dp"
+                    android:layout_height="74.52dp"
+                    android:src="@drawable/ic_database" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/txt_no_data" />
+                    android:text="@string/txt_no_data"
+                    android:visibility="visible"/>
 
             </LinearLayout>
 

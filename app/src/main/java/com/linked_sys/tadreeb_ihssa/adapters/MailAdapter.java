@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,22 +33,19 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
     private MessageFilter messageFilter;
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
-        TextView from, subject, message, iconText, txt_date;
+        TextView subject, iconText, txt_date;
         ImageView imgProfile;
-        RelativeLayout iconContainer, iconBack, iconFront, messageContainer, messageRow;
+        LinearLayout iconContainer;
+        RelativeLayout messageContainer, messageRow;
 
         MyViewHolder(View view) {
             super(view);
-            from = (TextView) view.findViewById(R.id.from);
             subject = (TextView) view.findViewById(R.id.txt_primary);
-            message = (TextView) view.findViewById(R.id.txt_secondary);
             iconText = (TextView) view.findViewById(R.id.icon_text);
             txt_date = (TextView) view.findViewById(R.id.timestamp);
-            iconBack = (RelativeLayout) view.findViewById(R.id.icon_back);
-            iconFront = (RelativeLayout) view.findViewById(R.id.icon_front);
             imgProfile = (ImageView) view.findViewById(R.id.icon_profile);
             messageContainer = (RelativeLayout) view.findViewById(R.id.message_container);
-            iconContainer = (RelativeLayout) view.findViewById(R.id.icon_container);
+            iconContainer = (LinearLayout) view.findViewById(R.id.iconContainer);
             messageRow = (RelativeLayout) view.findViewById(R.id.message_row);
             view.setOnLongClickListener(this);
         }
@@ -86,20 +84,8 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MailAdapter.MyViewHolder holder, int position) {
         Mail mail = filteredList.get(position);
-//        holder.from.setText(message.getSenderName1() + " " + message.getSenderName4());
         holder.subject.setText(mail.getTitle());
-//        holder.message.setMovementMethod(LinkMovementMethod.getInstance());
-        holder.message.setText(mail.getBody());
-//        String date = getDateFormat(message.getTimestamp());
-//        long timeStamp = convertToTimestamp(date);
-//        holder.timestamp.setTimeStamp(timeStamp);
-//        holder.timestamp.setVisibility(View.GONE);
-//        holder.txt_date.setText(date);
-//        String senderName = message.getSenderName1().substring(0, 1).toUpperCase() + message.getSenderName4().substring(0, 1).toUpperCase();
-//        holder.iconText.setText(senderName);
         applyReadStatus(holder, mail);
-//        applyIconAnimation(holder, position);
-//        applyProfilePicture(holder, mail);
         applyClickEvents(holder, position);
     }
 
@@ -108,13 +94,6 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
             @Override
             public void onClick(View view) {
                 listener.onIconClicked(position);
-            }
-        });
-
-        holder.iconFront.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onMessageRowClicked(position);
             }
         });
 
@@ -131,26 +110,15 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
                 listener.onMessageRowClicked(position);
             }
         });
-
-//        holder.timestamp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onMessageRowClicked(position);
-//            }
-//        });
     }
 
     private void applyReadStatus(MyViewHolder holder, Mail mail) {
         if (mail.getIsRead().equals("Read")) {
-            holder.from.setTypeface(null, Typeface.NORMAL);
             holder.subject.setTypeface(null, Typeface.NORMAL);
-            holder.from.setTextColor(ContextCompat.getColor(mContext, R.color.subject));
-            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.message));
+            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.celestialblue));
         } else {
-            holder.from.setTypeface(null, Typeface.BOLD);
             holder.subject.setTypeface(null, Typeface.BOLD);
-            holder.from.setTextColor(ContextCompat.getColor(mContext, R.color.from));
-            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.subject));
+            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.celestialblue));
         }
     }
 

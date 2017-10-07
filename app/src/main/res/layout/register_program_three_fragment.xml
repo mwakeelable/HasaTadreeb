@@ -13,7 +13,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff8f8f8"
+            android:background="#F8F8F8"
             android:scrollbars="vertical" />
 
     </FrameLayout>

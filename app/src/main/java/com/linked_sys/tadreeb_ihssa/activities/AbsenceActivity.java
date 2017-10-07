@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -54,12 +55,14 @@ public class AbsenceActivity extends BaseActivity {
     LinearLayout placeholder;
     RelativeLayout dataContainer;
     ActionBar mActionBar;
+    ImageView backBtn;
+    TextView titleTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         studentsLayout = (LinearLayout) findViewById(R.id.students_container);
         txtAbsenceDay = (TextView) findViewById(R.id.txtAbsenceDay);
@@ -68,8 +71,17 @@ public class AbsenceActivity extends BaseActivity {
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         dataContainer = (RelativeLayout) findViewById(R.id.data_container);
         txtProgramName = (TextView) findViewById(R.id.txtProgramName);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+//        mActionBar = getSupportActionBar();
+//        mActionBar.setDisplayHomeAsUpEnabled(true);
+        backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("التحضير");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             ref = bundle.getString("ref");

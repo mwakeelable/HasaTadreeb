@@ -1,43 +1,24 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.tadreeb_ihssa.R;
 import com.linked_sys.tadreeb_ihssa.core.AppController;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
-import com.linked_sys.tadreeb_ihssa.models.FileStream;
 import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
 import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
 import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 import com.linked_sys.tadreeb_ihssa.network.DownloadTask;
-import com.linked_sys.tadreeb_ihssa.network.DownloadTeacherCertificate;
 
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TeacherProgramDetailsActivity extends BaseActivity {
     TextView txtProgramRef, txtProgramDays, txtProgramID, txtProgramName, txtProgramDateFrom, txtProgramDateTo, txtProgramTime, txtProgramLocation;
@@ -51,17 +32,15 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        View shadow = findViewById(R.id.toolbar_shadow);
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            shadow.setVisibility(View.VISIBLE);
-        else
-            shadow.setVisibility(View.GONE);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("تفاصيل البرنامج");
         txtProgramRef = (TextView) findViewById(R.id.txt_program_ref);
         txtProgramDays = (TextView) findViewById(R.id.txt_program_days);
         txtProgramID = (TextView) findViewById(R.id.txt_program_id);
@@ -93,16 +72,13 @@ public class TeacherProgramDetailsActivity extends BaseActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String url = ApiEndPoints.BASE_URL + ApiEndPoints.TEACHER_CERTIFICATE_URL + "?ProgREF=" + txtProgramRef.getText().toString();
-//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                startActivity(browserIntent);
                 printCertificate();
             }
         });
     }
 
     private void printCertificate() {
-        final String printCertificateURL = ApiEndPoints.DOWNLOAD_TEACHER_CERTIFICATE + "?RegREF=" + txtProgramRef.getText().toString();
+        final String printCertificateURL = ApiEndPoints.DOWNLOAD_TEACHER_CERTIFICATE + "?ProgREF=" + txtProgramRef.getText().toString();
         ApiHelper api = new ApiHelper(this, printCertificateURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {

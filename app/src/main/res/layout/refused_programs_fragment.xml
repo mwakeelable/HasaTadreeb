@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"
-                android:background="#fff8f8f8"/>
+                android:background="#F8F8F8"/>
 
             <LinearLayout
                 android:id="@+id/no_data_placeholder"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/txt_no_data"
-                    android:visibility="gone"/>
+                    android:visibility="visible"/>
 
             </LinearLayout>
         </FrameLayout>

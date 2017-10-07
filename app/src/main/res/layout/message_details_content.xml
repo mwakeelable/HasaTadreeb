@@ -232,13 +232,17 @@
                 android:gravity="center"
                 android:visibility="gone">
 
+                <ImageView
+                    android:layout_width="71.91dp"
+                    android:layout_height="74.52dp"
+                    android:src="@drawable/ic_database" />
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="لا يوجد رد لهذه الرسالة حتى الان ..."
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="23sp" />
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_no_data"
+                    android:visibility="visible"/>
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>

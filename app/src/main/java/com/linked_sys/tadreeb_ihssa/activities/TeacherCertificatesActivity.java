@@ -3,6 +3,7 @@ package com.linked_sys.tadreeb_ihssa.activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.tadreeb_ihssa.R;
 import com.linked_sys.tadreeb_ihssa.adapters.TeacherAttendProgramsAdapter;
+import com.linked_sys.tadreeb_ihssa.adapters.TeachersDoneProgramsAdapter;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.models.TeacherProgram;
 import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
@@ -31,9 +33,9 @@ import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TeacherCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, TeacherAttendProgramsAdapter.TeacherProgramsAdapterListener, SearchView.OnQueryTextListener{
+public class TeacherCertificatesActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, TeachersDoneProgramsAdapter.TeachersDoneProgramsAdapterListener, SearchView.OnQueryTextListener {
     private RecyclerView recyclerView;
-    public TeacherAttendProgramsAdapter mAdapter;
+    public TeachersDoneProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
@@ -49,11 +51,17 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        mAdapter = new TeacherAttendProgramsAdapter(this, CacheHelper.getInstance().teacherDonePrograms, this);
+        mAdapter = new TeachersDoneProgramsAdapter(this, CacheHelper.getInstance().teacherDonePrograms, this);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL) {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                // Do not draw the divider
+            }
+        });
         // show loader and fetch messages
         swipeRefreshLayout.post(
                 new Runnable() {
@@ -89,7 +97,7 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
         final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
-                +"&progstatus=1" ;
+                + "&progstatus=1";
         ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -183,8 +191,8 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
     }
 
     private void openProgram(int pos) {
-        Intent intent = new Intent(this, TeacherProgramDetailsActivity.class);
-        intent.putExtra("pos",pos);
+        Intent intent = new Intent(TeacherCertificatesActivity.this, TeacherProgramDetailsActivity.class);
+        intent.putExtra("pos", pos);
         intent.putExtra("comeFrom", "done");
         startActivityForResult(intent, REQUEST_TEACHER_CODE);
     }
