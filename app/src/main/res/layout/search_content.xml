@@ -10,6 +10,7 @@
     tools:context=".activities.SearchActivity"
     tools:showIn="@layout/search_activity">
 
+    <!--Period-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,25 +26,23 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="فترة التسجيل: "
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textColor="#8E8E8E"
+            android:textSize="15.95sp" />
 
 
         <TextView
             android:id="@+id/txtPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="normal" />
+            android:textColor="#8E8E8E"
+            android:textSize="15.95sp" />
 
     </LinearLayout>
 
+    <!--Search Bar-->
     <RelativeLayout
         android:id="@+id/searchContainer"
         android:layout_width="match_parent"
@@ -53,38 +52,39 @@
         <EditText
             android:id="@+id/txtSearch"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="46.98dp"
             android:layout_centerVertical="true"
-            android:layout_margin="6dp"
-            android:background="@drawable/search_bg"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_item"
             android:hint="رقم هوية المعلم"
             android:inputType="number"
-            android:padding="6dp" />
+            android:padding="6dp"
+            android:textSize="18.85sp" />
 
         <ImageView
             android:id="@+id/btnSearch"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:padding="10dp"
-            android:src="@drawable/ic_search_black_24dp" />
+            android:src="@drawable/ic_search" />
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryLight" />
-
+    <!--Data-->
     <LinearLayout
         android:id="@+id/searchResultContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -98,127 +98,109 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <!--NAME-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_item"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+                    <!--NAME-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="اسم المتقدم: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/bg_item"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="112.23dp"
+                            android:layout_height="wrap_content"
+                            android:text="اسم المتقدم"
+                            android:textColor="#4EB4D0"
+                            android:textSize="15.95sp" />
 
 
-                    <TextView
-                        android:id="@+id/txtTeacherName"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/txtTeacherName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textColor="#A4A6B5"
+                            android:textSize="15.95sp" />
+
+                    </LinearLayout>
+
+                    <!--ID-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp"
-                        android:textStyle="normal" />
+                        android:background="@drawable/item_grey_bg"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
+                        <TextView
+                            android:layout_width="112.23dp"
+                            android:layout_height="wrap_content"
+                            android:text="رقم السجل"
+                            android:textColor="#4EB4D0"
+                            android:textSize="15.95sp" />
+
+
+                        <TextView
+                            android:id="@+id/txtTeacherID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textColor="#A4A6B5"
+                            android:textSize="15.95sp" />
+
+                    </LinearLayout>
+
+                    <!--MOBILE-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_item"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="112.23dp"
+                            android:layout_height="wrap_content"
+                            android:text="الجوال"
+                            android:textColor="#4EB4D0"
+                            android:textSize="15.95sp" />
+
+                        <TextView
+                            android:id="@+id/txtTeacherMobile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textColor="#A4A6B5"
+                            android:textSize="15.95sp" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <!--ID-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="رقم السجل: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/txtTeacherID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp"
-                        android:textStyle="normal" />
-
-                </LinearLayout>
-
-                <!--MOBILE-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="الجوال: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtTeacherMobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp"
-                        android:textStyle="normal" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorPrimaryLight" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="3dp"
                     android:text="قائمة برامج معلم / موظف"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#4EB4D0"
+                    android:textSize="18.85sp"
+                    android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="#F8F8F8"
                     android:scrollbars="vertical" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -229,6 +211,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone">
+
                 <ImageView
                     android:layout_width="71.91dp"
                     android:layout_height="74.52dp"
@@ -239,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/txt_no_data"
-                    android:visibility="visible"/>
+                    android:visibility="visible" />
 
             </LinearLayout>
 

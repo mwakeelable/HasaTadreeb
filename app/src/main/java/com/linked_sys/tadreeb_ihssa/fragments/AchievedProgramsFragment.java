@@ -70,7 +70,8 @@ public class AchievedProgramsFragment extends Fragment implements SwipeRefreshLa
             public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
                 // Do not draw the divider
             }
-        });        // show loader and fetch messages
+        });
+        // show loader and fetch messages
         swipeRefreshLayout.post(
                 new Runnable() {
                     @Override

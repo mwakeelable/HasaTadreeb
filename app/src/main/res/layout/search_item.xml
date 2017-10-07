@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/program_student_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true">
 
-    <RelativeLayout
-        android:id="@+id/searchItemContainer"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:paddingBottom="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingTop="4dp"
-        android:background="@color/White"
-        android:layout_margin="15dp">
+        android:background="@drawable/bg_item"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,42 +24,38 @@
                 android:id="@+id/txtProgramName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:text="خصائص النمو-المرحلة الابتدائية / ٥٤٥٧"
+                android:textColor="#6A6B74"
+                android:textSize="15.95sp" />
 
             <!--Program Time-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtProgramTimeLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="الزمن: "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:text="الزمن"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
 
                 <TextView
                     android:id="@+id/txtProgramTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
 
             </LinearLayout>
 
@@ -75,32 +63,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtProgramDateLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="تاريخه: "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:text="تاريخه"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
 
                 <TextView
                     android:id="@+id/txtProgramDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
 
             </LinearLayout>
 
@@ -108,31 +90,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtRegDateLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="تاريخ التسجيل: "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:text="تاريخ التسجيل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtRegDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
 
             </LinearLayout>
 
@@ -140,36 +116,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtProgramStatusLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="الحالة: "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:text="الحالة"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtProgramStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

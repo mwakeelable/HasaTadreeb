@@ -1,11 +1,11 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,17 +34,23 @@ import java.util.ArrayList;
 public class SearchActivity extends BaseActivity {
     private RecyclerView recyclerView;
     LinearLayoutManager mLayoutManager;
-    LinearLayout placeholder,searchDataContainer;
+    LinearLayout placeholder, searchDataContainer;
     public SearchAdapter mAdapter;
     public ArrayList<SearchResult> programs = new ArrayList<>();
-    TextView txtPeriod,txtTeacherName, txtTeacherID, txtTeacherMobile;
+    TextView txtPeriod, txtTeacherName, txtTeacherID, txtTeacherMobile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("عرض برنامج معلم / موظف");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         final ImageView btnSearch = (ImageView) findViewById(R.id.btnSearch);
         LinearLayout dataContainer = (LinearLayout) findViewById(R.id.searchResultContainer);
@@ -60,7 +66,12 @@ public class SearchActivity extends BaseActivity {
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL) {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                // Do not draw the divider
+            }
+        });
         setupUI(dataContainer);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -144,7 +155,7 @@ public class SearchActivity extends BaseActivity {
 
             }
         });
-        api.executeRequest(true,false);
+        api.executeRequest(true, false);
     }
 
     @Override
