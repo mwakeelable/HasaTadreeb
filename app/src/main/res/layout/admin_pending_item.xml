@@ -1,238 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/program_student_row"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/program_student_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="15dp"
-        android:background="@color/White"
-        android:clickable="true"
-        android:paddingBottom="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingTop="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/startContainer"
+        <TextView
+            android:id="@+id/txt_programName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/pendingIcon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/register_icon" />
-
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/pendingDivider"
-            android:layout_width="1.5dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/startContainer"
-            android:background="@color/colorPrimaryDark" />
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="15dp"
+            android:text="ادارة الانشطة الطلابية"
+            android:textColor="#8E8E8E"
+            android:textSize="15.95sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="3dp"
-            android:layout_toEndOf="@id/pendingDivider"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-            <!--Name-->
-            <TextView
-                android:id="@+id/txt_studentName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <!--Program Name-->
-            <TextView
-                android:id="@+id/txt_programName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="normal" />
-
-            <!--ID-->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_item"
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/txt_programIDLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="رقم السـجل: "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/txt_programID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-            <!--Date and time-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txt_program_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text=" - "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/txt_program_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_under_review" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:layout_width="270.25dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/btnAcceptProgram"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/txt_studentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="#6A6B74"
+                    android:textSize="15.95sp" />
+
+                <!--ID-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txt_programIDLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:layout_marginStart="10dp"
+                        android:text="رقم السجل"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+
+                    <TextView
+                        android:id="@+id/txt_programID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <!--Date and time-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/item_grey_bg"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:layout_marginStart="10dp"
+                        android:text="بتاريخ"
+                        android:textColor="#4EB4D0"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txt_program_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text=" - "
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                    <TextView
+                        android:id="@+id/txt_program_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="#A4A6B5"
+                        android:textSize="15.95sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="10dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_marginTop="10dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/btnAcceptProgram"
+                        android:layout_width="119.06dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/rectangle_2_vd"
                         android:gravity="center"
                         android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/accept_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="قبــول"
-                            android:textColor="@color/grey_700"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:text="قبول"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15.95sp" />
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/btnDeclineProgram"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="10dp"
-                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/btnDeclineProgram"
+                        android:layout_width="119.06dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/rectangle_1_vd"
                         android:gravity="center"
                         android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/refuse_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="رفــض"
-                            android:textColor="@color/grey_700"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="15.95sp" />
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
 
+                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
-        android:visibility="gone" />
-
-</RelativeLayout>
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,9 +38,15 @@ public class AdminPendingProgramsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("البرامج المعلقة");
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         studentsLayout = (LinearLayout) findViewById(R.id.students_container);
@@ -59,8 +66,8 @@ public class AdminPendingProgramsActivity extends BaseActivity {
         TextView programDate = (TextView) view.findViewById(R.id.txt_program_date);
         TextView programTime = (TextView) view.findViewById(R.id.txt_program_time);
         TextView programID = (TextView) view.findViewById(R.id.txt_programID);
-        CardView btnAccept = (CardView) view.findViewById(R.id.btnAcceptProgram);
-        CardView btnDecline = (CardView) view.findViewById(R.id.btnDeclineProgram);
+        LinearLayout btnAccept = (LinearLayout) view.findViewById(R.id.btnAcceptProgram);
+        LinearLayout btnDecline = (LinearLayout) view.findViewById(R.id.btnDeclineProgram);
         programName.setText(program.getProgramName());
         studentName.setText(program.getMotadarebFullName());
         programDate.setText(program.getProgramDate());

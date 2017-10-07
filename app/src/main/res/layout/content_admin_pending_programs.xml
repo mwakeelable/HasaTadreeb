@@ -41,7 +41,7 @@
             android:id="@+id/no_data_placeholder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/grey_300"
+            android:background="#F8F8F8"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone">
