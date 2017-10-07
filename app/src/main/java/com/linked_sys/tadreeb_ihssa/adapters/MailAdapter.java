@@ -32,7 +32,7 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
     private MessageFilter messageFilter;
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
-        TextView subject, iconText, txt_date;
+        TextView subject, txt_date;
         ImageView imgProfile;
         LinearLayout iconContainer;
         RelativeLayout messageContainer, messageRow;
@@ -40,7 +40,6 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
         MyViewHolder(View view) {
             super(view);
             subject = (TextView) view.findViewById(R.id.txt_primary);
-            iconText = (TextView) view.findViewById(R.id.icon_text);
             txt_date = (TextView) view.findViewById(R.id.timestamp);
             imgProfile = (ImageView) view.findViewById(R.id.userImg);
             messageContainer = (RelativeLayout) view.findViewById(R.id.message_container);

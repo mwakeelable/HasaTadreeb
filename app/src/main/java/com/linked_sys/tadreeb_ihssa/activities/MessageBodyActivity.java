@@ -3,6 +3,8 @@ package com.linked_sys.tadreeb_ihssa.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -17,17 +19,21 @@ import org.json.JSONObject;
 
 public class MessageBodyActivity extends BaseActivity {
     public TextView msg_subject, msg_content, txt_date;
-    Toolbar mToolbar;
     int pos;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_body);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("تفاصيل الرسـالة");
         controlsDef();
         applyMessageData();
     }
@@ -43,12 +49,9 @@ public class MessageBodyActivity extends BaseActivity {
         if (extra != null) {
             pos = extra.getInt("pos");
         }
-        msg_subject = (TextView) findViewById(R.id.txt_mail_subject);
-        msg_content = (TextView) findViewById(R.id.msg_content);
-        txt_date = (TextView) findViewById(R.id.txt_date);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-
+        msg_subject = (TextView) findViewById(R.id.messageTitleTxt);
+        msg_content = (TextView) findViewById(R.id.messageBodyTxt);
+        txt_date = (TextView) findViewById(R.id.messagesDateTxt);
     }
 
     private void getMessageBody() {
@@ -75,8 +78,6 @@ public class MessageBodyActivity extends BaseActivity {
     }
 
     private void applyMessageData() {
-//        msg_subject.setText(CacheHelper.getInstance().body.getTitle());
-//        msg_content.setText(CacheHelper.getInstance().body.getBody());
         getMessageBody();
     }
 

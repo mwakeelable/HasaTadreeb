@@ -5,125 +5,50 @@
     android:id="@+id/content_message_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MessageBodyActivity"
     tools:showIn="@layout/activity_message_body">
 
-    <!--subject-->
-    <RelativeLayout
-        android:id="@+id/subject_container"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+
+    <TextView
+        android:id="@+id/messagesDateTxt"
+        android:layout_width="306.29dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30.33dp"
+        android:text="20/5/2017"
+        android:textColor="#8E8E8E"
+        android:textSize="15.95sp" />
+
+    <LinearLayout
+        android:layout_width="318.39dp"
+        android:layout_height="181.0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_item"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_mail_subject"
+            android:id="@+id/messageTitleTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="test subject"
-            android:textColor="@color/black"
-            android:textSize="26sp" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black" />
-
-    <!--sender-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:id="@+id/sender_details_container"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <!--<de.hdodenhof.circleimageview.CircleImageView-->
-            <!--android:id="@+id/sender_avatar"-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_marginStart="10dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:src="@drawable/avatar_placeholder" />-->
-
-            <RelativeLayout
-                android:id="@+id/icon_front"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/icon_profile"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/bg_circle" />
-
-                <TextView
-                    android:id="@+id/icon_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_sender_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey_800"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/txt_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="@color/grey_800"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
+            android:layout_marginStart="19.39dp"
+            android:textColor="#4EB4D0"
+            android:textSize="15.95sp" />
 
         <TextView
-            android:id="@+id/msg_content"
-            android:layout_width="wrap_content"
+            android:id="@+id/messageBodyTxt"
+            android:layout_width="286.86dp"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/grey_800"
-            android:textIsSelectable="true"
-            android:textSize="25sp" />
+            android:layout_marginStart="19.39dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#8E8E8E"
+            android:textSize="15.95sp" />
 
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

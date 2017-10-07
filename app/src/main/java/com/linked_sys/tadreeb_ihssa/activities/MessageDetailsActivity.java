@@ -5,6 +5,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,9 +21,6 @@ public class MessageDetailsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txtMessageBody = (TextView) findViewById(R.id.msg_content);
         txtReplyBody = (TextView) findViewById(R.id.reply_content);
         txtMessageDate = (TextView) findViewById(R.id.txtMessageDate);
@@ -31,8 +29,15 @@ public class MessageDetailsActivity extends BaseActivity {
         txtReplyTime = (TextView) findViewById(R.id.txtReplyTime);
         replyContainer = (LinearLayout) findViewById(R.id.replyContainer);
         noReplyPlaceholder = (LinearLayout) findViewById(R.id.noReplyPlaceholder);
-
-
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("تفاصيل الرسـالة");
         Bundle extra = getIntent().getExtras();
         if (extra != null)
             position = extra.getInt("pos");
