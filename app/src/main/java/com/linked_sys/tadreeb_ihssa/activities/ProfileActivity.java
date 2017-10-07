@@ -95,4 +95,9 @@ public class ProfileActivity extends BaseActivity {
         api.executeRequest(true, false);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getMessagesCount();
+    }
 }

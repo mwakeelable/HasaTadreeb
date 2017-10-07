@@ -2,6 +2,8 @@ package com.linked_sys.tadreeb_ihssa.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linked_sys.tadreeb_ihssa.R;
@@ -13,9 +15,15 @@ public class TeacherDetailsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("بيانات المعلم");
         Bundle bundle = getIntent().getExtras();
         txtTeacherName = (TextView) findViewById(R.id.txtTeacherName);
         txtTeacherMobile = (TextView) findViewById(R.id.txtTeacherMobile);

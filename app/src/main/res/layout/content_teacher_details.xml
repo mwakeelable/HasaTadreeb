@@ -11,223 +11,201 @@
     <FrameLayout
         android:id="@+id/tasks_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_grey">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/new_background"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <!--Teacher Name-->
-
             <LinearLayout
-                android:id="@+id/teacherNameContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherNameLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="اسم المتقدم:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="اسم المتقدم"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher Mobile-->
-
-
             <LinearLayout
                 android:id="@+id/teacherMobileNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherMobileLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="الجــوال:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="الجــوال"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherMobile"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher ID-->
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherIDLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="رقم السـجل:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="رقم السـجل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherID"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher Specialize-->
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherSpecializeLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="التخصص:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="التخصص"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherSpecialize"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher Current Work-->
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherCurrentWorkLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="العمل:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="العمل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherCurrentWork"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher Case-->
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherCaseLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:text="الحالة:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="الحالة"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherCase"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
 
             <!--Teacher REF-->
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/txtTeacherRefLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
                     android:text="المرجع:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
                 <TextView
                     android:id="@+id/txtTeacherRef"
-                    android:layout_width="wrap_content"
+                    android:layout_width="133.99dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
             </LinearLayout>
 
         </LinearLayout>

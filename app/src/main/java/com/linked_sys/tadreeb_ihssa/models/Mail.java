@@ -10,17 +10,19 @@ public class Mail {
     private String body;
     private String isRead;
     private String userType;
+    private String date;
 
     public Mail() {
 
     }
 
-    public Mail(String id, String title, String body, String isRead, String userType) {
+    public Mail(String id, String title, String body, String isRead, String userType,String date) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.isRead = isRead;
         this.userType = userType;
+        this.date = date;
     }
 
     public String getId() {
@@ -61,5 +63,13 @@ public class Mail {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

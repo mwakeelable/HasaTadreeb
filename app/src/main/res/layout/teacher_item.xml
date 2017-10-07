@@ -4,13 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
-    android:background="@color/White"
-    android:layout_margin="10dp">
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/teacher_container"
@@ -19,98 +13,83 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="?selectableItemBackground"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_item"
         android:clickable="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/profile_icon"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="3dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
             <!--teacher name-->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/txtTeacherNameLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="113.46dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="اسم المعلم: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="اسم المعلم"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
 
                 <TextView
                     android:id="@+id/txtTeacherName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_toEndOf="@id/txtTeacherNameLabel"
-                    android:layout_toRightOf="@id/txtTeacherNameLabel"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
-            </RelativeLayout>
+                    android:text="عبد الرحمن بن محمد الفلاح"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
+            </LinearLayout>
 
             <!--Teacher Specialize-->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg">
 
                 <TextView
                     android:id="@+id/txtTeacherSpecializeLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="113.46dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="التخصص: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="التخصص"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
 
                 <TextView
                     android:id="@+id/txtTeacherSpecalize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_toEndOf="@id/txtTeacherSpecializeLabel"
-                    android:layout_toRightOf="@id/txtTeacherSpecializeLabel"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
+                    android:text="رياضيات"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

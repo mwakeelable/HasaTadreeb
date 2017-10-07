@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +42,7 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
             subject = (TextView) view.findViewById(R.id.txt_primary);
             iconText = (TextView) view.findViewById(R.id.icon_text);
             txt_date = (TextView) view.findViewById(R.id.timestamp);
-            imgProfile = (ImageView) view.findViewById(R.id.icon_profile);
+            imgProfile = (ImageView) view.findViewById(R.id.userImg);
             messageContainer = (RelativeLayout) view.findViewById(R.id.message_container);
             iconContainer = (LinearLayout) view.findViewById(R.id.iconContainer);
             messageRow = (RelativeLayout) view.findViewById(R.id.message_row);
@@ -85,8 +84,30 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
     public void onBindViewHolder(MailAdapter.MyViewHolder holder, int position) {
         Mail mail = filteredList.get(position);
         holder.subject.setText(mail.getTitle());
+        String date = "";
+        try {
+            date = getDateFormat(filteredList.get(position).getDate());
+        } catch (Exception e) {
+            date = filteredList.get(position).getDate();
+        }
+        holder.txt_date.setText(date);
         applyReadStatus(holder, mail);
         applyClickEvents(holder, position);
+    }
+
+    private String getDateFormat(String date) {
+        String dateFormat = "";
+        if (date.charAt(5) != '0')
+            dateFormat += date.charAt(5);
+        dateFormat += date.charAt(6);
+        dateFormat += '/';
+        if (date.charAt(8) != '0')
+            dateFormat += date.charAt(8);
+        dateFormat += date.charAt(9);
+        dateFormat += '/';
+        dateFormat += date.charAt(2);
+        dateFormat += date.charAt(3);
+        return dateFormat;
     }
 
     private void applyClickEvents(MyViewHolder holder, final int position) {
@@ -115,9 +136,11 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MyViewHolder> 
     private void applyReadStatus(MyViewHolder holder, Mail mail) {
         if (mail.getIsRead().equals("Read")) {
             holder.subject.setTypeface(null, Typeface.NORMAL);
-            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.celestialblue));
+            holder.imgProfile.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.message_open));
+            holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.black));
         } else {
             holder.subject.setTypeface(null, Typeface.BOLD);
+            holder.imgProfile.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.message_closed));
             holder.subject.setTextColor(ContextCompat.getColor(mContext, R.color.celestialblue));
         }
     }

@@ -131,6 +131,7 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                             message.setBody(mailData.optString("Body"));
                             message.setIsRead(mailData.optString("Read"));
                             message.setUserType(mailData.optString("UserType"));
+                            message.setDate(mailData.optString("CreationDate"));
                             mailList.add(message);
                         }
                         recyclerView.setAdapter(mAdapter);
@@ -222,7 +223,8 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                         mailList.get(i).getTitle(),
                         mailList.get(i).getBody(),
                         mailList.get(i).getIsRead(),
-                        mailList.get(i).getUserType()
+                        mailList.get(i).getUserType(),
+                        mailList.get(i).getDate()
                 );
             }
         }
@@ -235,6 +237,7 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     public void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
+        getInbox();
     }
 
     @Override
@@ -244,6 +247,7 @@ public class MailActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        return false;
+        mAdapter.getFilter().filter(newText);
+        return true;
     }
 }
