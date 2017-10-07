@@ -37,7 +37,7 @@ public class MessageDetailsActivity extends BaseActivity {
             }
         });
         TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
-        titleTxt.setText("تفاصيل الرسـالة");
+        titleTxt.setText("تذكرة الدعم الفني");
         Bundle extra = getIntent().getExtras();
         if (extra != null)
             position = extra.getInt("pos");

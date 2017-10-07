@@ -6,6 +6,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -23,18 +25,24 @@ import java.util.Map;
 public class SendTechnicalTicketActivity extends BaseActivity {
     TextView txtSchoolName;
     EditText txtMessageBody;
-    CardView btnSendMessage;
+    LinearLayout btnSendMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("تذكرة الدعم الفني");
         txtSchoolName = (TextView) findViewById(R.id.txtSchoolName);
         txtMessageBody = (EditText) findViewById(R.id.txtMessageBody);
         txtSchoolName.setText(session.getUserDetails().get(session.KEY_FULL_NAME));
-        btnSendMessage = (CardView) findViewById(R.id.btnSendMessage);
+        btnSendMessage = (LinearLayout) findViewById(R.id.btnSendMessage);
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -21,111 +21,104 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="306.29dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="الرسالة"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textColor="#8E8E8E"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
+                android:layout_height="248.79dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="vertical"
+                android:padding="10dp">
                 <!--Date-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center|start"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="112.23dp"
                         android:layout_height="wrap_content"
-                        android:text="التاريخ: "
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:text="التاريخ"
+                        android:textColor="#4EB4D0"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txtMessageDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp"
-                        android:textStyle="normal" />
+                        android:textColor="#A4A6B5"
+                        android:textSize="16sp" />
                 </LinearLayout>
                 <!--Time-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:background="@drawable/item_grey_bg"
                     android:gravity="center|start"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="112.23dp"
                         android:layout_height="wrap_content"
-                        android:text="الوقت: "
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:text="الوقت"
+                        android:textColor="#4EB4D0"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txtMessageTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp"
-                        android:textStyle="normal" />
+                        android:textColor="#A4A6B5"
+                        android:textSize="16sp" />
                 </LinearLayout>
                 <!--Body-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="112.23dp"
                         android:layout_height="wrap_content"
                         android:text="نص الرسالة"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="#4EB4D0"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/msg_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
-                        android:textStyle="normal" />
+                        android:layout_margin="5dp"
+                        android:textColor="#8E8E8E"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/colorPrimaryDark" />
-
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="306.29dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:text="الرد"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="#8E8E8E"
+            android:textSize="17sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -135,8 +128,14 @@
             <LinearLayout
                 android:id="@+id/replyContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="248.79dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
                 android:orientation="vertical"
+                android:padding="10dp"
                 android:visibility="gone">
 
                 <LinearLayout
@@ -147,53 +146,48 @@
                     <!--Date-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="5dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="112.23dp"
                             android:layout_height="wrap_content"
-                            android:text="التاريخ: "
-                            android:textColor="@color/black"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:text="التاريخ"
+                            android:textColor="#4EB4D0"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/txtReplyDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
+                            android:textColor="#A4A6B5"
+                            android:textSize="16sp" />
                     </LinearLayout>
                     <!--Time-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/item_grey_bg"
                         android:gravity="center|start"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="5dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="112.23dp"
                             android:layout_height="wrap_content"
-                            android:text="الوقت: "
-                            android:textColor="@color/black"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:text="الوقت"
+                            android:textColor="#4EB4D0"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/txtReplyTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
+                            android:textColor="#A4A6B5"
+                            android:textSize="16sp" />
                     </LinearLayout>
                     <!--Body-->
                     <LinearLayout
@@ -202,23 +196,19 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="112.23dp"
                             android:layout_height="wrap_content"
                             android:text="الرد"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textColor="#4EB4D0"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/reply_content"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginStart="5dp"
-                            android:padding="6dp"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp"
-                            android:textStyle="normal" />
+                            android:layout_margin="5dp"
+                            android:textColor="#8E8E8E"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -230,6 +220,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <ImageView
@@ -241,7 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/txt_no_data"
+                    android:text="عفوا .. لا يوجد رد!!"
                     android:visibility="visible" />
             </LinearLayout>
         </FrameLayout>

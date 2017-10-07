@@ -4,118 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_bg"
+    android:background="#F8F8F8"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.SendTechnicalTicketActivity"
     tools:showIn="@layout/activity_technical_ticket">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_item"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="112.23dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="اسم الجهة"
+                android:textColor="#4EB4D0"
+                android:textSize="15.95sp" />
+
+            <TextView
+                android:id="@+id/txtSchoolName"
+                android:layout_width="133.99dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:textColor="#A4A6B5"
+                android:textSize="15.95sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="4dp"
-        app:cardUseCompatPadding="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="اسم الجهة"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtSchoolName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey_700"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="4dp"
-        app:cardUseCompatPadding="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="نص الرسـالة"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/txtMessageBody"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:inputType="textMultiLine"
-                        android:padding="8dp"
-                        android:textColorHint="@color/grey_0" />
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/btnSendMessage"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="10dp"
-        app:cardUseCompatPadding="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp">
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_item"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/accept_btn_bg"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="112.23dp"
                 android:layout_height="wrap_content"
-                android:text="إرســـال"
-                android:textColor="@color/White"
-                android:textSize="23sp" />
+                android:layout_marginBottom="5dp"
+                android:text="نص الرسـالة"
+                android:textColor="#4EB4D0"
+                android:textSize="15.95sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txtMessageBody"
+                    android:layout_width="286.86dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="19.39dp"
+                    android:inputType="textMultiLine"
+                    android:padding="8dp"
+                    android:textColor="#8E8E8E"
+                    android:textColorHint="#8E8E8E"
+                    android:textSize="15.95sp" />
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/btnSendMessage"
+        android:layout_width="match_parent"
+        android:layout_height="46.98dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/accept_btn_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="306.21dp"
+            android:layout_height="wrap_content"
+            android:text="ارسال"
+            android:textAlignment="center"
+            android:textColor="@color/White"
+            android:textSize="18.85sp" />
+    </LinearLayout>
 
 </LinearLayout>
