@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,13 +25,13 @@ public class AcceptedProgramsAdapter extends RecyclerView.Adapter<AcceptedProgra
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView programName, studentName;
-        RelativeLayout courseRow;
+        LinearLayout courseRow;
 
         MyViewHolder(View view) {
             super(view);
             programName = (TextView) view.findViewById(R.id.txtProgramName);
             studentName = (TextView) view.findViewById(R.id.txtStudentName);
-            courseRow = (RelativeLayout) view.findViewById(R.id.program_container);
+            courseRow = (LinearLayout) view.findViewById(R.id.program_container);
         }
     }
 

@@ -4,88 +4,92 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:focusable="true">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/program_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_item"
         android:clickable="true"
-        android:background="@drawable/white_button"
+        android:orientation="horizontal"
         android:padding="10dp">
 
-        <!--program name-->
-        <RelativeLayout
-            android:id="@+id/programNameContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txtProgramNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="البرنامج: "
-                android:textColor="#6A6A6A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtProgramName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@id/txtProgramNameLabel"
-                android:layout_toRightOf="@id/txtProgramNameLabel"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-        </RelativeLayout>
-
-        <!--Motadreb Name-->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/programNameContainer"
-            android:layout_marginTop="5dp">
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtStudentNameLabel"
-                android:layout_width="wrap_content"
+            <!--teacher name-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="اسم المتقدم: "
-                android:textColor="#6A6A6A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/txtStudentName"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramNameLabel"
+                    android:layout_width="113.46dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
+
+                <TextView
+                    android:id="@+id/txtProgramName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
+            </LinearLayout>
+
+            <!--Teacher Specialize-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@id/txtStudentNameLabel"
-                android:layout_toRightOf="@id/txtStudentNameLabel"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_grey_bg">
 
-        </RelativeLayout>
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtStudentNameLabel"
+                    android:layout_width="113.46dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="اسم المتقدم"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
+
+                <TextView
+                    android:id="@+id/txtStudentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp"
+                    android:layout_marginBottom="3dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

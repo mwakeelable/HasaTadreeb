@@ -11,294 +11,242 @@
     <FrameLayout
         android:id="@+id/tasks_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/layout_bg"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/new_background"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtStudentNameLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="اسم المتقدم"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtStudentNameLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="اسم المتقدم:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtStudentName"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtStudentName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
+            </LinearLayout>
 
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtStudentMobileLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtStudentMobileLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الجــوال:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="الجــوال"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtStudentMobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtStudentMobile"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtStudentIDLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtStudentIDLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="رقم السـجل:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="رقم السـجل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtStudentID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtStudentID"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramNameLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtProgramNameLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="البرنامج:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtProgramName"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramIDLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtProgramIDLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="مرجع البرنامج:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="مرجع البرنامج"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtProgramID"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramTimeLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtProgramTimeLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الزمن:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="الزمن"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtProgramTime"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramDateLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="تاريخــه"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramDateLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="تاريخــه:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtProgramDate"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txtProgramDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_grey_bg"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramRegDateLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtProgramRegDateLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="تفاصيل التسجيل:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="تفاصيل التسجيل"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramRegDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtProgramRegDate"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/white_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_item"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txtProgramStatusLabel"
+                    android:layout_width="112.23dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/txtProgramStatusLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="الحالة:"
-                        android:textColor="#B9B9B9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="الحالة"
+                    android:textColor="#4EB4D0"
+                    android:textSize="15.95sp" />
 
-                    <TextView
-                        android:id="@+id/txtProgramStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#6A6A6A"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtProgramStatus"
+                    android:layout_width="133.99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#A4A6B5"
+                    android:textSize="15.95sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </FrameLayout>

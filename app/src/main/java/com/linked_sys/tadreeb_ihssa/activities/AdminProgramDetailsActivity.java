@@ -15,15 +15,10 @@ public class AdminProgramDetailsActivity extends BaseActivity {
     TextView txtProgramName, txtProgramID, txtProgramTime, txtProgramDate,
             txtRegDate, txtProgramStatus;
     String status;
-    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             position = bundle.getInt("pos");
@@ -31,12 +26,6 @@ public class AdminProgramDetailsActivity extends BaseActivity {
         }
         initalizeUI();
         setData();
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
 
     private void initalizeUI() {
@@ -49,7 +38,15 @@ public class AdminProgramDetailsActivity extends BaseActivity {
         txtProgramDate = (TextView) findViewById(R.id.txtProgramDate);
         txtRegDate = (TextView) findViewById(R.id.txtProgramRegDate);
         txtProgramStatus = (TextView) findViewById(R.id.txtProgramStatus);
-        btnBack = (ImageView) findViewById(R.id.btn_back);
+        ImageView backBtn = (ImageView) findViewById(R.id.backImgView);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+        titleTxt.setText("تفاصيل البرنامج");
     }
 
     private void setData() {

@@ -52,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="عبد الرحمن بن محمد الفلاح"
                     android:textColor="#A4A6B5"
                     android:textSize="15.95sp"
                     android:layout_marginBottom="3dp"/>
@@ -84,7 +83,6 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="رياضيات"
                     android:textColor="#A4A6B5"
                     android:textSize="15.95sp"
                     android:layout_marginBottom="3dp"/>
