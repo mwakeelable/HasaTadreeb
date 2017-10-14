@@ -53,10 +53,10 @@ public class MainAdminFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         periodsSpinner = (Spinner) view.findViewById(R.id.periodsSpinner);
         pendingProgramsCountTxt = (TextView) view.findViewById(R.id.pendingProgramsCountTxt);
-        teachersDataBtn = (LinearLayout) view.findViewById(R.id.preLoginLogo);
-        techTicketBtn = (LinearLayout) view.findViewById(R.id.btnAdminLoginContainer);
-        acceptedProgramsBtn = (LinearLayout) view.findViewById(R.id.btnStudentLoginContainer);
-        notAcceptedProgramsBtn = (LinearLayout) view.findViewById(R.id.btnTeacherLoginContainer);
+        teachersDataBtn = (LinearLayout) view.findViewById(R.id.btnTeachersData);
+        techTicketBtn = (LinearLayout) view.findViewById(R.id.btnTicketSupport);
+        acceptedProgramsBtn = (LinearLayout) view.findViewById(R.id.btnAcceptedPrograms);
+        notAcceptedProgramsBtn = (LinearLayout) view.findViewById(R.id.btnNotAcceptedPrograms);
         btnSearch = (LinearLayout) view.findViewById(R.id.btnSearch);
         pendingProgramsBtn = (RelativeLayout) view.findViewById(R.id.pendingProgramsBtn);
         pendingProgramsBtn.setOnClickListener(new View.OnClickListener() {
