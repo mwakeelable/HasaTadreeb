@@ -55,7 +55,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">
 
@@ -66,30 +66,30 @@
 
                 <Button
                     android:id="@+id/btnValidData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="43.86dp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/rectangle_2_vd"
+                    android:background="@drawable/rectangle_2"
                     android:text="البيانات سليمة"
                     android:textColor="@color/White"
                     android:textSize="15.95sp" />
 
                 <Button
                     android:id="@+id/btnInvalidData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="43.86dp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/rectangle_1_vd"
+                    android:background="@drawable/rectangle_1"
                     android:text="@string/btnInvalidData"
                     android:textColor="@color/White"
                     android:textSize="15.95sp" />

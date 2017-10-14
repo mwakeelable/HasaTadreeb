@@ -24,10 +24,15 @@ import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
 import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
 import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 
+import org.json.JSONObject;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import me.leolin.shortcutbadger.ShortcutBadger;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static com.linked_sys.tadreeb_ihssa.core.CacheHelper.newMails;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public SessionManager session;
@@ -90,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void sendFBToken(String userID) {
-        try{
+        try {
             final String token = FirebaseInstanceId.getInstance().getToken();
             Map<String, String> map = new LinkedHashMap<>();
             map.put("UserID", userID);
@@ -108,8 +113,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             });
             api.executePostRequest(false);
-        }catch (Exception e){
-            Log.e("Error",e.getMessage());
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
         }
     }
 
@@ -126,13 +131,56 @@ public abstract class BaseActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(VolleyError error) {
-//                    Log.d(AppController.TAG, error.getMessage());
                     session.logoutUser();
+                    newMails = 0;
+                    setBadge(BaseActivity.this, newMails);
                 }
             });
             api.executePostRequest(true);
         } catch (Exception e) {
             session.logoutUser();
         }
+    }
+
+    public void getUnreadMessagesCount() {
+        String url = ApiEndPoints.GET_MESSAGE_COUNT
+                + "?APPCode=zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg="
+                + "&UserID=" + session.getUserDetails().get(session.KEY_ID_REF);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                newMails = res.optInt("count");
+                setBadge(BaseActivity.this, Integer.parseInt(res.optString("ret")));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+    public static void setBadge(Context context, int count) {
+        ShortcutBadger.applyCount(context, count);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        setBadge(this, newMails);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setBadge(this, newMails);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setBadge(this, newMails);
     }
 }

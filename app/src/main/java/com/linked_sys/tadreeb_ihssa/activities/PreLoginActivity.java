@@ -14,7 +14,7 @@ public class PreLoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        btnAdminLogin = (LinearLayout) findViewById(R.id.btnAdminLoginContainer);
+        btnAdminLogin = (LinearLayout) findViewById(R.id.btnCoordinatorLogin);
         btnStudentLogin = (LinearLayout) findViewById(R.id.btnStudentLoginContainer);
         btnTeacherLogin = (LinearLayout) findViewById(R.id.btnTeacherLoginContainer);
         preLoginLogo = (LinearLayout) findViewById(R.id.preLoginLogo);

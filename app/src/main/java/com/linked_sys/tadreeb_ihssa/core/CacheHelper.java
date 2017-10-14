@@ -49,4 +49,5 @@ public class CacheHelper {
     public ArrayList<TeacherProgram> doneFilteredList;
     public ArrayList<TeacherProgram> attendFilteredList;
     public Mail body;
+    public static int newMails;
 }

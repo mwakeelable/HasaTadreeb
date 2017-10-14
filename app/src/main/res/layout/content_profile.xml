@@ -91,7 +91,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/line_vd" />
+            android:background="#979797" />
 
         <RelativeLayout
             android:id="@+id/signOutBtn"

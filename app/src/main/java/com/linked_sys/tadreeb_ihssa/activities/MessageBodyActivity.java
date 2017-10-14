@@ -67,6 +67,7 @@ public class MessageBodyActivity extends BaseActivity {
                 JSONObject message = obj.optJSONObject("con");
                 msg_subject.setText(message.optString("Title"));
                 msg_content.setText(message.optString("Body"));
+                txt_date.setText(getDateFormat(message.optString("CreationDate")));
             }
 
             @Override
@@ -75,6 +76,21 @@ public class MessageBodyActivity extends BaseActivity {
             }
         });
         api.executeRequest(true, false);
+    }
+
+    private String getDateFormat(String date) {
+        String dateFormat = "";
+        if (date.charAt(5) != '0')
+            dateFormat += date.charAt(5);
+        dateFormat += date.charAt(6);
+        dateFormat += '/';
+        if (date.charAt(8) != '0')
+            dateFormat += date.charAt(8);
+        dateFormat += date.charAt(9);
+        dateFormat += '/';
+        dateFormat += date.charAt(2);
+        dateFormat += date.charAt(3);
+        return dateFormat;
     }
 
     private void applyMessageData() {
