@@ -47,7 +47,7 @@
                     android:id="@+id/btnTraineeRegister"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="7dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -94,7 +94,7 @@
                     android:id="@+id/btnTraineeRecentPrograms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="7dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -140,7 +140,7 @@
                     android:id="@+id/btnTraineeFinishedPrograms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="7dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
