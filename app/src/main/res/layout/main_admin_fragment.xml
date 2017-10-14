@@ -33,7 +33,7 @@
                     android:layout_height="70dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                         android:text="المدرب"
                         android:textColor="#4EB4D0"
                         android:textSize="18sp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginTop="-7dp"/>
                 </LinearLayout>
 
                 </LinearLayout>
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                         android:text="دعم فني"
                         android:textColor="#4EB4D0"
                         android:textSize="18sp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginTop="-7dp"/>
                 </LinearLayout>
 
                 </LinearLayout>
@@ -108,7 +108,7 @@
                     android:layout_height="70dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                         android:text="معتمدة"
                         android:textColor="#4EB4D0"
                         android:textSize="18sp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginTop="-7dp"/>
                 </LinearLayout>
                 </LinearLayout>
 
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -161,7 +161,7 @@
                         android:text="غير معتمدة"
                         android:textColor="#4EB4D0"
                         android:textSize="18sp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginTop="-7dp"/>
                 </LinearLayout>
 
                 </LinearLayout>

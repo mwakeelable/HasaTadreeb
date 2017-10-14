@@ -26,14 +26,14 @@ public class MainTeacherFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        view.findViewById(R.id.btnStudentLoginContainer).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnTrainerFinishedPrograms).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity.openActivity(TeacherCertificatesActivity.class);
             }
         });
 
-        view.findViewById(R.id.btnTeacherLoginContainer).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnTrainerRecentPrograms).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity.openActivity(TeacherAttendProgramsActivity.class);

@@ -121,9 +121,50 @@
                 android:layout_marginBottom="85dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:background="@drawable/trainee_finish"
+                android:background="@drawable/coordinater"
                 android:gravity="center"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnTrainerFinishedPrograms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_trainee_finish"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="برامج منجزة"
+                            android:textColor="#4EB4D0"
+                            android:textSize="18sp"
+                            android:layout_marginTop="-8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="منجزة"
+                            android:layout_marginStart="2dp"
+                            android:textColor="#4EB4D0"
+                            android:textSize="18sp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btnTeacherLoginContainer"
@@ -135,9 +176,50 @@
                 android:layout_marginBottom="85dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginRight="18dp"
-                android:background="@drawable/trainee_recent"
+                android:background="@drawable/coordinater"
                 android:gravity="center"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnTrainerRecentPrograms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_trainee_recent"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="برامج حالية"
+                            android:textColor="#4EB4D0"
+                            android:textSize="18sp"
+                            android:layout_marginTop="-8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-5dp"
+                            android:text="حالية"
+                            android:textColor="#4EB4D0"
+                            android:textSize="18sp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

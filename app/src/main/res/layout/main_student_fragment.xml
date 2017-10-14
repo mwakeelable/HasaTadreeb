@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8F8F8">
+    android:background="#F8F8F8"
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,9 +39,42 @@
                 android:layout_below="@id/preLoginLogo"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/trainee_register"
+                android:background="@drawable/coordinater"
                 android:gravity="center"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnTraineeRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_trainee_register" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="تسجيل في"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-9dp"
+                        android:text="برنامج"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btnRecent"
@@ -53,9 +86,43 @@
                 android:layout_marginBottom="85dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:background="@drawable/trainee_recent"
+                android:background="@drawable/coordinater"
                 android:gravity="center"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnTraineeRecentPrograms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_trainee_recent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="برامج حالية"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="حالية"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btnFinished"
@@ -65,9 +132,43 @@
                 android:layout_marginRight="18dp"
                 android:layout_marginStart="7dp"
                 android:layout_toEndOf="@+id/btnRecent"
-                android:background="@drawable/trainee_finish"
+                android:background="@drawable/coordinater"
                 android:gravity="center"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnTraineeFinishedPrograms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_trainee_finish" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="برامج منجزة"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="منجزة"
+                        android:textColor="#4EB4D0"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
