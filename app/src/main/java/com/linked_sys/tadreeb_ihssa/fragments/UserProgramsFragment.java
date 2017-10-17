@@ -24,7 +24,6 @@ public class UserProgramsFragment extends Fragment {
     public PendingProgramsFragment FRAGMENT_PENDING_PROGRAMS; //-1
     public StartedProgramsFragment FRAGMENT_STARTED_PROGRAMS; //0
     public ApprovedProgramsFragment FRAGMENT_APPROVED_PROGRAMS; //1
-    //    public AchievedProgramsFragment FRAGMENT_ACHIEVED_PROGRAMS; //2
     public AttendProgramsFragment FRAGMENT_ATTEND_PROGRAMS; //3
     public RefusedProgramsFragment FRAGMENT_REFUSED_PROGRAMS; //4
     private EtiyaBadgeTab etiyaBadgeTab;

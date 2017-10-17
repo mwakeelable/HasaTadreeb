@@ -22,8 +22,6 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     public FrameLayout mFrameLayout;
     UserProgramsFragment FRAGMENT_USER_PROGRAMS;
     public static final int REQUEST_RATE_CODE = 0;
-    ImageView backIMG;
-    TextView titleTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +29,7 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.nav_my_courses));
-//        backIMG = (ImageView) findViewById(R.id.backImgView);
-//        titleTXT = (TextView) findViewById(R.id.titleTxt);
-//        backIMG.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onBackPressed();
-//            }
-//        });
-//
-//        titleTXT.setText(getResources().getString(R.string.nav_my_courses));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        View shadow = findViewById(R.id.toolbar_shadow);
-//        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-//            shadow.setVisibility(View.VISIBLE);
-//        else
-//            shadow.setVisibility(View.GONE);
         mFrameLayout = (FrameLayout) findViewById(R.id.containerView);
         FRAGMENT_USER_PROGRAMS = new UserProgramsFragment();
         drawUsersProgramsFragment();
@@ -94,7 +77,6 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     @Override
@@ -116,7 +98,6 @@ public class StudentCoursesActivity extends BaseActivity implements SearchView.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_RATE_CODE) {
-            //Reload
             finish();
             startActivity(getIntent());
         }
