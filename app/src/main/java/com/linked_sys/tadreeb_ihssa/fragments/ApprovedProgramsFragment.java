@@ -1,6 +1,5 @@
 package com.linked_sys.tadreeb_ihssa.fragments;
 
-
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -21,8 +20,8 @@ import android.widget.LinearLayout;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.tadreeb_ihssa.R;
-import com.linked_sys.tadreeb_ihssa.activities.StudentCoursesActivity;
 import com.linked_sys.tadreeb_ihssa.activities.ProgramDetailsActivity;
+import com.linked_sys.tadreeb_ihssa.activities.StudentCoursesActivity;
 import com.linked_sys.tadreeb_ihssa.adapters.AllProgramsAdapter;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.models.Program;
@@ -42,7 +41,7 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
     public AllProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     int limit = 10;
-    int skip = 0;
+    int skip = 1;
     boolean loadMore = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     LinearLayoutManager mLayoutManager;
@@ -68,10 +67,9 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
         recyclerView.addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL) {
             @Override
             public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                // Do not draw the divider
+
             }
         });
-        // show loader and fetch messages
         swipeRefreshLayout.post(
                 new Runnable() {
                     @Override
@@ -89,19 +87,16 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
-//                    visibleItemCount = mLayoutManager.getChildCount();
-//                    totalItemCount = mLayoutManager.getItemCount();
-//                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
-//                    if (loadMore) {
-//                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-//                            Log.v("...", "Last Item Wow !");
-//                            //Do pagination.. i.e. fetch new data
-//                            skip = skip + limit;
-//                            loadMorePrograms();
-//                        }
-//                    }
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMorePrograms();
+                        }
+                    }
                 }
             }
         });
@@ -110,8 +105,10 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
     private void getPrograms() {
         final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&UserId="+activity.session.getUserDetails().get(activity.session.KEY_ID)
-                + "&ProgStatus=1";
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_ID)
+                + "&ProgStatus=1"
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
         ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -159,13 +156,58 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
     }
 
     private void loadMorePrograms() {
-        placeholder.setVisibility(View.VISIBLE);
+        final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + activity.session.getUserDetails().get(activity.session.KEY_ID)
+                + "&ProgStatus=1"
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
+        ApiHelper programsAPI = new ApiHelper(activity, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                programs.clear();
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("con");
+                    for (int i = 0; i < programsArray.length(); i++) {
+                        JSONObject programObj = programsArray.optJSONObject(i);
+                        Program program = new Program();
+                        program.setRegREF(programObj.optString("RegREF"));
+                        program.setProgramREF(programObj.optString("ProgramREF"));
+                        program.setProgramID(programObj.optString("ProgramID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramDate(programObj.optString("ProgramDate"));
+                        program.setProgramTime(programObj.optString("ProgramTime"));
+                        program.setProgramLocation(programObj.optString("ProgramLocation"));
+                        program.setProgramStatus(programObj.optString("ProgramStatus"));
+                        program.setMustRate(programObj.optBoolean("MustRate"));
+                        program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
+                        programs.add(program);
+                    }
+                    recyclerView.setAdapter(mAdapter);
+                    swipeRefreshLayout.setRefreshing(false);
+                    if (programsArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
+
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d("Error", "Failed");
+            }
+        });
+        programsAPI.executeRequest(true, false);
     }
 
     @Override
     public void onRefresh() {
         limit = 10;
-        skip = 0;
+        skip = 1;
         getPrograms();
     }
 
@@ -186,9 +228,8 @@ public class ApprovedProgramsFragment extends Fragment implements SwipeRefreshLa
 
     private void openProgram(String regRef) {
         Intent intent = new Intent(activity, ProgramDetailsActivity.class);
-        intent.putExtra("REGREF",regRef);
-        intent.putExtra("comeFromRate",false);
-//        startActivity(intent);
+        intent.putExtra("REGREF", regRef);
+        intent.putExtra("comeFromRate", false);
         activity.startActivityForResult(intent, activity.REQUEST_RATE_CODE);
     }
 }

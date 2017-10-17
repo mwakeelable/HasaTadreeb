@@ -11,11 +11,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.linked_sys.tadreeb_ihssa.R;
-import com.linked_sys.tadreeb_ihssa.fragments.RecentTraineeProgramsFragment;
 import com.linked_sys.tadreeb_ihssa.fragments.UserProgramsFragment;
 
 public class StudentCoursesActivity extends BaseActivity implements SearchView.OnQueryTextListener {

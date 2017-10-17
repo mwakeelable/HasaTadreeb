@@ -127,7 +127,9 @@ public class RegisterProgramOneFragment extends Fragment {
     }
 
     private void getProgramsByPeriod(String periodRef) {
-        String url = ApiEndPoints.GET_PROGRAM_BY_PERIODS + "?APPCode=" + CacheHelper.getInstance().appCode + "&PeriodREF=" + periodRef;
+        String url = ApiEndPoints.GET_PROGRAM_BY_PERIODS +
+                "?APPCode=" + CacheHelper.getInstance().appCode +
+                "&PeriodREF=" + periodRef;
         ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
