@@ -39,6 +39,10 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
     public static final int REQUEST_TEACHER_CODE = 0;
+    int limit = 10;
+    int skip = 1;
+    boolean loadMore = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +82,16 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
-
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMoreTeachersPrograms();
+                        }
+                    }
                 }
             }
         });
@@ -96,7 +107,9 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
         final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
-                + "&progstatus=0";
+                + "&progstatus=0" +
+                "&PageSize=" + limit +
+                "&PageNumber=" + skip;
         ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -127,6 +140,10 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
                         }
                         recyclerView.setAdapter(mAdapter);
                         swipeRefreshLayout.setRefreshing(false);
+                        if (programsArray.length() < 10)
+                            loadMore = false;
+                        else
+                            loadMore = true;
                     } else {
                         placeholder.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
@@ -144,8 +161,63 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
         api.executeRequest(true, false);
     }
 
+
+    private void loadMoreTeachersPrograms() {
+        final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
+                + "&progstatus=0" +
+                "&PageSize=" + limit +
+                "&PageNumber=" + skip;
+        ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("con");
+                    for (int i = 0; i < programsArray.length(); i++) {
+                        JSONObject programObj = programsArray.optJSONObject(i);
+                        TeacherProgram program = new TeacherProgram();
+                        program.setREF(programObj.optString("REF"));
+                        program.setProgramID(programObj.optString("ProgramID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramDays(programObj.optString("ProgramDays"));
+                        program.setProgramTimes(programObj.optString("ProgramTimes"));
+                        program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
+                        program.setProgramDateEnd(programObj.optString("ProgramDateEnd"));
+                        program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                        program.setProgramLocation(programObj.optString("ProgramLocation"));
+                        program.setRemainDays(programObj.optString("RemainDays"));
+                        program.setAttendPeriodID(programObj.optString("AttendPeriodID"));
+                        program.setAttendPeriodName(programObj.optString("AttendPeriodName"));
+                        program.setCaseDays(programObj.optBoolean("CaseDays"));
+                        program.setMustAttend(programObj.optBoolean("MustAttend"));
+                        program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
+                        CacheHelper.getInstance().teacherAttendPrograms.add(program);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    swipeRefreshLayout.setRefreshing(false);
+                    if (programsArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d("Error", "Failed");
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
     @Override
     public void onRefresh() {
+        limit = 10;
+        skip = 1;
         getTeacherPrograms();
     }
 
@@ -165,26 +237,26 @@ public class TeacherAttendProgramsActivity extends BaseActivity implements Searc
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.search_menu, menu);
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            MenuItem searchMenuItem = menu.findItem(R.id.search);
-            SearchView searchView = (SearchView) searchMenuItem.getActionView();
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setSubmitButtonEnabled(true);
-            searchView.setOnQueryTextListener(this);
-            return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchMenuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setOnQueryTextListener(this);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    TeacherAttendProgramsActivity.this.finish();
-                    hideSoftKeyboard(this);
-                    return true;
-            }
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                TeacherAttendProgramsActivity.this.finish();
+                hideSoftKeyboard(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

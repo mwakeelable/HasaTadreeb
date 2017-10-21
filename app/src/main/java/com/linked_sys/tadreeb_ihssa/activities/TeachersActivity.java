@@ -40,6 +40,10 @@ public class TeachersActivity extends BaseActivity implements
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
+    int limit = 10;
+    int skip = 1;
+    boolean loadMore = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +83,16 @@ public class TeachersActivity extends BaseActivity implements
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
-
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMoreTeachers();
+                        }
+                    }
                 }
             }
         });
@@ -119,7 +130,9 @@ public class TeachersActivity extends BaseActivity implements
     private void getTeachersData() {
         String url = ApiEndPoints.TEACHERS_DATA
                 + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&UserId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
+                + "&UserId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
 
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override
@@ -142,6 +155,10 @@ public class TeachersActivity extends BaseActivity implements
                     }
                     recyclerView.setAdapter(mAdapter);
                     swipeRefreshLayout.setRefreshing(false);
+                    if (teachersArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
                 } else {
                     placeholder.setVisibility(View.VISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
@@ -156,8 +173,50 @@ public class TeachersActivity extends BaseActivity implements
         api.executeRequest(true, false);
     }
 
+    private void loadMoreTeachers() {
+        String url = ApiEndPoints.TEACHERS_DATA
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
+
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                JSONArray teachersArray = res.optJSONArray("con");
+                for (int i = 0; i < teachersArray.length(); i++) {
+                    JSONObject teacherObj = teachersArray.optJSONObject(i);
+                    Teachers teacher = new Teachers();
+                    teacher.setName(teacherObj.optString("Name"));
+                    teacher.setMobile(teacherObj.optString("Mobile"));
+                    teacher.setId(teacherObj.optString("Id"));
+                    teacher.setSpecialize(teacherObj.optString("Specialize"));
+                    teacher.setCurrentWork(teacherObj.optString("CurrentWork"));
+                    teacher.setCase(teacherObj.optString("Case"));
+                    teacher.setIDREF(teacherObj.optString("IDREF"));
+                    CacheHelper.getInstance().teachersList.add(teacher);
+                }
+                mAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+                if (teachersArray.length() < 10)
+                    loadMore = false;
+                else
+                    loadMore = true;
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
     @Override
     public void onRefresh() {
+        limit = 10;
+        skip = 1;
         getTeachersData();
     }
 

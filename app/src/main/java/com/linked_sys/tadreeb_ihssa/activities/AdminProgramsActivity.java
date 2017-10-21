@@ -43,6 +43,10 @@ public class AdminProgramsActivity extends BaseActivity
     LinearLayout placeholder;
     String status;
     Toolbar toolbar;
+    int limit = 10;
+    int skip = 1;
+    boolean loadMore = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +94,16 @@ public class AdminProgramsActivity extends BaseActivity
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
-
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMorePrograms();
+                        }
+                    }
                 }
             }
         });
@@ -108,7 +119,9 @@ public class AdminProgramsActivity extends BaseActivity
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
                 + "&PeriodId=" + CacheHelper.getInstance().adminPeriodSelectedID
-                + "&progstatus=" + status;
+                + "&progstatus=" + status
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
         ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -134,10 +147,62 @@ public class AdminProgramsActivity extends BaseActivity
                         }
                         recyclerView.setAdapter(mAdapter);
                         swipeRefreshLayout.setRefreshing(false);
+                        if (programsArray.length() < 10)
+                            loadMore = false;
+                        else
+                            loadMore = true;
                     } else {
                         placeholder.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
                     }
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d("Error", "Failed");
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+    private void loadMorePrograms() {
+        final String programsURL = ApiEndPoints.ADMIN_PROGRAMS_WITH_STATUS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
+                + "&PeriodId=" + CacheHelper.getInstance().adminPeriodSelectedID
+                + "&progstatus=" + status
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
+        ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("con");
+                    for (int i = 0; i < programsArray.length(); i++) {
+                        JSONObject programObj = programsArray.optJSONObject(i);
+                        Program program = new Program();
+                        program.setMotadarebFullName(programObj.optString("MotadarebFullName"));
+                        program.setMotadarebMobile(programObj.optString("MotadarebMobile"));
+                        program.setMotadarebID(programObj.optString("MotadarebID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramID(programObj.optString("ProgramREF"));
+                        program.setProgramTime(programObj.optString("ProgramTime"));
+                        program.setProgramDate(programObj.optString("ProgramDate"));
+                        program.setRegistrationDate(programObj.optString("RegistrationDate"));
+                        program.setProgramStatus(programObj.optString("ProgramStatus"));
+                        program.setRegREF(programObj.optString("RegREF"));
+                        CacheHelper.getInstance().adminPrograms.add(program);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    swipeRefreshLayout.setRefreshing(false);
+                    if (programsArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
                 } catch (Exception e) {
                     Log.d("Error", e.getMessage());
                 }
@@ -188,6 +253,8 @@ public class AdminProgramsActivity extends BaseActivity
 
     @Override
     public void onRefresh() {
+        limit = 10;
+        skip = 1;
         getPrograms();
     }
 
@@ -199,7 +266,7 @@ public class AdminProgramsActivity extends BaseActivity
     private void openProgram(int pos) {
         Intent intent = new Intent(this, AdminProgramDetailsActivity.class);
         intent.putExtra("pos", pos);
-        intent.putExtra("status",status);
+        intent.putExtra("status", status);
         startActivity(intent);
     }
 }

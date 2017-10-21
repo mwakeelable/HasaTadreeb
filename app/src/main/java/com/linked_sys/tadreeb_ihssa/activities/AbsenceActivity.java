@@ -71,8 +71,6 @@ public class AbsenceActivity extends BaseActivity {
         placeholder = (LinearLayout) findViewById(R.id.no_data_placeholder);
         dataContainer = (RelativeLayout) findViewById(R.id.data_container);
         txtProgramName = (TextView) findViewById(R.id.txtProgramName);
-//        mActionBar = getSupportActionBar();
-//        mActionBar.setDisplayHomeAsUpEnabled(true);
         backBtn = (ImageView) findViewById(R.id.backImgView);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,11 +107,6 @@ public class AbsenceActivity extends BaseActivity {
         studentAbsence.setAttendDay(txtAbsenceDay.getText().toString());
         studentAbsence.setAttendPeriod(periodID);
         absenceList.add(studentAbsence);
-//        Log.d(AppController.TAG, String.valueOf(absenceList.get(pos).getRegRef()));
-//        Log.d(AppController.TAG, absenceList.get(pos).getProgRef());
-//        Log.d(AppController.TAG, String.valueOf(absenceList.get(pos).isAttend()));
-//        Log.d(AppController.TAG, String.valueOf(absenceList.get(pos).getAttendDay()));
-//        Log.d(AppController.TAG, String.valueOf(absenceList.get(pos).getAttendPeriod()));
     }
 
     @Override

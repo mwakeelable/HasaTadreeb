@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.linked_sys.tadreeb_ihssa.R;
-import com.linked_sys.tadreeb_ihssa.adapters.TeacherAttendProgramsAdapter;
 import com.linked_sys.tadreeb_ihssa.adapters.TeachersDoneProgramsAdapter;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.models.TeacherProgram;
@@ -40,6 +39,10 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
     public static final int REQUEST_TEACHER_CODE = 0;
+    int limit = 10;
+    int skip = 1;
+    boolean loadMore = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +83,16 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //check for scroll down
-                {
-
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMoreTeachersPrograms();
+                        }
+                    }
                 }
             }
         });
@@ -97,7 +107,9 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
         final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
-                + "&progstatus=1";
+                + "&progstatus=1" +
+                "&PageSize=" + limit +
+                "&PageNumber=" + skip;
         ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -128,10 +140,66 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
                         }
                         recyclerView.setAdapter(mAdapter);
                         swipeRefreshLayout.setRefreshing(false);
+                        if (programsArray.length() < 10)
+                            loadMore = false;
+                        else
+                            loadMore = true;
                     } else {
                         placeholder.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
                     }
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d("Error", "Failed");
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
+    private void loadMoreTeachersPrograms() {
+        final String programsURL = ApiEndPoints.TEACHER_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
+                + "&progstatus=1" +
+                "&PageSize=" + limit +
+                "&PageNumber=" + skip;
+        ApiHelper api = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("con");
+                    for (int i = 0; i < programsArray.length(); i++) {
+                        JSONObject programObj = programsArray.optJSONObject(i);
+                        TeacherProgram program = new TeacherProgram();
+                        program.setREF(programObj.optString("REF"));
+                        program.setProgramID(programObj.optString("ProgramID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramDays(programObj.optString("ProgramDays"));
+                        program.setProgramTimes(programObj.optString("ProgramTimes"));
+                        program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
+                        program.setProgramDateEnd(programObj.optString("ProgramDateEnd"));
+                        program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
+                        program.setProgramLocation(programObj.optString("ProgramLocation"));
+                        program.setRemainDays(programObj.optString("RemainDays"));
+                        program.setAttendPeriodID(programObj.optString("AttendPeriodID"));
+                        program.setAttendPeriodName(programObj.optString("AttendPeriodName"));
+                        program.setCaseDays(programObj.optBoolean("CaseDays"));
+                        program.setMustAttend(programObj.optBoolean("MustAttend"));
+                        program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
+                        CacheHelper.getInstance().teacherDonePrograms.add(program);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    swipeRefreshLayout.setRefreshing(false);
+                    if (programsArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
                 } catch (Exception e) {
                     Log.d("Error", e.getMessage());
                 }
@@ -182,6 +250,8 @@ public class TeacherCertificatesActivity extends BaseActivity implements SwipeRe
 
     @Override
     public void onRefresh() {
+        limit = 10;
+        skip = 1;
         getTeacherPrograms();
     }
 

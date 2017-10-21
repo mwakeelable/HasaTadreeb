@@ -33,6 +33,10 @@ public class TechnicalTicketsActivity extends BaseActivity implements SwipeRefre
     private SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager mLayoutManager;
     LinearLayout placeholder;
+    int limit = 10;
+    int skip = 1;
+    boolean loadMore = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,28 @@ public class TechnicalTicketsActivity extends BaseActivity implements SwipeRefre
                     }
                 }
         );
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loadMore) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            skip = skip + 1;
+                            loadMoreTickets();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -80,7 +106,9 @@ public class TechnicalTicketsActivity extends BaseActivity implements SwipeRefre
     private void getMessages() {
         String url = ApiEndPoints.GET_USER_MESSAGES
                 + "?APPCode=" + CacheHelper.getInstance().appCode
-                + "&SchoolId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID);
+                + "&SchoolId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
         ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -104,6 +132,10 @@ public class TechnicalTicketsActivity extends BaseActivity implements SwipeRefre
                         }
                         recyclerView.setAdapter(mAdapter);
                         swipeRefreshLayout.setRefreshing(false);
+                        if (messageArray.length() < 10)
+                            loadMore = false;
+                        else
+                            loadMore = true;
                     } else {
                         placeholder.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
@@ -121,8 +153,54 @@ public class TechnicalTicketsActivity extends BaseActivity implements SwipeRefre
         api.executeRequest(true, false);
     }
 
+    private void loadMoreTickets(){
+        String url = ApiEndPoints.GET_USER_MESSAGES
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&SchoolId=" + session.getUserDetails().get(session.KEY_NATIONAL_ID)
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray messageArray = res.optJSONArray("con");
+                        for (int i = 0; i < messageArray.length(); i++) {
+                            JSONObject messageObj = messageArray.optJSONObject(i);
+                            Message message = new Message();
+                            message.setMessageDate(messageObj.optString("MessageDate"));
+                            message.setMessage(messageObj.optString("Message"));
+                            message.setMessageREF(messageObj.optString("MessageREF"));
+                            message.setSchoolId(messageObj.optString("SchoolId"));
+                            message.setMessageTime(messageObj.optString("MessageTime"));
+                            message.setReplay(messageObj.optString("Replay"));
+                            message.setReplayDate(messageObj.optString("ReplayDate"));
+                            message.setReplayTime(messageObj.optString("ReplayTime"));
+                            CacheHelper.getInstance().messages.add(message);
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    if (messageArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
+    }
+
     @Override
     public void onRefresh() {
+        limit = 10;
+        skip = 1;
         getMessages();
     }
 
