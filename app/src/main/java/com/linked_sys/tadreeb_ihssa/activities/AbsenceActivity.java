@@ -1,11 +1,9 @@
 package com.linked_sys.tadreeb_ihssa.activities;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -47,22 +45,20 @@ public class AbsenceActivity extends BaseActivity {
     LayoutInflater inflater;
     LinearLayout studentsLayout;
     String ref, periodID;
-    TextView txtAbsenceDay, txtAbsencePeriod,txtProgramName;
+    TextView txtAbsenceDay, txtAbsencePeriod, txtProgramName;
     LinearLayout btnSubmitAbsence;
     StudentAbsence studentAbsence;
     RadioButton btnExist, btnNotExist;
     String finished;
     LinearLayout placeholder;
     RelativeLayout dataContainer;
-    ActionBar mActionBar;
     ImageView backBtn;
-    TextView titleTxt;
+    TextView titleTxt, btnSelectAll;
+    View absenceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         studentsLayout = (LinearLayout) findViewById(R.id.students_container);
         txtAbsenceDay = (TextView) findViewById(R.id.txtAbsenceDay);
@@ -88,13 +84,26 @@ public class AbsenceActivity extends BaseActivity {
         }
         isAttend.clear();
         checkIsFinished();
+        btnSelectAll = (TextView) findViewById(R.id.btnSelectAll);
+//        btnSelectAll.setPaintFlags(btnSelectAll.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        btnSelectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < studentsList.size(); i++) {
+//                    ((RadioButton) absenceView.findViewById(R.id.btnExist)).setChecked(true);
+                    ((RadioButton)studentsLayout.getChildAt(i).findViewById(R.id.btnExist)).setChecked(true);
+                }
+                Toast.makeText(AbsenceActivity.this, "تم تحضير الكـل", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            onBackPressed();  return true;
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -115,16 +124,15 @@ public class AbsenceActivity extends BaseActivity {
     }
 
     private View getProgramStudentView(LayoutInflater inflater, final ProgramStudents programStudents, final int currentIndex) {
-        View view = inflater.inflate(R.layout.program_student_item, null);
-        TextView studentName = (TextView) view.findViewById(R.id.txt_studentName);
-        TextView studentID = (TextView) view.findViewById(R.id.txt_studentID);
-        TextView studentSchool = (TextView) view.findViewById(R.id.txt_studentSchool);
-        btnExist = (RadioButton) view.findViewById(R.id.btnExist);
-        btnNotExist = (RadioButton) view.findViewById(R.id.btnNotExist);
+        absenceView = inflater.inflate(R.layout.program_student_item, null);
+        TextView studentName = (TextView) absenceView.findViewById(R.id.txt_studentName);
+        TextView studentID = (TextView) absenceView.findViewById(R.id.txt_studentID);
+        TextView studentSchool = (TextView) absenceView.findViewById(R.id.txt_studentSchool);
+        btnExist = (RadioButton) absenceView.findViewById(R.id.btnExist);
+        btnNotExist = (RadioButton) absenceView.findViewById(R.id.btnNotExist);
         studentName.setText(programStudents.getStudentName());
         studentID.setText(programStudents.getStudentID());
         studentSchool.setText(programStudents.getStudentSchool());
-
         btnExist.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -138,7 +146,7 @@ public class AbsenceActivity extends BaseActivity {
                 isAttend.put(studentsList.get(currentIndex).getRegREF(), false);
             }
         });
-        return view;
+        return absenceView;
     }
 
     public void getStudents() {
@@ -288,7 +296,7 @@ public class AbsenceActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra("comeFrom","attend");
+        intent.putExtra("comeFrom", "attend");
         setResult(RESULT_OK, intent);
         finish();
     }

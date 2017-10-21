@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-  <string name="app_name">تدريب الإحساء بنين</string>
+  <string name="app_name">تدريب الأحساء بنين</string>
   <string name="txt_identity">رقم الهوية</string>
   <string name="txt_phone">رقم الجوال</string>
   <string name="txt_userType">نوع المستخدم</string>

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.crashlytics.android.Crashlytics;
 import com.linked_sys.tadreeb_ihssa.R;
 import com.novoda.simplechromecustomtabs.SimpleChromeCustomTabs;
 
@@ -15,6 +16,7 @@ import java.net.CookieManager;
 import java.util.Locale;
 
 import in.myinnos.customfontlibrary.TypefaceUtil;
+import io.fabric.sdk.android.Fabric;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppController extends MultiDexApplication {
@@ -46,6 +48,7 @@ public class AppController extends MultiDexApplication {
         }
         SimpleChromeCustomTabs.initialize(this);
         MultiDex.install(this);
+        Fabric.with(this, new Crashlytics());
     }
 
 

@@ -76,6 +76,8 @@ public class SignInActivity extends BaseActivity {
             } else if (userType == 2) {
                 userTypeImg.setImageDrawable(getResources().getDrawable(R.drawable.register_coordinater));
                 userTypeTxt.setText("تسجيل منسق التدريب");
+                txt_email.setHint("اسم المستخدم");
+                txt_password.setHint("كلمة المرور");
             }
         }
         final Button btn_login = (Button) findViewById(R.id.btn_login);

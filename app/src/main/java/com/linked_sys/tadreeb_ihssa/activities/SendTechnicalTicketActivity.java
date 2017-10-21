@@ -2,8 +2,6 @@ package com.linked_sys.tadreeb_ihssa.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,7 +23,7 @@ import java.util.Map;
 public class SendTechnicalTicketActivity extends BaseActivity {
     TextView txtSchoolName;
     EditText txtMessageBody;
-    LinearLayout btnSendMessage;
+    LinearLayout btnSendMessage, container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +41,14 @@ public class SendTechnicalTicketActivity extends BaseActivity {
         txtMessageBody = (EditText) findViewById(R.id.txtMessageBody);
         txtSchoolName.setText(session.getUserDetails().get(session.KEY_FULL_NAME));
         btnSendMessage = (LinearLayout) findViewById(R.id.btnSendMessage);
+        container = (LinearLayout) findViewById(R.id.ticketContainer);
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendMessage();
             }
         });
+        setupUI(container);
     }
 
     @Override

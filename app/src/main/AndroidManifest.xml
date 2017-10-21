@@ -272,6 +272,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.linked_sys.tadreeb_ihssa.activities.MainActivity" />
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f87b16f53ae56beedadc3392bacf71371f075b5e"
+            />
     </application>
 
 </manifest>
