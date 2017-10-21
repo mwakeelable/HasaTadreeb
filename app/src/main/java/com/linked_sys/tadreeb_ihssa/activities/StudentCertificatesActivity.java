@@ -4,11 +4,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -16,16 +13,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.volley.Request;
@@ -49,7 +41,7 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
     public AllProgramsAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     int limit = 10;
-    int skip = 0;
+    int skip = 1;
     boolean loadMore = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     LinearLayoutManager mLayoutManager;
@@ -122,7 +114,9 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
         final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
                 + "?APPCode=" + CacheHelper.getInstance().appCode
                 + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
-                + "&ProgStatus=2";
+                + "&ProgStatus=2"
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
         ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
             @Override
             public void onSuccess(Object response) {
@@ -170,7 +164,50 @@ public class StudentCertificatesActivity extends BaseActivity implements SwipeRe
     }
 
     private void loadMorePrograms() {
-        placeholder.setVisibility(View.VISIBLE);
+        final String programsURL = ApiEndPoints.STUDENT_PROGRAMS_URL
+                + "?APPCode=" + CacheHelper.getInstance().appCode
+                + "&UserId=" + session.getUserDetails().get(session.KEY_ID)
+                + "&ProgStatus=2"
+                + "&PageSize=" + limit
+                + "&PageNumber=" + skip;
+        ApiHelper programsAPI = new ApiHelper(this, programsURL, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                try {
+                    JSONObject res = (JSONObject) response;
+                    JSONArray programsArray = res.optJSONArray("con");
+                    for (int i = 0; i < programsArray.length(); i++) {
+                        JSONObject programObj = programsArray.optJSONObject(i);
+                        Program program = new Program();
+                        program.setRegREF(programObj.optString("RegREF"));
+                        program.setProgramREF(programObj.optString("ProgramREF"));
+                        program.setProgramID(programObj.optString("ProgramID"));
+                        program.setProgramName(programObj.optString("ProgramName"));
+                        program.setProgramDate(programObj.optString("ProgramDate"));
+                        program.setProgramTime(programObj.optString("ProgramTime"));
+                        program.setProgramLocation(programObj.optString("ProgramLocation"));
+                        program.setProgramStatus(programObj.optString("ProgramStatus"));
+                        program.setMustRate(programObj.optBoolean("MustRate"));
+                        program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
+                        programs.add(program);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    swipeRefreshLayout.setRefreshing(false);
+                    if (programsArray.length() < 10)
+                        loadMore = false;
+                    else
+                        loadMore = true;
+                } catch (Exception e) {
+                    Log.d("Error", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                Log.d("Error", "Failed");
+            }
+        });
+        programsAPI.executeRequest(true, false);
     }
 
     @Override

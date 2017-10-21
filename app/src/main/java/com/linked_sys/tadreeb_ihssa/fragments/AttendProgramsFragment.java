@@ -184,7 +184,7 @@ public class AttendProgramsFragment extends Fragment implements SwipeRefreshLayo
                         program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
                         programs.add(program);
                     }
-                    recyclerView.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
                     swipeRefreshLayout.setRefreshing(false);
                     if (programsArray.length() < 10)
                         loadMore = false;

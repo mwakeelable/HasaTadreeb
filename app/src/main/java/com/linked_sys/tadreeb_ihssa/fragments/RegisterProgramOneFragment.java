@@ -55,7 +55,6 @@ public class RegisterProgramOneFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Periods periods = (Periods) parent.getSelectedItem();
                 activity.periodRef = periods.getPeriodREF();
-                getProgramsByPeriod(activity.periodRef);
             }
 
             @Override
@@ -124,47 +123,5 @@ public class RegisterProgramOneFragment extends Fragment {
             }
         });
         api.executeRequest(false, false);
-    }
-
-    private void getProgramsByPeriod(String periodRef) {
-        String url = ApiEndPoints.GET_PROGRAM_BY_PERIODS +
-                "?APPCode=" + CacheHelper.getInstance().appCode +
-                "&PeriodREF=" + periodRef;
-        ApiHelper api = new ApiHelper(activity, url, Request.Method.GET, new ApiCallback() {
-            @Override
-            public void onSuccess(Object response) {
-                try {
-                    CacheHelper.getInstance().programByPeriods.clear();
-                    JSONObject res = (JSONObject) response;
-                    JSONArray programsArr = res.optJSONArray("con");
-                    for (int i = 0; i < programsArr.length(); i++) {
-                        JSONObject programObj = programsArr.getJSONObject(i);
-                        ProgramByPeriod program = new ProgramByPeriod();
-                        program.setREF(programObj.optString("ProgramREF"));
-                        program.setProgramID(programObj.optString("ProgramID"));
-                        program.setProgramName(programObj.optString("ProgramName"));
-                        program.setProgramDays(programObj.optString("ProgramDays"));
-                        program.setProgramTimes(programObj.optString("ProgramTimes"));
-                        program.setProgramDateStrat(programObj.optString("ProgramDateStrat"));
-                        program.setProgramDateEnd(programObj.optString("ProgramDateEnd"));
-                        program.setProgramTimeStrat(programObj.optString("ProgramTimeStrat"));
-                        program.setProgramLocation(programObj.optString("ProgramLocation"));
-                        program.setTeacherName(programObj.optString("TeacherName"));
-                        program.setProgramClass(programObj.optString("ProgramClass"));
-                        program.setProgramStatus(programObj.optString("ProgramStatus"));
-                        CacheHelper.getInstance().programByPeriods.add(program);
-
-                    }
-                } catch (Exception e) {
-
-                }
-            }
-
-            @Override
-            public void onFailure(VolleyError error) {
-
-            }
-        });
-        api.executeRequest(true, false);
     }
 }

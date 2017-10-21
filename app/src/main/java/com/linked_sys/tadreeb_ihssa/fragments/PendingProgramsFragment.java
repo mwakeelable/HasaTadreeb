@@ -184,7 +184,7 @@ public class PendingProgramsFragment extends Fragment implements SwipeRefreshLay
                         program.setCanPrintCertificate(programObj.optBoolean("CanPrintCertificate"));
                         programs.add(program);
                     }
-                    recyclerView.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
                     swipeRefreshLayout.setRefreshing(false);
                     if (programsArray.length() < 10)
                         loadMore = false;
