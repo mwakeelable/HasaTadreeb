@@ -17,6 +17,7 @@ import android.widget.EditText;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.linked_sys.tadreeb_ihssa.core.AppController;
 import com.linked_sys.tadreeb_ihssa.core.SessionManager;
 import com.linked_sys.tadreeb_ihssa.core.SharedManager;
@@ -35,7 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import static com.linked_sys.tadreeb_ihssa.core.CacheHelper.newMails;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    public SessionManager session;
+    public static SessionManager session;
     SharedManager manager;
 
     @Override
@@ -127,13 +128,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Object response) {
                     session.logoutUser();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("All");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("Monaseq");
+                    FirebaseMessaging.getInstance().subscribeToTopic("Motdareb");
+                    FirebaseMessaging.getInstance().subscribeToTopic("Modareb");
+                    newMails = 0;
+                    setBadge(BaseActivity.this, newMails);
                 }
 
                 @Override
                 public void onFailure(VolleyError error) {
-                    session.logoutUser();
-                    newMails = 0;
-                    setBadge(BaseActivity.this, newMails);
+//                    session.logoutUser();
+
                 }
             });
             api.executePostRequest(true);
@@ -150,7 +156,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Object response) {
                 JSONObject res = (JSONObject) response;
-                newMails = res.optInt("count");
+                String count = res.optString("ret");
+                newMails = Integer.parseInt(count);
                 setBadge(BaseActivity.this, Integer.parseInt(res.optString("ret")));
             }
 

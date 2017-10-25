@@ -97,6 +97,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             drawFragment(FRAGMENT_ADMIN_MAIN);
 //            headerTXT.setText("منسق التدريب");
         }
+        getUnreadMessagesCount();
     }
 
     @Override

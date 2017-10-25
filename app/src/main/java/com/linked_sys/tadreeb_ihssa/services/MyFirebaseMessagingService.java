@@ -6,14 +6,22 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.error.VolleyError;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.linked_sys.tadreeb_ihssa.activities.BaseActivity;
 import com.linked_sys.tadreeb_ihssa.activities.NotificationActivity;
 import com.linked_sys.tadreeb_ihssa.core.CacheHelper;
 import com.linked_sys.tadreeb_ihssa.core.NotificationUtils;
+import com.linked_sys.tadreeb_ihssa.network.ApiCallback;
+import com.linked_sys.tadreeb_ihssa.network.ApiEndPoints;
+import com.linked_sys.tadreeb_ihssa.network.ApiHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.linked_sys.tadreeb_ihssa.activities.BaseActivity.session;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
@@ -40,6 +48,28 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Log.e(TAG, "Exception: " + e.getMessage());
             }
         }
+//        setBadge();
+    }
+
+    private void setBadge(){
+        String url = ApiEndPoints.GET_MESSAGE_COUNT
+                + "?APPCode=zunIhQwuD38JfFkSQBCk8gzvK5aJQaoahacqSJLhRcg="
+                + "&UserID=" + session.getUserDetails().get(session.KEY_ID_REF);
+        ApiHelper api = new ApiHelper(this, url, Request.Method.GET, new ApiCallback() {
+            @Override
+            public void onSuccess(Object response) {
+                JSONObject res = (JSONObject) response;
+                String count = res.optString("ret");
+                CacheHelper.getInstance().newMails = Integer.parseInt(count);
+                BaseActivity.setBadge(getApplicationContext(), Integer.parseInt(res.optString("ret")));
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+
+            }
+        });
+        api.executeRequest(true, false);
     }
 
     private void handleNotification(String message) {

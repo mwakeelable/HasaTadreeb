@@ -44,7 +44,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="المدرب"
+                        android:text="المعلمين"
                         android:textColor="#4EB4D0"
                         android:textSize="18sp"
                         android:layout_marginTop="-7dp"/>

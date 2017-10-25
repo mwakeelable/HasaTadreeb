@@ -99,5 +99,6 @@ public class ProfileActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         getMessagesCount();
+        getUnreadMessagesCount();
     }
 }

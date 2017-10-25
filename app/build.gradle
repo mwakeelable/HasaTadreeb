@@ -8,8 +8,8 @@ android {
         applicationId "com.linked_sys.tadreeb_ihssa"
         minSdkVersion 18
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.2"
+        versionCode 5
+        versionName "1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
@@ -85,6 +85,7 @@ dependencies {
         compile 'com.android.support:customtabs:25.3.1'
         compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
         compile "me.leolin:ShortcutBadger:1.1.13@aar"
+        compile 'com.github.arturogutierrez:badges:1.0.5@aar'
         compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
             transitive = true;
         }
